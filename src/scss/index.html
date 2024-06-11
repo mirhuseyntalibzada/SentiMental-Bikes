@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlay Scroll Effect</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            perspective: 1px; /* Create a 3D perspective */
+            height: 200vh; /* Make sure the page is scrollable */
+            overflow-x: hidden;
+        }
+        .section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            transform-style: preserve-3d; /* Preserve 3D transformations */
+        }
+        .section1 {
+            background-color: lightblue;
+            transform: translateZ(-1px) scale(2); /* Move it back and scale it */
+            z-index: 1;
+        }
+        .section2 {
+            background-color: lightcoral;
+            z-index: 2;
+        }
+        .section3 {
+            background-color: lightgreen;
+            z-index: 3;
+            display: none; /* Initially hide the third section */
+        }
+    </style>
+</head>
+<body>
+    <div class="section section1">
+        Slow Scroll Section
+    </div>
+    <div class="section section2">
+        Fast Scroll Section
+    </div>
+    <div class="section section3">
+        Normal Scroll Section 3
+    </div>
+
+    <script>
+        const section1 = document.querySelector('.section1');
+        const section2 = document.querySelector('.section2');
+        const section3 = document.querySelector('.section3');
+        const section1Height = section1.clientHeight;
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+
+            // Apply parallax effect to section1
+            section1.style.transform = `translateZ(-1px) scale(2) translateY(${scrollPosition * 0.5}px)`;
+
+            // Apply faster scroll effect to section2
+            section2.style.transform = `translateY(${scrollPosition * 1.5}px)`;
+
+            // Prevent scrolling past the overlay effect
+            if (scrollPosition >= section1Height && !section3.style.display) {
+                document.documentElement.style.overflow = 'hidden';
+                setTimeout(() => {
+                    section3.style.display = 'flex';
+                    document.documentElement.style.overflow = 'auto';
+                    window.scrollTo(0, section1Height);
+                }, 500); // Adjust delay as needed
+            }
+        });
+    </script>
+</body>
+</html>
