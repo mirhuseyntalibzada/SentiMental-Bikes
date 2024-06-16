@@ -1,0 +1,48 @@
+const payments = [
+    {
+        id:1,
+        image:"wsPayWebSecureLogo-106x50-whitebg-1.svg"
+    },
+    {
+        id:2,
+        image:"Diners-Club-Int.svg"
+    },
+    {
+        id:3,
+        image:"American_Express_logo_2018.svg"
+    },
+    {
+        id:4,
+        image:"Visa_Inc._logo.svg"
+    },
+    {
+        id:5,
+        image:"Layer_x0020_1.svg"
+    },
+    {
+        id:6,
+        image:"Mastercard-logo.svg"
+    },
+    {
+        id:7,
+        image:"mc_idcheck.svg"
+    },
+    {
+        id:8,
+        image:"Maestro_2016.svg"
+    },
+    {
+        id:9,
+        image:"Google_Pay_Logo.svg"
+    },
+    {
+        id:10,
+        image:"Keks-Pay.svg"
+    },
+    {
+        id:11,
+        image:"Aircash.svg"
+    },
+]
+
+export default payments

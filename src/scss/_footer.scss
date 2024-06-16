@@ -1,29 +1,205 @@
 footer {
+    background-color: rgb(190, 190, 183);
+
     .footer-marquee {
         background-color: rgb(208, 229, 159);
         padding: 1em 0;
+
         .footer-marquee-track-inner {
             display: flex;
-            .footer-marquee-track-piece{
+
+            .footer-marquee-track-piece {
                 display: flex;
                 align-items: center;
-                .title-xl{
+
+                .title-xl {
                     padding-left: 2em;
                     font-size: 1.5em;
                     font-weight: 600;
                 }
-                .track-image{
+
+                .track-image {
                     width: 1.5em;
                     padding: 0 2em;
-                    img{
+
+                    img {
                         width: 100%;
                     }
                 }
-                .track-divider{
+
+                .track-divider {
                     height: 2px;
                     width: 3em;
                     background-color: black;
                 }
+            }
+        }
+    }
+
+    .container {
+        margin-top: 3em;
+        padding: 0 .5em;
+
+        h3 {
+            text-align: center;
+            font-size: .9em;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        p {
+            font-size: .6em;
+            text-align: center;
+            line-height: 1.5em;
+        }
+
+        .email {
+            position: relative;
+
+            input {
+                box-sizing: border-box;
+                width: 100%;
+                height: 4em;
+                border: 0;
+                border-radius: 2em;
+                padding: 0 1.2em;
+                font-size: .6em;
+                background-color: rgb(246, 246, 246);
+            }
+
+            input:focus-visible {
+                outline: 0;
+            }
+
+            button {
+                position: absolute;
+                right: .6em;
+                top: 50%;
+                transform: translateY(-50%);
+                color: white;
+                background-color: black;
+                border-radius: 2em;
+                border: 0;
+                padding: 1em;
+                font-weight: 700;
+                font-size: .55em;
+            }
+        }
+
+        .links {
+            .nav {
+                margin: 1.5em 0 1em 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                a {
+                    font-size: .75em;
+                    margin-bottom: 1em;
+                    text-decoration: none;
+                    color: black;
+                    font-weight: 600;
+                }
+            }
+
+            .other-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                a {
+                    font-size: .75em;
+                    margin-bottom: 1em;
+                    text-decoration: none;
+                    color: black;
+                    font-weight: 600
+                }
+            }
+        }
+
+        .social-media {
+            h5 {
+                text-align: center;
+                font-weight: 600;
+                font-size: .65em;
+            }
+
+            .icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1em;
+
+                i {
+                    font-size: 1em;
+                }
+            }
+        }
+
+        .payments {
+            margin-top: 1em;
+
+            h5 {
+                font-size: .65em;
+                text-align: center;
+                font-weight: 600;
+            }
+
+            .payment-img {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                column-gap: .8em;
+                row-gap: .1em;
+
+                .img-container {
+                    width: 2em;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .img-container:nth-child(1),
+                .img-container:nth-child(9) {
+                    width: 3em;
+                }
+
+                .img-container:nth-child(11) {
+                    width: 5em;
+                }
+            }
+        }
+
+        .configure-button {
+            margin: 1em 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .secondary-btn {
+                font-size: .6em;
+                background-color: black;
+                padding: .5em .8em .5em .5em;
+                text-decoration: none;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                color: white;
+                gap: 1em;
+                border-radius: 3em;
+
+                img {
+                    width: 25%;
+                }
+            }
+        }
+
+        .text-container {
+            p{
+                margin: 0;
+                padding: 1em 0;
             }
         }
     }
@@ -34,24 +210,30 @@ footer {
         .footer-marquee {
             background-color: rgb(208, 229, 159);
             padding: .1em 0;
+
             .footer-marquee-track-inner {
                 display: flex;
-                .footer-marquee-track-piece{
+
+                .footer-marquee-track-piece {
                     display: flex;
                     align-items: center;
-                    .title-xl{
+
+                    .title-xl {
                         padding-left: 1em;
                         font-size: .6em;
                         font-weight: 600;
                     }
-                    .track-image{
+
+                    .track-image {
                         width: .5em;
                         padding: 0 1em;
-                        img{
+
+                        img {
                             width: 100%;
                         }
                     }
-                    .track-divider{
+
+                    .track-divider {
                         height: 2px;
                         width: 2em;
                         background-color: black;
