@@ -67,7 +67,7 @@
             // Apply faster scroll effect to section2
             section2.style.transform = `translateY(${scrollPosition * 1.5}px)`;
 
-            // Prevent scrolling past the overlay effect
+            // Prevent scrollct
             if (scrollPosition >= section1Height && !section3.style.display) {
                 document.documentElement.style.overflow = 'hidden';
                 setTimeout(() => {

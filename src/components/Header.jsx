@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo-big.svg';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     const [isLangActive, setIsLangActive] = useState(false);
@@ -50,13 +51,48 @@ const Header = () => {
                 <div className="container">
                     <nav className={`${isHamActive ? 'active' : ''}`}>
                         <ul>
-                            <li><Link className={`${isHamActive ? 'active' : ''}`} to="#">OUR STORY</Link></li>
-                            <li><Link className={`${isHamActive ? 'active' : ''}`} to="#">DEALERSHIP</Link></li>
-                            <li><Link className={`${isHamActive ? 'active' : ''}`} to="#">CONTACT</Link></li>
-                            <li><Link className={`${isHamActive ? 'active' : ''}`} to="#">BECOME A PARTNER</Link></li>
-                            <li><Link className={`${isHamActive ? 'active' : ''}`} to="#">CONFIGURE A BIKE</Link></li>
-                            <li><Link className={`${isHamActive ? 'active' : ''}`} to="#">MY ACCOUNT</Link></li>
-                            <li><Link className={`${isHamActive ? 'active' : ''}`} to="#">CART</Link></li>
+                            <li>
+                                <NavLink to={"/our-story"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>OUR STORY</span>
+                                    <span>OUR STORY</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={"/dealership"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>DEALERSHIP</span>
+                                    <span>DEALERSHIP</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={"/contact"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>CONTACT</span>
+                                    <span>CONTACT</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={"/become-a-partner"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>BECOME A PARTNER</span>
+                                    <span>BECOME A PARTNER</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={"/configure-a-bike"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>CONFIGURE A BIKE</span>
+                                    <span>CONFIGURE A BIKE</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={"/my-account"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>MY ACCOUNT</span>
+                                    <span>MY ACCOUNT</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={"/cart"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>CART</span>
+                                    <span>CART</span>
+                                </NavLink>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -65,21 +101,47 @@ const Header = () => {
                 <div className={`background ${isHamActive ? 'active' : ''}`}></div>
                 <div className="container">
                     <nav>
-                        <div className="img-container">
+                        <NavLink to={"/home"} className="img-container">
                             <img src={logo} alt="" />
-                        </div>
+                        </NavLink>
                         <div className='lang-ham-container'>
                             <div className="navigation">
                                 <ul>
-                                    <li><Link to="#">OUR STORY</Link></li>
-                                    <li><Link to="#">DEALERSHIP</Link></li>
-                                    <li><Link to="#">CONTACT</Link></li>
-                                    <li><Link to="#">BECOME A PARTNER</Link></li>
-                                    <li><Link to="#">CONFIGURE A BIKE</Link></li>
+                                    <li>
+                                        <NavLink to={"/our-story"}>
+                                            <span>OUR STORY</span>
+                                            <span>OUR STORY</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/dealership"}>
+                                            <span>DEALERSHIP</span>
+                                            <span>DEALERSHIP</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/contact"}>
+                                            <span>CONTACT</span>
+                                            <span>CONTACT</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/become-a-partner"}>
+                                            <span>BECOME A PARTNER</span>
+                                            <span>BECOME A PARTNER</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/configure-a-bike"}>
+                                            <span>CONFIGURE A BIKE</span>
+                                            <span>CONFIGURE A BIKE</span>
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </div>
                             <div onClick={toggleLangBtn} className="lang-icon-container">
                                 <div className="lang-icon">
+                                    <i className="fa-solid fa-globe" />
                                     <i className="fa-solid fa-globe" />
                                 </div>
                                 <div onClick={e => { e.stopPropagation() }} className={`options-container ${isLangActive ? 'active' : ''}`}>
@@ -93,12 +155,14 @@ const Header = () => {
                                 <span></span>
                             </div>
                             <div className="account-cart-container">
-                                <div className="account-icon">
+                                <NavLink to={"/my-account"} className="account-icon">
                                     <i className="fa-solid fa-user"></i>
-                                </div>
-                                <div className="cart-icon">
+                                    <i className="fa-solid fa-user"></i>
+                                </NavLink>
+                                <NavLink to={"/cart"} className="cart-icon">
                                     <i className="fa-solid fa-cart-shopping"></i>
-                                </div>
+                                    <i className="fa-solid fa-cart-shopping"></i>
+                                </NavLink>
                             </div>
                         </div>
                     </nav>

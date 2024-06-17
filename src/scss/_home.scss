@@ -25,33 +25,14 @@
 
                     span {
                         display: inline-block;
-                        animation: bottomToTop 1s forwards;
-                        opacity: 0;
-
-                        @keyframes bottomToTop {
-                            0% {
-                                transform: translateY(60px);
-                                opacity: 0;
-                            }
-
-                            100% {
-                                transform: translateY(0);
-                                opacity: 1;
-                            }
-                        }
                     }
-
-
                 }
-
-
             }
 
             .small-text {
                 display: flex;
                 align-items: center;
                 gap: .3em;
-                margin-bottom: .2em;
 
                 i {
                     font-size: .6em;
@@ -181,6 +162,11 @@
         .container {
             padding: 2em 0.5em 2em;
 
+            .h1-container,
+            .p-container {
+                overflow: hidden;
+            }
+
             h1,
             h2,
             p {
@@ -235,19 +221,37 @@
         padding: 1em .5em 4em;
 
         .content-container {
-            h6 {
-                margin: 0;
-                font-size: .55em;
+            .h6-container {
+                overflow: hidden;
+
+                h6 {
+                    margin: 0;
+                    font-size: .55em;
+                }
             }
+
+
 
             h1 {
                 font-size: 1.3em;
                 font-weight: 600;
+
+                div {
+                    overflow: hidden;
+
+                    span {
+                        display: inline-block;
+                    }
+                }
             }
 
-            p {
-                line-height: 1.5em;
-                font-size: .6em;
+            .p-container {
+                overflow: hidden;
+
+                p {
+                    line-height: 1.5em;
+                    font-size: .6em;
+                }
             }
 
             .read-full-story {
@@ -282,6 +286,14 @@
             margin: 0;
             font-size: 1.4em;
             font-weight: 600;
+
+            div {
+                overflow: hidden;
+
+                span {
+                    display: inline-block;
+                }
+            }
         }
     }
 
@@ -297,17 +309,30 @@
     .container {
         padding: 3em .5em;
 
+        .h1-container {
+            overflow: hidden;
+        }
+
         h1 {
             margin: 0;
             font-size: 1.2em;
             font-weight: 600;
         }
 
-        p {
+        .p-container {
+            overflow: hidden;
             margin: 2em 0;
-            font-size: .6em;
-            line-height: 1.5em;
+
+            p {
+                margin: 0;
+                font-size: .6em;
+                line-height: 1.5em;
+            }
         }
+    }
+
+    .logo-container {
+        overflow: hidden;
     }
 
     .logo-name {
@@ -361,6 +386,10 @@
                 margin: 0;
             }
 
+            .h6-container {
+                overflow: hidden;
+            }
+
             h6 {
                 font-size: .55em;
             }
@@ -369,11 +398,23 @@
                 padding: .7em 0;
                 font-size: 1.3em;
                 font-weight: 600;
+
+                div {
+                    overflow: hidden;
+
+                    span {
+                        display: inline-block;
+                    }
+                }
             }
 
-            p {
-                line-height: 1.5em;
-                font-size: .6em;
+            .p-container {
+                margin: 0;
+
+                p {
+                    line-height: 1.5em;
+                    font-size: .6em;
+                }
             }
         }
     }
@@ -497,6 +538,12 @@
             .text-container {
                 padding: 2em 0;
 
+                .h6-container,
+                .p-container,
+                .h1-container {
+                    overflow: hidden;
+                }
+
                 h6,
                 h1,
                 p {
@@ -586,6 +633,10 @@
 
     .container {
         padding: 0 .5em;
+
+        .h6-container {
+            overflow: hidden;
+        }
 
         h1,
         h6,
@@ -717,6 +768,7 @@
     }
 
     .text-container {
+        overflow: hidden;
         top: 4.5em;
         right: .5em;
         position: absolute;
@@ -765,13 +817,27 @@
             h1 {
                 font-size: 1.4em;
                 font-weight: 600;
+
+                div {
+                    overflow: hidden;
+
+                    span {
+                        display: inline-block;
+                    }
+                }
             }
 
-            p {
-                padding: 1em 0;
-                font-size: .6em;
-                line-height: 1.5em;
+            .p-container {
+                overflow: hidden;
+
+                p {
+                    padding: 1em 0;
+                    font-size: .6em;
+                    line-height: 1.5em;
+                }
             }
+
+
         }
 
         .card-container {
@@ -788,6 +854,13 @@
                 img {
                     width: 100%;
                     vertical-align: bottom;
+                    transition: transform 2s cubic-bezier(.51, .01, .2, 1), opacity 0.5s ease;
+                }
+            }
+
+            .img-container:hover {
+                img {
+                    transform: scale(1.1);
                 }
             }
 
@@ -850,6 +923,9 @@
     padding: 1.5em 0;
 
     .container {
+        .h1-container{
+            overflow: hidden;
+        }
         .hero-h1 {
             font-size: 1.4em;
             font-weight: 600;
@@ -860,6 +936,7 @@
         .card-container {
             padding: 1.5em 0;
             border-bottom: 1px solid rgb(194, 194, 194);
+
             .first-container {
                 .img-container {
                     border-radius: 1em;
@@ -870,39 +947,47 @@
                         vertical-align: bottom;
                     }
                 }
-                .mobile-news{
+
+                .mobile-news {
                     display: inline-block;
                     font-weight: 700;
                     font-size: .5em;
                     padding: 1.5em 0;
                 }
-                .desktop-news{
+
+                .desktop-news {
                     display: none;
                 }
             }
-            .second-container{
-                h1{
+
+            .second-container {
+                h1 {
                     margin: 0 0 .5em 0;
                     font-size: .9em;
                     font-weight: 600;
                     line-height: 1.4em;
                 }
-                .date-author{
+
+                .date-author {
                     display: flex;
                     align-items: center;
-                    gap:.2em;
-                    i{
+                    gap: .2em;
+
+                    i {
                         font-size: .7em;
                     }
-                    .date{
+
+                    .date {
                         font-weight: 600;
                         font-size: .7em;
                     }
-                    .seperator{
+
+                    .seperator {
                         font-size: .65em;
                         font-weight: 300;
                     }
-                    .author{
+
+                    .author {
                         font-size: .6em;
                     }
                 }
@@ -1058,19 +1143,23 @@
             .content-container {
                 flex-basis: 30%;
 
-                h6 {
-                    margin-bottom: 1em;
-                    font-size: .14em;
+                .h6-container {
+                    h6 {
+                        margin-bottom: 1em;
+                        font-size: .14em;
+                    }
                 }
 
                 h1 {
-                    margin: .8em 0;
+                    margin: .7em 0;
                     font-size: .5em;
                 }
 
-                p {
-                    line-height: 1.5em;
-                    font-size: .165em;
+                .p-container {
+                    p {
+                        line-height: 1.5em;
+                        font-size: .165em;
+                    }
                 }
 
                 .read-full-story {
@@ -1127,8 +1216,12 @@
                 }
             }
 
-            p {
-                font-size: .25em;
+            .p-container {
+                margin: .5em 0;
+
+                p {
+                    font-size: .25em;
+                }
             }
         }
 
@@ -1181,9 +1274,11 @@
                     font-size: .5em;
                 }
 
-                p {
-                    line-height: 1.5em;
-                    font-size: .25em;
+                .p-container {
+                    p {
+                        line-height: 1.5em;
+                        font-size: .25em;
+                    }
                 }
             }
 
@@ -1572,11 +1667,14 @@
                     font-size: .7em;
                 }
 
-                p {
+                .p-container{
+                    
                     flex-basis: 50%;
-                    padding: 0;
-                    font-size: .25em;
-                    line-height: 1.2em;
+                    p {
+                        padding: 0;
+                        font-size: .25em;
+                        line-height: 1.2em;
+                    }
                 }
             }
 
@@ -1654,63 +1752,75 @@
         }
     }
 
-    #sentimental-news {    
+    #sentimental-news {
         .container {
             padding: 0 1.9em;
             margin: 0 auto;
             max-width: 1600px;
+
             .hero-h1 {
                 font-size: .7em;
                 padding-bottom: 0em;
             }
-    
+
             .card-container {
                 display: flex;
                 padding: .5em 0;
                 justify-content: space-between;
+
                 .first-container {
                     display: flex;
                     align-items: flex-start;
                     gap: .5em;
+
                     .img-container {
                         border-radius: .3em;
                         width: 4em;
                     }
-                    .desktop-news{
+
+                    .desktop-news {
                         display: inline-block;
                         transform: rotate(270deg) translateX(-50%);
                         font-size: .15em;
                         font-weight: 700;
                         padding: 0;
                     }
-                    .mobile-news{
+
+                    .mobile-news {
                         display: none;
                     }
                 }
-                .second-container{
+
+                .second-container {
                     width: 55%;
-                    h1{
+
+                    h1 {
                         margin: 0 0 0.5em 0;
                         font-size: .3em;
                         font-weight: 600;
                         line-height: 1.4em;
                     }
-                    .date-author{
+
+                    .date-author {
                         display: flex;
                         align-items: center;
-                        gap:.2em;
-                        i{
+                        gap: .2em;
+
+                        i {
                             font-size: .2em;
                         }
-                        .date{
+
+                        .date {
                             font-weight: 600;
                             font-size: .2em;
                         }
-                        .seperator{
+
+                        .seperator {
                             font-size: .15em;
                             font-weight: 300;
                         }
-                        .author{
+
+                        .author {
                             font-size: .15em;
                         }
                     }
@@ -1718,5 +1828,5 @@
             }
         }
     }
-    
+
 }

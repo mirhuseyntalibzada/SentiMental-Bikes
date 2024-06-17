@@ -117,57 +117,61 @@ footer {
             }
         }
 
-        .social-media {
-            h5 {
-                text-align: center;
-                font-weight: 600;
-                font-size: .65em;
-            }
-
-            .icons {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 1em;
-
-                i {
-                    font-size: 1em;
+        .social-media-payments {
+            .social-media {
+                h5 {
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: .65em;
                 }
-            }
-        }
 
-        .payments {
-            margin-top: 1em;
+                .icons {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1em;
 
-            h5 {
-                font-size: .65em;
-                text-align: center;
-                font-weight: 600;
-            }
-
-            .payment-img {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                column-gap: .8em;
-                row-gap: .1em;
-
-                .img-container {
-                    width: 2em;
-
-                    img {
-                        width: 100%;
+                    .icon {
+                        i {
+                            font-size: 1em;
+                        }
                     }
                 }
+            }
 
-                .img-container:nth-child(1),
-                .img-container:nth-child(9) {
-                    width: 3em;
+            .payments {
+                margin-top: 1em;
+
+                h5 {
+                    font-size: .65em;
+                    text-align: center;
+                    font-weight: 600;
                 }
 
-                .img-container:nth-child(11) {
-                    width: 5em;
+                .payment-img {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                    column-gap: .8em;
+                    row-gap: .1em;
+
+                    .img-container {
+                        width: 2em;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .img-container:nth-child(1),
+                    .img-container:nth-child(9) {
+                        width: 3em;
+                    }
+
+                    .img-container:nth-child(11) {
+                        width: 5em;
+                    }
                 }
             }
         }
@@ -197,7 +201,7 @@ footer {
         }
 
         .text-container {
-            p{
+            p {
                 margin: 0;
                 padding: 1em 0;
             }
@@ -237,6 +241,152 @@ footer {
                         height: 2px;
                         width: 2em;
                         background-color: black;
+                    }
+                }
+            }
+        }
+
+        .container {
+            margin-top: 1.25em;
+            padding: 0 1.9em;
+
+            .text-nav-container {
+                display: flex;
+
+                .text-content {
+                    flex-basis: 50%;
+
+                    .text-container {
+                        width: 70%;
+
+                        h3 {
+                            text-align: left;
+                            font-size: .3em;
+                        }
+
+                        p {
+                            font-size: .15em;
+                            text-align: left;
+                            line-height: 1.5em;
+                        }
+
+                        .email {
+                            display: flex;
+                            align-items: center;
+
+                            input {
+                                height: 4em;
+                                border-radius: 2em;
+                                padding: 0 9.5em 0em 2em;
+                                font-size: .15em;
+                            }
+
+                            button {
+                                right: .6em;
+                                border-radius: 2em;
+                                padding: 1em;
+                                font-size: .15em;
+                            }
+                        }
+                    }
+                }
+
+                .links {
+                    display: flex;
+                    flex-basis: 50%;
+                    justify-content: space-between;
+
+                    .nav {
+                        margin: 0;
+                        align-items: flex-start;
+
+                        a {
+                            font-size: .2em;
+                        }
+                    }
+
+                    .other-links {
+                        align-items: flex-start;
+
+                        a {
+                            font-size: .2em;
+                        }
+                    }
+                }
+            }
+
+            .social-media-payments {
+                display: flex;
+                justify-content: space-between;
+
+                .social-media {
+                    h5 {
+                        text-align: left;
+                        font-size: .15em;
+                    }
+
+                    .icons {
+                        gap: .2em;
+                        height: .5em;
+
+                        .icon {
+                            display: flex;
+                            i {
+                                font-size: .3em;
+                            }
+                        }
+                    }
+                }
+
+                .payments {
+                    margin-top: 0em;
+
+                    h5 {
+                        font-size: .15em;
+                        text-align: right;
+                    }
+
+                    .payment-img {
+                        flex-wrap: nowrap;
+                        gap: .15em;
+
+                        .img-container {
+                            width: .5em;
+                            display: flex;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .img-container:nth-child(1),
+                        .img-container:nth-child(9) {
+                            width: .8em;
+                        }
+
+                        .img-container:nth-child(11) {
+                            width: 1.25em;
+                        }
+                    }
+                }
+            }
+
+            .configure-button {
+                margin: .8em 0 .25em;
+
+                .secondary-btn {
+                    font-size: .15em;
+                    padding:.5em;
+                }
+            }
+
+            .text-container {
+                p {
+                    font-size: .17em;
+                    margin: 0;
+                    padding: 1em 0;
+                    span{
+                        display: block;
                     }
                 }
             }

@@ -18,14 +18,14 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/' element={<OurStory />} />
-        <Route path='/' element={<DealerShip />} />
-        <Route path='/' element={<Contact />} />
-        <Route path='/' element={<BecomePartner />} />
-        <Route path='/' element={<ConfigureBike />} />
-        <Route path='/' element={<MyAccount />} />
-        <Route path='/' element={<Cart />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/our-story' element={<OurStory />} />
+        <Route path='/dealership' element={<DealerShip />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/become-a-partner' element={<BecomePartner />} />
+        <Route path='/configure-bike' element={<ConfigureBike />} />
+        <Route path='/my-account' element={<MyAccount />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>
