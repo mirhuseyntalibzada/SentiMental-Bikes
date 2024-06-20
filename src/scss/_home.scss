@@ -30,6 +30,7 @@
             }
 
             .small-text {
+                cursor: pointer;
                 display: flex;
                 align-items: center;
                 gap: .3em;
@@ -40,6 +41,35 @@
 
                 span {
                     font-size: .6em;
+                }
+                .span-container{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    span{
+                        display: inline-block;
+                        transition: transform 0.5s cubic-bezier(.51, .01, .2, 1);
+                    }
+                    span:nth-child(1){
+                        transform: translateY(0em);
+                    }
+                    span:nth-child(2){
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        transform: translateY(1.5em);
+                    }
+                }
+            }
+
+            .small-text:hover{
+                .span-container{
+                    span:nth-child(1){
+                        transform: translateY(-1.5em);
+                    }
+                    span:nth-child(2){
+                        transform: translateY(0em);
+                    } 
                 }
             }
 
@@ -923,9 +953,10 @@
     padding: 1.5em 0;
 
     .container {
-        .h1-container{
+        .h1-container {
             overflow: hidden;
         }
+
         .hero-h1 {
             font-size: 1.4em;
             font-weight: 600;
@@ -1667,9 +1698,10 @@
                     font-size: .7em;
                 }
 
-                .p-container{
-                    
+                .p-container {
+
                     flex-basis: 50%;
+
                     p {
                         padding: 0;
                         font-size: .25em;

@@ -48,7 +48,7 @@ const Home = () => {
     AOS.init({
       duration: 700,
       once: true,
-      offset: 30,
+      offset: 100,
       easing: 'ease-out'
     })
   }, [])
@@ -67,7 +67,10 @@ const Home = () => {
               <div style={{ overflow: "hidden" }} className="small-text-container">
                 <div data-aos="fade-up" data-aos-delay="0" className='small-text'>
                   <i className="fa-solid fa-caret-right"></i>
-                  <span>Discover the SentiMental Bikes lineup</span>
+                  <div className='span-container'>
+                    <span>Discover the SentiMental Bikes lineup</span>
+                    <span>Discover the SentiMental Bikes lineup</span>
+                  </div>
                 </div>
               </div>
               <div className={`img-container noogat ${activeButton === 'noogat' ? 'active' : ''}`}>
@@ -441,7 +444,7 @@ const Home = () => {
             <div className="h1-container">
               <h1 data-aos="fade-up" className='hero-h1'>SentiMental in the Spotlight</h1>
             </div>
-            <div style={{overflow:"hidden"}}>
+            <div style={{ overflow: "hidden" }}>
               {newsData.map(item => (
                 <div data-aos-delay={`${(item.id - 1) * 100}`} data-aos="fade-up" key={item.id} className="card-container">
                   <div className='first-container'>

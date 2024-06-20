@@ -357,11 +357,15 @@
                             &:last-child {
                                 background-color: black;
                                 border-radius: .3em;
+                                .active{
+                                    border: 0;
+                                }
 
                                 a {
                                     color: white;
                                     display: inline-block;
                                     padding: 1.2em 1.5em;
+                                    border: 0;
 
                                     span {
                                         transition: transform 0.4s cubic-bezier(.51, .01, .2, 1);
@@ -391,6 +395,7 @@
                             }
 
                             a {
+                                border: 1px solid transparent;
                                 padding: .4em .8em;
                                 font-size: .16em;
                                 color: black;
