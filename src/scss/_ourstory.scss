@@ -1,4 +1,4 @@
-#our-story {
+#who-are-we {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
 
@@ -62,6 +62,116 @@
                 top: .4em;
                 left: 0.2em;
                 font-size: 2.5em;
+            }
+        }
+    }
+}
+
+#our-story {
+    background-color: rgb(205, 205, 199);
+    padding: 3em 0;
+
+    .container {
+        padding: 0 .5em;
+
+        .text-img-content {
+            .text-container {
+                h5 {
+                    font-size: .61em;
+                    font-weight: 600;
+                    margin: 0;
+
+                    .mobile {
+                        div:not(:last-child) {
+                            margin-bottom: .5em;
+                        }
+
+                        div {
+                            overflow: hidden;
+
+                            span {
+                                display: inline-block;
+                            }
+                        }
+                    }
+
+                    .desktop {
+                        display: none;
+
+                        div {
+                            overflow: hidden;
+
+                            span {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+
+                p {
+                    font-size: .6em;
+                    line-height: 1.5em;
+                    margin-bottom: 3em;
+
+                    span {
+                        display: inline-block;
+                    }
+
+                    span:not(:last-child) {
+                        margin-bottom: 1em;
+                    }
+                }
+            }
+
+            .img-container {
+                overflow: hidden;
+                border-top-right-radius: 6em;
+                border-bottom-left-radius: 6em;
+
+                img {
+                    width: 100%;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .result {
+            .result-container {
+                margin-top: 3em;
+                h1 {
+                    .mobile {
+                        font-weight: 600;
+                        font-size: .8em;
+
+                        div {
+                            overflow: hidden;
+
+                            span {
+                                display: inline-block;
+                            }
+                        }
+
+                        div:not(:last-child) {
+                            margin-bottom: .2em;
+                        }
+                    }
+
+                    .desktop {
+                        display: none;
+
+                        span {
+                            display: inline-block;
+                        }
+                    }
+                }
+
+                p{
+                    overflow: hidden;
+                    font-size: .6em;
+                    span{
+                        display: inline-block;
+                    }
+                }
             }
         }
     }
