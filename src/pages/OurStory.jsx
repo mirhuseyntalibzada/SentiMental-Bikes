@@ -25,47 +25,56 @@ const OurStory = () => {
         <div className='our-story-container'>
           <div className="container">
             <div className="text-container">
-              <h1>We're SentiMental. And so are you.</h1>
-              <p>Hi, my name is Duško (Dule), and I'm the Creative Director
-                behind SentiMental Bikes.</p>
+              <h1>
+                <div><span data-aos="fade-up">We're SentiMental.</span></div>
+                <div><span data-aos-delay="100" data-aos="fade-up">And so are you.</span></div>
+              </h1>
+              <p>
+                <div><span data-aos="fade-up">Hi, my name is Duško (Dule), and I'm the Creative Director</span></div>
+                <div><span data-aos-delay="100" data-aos="fade-up">behind SentiMental Bikes.</span></div>
+              </p>
             </div>
           </div>
-          <div className="img-container">
-            <img src={img1} alt="_" />
-          </div>
-          <div className="text-content">
-            <div className='p-container'>
-              <p data-aos="fade-up">
-                At SentiMental, we believe that life is too short for
-              </p>
+          <div className='img-text-container'>
+            <div className="img-container">
+              <img src={img1} alt="_" />
             </div>
-            <div className='p-container'>
-              <p data-aos-delay="100" data-aos="fade-up">
-                ordinary e-bikes. That's why we pour our hearts
-              </p>
-            </div>
-            <div className='p-container'>
-              <p data-aos-delay="200" data-aos="fade-up">
-                and souls into crafting extraordinary e-bikes that
-              </p>
-            </div>
-            <div className='p-container'>
-              <p data-aos-delay="300" data-aos="fade-up">
-                exude personality, wit, and charm. Our mission is
-              </p>
-            </div>
-            <div className='p-container'>
-              <p data-aos-delay="400" data-aos="fade-up">
-                simple: to make you fall in love with e-biking all
-              </p>
-            </div>
-            <div className='p-container'>
-              <p data-aos-delay="500" data-aos="fade-up">
-                over again.
-              </p>
-            </div>
-            <div className="comma-container">
-              <span>"</span>
+            <div className="text-container">
+              <div className="text-content">
+                <div className='p-container'>
+                  <p data-aos="fade-up">
+                    At SentiMental, we believe that life is too short for
+                  </p>
+                </div>
+                <div className='p-container'>
+                  <p data-aos-delay="100" data-aos="fade-up">
+                    ordinary e-bikes. That's why we pour our hearts
+                  </p>
+                </div>
+                <div className='p-container'>
+                  <p data-aos-delay="200" data-aos="fade-up">
+                    and souls into crafting extraordinary e-bikes that
+                  </p>
+                </div>
+                <div className='p-container'>
+                  <p data-aos-delay="300" data-aos="fade-up">
+                    exude personality, wit, and charm. Our mission is
+                  </p>
+                </div>
+                <div className='p-container'>
+                  <p data-aos-delay="400" data-aos="fade-up">
+                    simple: to make you fall in love with e-biking all
+                  </p>
+                </div>
+                <div className='p-container'>
+                  <p data-aos-delay="500" data-aos="fade-up">
+                    over again.
+                  </p>
+                </div>
+                <div className="comma-container">
+                  <span>"</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -136,6 +145,9 @@ const OurStory = () => {
         <div className="container">
           <div className="h1-container">
             <h1 data-aos="fade-up" className='hero-h1'>SentiMental in the Spotlight</h1>
+            <div className="button-container-desktop">
+              <button>ALL MEDIA</button>
+            </div>
           </div>
           <div style={{ overflow: "hidden" }}>
             {newsData.map(item => (
@@ -170,9 +182,15 @@ const OurStory = () => {
       </section>
       <section id='feeling-sentimental-story'>
         <div className="container">
-          <div className="h1-container">
-            <h1 data-aos-delay="0" data-aos="fade-up"><div>Feeling Sentimental? We</div> got you.</h1>
-          </div>
+          <h1>
+            <div className="mobile">
+              <div><span data-aos="fade-up">Feeling Sentimental? We </span></div>
+              <div><span data-aos-delay="100" data-aos="fade-up">got you.</span></div>
+            </div>
+            <div className="desktop">
+              <div><span data-aos="fade-up">Feeling Sentimental? We got you.</span></div>
+            </div>
+          </h1>
           <div className="p-container">
             <p data-aos-delay="100" data-aos="fade-up">Falling in love is easy. Staying in love takes work.
               This is why we used exceptional materials and long-range
