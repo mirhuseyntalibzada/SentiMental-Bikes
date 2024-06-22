@@ -1,7 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import dealershipData from '../data/dealerships';
 import { useState } from 'react';
 import BecomePartnerComp from '../components/BecomePartnerComp';
@@ -20,15 +17,6 @@ const DealerShip = () => {
       setFilteredData(dealershipData.filter(item => item.country === country.toUpperCase()));
     }
   }
-
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      once: true,
-      offset: 100,
-      easing: 'ease-out'
-    })
-  }, [])
 
   return (
     <>

@@ -11,9 +11,19 @@ import BecomePartner from './pages/BecomePartner'
 import ConfigureBike from './pages/ConfigureBike'
 import MyAccount from './pages/MyAccount'
 import Cart from './pages/Cart'
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+import { useEffect } from 'react'
 
 function App() {
-
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      once: true,
+      offset: 100,
+      easing: 'ease-out'
+    })
+  }, [])
   return (
     <BrowserRouter>
       <Header />

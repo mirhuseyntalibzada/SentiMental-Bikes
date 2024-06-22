@@ -2,22 +2,10 @@ import React from 'react'
 import img1 from '../images/Image-7-scaled-600x346.webp'
 import img2 from '../images/Image-3-700x590.webp'
 import img3 from '../images/Image-12-scaled-600x400.webp'
-import AOS from 'aos'
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 import newsData from '../data/news';
 import logo from '../images/logo-small.svg';
 
 const OurStory = () => {
-
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      once: true,
-      offset: 100,
-      easing: 'ease-out'
-    })
-  }, [])
 
   return (
     <>

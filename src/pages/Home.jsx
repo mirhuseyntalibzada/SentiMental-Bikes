@@ -17,11 +17,9 @@ import battery from "../images/battery-life.svg"
 import motor from "../images/motor.svg"
 import bike_bg from "../images/Image-11-2560x1476.webp"
 import zagreb from "../images/zagreb-design-week-sentimental-bikes-1.webp"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import accordionData from '../data/accordion'
 import newsData from '../data/news'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const Home = () => {
 
@@ -43,15 +41,6 @@ const Home = () => {
   const handleBike = (bike) => {
     setBike(bike)
   }
-
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      once: true,
-      offset: 100,
-      easing: 'ease-out'
-    })
-  }, [])
 
   return (
     <>
