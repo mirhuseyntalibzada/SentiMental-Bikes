@@ -1,0 +1,170 @@
+#become-a-partner-component {
+    .img-container {
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 1em;
+        border-top-right-radius: 1em;
+
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .box-container {
+            position: absolute;
+            bottom: 0;
+            background-color: white;
+            height: 1.5em;
+            width: 100%;
+            border-top-left-radius: 1em;
+            border-top-right-radius: 1em;
+        }
+    }
+
+    .become-a-partner {
+        background-color: white;
+        padding-top: 1em;
+
+        .container {
+            padding: 0 .5em;
+
+            h1,
+            p {
+                margin: 0;
+            }
+
+            h1 {
+                padding: .5em 0;
+                font-size: 1.4em;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: .6em;
+                line-height: 1.5em;
+            }
+
+            button {
+                margin: 2em 0;
+                width: 17em;
+                padding: .5em;
+                border: 0;
+                display: flex;
+                align-items: center;
+                background-color: black;
+                color: white;
+                gap: .8em;
+                border-radius: 2.5em;
+                font-size: .5em;
+                font-weight: 700;
+
+                img {
+                    width: 3.7em;
+                    vertical-align: middle;
+                }
+            }
+
+            .img-container-desktop {
+                display: none;
+            }
+
+            .img-container-mobile {
+                img {
+                    width: 100%;
+                    vertical-align: bottom;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:767px) and (orientation:landscape) {
+    #become-a-partner-component {
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            border-top-left-radius: 1em;
+            border-top-right-radius: 1em;
+
+            img {
+                width: 100%;
+                vertical-align: middle;
+            }
+
+            .box-container {
+                position: absolute;
+                bottom: 0;
+                background-color: white;
+                height: 1em;
+                width: 100%;
+                border-top-left-radius: 1em;
+                border-top-right-radius: 1em;
+            }
+        }
+
+        .become-a-partner {
+            background-color: white;
+            padding-top: 0em;
+            padding-bottom: 1em;
+
+            .container {
+                padding: 0 2em;
+                display: flex;
+                justify-content: space-between;
+
+                h1,
+                p {
+                    margin: 0;
+                }
+
+                h1 {
+                    padding: .5em 0;
+                    font-size: .7em;
+                    font-weight: 600;
+                }
+
+                .img-container-desktop {
+                    display: block;
+
+                    img {
+                        width: 100%;
+                        vertical-align: middle;
+                    }
+                }
+
+                .img-container-mobile {
+                    display: none;
+                }
+
+                p {
+                    font-size: .25em;
+                    line-height: 1.5em;
+                }
+
+                button {
+                    margin: 1.4em 0;
+                    width: 17em;
+                    padding: .5em;
+                    border: 0;
+                    display: flex;
+                    align-items: center;
+                    background-color: black;
+                    color: white;
+                    gap: .8em;
+                    border-radius: 2.5em;
+                    font-size: .15em;
+                    font-weight: 700;
+
+                    img {
+                        width: 3.5em;
+                        vertical-align: middle;
+                    }
+                }
+            }
+            
+            .container>div {
+                flex-basis: 33%;
+            }
+        }
+    }
+}

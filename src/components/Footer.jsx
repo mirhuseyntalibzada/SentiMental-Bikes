@@ -5,6 +5,7 @@ import marquee_bike_3 from '../images/marquee-bike-3.webp'
 import Marquee from "react-fast-marquee";
 import payments from '../data/payments';
 import configure_icon from '../images/configure-btn-icon.svg';
+import { NavLink } from 'react-router-dom';
 const Footer = () => {
     return (
         <footer>
@@ -56,9 +57,9 @@ const Footer = () => {
                     </div>
                     <div className="links">
                         <div className="nav">
-                            <a href="!#">Our Story</a>
-                            <a href="!#">Become a partner</a>
-                            <a href="!#">Contact</a>
+                            <NavLink to={"/our-story"}>Our Story</NavLink>
+                            <NavLink to={"/become-a-partner"}>Become a partner</NavLink>
+                            <NavLink to={"/contact"}>Contact</NavLink>
                         </div>
                         <div className="other-links">
                             <a href="!#">Privacy policy</a>
