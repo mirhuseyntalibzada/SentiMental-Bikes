@@ -1,20 +1,31 @@
 import React from 'react'
-import dealershipData from '../data/dealerships';
 import { useState } from 'react';
 import BecomePartnerComp from '../components/BecomePartnerComp';
 import icon from '../images/connection-btn-icon.svg'
+import supabase from '../config/connect';
+import { useEffect } from 'react';
 
 const DealerShip = () => {
 
   const [active, setActive] = useState('all')
-  const [filteredData, setFilteredData] = useState(dealershipData)
+  const [dealership, setDealership] = useState([])
+  const [filteredData, setFilteredData] = useState(dealership)
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    const { data } = await supabase.from('dealership').select()
+    setDealership(data)
+  }
 
   const changeActive = (country) => {
     setActive(country)
     if (country === 'all') {
-      setFilteredData(dealershipData);
+      setFilteredData(dealership);
     } else {
-      setFilteredData(dealershipData.filter(item => item.country === country.toUpperCase()));
+      setFilteredData(dealership.filter(item => item.country === country.toUpperCase()));
     }
   }
 
@@ -57,7 +68,7 @@ const DealerShip = () => {
         </div>
         <div className="dealerships-container">
           <div className="container">
-            {filteredData.map((item, i) => (
+            {filteredData.length === 0 ? dealership.map((item, i) => (
               <div data-aos-delay={`${i * 100}`} data-aos="fade-up" key={i} className="card-container">
                 <div className='first-container'>
                   <div className='desktop-country'>
@@ -82,7 +93,31 @@ const DealerShip = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            )) : filteredData.map((item, i) => (
+              <div data-aos-delay={`${i * 100}`} data-aos="fade-up" key={i} className="card-container">
+                <div className='first-container'>
+                  <div className='desktop-country'>
+                    <span>{item.country}</span>
+                  </div>
+                  <div className="img-container">
+                    <img src={`/src/images/${item.img}`} alt="" />
+                  </div>
+                  <span className='mobile-country'>{item.country}</span>
+                </div>
+                <div className="second-container">
+                  <h1>{item.title}</h1>
+                  <div className="link-desc">
+                    <div className="link">
+                      <i className="fa-solid fa-desktop"></i>
+                      <span>{item.link}</span>
+                      <span className='seperator'>|</span>
+                    </div>
+                    <div className="desc">
+                      <span>{item.desc}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>))}
           </div>
         </div>
       </section>
