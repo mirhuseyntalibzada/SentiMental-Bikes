@@ -19,13 +19,15 @@ import bike_bg from "../images/Image-11-2560x1476.webp"
 import zagreb from "../images/zagreb-design-week-sentimental-bikes-1.webp"
 import { useState } from 'react'
 import accordionData from '../data/accordion'
-import newsData from '../data/news'
+import supabase from '../config/connect'
+import { useEffect } from 'react'
 
 const Home = () => {
 
   const [activeButton, setActiveButton] = useState('noogat');
   const [bike, setBike] = useState("bike_1")
   const [openSections, setOpenSections] = useState({});
+  const [news, setNews] = useState([])
 
   const toggleAccordion = (section) => {
     setOpenSections((prev) => ({
@@ -41,6 +43,15 @@ const Home = () => {
   const handleBike = (bike) => {
     setBike(bike)
   }
+
+  useEffect(()=>{
+    fetchData()
+  },[])
+
+  const fetchData = async() => {
+    const {data} = await supabase.from('news').select();
+    setNews(data)
+  } 
 
   return (
     <>
@@ -434,7 +445,7 @@ const Home = () => {
               <h1 data-aos="fade-up" className='hero-h1'>SentiMental in the Spotlight</h1>
             </div>
             <div style={{ overflow: "hidden" }}>
-              {newsData.map(item => (
+              {news.map(item => (
                 <div data-aos-delay={`${(item.id - 1) * 100}`} data-aos="fade-up" key={item.id} className="card-container">
                   <div className='first-container'>
                     <span className='desktop-news'>NEWS</span>
