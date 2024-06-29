@@ -23,9 +23,18 @@
     p {
         margin: 0;
     }
+    .error-message-container{
+        background-color: rgb(233, 233, 230);
+        .error-message {
+            padding: 2em .5em;
+            font-size: .6em;
+            color: white;
+            border-radius: .5em;
+        }
+    }
 
     .login-register {
-        padding: 2em 0;
+        padding: 1em 0;
         background-color: rgb(233, 233, 230);
 
         .login {
@@ -52,7 +61,8 @@
                     }
 
                     input[type='text'],
-                    input[type='password'] {
+                    input[type='password'],
+                    input[type='email'] {
                         height: 3.5em;
                         padding: 1em;
                         width: 100%;
@@ -63,7 +73,8 @@
                     }
 
                     input[type='text']:focus,
-                    input[type='password']:focus {
+                    input[type='password']:focus,
+                    input[type='email']:focus {
                         outline: 0;
                     }
 
@@ -150,7 +161,8 @@
                     }
 
                     input[type='text']:focus,
-                    input[type='password']:focus {
+                    input[type='password']:focus,
+                    input[type='email']:focus {
                         outline: 0;
                     }
 
@@ -215,6 +227,17 @@
     #login-register-section {
         background-color: rgb(233, 233, 230);
 
+        .error-message-container{
+            background-color: rgb(233, 233, 230);
+            .error-message {
+                padding: 2em;
+                font-size: .15em;
+                color: white;
+                border-radius: .8em;
+                margin-bottom: 2em;
+            }
+        }
+
         .container {
             background-color: rgb(233, 233, 230);
             max-width: 1600px;
@@ -232,28 +255,30 @@
                     background-color: rgb(205, 205, 199);
                     padding: .5em 0;
                     margin-bottom: 2em;
-        
+
                     .login-container {
                         padding: 0 .3em;
-        
+
                         h2 {
                             font-size: .5em;
                             margin-bottom: .8em;
                         }
-        
+
                         form {
                             display: flex;
                             flex-direction: column;
+
                             .input-label {
                                 display: inline-block;
                                 font-size: .15em;
                                 font-weight: 700;
                                 margin-bottom: .5em;
                             }
-                            div{
+
+                            div {
                                 display: flex;
                             }
-        
+
                             input[type='text'],
                             input[type='password'] {
                                 height: 0em;
@@ -264,43 +289,43 @@
                                 font-size: .15em;
                                 margin-bottom: 3em;
                             }
-        
+
                             input[type='text']:focus,
                             input[type='password']:focus {
                                 outline: 0;
                             }
-        
+
                             .password-container {
                                 position: relative;
-        
+
                                 .eye-btn {
                                     font-size: .2em;
                                     top: .9em;
                                 }
                             }
-        
+
                             .remember-password-container {
                                 display: flex;
                                 align-items: center;
                                 justify-content: space-between;
                                 margin-bottom: 1em;
-        
+
                                 .remember-me {
                                     display: flex;
                                     align-items: center;
                                     gap: .2em;
                                     font-size: .18em;
                                 }
-        
+
                                 .lost-password {
                                     font-size: .18em;
-        
+
                                     a {
                                         color: black;
                                     }
                                 }
                             }
-        
+
                             .button-container {
                                 button {
                                     background-color: black;
@@ -315,37 +340,40 @@
                         }
                     }
                 }
-        
+
                 .register {
                     flex-basis: 50%;
-                    border-radius: .5em;
+                    border-radius: .2em;
                     background-color: rgb(208, 229, 159);
                     padding: .5em 0;
                     margin-bottom: 2em;
-        
+
                     .register-container {
                         padding: 0 .5em;
-        
+
                         h2 {
                             font-size: .5em;
                             margin-bottom: .8em;
                         }
-        
+
                         form {
                             display: flex;
                             flex-direction: column;
+
                             .input-label {
                                 display: inline-block;
                                 font-size: .15em;
                                 font-weight: 700;
                                 margin-bottom: .5em;
                             }
-                            div{
+
+                            div {
                                 display: flex;
                             }
-        
+
                             input[type='text'],
-                            input[type='password'] {
+                            input[type='password'],
+                            input[type='email'] {
                                 height: 0em;
                                 padding: 2em 1em;
                                 width: 100%;
@@ -355,28 +383,28 @@
                                 margin-bottom: 3em;
                             }
 
-                            input[type='password']{
-                                margin-bottom: 0em;
+                            .password-input{
+                                margin-bottom: .5em !important;
                             }
-        
+
                             input[type='text']:focus,
-                            input[type='password']:focus {
+                            input[type='password']:focus,
+                            input[type='email']:focus {
                                 outline: 0;
                             }
-        
+
                             .password-container {
                                 position: relative;
-        
                                 .eye-btn {
                                     font-size: .2em;
                                     top: .9em;
                                 }
                             }
-        
+
                             .privacy-policy {
                                 font-size: .15em;
                             }
-        
+
                             .button-container {
                                 button {
                                     background-color: black;

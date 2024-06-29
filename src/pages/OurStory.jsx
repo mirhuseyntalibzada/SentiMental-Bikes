@@ -2,10 +2,23 @@ import React from 'react'
 import img1 from '../images/Image-7-scaled-600x346.webp'
 import img2 from '../images/Image-3-700x590.webp'
 import img3 from '../images/Image-12-scaled-600x400.webp'
-import newsData from '../data/news';
 import logo from '../images/logo-small.svg';
+import supabase from '../config/connect';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const OurStory = () => {
+
+  const [news, setNews] = useState([])
+
+  useEffect(()=>{
+    fetchData()
+  },[])
+
+  const fetchData = async() => {
+    const {data} = await supabase.from('news').select()
+    setNews(news)
+  }
 
   return (
     <>
