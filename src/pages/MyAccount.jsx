@@ -1,7 +1,11 @@
 import React from 'react'
 import LoginRegister from '../components/LoginRegister'
+import MyAccountComp from '../components/MyAccountComp'
+import { useCookies } from 'react-cookie'
 
 const MyAccount = () => {
+
+  const [cookie] = useCookies('cookie-user')
   return (
     <>
       <section id='my-account'>
@@ -11,7 +15,7 @@ const MyAccount = () => {
           </div>
         </div>
       </section>
-      <LoginRegister />
+      {cookie['cookie-user'] === undefined ? <LoginRegister /> : <MyAccountComp />}
     </>
   )
 }

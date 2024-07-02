@@ -1,0 +1,118 @@
+#account-section {
+    padding: 0;
+
+    .container {
+        padding: .5em 0.5em;
+        background-color: rgb(233, 233, 230);
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+
+            li {
+                padding: .7em .4em;
+                border-bottom: 1px solid grey;
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        margin: 0;
+                        font-weight: 600;
+                        font-size: .9em;
+                    }
+                }
+            }
+
+            li.active {
+                background-color: rgb(208, 229, 159);
+            }
+        }
+
+        .content-container {
+            .text-container {
+                p {
+                    font-size: .65em;
+
+                    a {
+                        font-weight: 600;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:767px) and (orientation:landscape) {
+    #account-section {
+        padding: 0;
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2em 2em;
+            background-color: rgb(233, 233, 230);
+
+            .account-container {
+                display: flex;
+                align-self: start;
+                gap: .5em;
+
+                .ul-container {
+                    flex-basis: 45%;
+
+                    ul {
+                        margin: 0;
+                        list-style-type: none;
+                        padding: 0;
+
+                        li {
+                            padding: .2em .1em;
+                            border-bottom: 1px solid grey;
+
+                            div {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+
+                                a {
+                                    text-decoration: none;
+                                    color: black;
+                                    margin: 0;
+                                    font-weight: 600;
+                                    font-size: .2em;
+                                }
+
+                                i {
+                                    font-size: .25em;
+                                }
+                            }
+                        }
+
+                        li.active {
+                            background-color: rgb(208, 229, 159);
+                        }
+                    }
+                }
+
+                .content-container {
+                    .text-container {
+                        p {
+                            font-size: .2em;
+
+                            a {
+                                font-weight: 600;
+                                color: black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

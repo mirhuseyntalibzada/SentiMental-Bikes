@@ -2,17 +2,18 @@ import React from 'react'
 import { useRef, useState } from 'react'
 import supabase from '../config/connect'
 import { useCookies } from 'react-cookie'
+import { useEffect } from 'react'
 
 const LoginRegister = () => {
     const [visibilityLogin, setVisibilityLogin] = useState(false)
     const [visibilityRegister, setVisibilityRegister] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const userName = useRef(null)
-    const email = useRef(null)
+    const userEmail = useRef(null)
     const password = useRef(null)
     const loginCredential = useRef(null)
     const loginPassword = useRef(null)
-    const [cookies, setCookies] = useCookies(['cookie-user']) // cookie
+    const [cookies, setCookies] = useCookies(['cookie-user'])
 
     const toggleVisibilityLogin = () => {
         setVisibilityLogin(!visibilityLogin)
@@ -22,46 +23,55 @@ const LoginRegister = () => {
         setVisibilityRegister(!visibilityRegister)
     }
 
-    const registerSubmitted = async (e) => {
-        e.preventDefault()
-        if (!userName.current.value || !email.current.value || !password.current.value) {
-            setErrorMessage('Error: Please provide valid credentials.');
-        } else {
-            const { error } = await supabase.from('users').insert({
-                username: userName.current.value,
-                email: email.current.value,
-                password: password.current.value,
-                token: crypto.randomUUID() // cookie
-            })
-            if (error) {
-                setErrorMessage('error');
+    const loginUser = async () => {
+        const { data } = await supabase.from('users').select();
+        data.map(item => {
+            if ((item.username === (loginCredential.current.value).trim() || item.email === (loginCredential.current.value).trim()) && item.password === loginPassword.current.value) {
+                setErrorMessage('success');
+                setCookies('cookie-user', item.token)
+                window.location.reload()
             } else {
-                setErrorMessage("success");
+                if (loginCredential.current.value.slice(loginCredential.current.value.indexOf("@"), loginCredential.current.value.indexOf("@") + 1) === "@") {
+                    setErrorMessage(`Error: The password you entered for the email ${loginCredential.current.value} is incorrect. Lost your password?`);
+                } else {
+                    setErrorMessage(`Error: The password you entered for the username ${loginCredential.current.value} is incorrect. Lost your password?`);
+                }
             }
+        })
+    }
+
+    const registerUser = async () => {
+        const { error } = await supabase.from('users').insert({
+            username: userName.current.value,
+            email: userEmail.current.value,
+            password: password.current.value,
+            token: crypto.randomUUID() 
+        })
+        if (error) {
+            setErrorMessage('error');
+        } else {
+            setErrorMessage("success");
         }
     }
 
+    const registerSubmitted = async (e) => {
+        e.preventDefault()
+        if (!userName.current.value || !userEmail.current.value || !password.current.value) {
+            setErrorMessage('Error: Please provide valid credentials.');
+        } else {
+            const { data } = await supabase.from('users').select();
+            data.length === 0 ? registerUser() : data.find(item => item.email === userEmail.current.value) ? setErrorMessage('This email is already registered!') : registerUser()
+        }
+    }
 
     const loginSubmitted = async (e) => {
         e.preventDefault()
-        const { data } = await supabase.from('users').select();
         if (!loginCredential.current.value) {
             setErrorMessage('Error: Username is required.');
         } else {
-            data.map(item => {
-                if ((item.username === loginCredential.current.value || item.email === loginCredential.current.value) && item.password === loginPassword.current.value) {
-                    setErrorMessage('success');
-                    setCookies('cookie-user', item.token)
-                } else {
-                    if (loginCredential.current.value.slice(loginCredential.current.value.indexOf("@"), loginCredential.current.value.indexOf("@") + 1) === "@") {
-                        setErrorMessage(`Error: The password you entered for the email ${loginCredential.current.value} is incorrect. Lost your password?`);
-                    } else {
-                        setErrorMessage(`Error: The password you entered for the username ${loginCredential.current.value} is incorrect. Lost your password?`);
-                    }
-                }
-            })
+            loginUser()
         }
-        console.log(data.filter(item => item.token === cookies['cookie-user'])); // cookie
+        console.log(data.filter(item => item.token === cookies['cookie-user']));
     }
 
     return (
@@ -126,7 +136,7 @@ const LoginRegister = () => {
                                 </div>
                                 <label className='input-label' htmlFor="">EMAIL ADDRESS <span>*</span></label>
                                 <div>
-                                    <input ref={email} type="email" />
+                                    <input ref={userEmail} type="email" />
                                 </div>
                                 <label className='input-label' htmlFor="">PASSWORD <span>*</span></label>
                                 <div className='password-container'>
