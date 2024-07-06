@@ -63,7 +63,7 @@ const ConfigureBike = () => {
                 <div className="add-to-cart">
                   <div className='quantity'>
                     <a onClick={() => { setValue(value - 1) }} href="#!" className='minus'>-</a>
-                    <input type="number" />
+                    <input value={value} type="number" />
                     <a onClick={() => { setValue(value + 1) }} href="#!" className='plus'>+</a>
                   </div>
                   <button className='add-to-cart'>
