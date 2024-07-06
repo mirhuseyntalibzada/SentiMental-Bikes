@@ -2,7 +2,6 @@ import React from 'react'
 import { useRef, useState } from 'react'
 import supabase from '../config/connect'
 import { useCookies } from 'react-cookie'
-import { useEffect } from 'react'
 
 const LoginRegister = () => {
     const [visibilityLogin, setVisibilityLogin] = useState(false)

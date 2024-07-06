@@ -21,6 +21,7 @@ const MyAccountComp = () => {
         }
         fetchData()
     }, [cookie])
+
     return (
         <section id='account-section'>
             <div className="box-container">
@@ -31,11 +32,11 @@ const MyAccountComp = () => {
                 <div className="account-container">
                     <div className="ul-container">
                         <ul>
-                            <li className={`${active === 'dashboard' ? 'active' : ''}`} onClick={() => { setSection('dashboard') }}><div><a href="#">Dashboard</a><i className="fa-solid fa-gauge" /></div></li>
-                            <li className={`${active === 'orders' ? 'active' : ''}`} onClick={() => { setSection('orders') }}><div><a href="#">Orders</a><i className="fa-solid fa-bag-shopping" /></div></li>
-                            <li className={`${active === 'addresses' ? 'active' : ''}`} onClick={() => { setSection('addresses') }}><div><a href="#">Addresses</a><i className="fa-solid fa-house" /></div></li>
-                            <li className={`${active === 'details' ? 'active' : ''}`} onClick={() => { setSection('details') }}><div><a href="#">Account details</a><i className="fa-solid fa-user" /></div></li>
-                            <li className={`${active === 'vat' ? 'active' : ''}`} onClick={() => { setSection('vat') }}><div><a href="#">VAT number</a></div></li>
+                            <li className={`${active === 'dashboard' ? 'active' : ''}`} onClick={() => { setSection('dashboard') }}><div><a href="#!">Dashboard</a><i className="fa-solid fa-gauge" /></div></li>
+                            <li className={`${active === 'orders' ? 'active' : ''}`} onClick={() => { setSection('orders') }}><div><a href="#!">Orders</a><i className="fa-solid fa-bag-shopping" /></div></li>
+                            <li className={`${active === 'addresses' ? 'active' : ''}`} onClick={() => { setSection('addresses') }}><div><a href="#!">Addresses</a><i className="fa-solid fa-house" /></div></li>
+                            <li className={`${active === 'details' ? 'active' : ''}`} onClick={() => { setSection('details') }}><div><a href="#!">Account details</a><i className="fa-solid fa-user" /></div></li>
+                            <li className={`${active === 'vat' ? 'active' : ''}`} onClick={() => { setSection('vat') }}><div><a href="#!">VAT number</a></div></li>
                             <li className={`${active === 'log-out' ? 'active' : ''}`} onClick={() => {
                                 setSection('log-out')
                                 deleteCookie(['cookie-user'])
@@ -44,7 +45,39 @@ const MyAccountComp = () => {
                         </ul>
                     </div>
                     <div className="content-container">
-                        <div className="text-container">
+                        <div style={active === 'dashboard' ? { display: "block" } : { display: "none" }} className="dashboard-text-container">
+                            <p>Hello <strong>{user}</strong> (not <strong>{user}</strong>? <a onClick={() => {
+                                deleteCookie(['cookie-user'])
+                                window.location.reload()
+                            }} href="#!">Log out</a> )</p>
+                            <p>From your account dashboard you can view your <a href="#!">recent orders</a>, manage your <a href="#!">shipping and billing addresses</a>, and <a href="#!">edit your password and account details</a>.</p>
+                        </div>
+                        <div style={active === 'orders' ? { display: "block" } : { display: "none" }} className="orders-text-container">
+                            <p>No orders has been made yet. <a href="#!">Browse products</a></p>
+                        </div>
+                        <div style={active === 'addresses' ? { display: "block" } : { display: "none" }} className="addresses-text-container">
+                            <p>The following addresses will be used on the checkout page by default.</p>
+                            <div className="div-container">
+                                <div>
+                                    <h1>Billing address</h1>
+                                    <a href="#!">Add</a>
+                                    <p>You have not set up this type of address yet</p>
+                                </div>
+                                <div>
+                                    <h1>Shipping address</h1>
+                                    <a href="#!">Add</a>
+                                    <p>You have not set up this type of address yet</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={active === 'details' ? { display: "block" } : { display: "none" }} className="dashboard-text-container">
+                            <p>Hello <strong>{user}</strong> (not <strong>{user}</strong>? <a onClick={() => {
+                                deleteCookie(['cookie-user'])
+                                window.location.reload()
+                            }} href="#!">Log out</a> )</p>
+                            <p>From your account dashboard you can view your <a href="#!">recent orders</a>, manage your <a href="#!">shipping and billing addresses</a>, and <a href="#!">edit your password and account details</a>.</p>
+                        </div>
+                        <div style={active === 'vat' ? { display: "block" } : { display: "none" }} className="dashboard-text-container">
                             <p>Hello <strong>{user}</strong> (not <strong>{user}</strong>? <a onClick={() => {
                                 deleteCookie(['cookie-user'])
                                 window.location.reload()

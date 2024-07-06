@@ -34,7 +34,7 @@
         }
 
         .content-container {
-            .text-container {
+            .dashboard-text-container {
                 p {
                     font-size: .65em;
 
@@ -42,6 +42,40 @@
                         font-weight: 600;
                         color: black;
                     }
+                }
+            }
+
+            .orders-text-container {
+                p {
+                    font-size: .65em;
+
+                    a {
+                        font-weight: 600;
+                        color: black;
+                    }
+                }
+            }
+
+            .addresses-text-container {
+                h1 {
+                    font-size: 1.2em;
+                    font-weight: 600;
+                }
+
+                p {
+                    margin: .3em 0;
+                    font-size: .65em;
+                }
+
+                a {
+                    margin: 0;
+                    font-size: .65em;
+                    color: black;
+                    font-weight: 600;
+                }
+
+                div:nth-child(3) {
+                    margin-bottom: 2em;
                 }
             }
         }
@@ -101,13 +135,58 @@
                 }
 
                 .content-container {
-                    .text-container {
+                    width: 100%;
+
+                    .dashboard-text-container {
                         p {
                             font-size: .2em;
 
                             a {
                                 font-weight: 600;
                                 color: black;
+                            }
+                        }
+                    }
+
+                    .orders-text-container {
+                        p {
+                            font-size: .2em;
+
+                            a {
+                                font-weight: 600;
+                                color: black;
+                            }
+                        }
+                    }
+
+                    .addresses-text-container {
+                        p {
+                            margin: 0;
+                            font-size: .18em;
+                        }
+
+                        .div-container {
+                            display: flex;
+                            gap: 1em;
+                            div{
+                                display: flex;
+                                flex-direction: column;
+                            }
+                            h1 {
+                                font-size: .4em;
+                                font-weight: 600;
+                                margin: .8em 0;
+                            }
+
+                            a {
+                                margin-bottom: .5em;
+                                font-size: .2em;
+                                color: black;
+                                font-weight: 600;
+                            }
+
+                            div:nth-child(3) {
+                                margin-bottom: 0em;
                             }
                         }
                     }
