@@ -42,22 +42,26 @@
                 span {
                     font-size: .6em;
                 }
-                .span-container{
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    span{
-                        display: inline-block;
-                        transition: transform 0.5s cubic-bezier(.51, .01, .2, 1);
-                    }
-                    span:nth-child(1){
-                        transform: translateY(0em);
-                    }
-                    span:nth-child(2){
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        transform: translateY(1.5em);
+                a{
+                    text-decoration: none;
+                    color: black;
+                    .span-container{
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        span{
+                            display: inline-block;
+                            transition: transform 0.5s cubic-bezier(.51, .01, .2, 1);
+                        }
+                        span:nth-child(1){
+                            transform: translateY(0em);
+                        }
+                        span:nth-child(2){
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            transform: translateY(1.5em);
+                        }
                     }
                 }
             }
@@ -289,6 +293,10 @@
                 align-items: center;
                 gap: .3em;
                 font-size: .6em;
+                a{
+                    color:black;
+                    text-decoration: none;
+                }
             }
         }
 

@@ -230,6 +230,9 @@
 
         .h1-container {
             overflow: hidden;
+            .button-container-desktop {
+                display: none;
+            }
         }
 
         .hero-h1 {

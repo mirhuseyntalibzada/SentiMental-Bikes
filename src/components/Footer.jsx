@@ -57,9 +57,9 @@ const Footer = () => {
                     </div>
                     <div className="links">
                         <div className="nav">
-                            <NavLink to={"/our-story"}>Our Story</NavLink>
-                            <NavLink to={"/become-a-partner"}>Become a partner</NavLink>
-                            <NavLink to={"/contact"}>Contact</NavLink>
+                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/our-story"}>Our Story</NavLink>
+                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/become-a-partner"}>Become a partner</NavLink>
+                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/contact"}>Contact</NavLink>
                         </div>
                         <div className="other-links">
                             <a href="!#">Privacy policy</a>
@@ -100,10 +100,10 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="configure-button">
-                    <a href="#" className="secondary-btn" data-text="Configure a bike">
+                    <NavLink onClick={()=>{window.scrollTo(0,0)}} to={"/configure-a-bike"} className="secondary-btn" data-text="Configure a bike">
                         <img src={configure_icon} alt="Logo Btn Icon" />
                         <span>CONFIGURE A BIKE</span>
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="text-container">
                     <p><span>© SentiMental Bikes 2024. All rights reserved.</span>

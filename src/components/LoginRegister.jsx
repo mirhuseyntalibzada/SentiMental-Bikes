@@ -44,7 +44,7 @@ const LoginRegister = () => {
             username: userName.current.value,
             email: userEmail.current.value,
             password: password.current.value,
-            token: crypto.randomUUID() 
+            token: crypto.randomUUID()
         })
         if (error) {
             setErrorMessage('error');

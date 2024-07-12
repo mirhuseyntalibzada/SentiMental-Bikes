@@ -51,43 +51,64 @@ const Header = () => {
                     <nav className={`${isHamActive ? 'active' : ''}`}>
                         <ul>
                             <li>
-                                <NavLink to={"/our-story"} className={`${isHamActive ? 'active' : ''}`}>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/our-story"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>OUR STORY</span>
                                     <span>OUR STORY</span>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/dealership"} className={`${isHamActive ? 'active' : ''}`}>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/dealership"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>DEALERSHIP</span>
                                     <span>DEALERSHIP</span>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/contact"} className={`${isHamActive ? 'active' : ''}`}>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/contact"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>CONTACT</span>
                                     <span>CONTACT</span>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/become-a-partner"} className={`${isHamActive ? 'active' : ''}`}>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/become-a-partner"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>BECOME A PARTNER</span>
                                     <span>BECOME A PARTNER</span>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/configure-a-bike"} className={`${isHamActive ? 'active' : ''}`}>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/configure-a-bike"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>CONFIGURE A BIKE</span>
                                     <span>CONFIGURE A BIKE</span>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/my-account"} className={`${isHamActive ? 'active' : ''}`}>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/my-account"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>MY ACCOUNT</span>
                                     <span>MY ACCOUNT</span>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/cart"} className={`${isHamActive ? 'active' : ''}`}>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/cart"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>CART</span>
                                     <span>CART</span>
                                 </NavLink>
@@ -100,38 +121,38 @@ const Header = () => {
                 <div className={`background ${isHamActive ? 'active' : ''}`}></div>
                 <div className="container">
                     <nav>
-                        <NavLink to={"/home"} className="img-container">
+                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/home"} className="img-container">
                             <img src={logo} alt="" />
                         </NavLink>
                         <div className='lang-ham-container'>
                             <div className="navigation">
                                 <ul>
                                     <li>
-                                        <NavLink to={"/our-story"}>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/our-story"}>
                                             <span>OUR STORY</span>
                                             <span>OUR STORY</span>
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to={"/dealership"}>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/dealership"}>
                                             <span>DEALERSHIP</span>
                                             <span>DEALERSHIP</span>
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to={"/contact"}>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/contact"}>
                                             <span>CONTACT</span>
                                             <span>CONTACT</span>
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to={"/become-a-partner"}>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/become-a-partner"}>
                                             <span>BECOME A PARTNER</span>
                                             <span>BECOME A PARTNER</span>
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to={"/configure-a-bike"}>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/configure-a-bike"}>
                                             <span>CONFIGURE A BIKE</span>
                                             <span>CONFIGURE A BIKE</span>
                                         </NavLink>
@@ -154,11 +175,11 @@ const Header = () => {
                                 <span></span>
                             </div>
                             <div className="account-cart-container">
-                                <NavLink to={"/my-account"} className="account-icon">
+                                <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/my-account"} className="account-icon">
                                     <i className="fa-solid fa-user"></i>
                                     <i className="fa-solid fa-user"></i>
                                 </NavLink>
-                                <NavLink to={"/cart"} className="cart-icon">
+                                <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/cart"} className="cart-icon">
                                     <i className="fa-solid fa-cart-shopping"></i>
                                     <i className="fa-solid fa-cart-shopping"></i>
                                 </NavLink>

@@ -21,6 +21,7 @@ import accordionData from '../data/accordion'
 import supabase from '../config/connect'
 import { useEffect } from 'react'
 import ExperienceSentimental from '../components/ExperienceSentimental'
+import { NavLink } from 'react-router-dom'
 
 const Home = () => {
 
@@ -67,10 +68,12 @@ const Home = () => {
               <div style={{ overflow: "hidden" }} className="small-text-container">
                 <div data-aos="fade-up" data-aos-delay="0" className='small-text'>
                   <i className="fa-solid fa-caret-right"></i>
-                  <div className='span-container'>
-                    <span>Discover the SentiMental Bikes lineup</span>
-                    <span>Discover the SentiMental Bikes lineup</span>
-                  </div>
+                  <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/configure-a-bike'}>
+                    <div className='span-container'>
+                      <span>Discover the SentiMental Bikes lineup</span>
+                      <span>Discover the SentiMental Bikes lineup</span>
+                    </div>
+                  </NavLink>
                 </div>
               </div>
               <div className={`img-container noogat ${activeButton === 'noogat' ? 'active' : ''}`}>
@@ -152,7 +155,7 @@ const Home = () => {
               <div style={{ overflow: "hidden" }}>
                 <div data-aos-delay="400" data-aos="fade-up" className='read-full-story'>
                   <i className="fa-solid fa-caret-right"></i>
-                  <span>Read the full story</span>
+                  <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/our-story'}><span>Read the full story</span></NavLink>
                 </div>
               </div>
             </div>
@@ -249,10 +252,10 @@ const Home = () => {
                 </div>
               </div>
               <div className="configure-button">
-                <a href="#" className="secondary-btn" data-text="Configure a bike">
+                <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/configure-a-bike'} className="secondary-btn" data-text="Configure a bike">
                   <img src={configure_icon} alt="Logo Btn Icon" />
                   <span>Configure a bike</span>
-                </a>
+                </NavLink>
               </div>
             </div>
             <div className="desktop-content">
@@ -266,10 +269,10 @@ const Home = () => {
                   <img className={`${bike === "bike_6" ? "active" : ""}`} src={bike_6} alt="" />
                 </div>
                 <div className="configure-button">
-                  <a href="#" className="secondary-btn" data-text="Configure a bike">
+                  <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/configure-a-bike'} className="secondary-btn" data-text="Configure a bike">
                     <img src={configure_icon} alt="Logo Btn Icon" />
                     <span>Configure a bike</span>
-                  </a>
+                  </NavLink>
                 </div>
                 <div className="color-container">
                   <div onClick={() => handleBike("bike_1")} className={`dot ${bike === "bike_1" ? "active" : ""}`}>

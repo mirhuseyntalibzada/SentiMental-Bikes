@@ -1,0 +1,103 @@
+#cart {
+    background-color: rgb(205, 205, 199);
+    padding-top: 3.65em;
+
+    .text-container {
+        padding: 1.5em 0 3em;
+
+        h1 {
+            margin: 0;
+            font-weight: 600;
+        }
+    }
+
+    .container {
+        padding: 0 .5em;
+    }
+}
+
+#cart-section {
+    background-color: rgb(233, 233, 230);
+    padding-bottom: 2em;
+
+    .container {
+        padding: 1.5em .5em 0;
+
+        .message {
+            background-color: rgb(205, 205, 199);
+            border-radius: .7em;
+            padding: 1.3em .5em;
+            display: flex;
+            align-items: center;
+
+            span {
+                font-size: .65em;
+            }
+        }
+
+        button {
+            margin-top: 2em;
+            display: flex;
+            align-items: center;
+            background-color: black;
+            border: none;
+            border-radius: 2em;
+            padding: 1em;
+
+            a {
+                text-decoration: none;
+                color: white;
+                font-size: .9em;
+                font-weight: 600;
+                letter-spacing: -0.05em;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:767px) and (orientation:landscape) {
+    #cart {
+        padding-top: 1.1em;
+
+        .text-container {
+            padding: .8em 0 1em;
+
+            h1 {
+                font-size: .7em;
+            }
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1600px;
+            padding: 0 2em;
+        }
+
+    }
+
+    #cart-section {
+        .container {
+            padding: 0 5em;
+            max-width: 1600px;
+            margin: 0 auto;
+
+            .message {
+                border-radius: .2em;
+                padding: .2em .4em;
+
+                span {
+                    font-size: .2em;
+                }
+            }
+
+            button {
+                margin-top: 1.5em;
+                padding: 1em;
+
+                
+                    font-size: .15em;
+                
+            }
+        }
+    }
+}
