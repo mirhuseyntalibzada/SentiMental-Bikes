@@ -36,12 +36,20 @@ const ConfigureBike = () => {
 
   //addtocart
 
+  useEffect(() => {
+    const fetchCartData = async () => {
+      const { data } = await supabase.from('users').select()
+      const user = data.find(({ token }) => token === cookie['cookie-user'])
+      if (user.cart) {
+        dispatch(setCartToRedux(user.cart.cart))
+      }
+    }
+    fetchCartData()
+  }, [dispatch, cookie])
+
   const checkUser = async () => {
-    const { data } = await supabase.from('users').select()
-    const user = data.find(({ token }) => token === cookie['cookie-user'])
     if (cookie['cookie-user'] !== undefined) {
       dispatch(addToCart({ ...filteredBicycle[0], quantity: value }))
-      dispatch(addToCart({ ...user.cart.cart[0], quantity: value }))
     } else {
       alert("you have to log in first")
     }
@@ -56,7 +64,9 @@ const ConfigureBike = () => {
   }
 
   useEffect(() => {
-    addCartToDB()
+      if (cart.cart.length > 0) {
+        addCartToDB()
+      }
   }, [cart])
 
   return (

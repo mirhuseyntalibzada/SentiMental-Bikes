@@ -20,7 +20,13 @@ export const cartSlice = createSlice({
             }
             state.cartTotalAmount += item.price * item.quantity;
             state.cartTotalQuantity += item.quantity;
-        }
+        },
+        setCartToRedux: (state, action) => {
+            const cart = action.payload;
+            state.cart = cart;
+            state.cartTotalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+            state.cartTotalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+          }
     }
 });
 
