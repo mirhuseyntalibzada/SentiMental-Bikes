@@ -35,7 +35,7 @@
             }
         }
 
-        button {
+        .return-to-shop {
             margin-top: 2em;
             display: flex;
             align-items: center;
@@ -52,8 +52,193 @@
                 letter-spacing: -0.05em;
             }
         }
+
+        .product-card {
+            position: relative;
+            border-bottom: 1px solid #A4A4A1;
+            padding-top: .5em;
+
+            .img-text-container {
+                display: flex;
+                column-gap: .5em;
+                align-items: flex-start;
+
+                .img-container {
+                    height: 3.4em;
+                    width: 3.4em;
+                    border-radius: .5em;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(228, 228, 228);
+
+                    img {
+                        width: 70%;
+                    }
+                }
+
+                .text-container {
+                    width: calc(100% - 3.4em);
+
+                    h5 {
+                        margin: 0 0 .5em 0;
+                        font-weight: 600;
+                    }
+
+                    .category-name {
+                        display: flex;
+                        align-items: center;
+                        column-gap: .3em;
+                        margin: .1em 0;
+
+                        h6,
+                        p {
+                            margin: 0;
+                            font-size: .6em;
+                        }
+                    }
+
+                    .price-quantity-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin: .5em 0;
+
+                        h5 {
+                            margin: 0;
+                        }
+
+                        .quantity {
+                            display: flex;
+                            align-items: center;
+                            height: 2em;
+
+                            a {
+                                box-sizing: border-box;
+                                border: 1px solid #CECDC7;
+                                text-decoration: none;
+                                color: black;
+                                width: 1.5em;
+                                height: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: .65em;
+                            }
+
+                            input {
+                                border-top: 1px solid #CECDC7;
+                                border-bottom: 1px solid #CECDC7;
+                                border-right: none;
+                                border-left: none;
+                                width: 3.5em;
+                                height: 100%;
+                                box-sizing: border-box;
+                                text-align: center;
+                                background-color: transparent;
+                                -moz-appearance: textfield;
+                                appearance: textfield;
+                                font-size: .55em;
+                            }
+
+                            input::-webkit-outer-spin-button,
+                            input::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+
+                            input:focus {
+                                outline: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .delete {
+                cursor: pointer;
+                display: flex;
+                position: absolute;
+                top: 0.5em;
+                right: 0;
+                justify-content: center;
+                align-items: center;
+                width: .8em;
+                height: .8em;
+                border-radius: 100%;
+                background-color: black;
+
+                i {
+                    font-size: .35em;
+                    color: white;
+                }
+            }
+        }
+
+        .amount-container {
+            .amount-info {
+                border-bottom: 1px solid #A4A4A1;
+                padding: 1em 0;
+                display: flex;
+                justify-content: space-between;
+
+                h1,
+                span {
+                    margin: 0;
+                    font-size: .75em;
+                }
+
+                span {
+                    font-weight: 700;
+                }
+            }
+
+            .coupon-container {
+                position: relative;
+                display: flex;
+                margin-top: 1em;
+
+                input {
+                    border: none;
+                    border-radius: 2.5em;
+                    padding: 1.5em 11.5em 1.5em 1em;
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 100%;
+                    font-size: .6em;
+                }
+
+                input:focus {
+                    outline: 0;
+                }
+
+                button {
+                    position: absolute;
+                    right: .5em;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    border-radius: 2.5em;
+                    border: none;
+                    background-color: black;
+                    color: white;
+                    font-size: .6em;
+                    font-weight: 600;
+                    padding: 1em 1.2em;
+                }
+            }
+        }
+    }
+
+    .billing-adress-desktop {
+        display: none;
+    }
+
+    .billing-adress-mobile {
+        background-color: rgb(205, 205, 199);
     }
 }
+
 
 @media screen and (min-width:767px) and (orientation:landscape) {
     #cart {
@@ -77,27 +262,17 @@
 
     #cart-section {
         .container {
-            padding: 0 5em;
             max-width: 1600px;
             margin: 0 auto;
+            display: flex;
+        }
 
-            .message {
-                border-radius: .2em;
-                padding: .2em .4em;
+        .billing-adress-desktop {
+            display: block;
+        }
 
-                span {
-                    font-size: .2em;
-                }
-            }
-
-            button {
-                margin-top: 1.5em;
-                padding: 1em;
-
-                
-                    font-size: .15em;
-                
-            }
+        .billing-adress-mobile {
+            display: none;
         }
     }
 }
