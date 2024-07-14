@@ -59,47 +59,45 @@ const Cart = () => {
               </>
               : <div>{items.length !== undefined ?
                 items.map((item, i) => (
-                  <>
-                    <div className='product-card' key={i}>
-                      <div className='img-text-container'>
-                        <div className='img-container'>
-                          <img src={`/src/images/bicycles/handlebars/${item.handle_color.split(' ').join('-')}/bicycle-color/${item.bicycle_color.split(' ').join('-')}.png`} alt="" />
-                        </div>
-                        <div className='text-container'>
-                          <h5>Configure a bike</h5>
-                          <div className='category-name'>
-                            <h6>Frame Type</h6>
-                            <p>Noogat</p>
-                          </div>
-                          <div className='category-name'>
-                            <h6>Tyres</h6>
-                            <p>Standart</p>
-                          </div>
-                          <div className='category-name'>
-                            <h6>Bicycle color</h6>
-                            <p>{item.bicycle_color}</p>
-                          </div>
-                          <div className='category-name'>
-                            <h6>Handle color</h6>
-                            <p>{item.handle_color}</p>
-                          </div>
-                          <div className='price-quantity-container'>
-                            <div>
-                              <h5>€{item.price * item.quantity}.00</h5>
-                            </div>
-                            <div className='quantity'>
-                              <a href="#!" className='minus'>-</a>
-                              <input value={item.quantity} type="number" onChange={handleChange} />
-                              <a href="#!" className='plus'>+</a>
-                            </div>
-                          </div>
-                        </div>
+                  <div key={i} className='product-card' >
+                    <div className='img-text-container'>
+                      <div className='img-container'>
+                        <img src={`/src/images/bicycles/handlebars/${item.handle_color.split(' ').join('-')}/bicycle-color/${item.bicycle_color.split(' ').join('-')}.png`} alt="" />
                       </div>
-                      <div className="delete">
-                        <i className="fa-solid fa-x"></i>
+                      <div className='text-container'>
+                        <h5>Configure a bike</h5>
+                        <div className='category-name'>
+                          <h6>Frame Type</h6>
+                          <p>Noogat</p>
+                        </div>
+                        <div className='category-name'>
+                          <h6>Tyres</h6>
+                          <p>Standart</p>
+                        </div>
+                        <div className='category-name'>
+                          <h6>Bicycle color</h6>
+                          <p>{item.bicycle_color}</p>
+                        </div>
+                        <div className='category-name'>
+                          <h6>Handle color</h6>
+                          <p>{item.handle_color}</p>
+                        </div>
+                        <div className='price-quantity-container'>
+                          <div>
+                            <h5>€{item.price * item.quantity}.00</h5>
+                          </div>
+                          <div className='quantity'>
+                            <a href="#!" className='minus'>-</a>
+                            <input value={item.quantity} type="number" onChange={handleChange} />
+                            <a href="#!" className='plus'>+</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </>
+                    <div className="delete">
+                      <i className="fa-solid fa-x"></i>
+                    </div>
+                  </div>
                 )) : ''}
                 <div className="amount-container">
                   <div className='amount-info'>
