@@ -450,248 +450,176 @@
     #cart-section {
 
         .container {
+            padding: 0 2em;
             max-width: 1600px;
             margin: 0 auto;
             display: flex;
+            gap: .4em;
 
-            .message {
-                background-color: rgb(205, 205, 199);
-                border-radius: .7em;
-                padding: 1.3em .5em;
-                display: flex;
-                align-items: center;
-
-                span {
-                    font-size: .65em;
-                }
-            }
-
-            .return-to-shop {
-                margin-top: 2em;
-                display: flex;
-                align-items: center;
-                background-color: black;
-                border: none;
-                border-radius: 2em;
-                padding: 1em;
-
-                a {
-                    text-decoration: none;
-                    color: white;
-                    font-size: .9em;
-                    font-weight: 600;
-                    letter-spacing: -0.05em;
-                }
-            }
-
-            .product-card {
-                position: relative;
-                border-bottom: 1px solid #A4A4A1;
-                padding-top: .5em;
-
-                .img-text-container {
+            .message-container {
+                margin: 0 3em;
+                width: 100%;
+                .message {
+                    background-color: rgb(205, 205, 199);
+                    border-radius: .2em;
+                    padding: .25em .4em;
                     display: flex;
-                    column-gap: .5em;
-                    align-items: flex-start;
+                    align-items: center;
 
-                    .img-container {
-                        height: 3.4em;
-                        width: 3.4em;
-                        border-radius: .5em;
-                        overflow: hidden;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: rgb(228, 228, 228);
+                    span {
+                        font-size: .15em;
+                    }
+                }
 
-                        img {
-                            width: 70%;
+                .return-to-shop {
+                    margin-top: 2em;
+                    display: flex;
+                    align-items: center;
+                    background-color: black;
+                    border: none;
+                    border-radius: 2em;
+                    padding: .8em;
+
+                    button{
+                        font-size: .2em;
+                        a {
+                            text-decoration: none;
+                            color: white;
+                            font-weight: 600;
+                            letter-spacing: -0.05em;
                         }
                     }
+                }
+            }
 
-                    .text-container {
-                        width: calc(100% - 3.4em);
+            .product-container {
+                width: 52%;
 
-                        h5 {
-                            margin: 0 0 .5em 0;
-                            font-weight: 600;
-                        }
+                .product-card {
+                    .img-text-container {
+                        column-gap: .2em;
 
-                        .category-name {
-                            display: flex;
-                            align-items: center;
-                            column-gap: .3em;
-                            margin: .1em 0;
+                        .img-container {
+                            height: 1.1em;
+                            width: 1.1em;
+                            border-radius: .1em;
 
-                            h6,
-                            p {
-                                margin: 0;
-                                font-size: .6em;
+                            img {
+                                width: 90%;
                             }
                         }
 
-                        .price-quantity-container {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            margin: .5em 0;
+                        .text-container {
+                            width: calc(100% - 1.1em);
 
                             h5 {
-                                margin: 0;
+                                font-size: .25em;
                             }
 
-                            .quantity {
-                                display: flex;
-                                align-items: center;
-                                height: 2em;
+                            .category-name {
+                                column-gap: .05em;
 
-                                a {
-                                    box-sizing: border-box;
-                                    border: 1px solid #CECDC7;
-                                    text-decoration: none;
-                                    color: black;
-                                    width: 1.5em;
-                                    height: 100%;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    font-size: .65em;
+                                h6,
+                                p {
+                                    font-size: .17em;
                                 }
+                            }
 
-                                input {
-                                    border-top: 1px solid #CECDC7;
-                                    border-bottom: 1px solid #CECDC7;
-                                    border-right: none;
-                                    border-left: none;
-                                    width: 3.5em;
-                                    height: 100%;
-                                    box-sizing: border-box;
-                                    text-align: center;
-                                    background-color: transparent;
-                                    -moz-appearance: textfield;
-                                    appearance: textfield;
-                                    font-size: .55em;
-                                }
+                            .price-quantity-container {
+                                margin: .25em 0;
 
-                                input::-webkit-outer-spin-button,
-                                input::-webkit-inner-spin-button {
-                                    -webkit-appearance: none;
-                                    margin: 0;
-                                }
+                                .quantity {
+                                    height: .55em;
 
-                                input:focus {
-                                    outline: 0;
+                                    a {
+                                        font-size: .2em;
+                                    }
+
+                                    input {
+                                        width: 3em;
+                                        font-size: .15em;
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                .delete {
-                    cursor: pointer;
-                    display: flex;
-                    position: absolute;
-                    top: 0.5em;
-                    right: 0;
-                    justify-content: center;
-                    align-items: center;
-                    width: .8em;
-                    height: .8em;
-                    border-radius: 100%;
-                    background-color: black;
+                    .delete {
+                        width: .2em;
+                        height: .2em;
 
-                    i {
-                        font-size: .35em;
-                        color: white;
-                    }
-                }
-            }
-
-            .amount-container {
-                .amount-info {
-                    border-bottom: 1px solid #A4A4A1;
-                    padding: 1em 0;
-                    display: flex;
-                    justify-content: space-between;
-
-                    h1,
-                    span {
-                        margin: 0;
-                        font-size: .75em;
-                    }
-
-                    span {
-                        font-weight: 700;
+                        i {
+                            font-size: .1em;
+                        }
                     }
                 }
 
-                .coupon-container {
-                    position: relative;
-                    display: flex;
-                    margin-top: 1em;
+                .amount-container {
+                    .amount-info {
+                        padding: .2em 0;
 
-                    input {
-                        border: none;
-                        border-radius: 2.5em;
-                        padding: 1.5em 11.5em 1.5em 1em;
-                        box-sizing: border-box;
-                        width: 100%;
-                        height: 100%;
-                        font-size: .6em;
+                        h1,
+                        span {
+                            font-size: .25em;
+                        }
                     }
 
-                    input:focus {
-                        outline: 0;
-                    }
+                    .coupon-container {
+                        margin-top: .25em;
 
-                    button {
-                        position: absolute;
-                        right: .5em;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        border-radius: 2.5em;
-                        border: none;
-                        background-color: black;
-                        color: white;
-                        font-size: .6em;
-                        font-weight: 600;
-                        padding: 1em 1.2em;
+                        input {
+                            border-radius: 2.5em;
+                            padding: 1.5em 10.5em 1.5em 1em;
+                            font-size: .15em;
+                        }
+
+                        button {
+                            font-size: .15em;
+                            padding: .8em .7em;
+                        }
                     }
                 }
             }
         }
 
         .billing-adress-desktop {
+            width: 48%;
             display: block;
             background-color: rgb(205, 205, 199);
-            border-radius: .5em;
-            margin-top: 2em;
+            border-radius: .2em;
+            margin-top: 0em;
 
             .container {
                 flex-direction: column;
-                padding: 1em .5em;
+                padding: .3em;
+                gap: .3em;
 
                 h1 {
-                    margin: 0 0 .5 0;
+                    margin: 0 0 0em 0;
                     font-weight: 600;
-                    font-size: 1.2em;
+                    font-size: .5em;
                 }
 
                 .input-container {
-                    margin-bottom: 1em;
+                    margin-bottom: .1em;
+                    display: flex;
+                    flex-direction: column;
 
                     h6 {
                         margin: 0 0 .5em 0;
+                        font-size: .17em;
                     }
 
                     input {
                         box-sizing: border-box;
                         width: 100%;
                         border: none;
-                        padding: 1em;
+                        padding: 1.4em 1em;
+                        font-size: .15em;
                     }
 
                     textarea {
+                        font-size: .15em;
                         padding: 1em;
                         width: 100%;
                         height: 10em;
@@ -709,23 +637,32 @@
                         position: relative;
 
                         .header {
+                            display: flex;
                             position: relative;
 
+                            input {
+                                cursor: pointer;
+                            }
+
+                            input:focus {
+                                outline: 0;
+                            }
+
                             .options-btn {
-                                height: .8em;
-                                width: .8em;
+                                display: flex;
+                                height: .2em;
+                                width: .2em;
                                 border-radius: 100%;
-                                right: .5em;
+                                right: .15em;
                                 top: 50%;
                                 transform: translateY(-50%);
                                 position: absolute;
                                 background-color: black;
-                                display: flex;
                                 justify-content: center;
                                 align-items: center;
 
                                 i {
-                                    font-size: .4em;
+                                    font-size: .15em;
                                     color: white;
                                 }
                             }
@@ -737,14 +674,15 @@
 
                         .body.active {
                             position: absolute;
-                            top: 2.1em;
+                            top: .59em;
                             width: 100%;
                             background-color: white;
                             display: flex;
                             flex-direction: column;
 
                             .input {
-                                padding: .5em;
+                                padding: .15em;
+                                display: flex;
 
                                 input {
                                     padding: .5em;
@@ -756,11 +694,11 @@
                                 display: flex;
                                 flex-direction: column;
                                 overflow: scroll;
-                                max-height: 10.8em;
+                                max-height: 4.1em;
 
                                 .country {
-                                    padding: .5em .75em;
-                                    font-size: .65em;
+                                    padding: .7em .75em;
+                                    font-size: .15em;
                                 }
 
                                 .country.active {
@@ -771,23 +709,36 @@
                     }
                 }
 
+                .amount-container {
+                    .amount-info {
+                        padding: .2em 0;
+
+                        h1,
+                        span {
+                            font-size: .25em;
+                        }
+                    }
+                }
+
                 .payment {
                     h6 {
-                        font-size: .55em;
+                        margin: 1em 0em 2em 0;
+                        font-size: .15em;
                     }
 
                     .payment-container {
                         background-color: rgb(233, 233, 230);
-                        border-radius: .7em;
-                        padding: 1em;
+                        border-radius: .3em;
+                        padding: .3em;
 
                         .payment-header {
                             display: flex;
-                            gap: .5em;
+                            align-items: center;
+                            gap: .1em;
 
                             h6 {
                                 margin: 0;
-                                font-size: .6em;
+                                font-size: .15em;
                             }
 
                             input {
@@ -799,18 +750,18 @@
 
                             p {
                                 line-height: 1.5em;
-                                font-size: .6em;
+                                font-size: .15em;
                             }
                         }
                     }
                 }
 
                 .privacy-policy {
-                    margin: 1.5em 0;
+                    margin: 0;
 
                     p {
                         font-weight: 600;
-                        font-size: .63em;
+                        font-size: .15em;
 
                         a {
                             color: black;
@@ -821,15 +772,15 @@
 
                 .terms-conditions {
                     display: flex;
-                    align-items: flex-start;
-                    gap: .5em;
+                    align-items: center;
+                    gap: .1em;
 
                     input {
                         margin: 0;
                     }
 
                     label {
-                        font-size: .63em;
+                        font-size: .15em;
                         font-weight: 400;
 
                         a {
@@ -839,15 +790,17 @@
                 }
 
                 .btn-container {
-                    margin-top: 1.5em;
+                    margin-top: 0em;
+                    display: flex;
 
                     button {
+                        cursor: pointer;
                         background-color: black;
                         color: white;
                         border: 0;
                         border-radius: 2em;
                         padding: 1.3em;
-                        font-size: .6em;
+                        font-size: .15em;
                         font-weight: 600;
                     }
                 }

@@ -44,23 +44,26 @@
                 line-height: 1.5em;
             }
 
-            button {
-                margin: 2em 0;
-                width: 17em;
-                padding: .5em;
-                border: 0;
-                display: flex;
-                align-items: center;
-                background-color: black;
-                color: white;
-                gap: .8em;
-                border-radius: 2.5em;
-                font-size: .5em;
-                font-weight: 700;
-
-                img {
-                    width: 3.7em;
-                    vertical-align: middle;
+            a{
+                text-decoration: none;
+                color: black;
+                button {
+                    margin: 2em 0;
+                    padding: .5em 2em .5em .5em;
+                    border: 0;
+                    display: flex;
+                    align-items: center;
+                    background-color: black;
+                    color: white;
+                    gap: .8em;
+                    border-radius: 2.5em;
+                    font-size: .5em;
+                    font-weight: 700;
+    
+                    img {
+                        width: 3.7em;
+                        vertical-align: middle;
+                    }
                 }
             }
 

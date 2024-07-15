@@ -2,40 +2,91 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import supabase from '../config/connect'
 import { useEffect } from 'react'
-import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import BillingAddress from '../components/BillingAddress'
+import { removeFromCart, setCartToRedux } from '../toolkit/features/cartSlice'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const Cart = () => {
-  const [items, setItems] = useState({})
-  const [amount, setAmount] = useState(0)
-  const [quantity, setQuantity] = useState(0)
   const [cookie] = useCookies(['cookie-user'])
-
-  const handleChange = (e) => {
-    const newValue = parseInt(e.target.value, 10);
-    if (!isNaN(newValue)) {
-      setValue(newValue);
-    }
-  };
+  const dispatch = useDispatch()
+  const cart = useSelector((state) => state.cart.cart)
+  const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount)
+  const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity)
 
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await supabase.from('users').select()
       const user = data.find(({ token }) => token === cookie['cookie-user'])
-      setItems(user.cart.cart);
-      setAmount(user.cart.cartTotalAmount);
-      setQuantity(user.cart.cartTotalQuantity);
+      if (user) {
+        dispatch(setCartToRedux(user.cart.cart))
+      }
     }
     fetchData()
-  }, [])
+  }, [cookie, dispatch])
+
+  const updateCartInSupabase = async (updatedCart) => {
+    const { data } = await supabase.from('users').select()
+    const user = data.find(({ token }) => token === cookie['cookie-user'])
+    if (user) {
+      const updatedCartData = {
+        cart: updatedCart,
+        cartTotalAmount: updatedCart.reduce((total, item) => total + item.price * item.quantity, 0),
+        cartTotalQuantity: updatedCart.reduce((total, item) => total + item.quantity, 0)
+      }
+      const { error } = await supabase.from('users').update({
+        cart: updatedCartData
+      }).eq('token', user.token)
+      if (error) {
+        console.error('Error updating cart:', error)
+      }
+    }
+  }
+
+  const handleRemoveItem = async (itemId) => {
+    const updatedCart = cart.filter(item => item.id !== itemId)
+    await updateCartInSupabase(updatedCart)
+    dispatch(removeFromCart(itemId))
+  }
+
+  const handleQuantityChange = (index, newQuantity) => {
+    const updatedCart = cart.map((item, i) => {
+      if (i === index) {
+        return { ...item, quantity: newQuantity }
+      }
+      return item
+    })
+    updateCartInSupabase(updatedCart)
+    dispatch(setCartToRedux(updatedCart))
+  }
+
+  const handleIncrement = (index) => {
+    const newQuantity = cart[index].quantity + 1
+    handleQuantityChange(index, newQuantity)
+  }
+
+  const handleDecrement = (index) => {
+    if (cart[index].quantity > 1) {
+      const newQuantity = cart[index].quantity - 1
+      handleQuantityChange(index, newQuantity)
+    }
+  }
+
+  const handleInputChange = (index, e) => {
+    const newQuantity = parseInt(e.target.value, 10)
+    if (!isNaN(newQuantity) && newQuantity > 0) {
+      handleQuantityChange(index, newQuantity)
+    }
+  }
+
 
   return (
     <>
       <section id='cart'>
         <div className="container">
           <div className="text-container">
-            {items.length === undefined ? <h1>Cart</h1> : <h1>Checkout</h1>}
+            {cart.length === undefined ? <h1>Cart</h1> : <h1>Checkout</h1>}
           </div>
         </div>
       </section>
@@ -45,9 +96,9 @@ const Cart = () => {
           <div className="white-box"></div>
         </div>
         <div className="container">
-          <div>
-            {items.length === undefined ?
-              <>
+          <>
+            {cart.length === undefined || cart.length === 0 ?
+              <div className='message-container'>
                 <div className="message">
                   <span>Your cart is currently empty.</span>
                 </div>
@@ -56,9 +107,9 @@ const Cart = () => {
                     RETURN TO SHOP
                   </NavLink>
                 </button>
-              </>
-              : <div>{items.length !== undefined ?
-                items.map((item, i) => (
+              </div>
+              : <div className='product-container'>{cart.length !== undefined || cart.length !== 0 ?
+                cart.map((item, i) => (
                   <div key={i} className='product-card' >
                     <div className='img-text-container'>
                       <div className='img-container'>
@@ -87,14 +138,14 @@ const Cart = () => {
                             <h5>€{item.price * item.quantity}.00</h5>
                           </div>
                           <div className='quantity'>
-                            <a href="#!" className='minus'>-</a>
-                            <input value={item.quantity} type="number" onChange={handleChange} />
-                            <a href="#!" className='plus'>+</a>
+                          <a href="#!" className='minus' onClick={() => handleDecrement(i)}>-</a>
+                          <input value={item.quantity} type="number" onChange={(e) => handleInputChange(i, e)} />
+                          <a href="#!" className='plus' onClick={() => handleIncrement(i)}>+</a>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="delete">
+                    <div className="delete" onClick={() => handleRemoveItem(item.id)}>
                       <i className="fa-solid fa-x"></i>
                     </div>
                   </div>
@@ -102,15 +153,15 @@ const Cart = () => {
                 <div className="amount-container">
                   <div className='amount-info'>
                     <h1>Subtotal:</h1>
-                    <span>€{amount}.00</span>
+                    <span>€{cartTotalAmount}.00</span>
                   </div>
                   <div className='amount-info'>
                     <h1>Shipping:</h1>
-                    <span>€{50 * quantity}.00</span>
+                    <span>€{50 * cartTotalQuantity}.00</span>
                   </div>
                   <div className='amount-info'>
                     <h1>Total:</h1>
-                    <span>€{amount + (50 * quantity)}.00</span>
+                    <span>€{cartTotalAmount + (50 * cartTotalQuantity)}.00</span>
                   </div>
                   <div className='coupon-container'>
                     <input placeholder='Coupon code' type="text" />
@@ -119,14 +170,14 @@ const Cart = () => {
                 </div>
               </div>
             }
-          </div>
-          {items.length === undefined ? '' :
+          </>
+          {cart.length === undefined || cart.length === 0 ? '' :
             <div className="billing-adress-desktop">
               <BillingAddress />
             </div>
           }
         </div>
-        {items.length === undefined ? '' :
+        {cart.length === undefined || cart.length === 0 ? '' :
           <div className="billing-adress-mobile">
             <BillingAddress />
           </div>

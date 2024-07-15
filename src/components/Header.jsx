@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../images/logo-big.svg';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
     const [isLangActive, setIsLangActive] = useState(false);
@@ -19,7 +20,9 @@ const Header = () => {
     const controlNavbar = () => {
         if (!isHamActive) {
             const scrollY = window.scrollY;
-            if (scrollY > lastScrollY) {
+            if (scrollY <= 0) {
+                setShow(true);
+            } else if (scrollY > lastScrollY) {
                 setShow(false);
             } else {
                 setShow(true);
@@ -44,6 +47,12 @@ const Header = () => {
         }
     }, [isHamActive]);
 
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
+
+    const setLanguage = (newLanguage) => {
+        changeLanguage(newLanguage);
+    }
+
     return (
         <>
             <div className={`mobile-nav ${isHamActive ? 'active' : ''}`}>
@@ -55,17 +64,17 @@ const Header = () => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
                                 }} to={"/our-story"} className={`${isHamActive ? 'active' : ''}`}>
-                                    <span>OUR STORY</span>
-                                    <span>OUR STORY</span>
+                                    <span>{t(`header.ourStory`)}</span>
+                                    <span>{t(`header.ourStory`)}</span>
                                 </NavLink>
-                            </li>
+                            </li>````
                             <li>
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
                                 }} to={"/dealership"} className={`${isHamActive ? 'active' : ''}`}>
-                                    <span>DEALERSHIP</span>
-                                    <span>DEALERSHIP</span>
+                                    <span>{t(`header.dealerShip`)}</span>
+                                    <span>{t(`header.dealerShip`)}</span>
                                 </NavLink>
                             </li>
                             <li>
@@ -73,8 +82,8 @@ const Header = () => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
                                 }} to={"/contact"} className={`${isHamActive ? 'active' : ''}`}>
-                                    <span>CONTACT</span>
-                                    <span>CONTACT</span>
+                                    <span>{t(`header.contact`)}</span>
+                                    <span>{t(`header.contact`)}</span>
                                 </NavLink>
                             </li>
                             <li>
@@ -82,8 +91,8 @@ const Header = () => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
                                 }} to={"/become-a-partner"} className={`${isHamActive ? 'active' : ''}`}>
-                                    <span>BECOME A PARTNER</span>
-                                    <span>BECOME A PARTNER</span>
+                                    <span>{t(`header.becomePartner`)}</span>
+                                    <span>{t(`header.becomePartner`)}</span>
                                 </NavLink>
                             </li>
                             <li>
@@ -91,8 +100,8 @@ const Header = () => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
                                 }} to={"/configure-a-bike"} className={`${isHamActive ? 'active' : ''}`}>
-                                    <span>CONFIGURE A BIKE</span>
-                                    <span>CONFIGURE A BIKE</span>
+                                    <span>{t(`header.configureBike`)}</span>
+                                    <span>{t(`header.configureBike`)}</span>
                                 </NavLink>
                             </li>
                             <li>
@@ -100,8 +109,8 @@ const Header = () => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
                                 }} to={"/my-account"} className={`${isHamActive ? 'active' : ''}`}>
-                                    <span>MY ACCOUNT</span>
-                                    <span>MY ACCOUNT</span>
+                                    <span>{t(`header.myAccount`)}</span>
+                                    <span>{t(`header.myAccount`)}</span>
                                 </NavLink>
                             </li>
                             <li>
@@ -109,8 +118,8 @@ const Header = () => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
                                 }} to={"/cart"} className={`${isHamActive ? 'active' : ''}`}>
-                                    <span>CART</span>
-                                    <span>CART</span>
+                                    <span>{t(`header.cart`)}</span>
+                                    <span>{t(`header.cart`)}</span>
                                 </NavLink>
                             </li>
                         </ul>
@@ -121,7 +130,10 @@ const Header = () => {
                 <div className={`background ${isHamActive ? 'active' : ''}`}></div>
                 <div className="container">
                     <nav>
-                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/home"} className="img-container">
+                        <NavLink onClick={() => {
+                            window.scrollTo(0, 0);
+                            isHamActive ? toggleHamBtn() : ''
+                        }} to={"/home"} className="img-container">
                             <img src={logo} alt="" />
                         </NavLink>
                         <div className='lang-ham-container'>
@@ -129,32 +141,32 @@ const Header = () => {
                                 <ul>
                                     <li>
                                         <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/our-story"}>
-                                            <span>OUR STORY</span>
-                                            <span>OUR STORY</span>
+                                            <span>{t(`header.ourStory`)}</span>
+                                            <span>{t(`header.ourStory`)}</span>
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/dealership"}>
-                                            <span>DEALERSHIP</span>
-                                            <span>DEALERSHIP</span>
+                                            <span>{t(`header.dealerShip`)}</span>
+                                            <span>{t(`header.dealerShip`)}</span>
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/contact"}>
-                                            <span>CONTACT</span>
-                                            <span>CONTACT</span>
+                                            <span>{t(`header.contact`)}</span>
+                                            <span>{t(`header.contact`)}</span>
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/become-a-partner"}>
-                                            <span>BECOME A PARTNER</span>
-                                            <span>BECOME A PARTNER</span>
+                                            <span>{t(`header.becomePartner`)}</span>
+                                            <span>{t(`header.becomePartner`)}</span>
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/configure-a-bike"}>
-                                            <span>CONFIGURE A BIKE</span>
-                                            <span>CONFIGURE A BIKE</span>
+                                            <span>{t(`header.configureBike`)}</span>
+                                            <span>{t(`header.configureBike`)}</span>
                                         </NavLink>
                                     </li>
                                 </ul>
@@ -165,8 +177,8 @@ const Header = () => {
                                     <i className="fa-solid fa-globe" />
                                 </div>
                                 <div onClick={e => { e.stopPropagation() }} className={`options-container ${isLangActive ? 'active' : ''}`}>
-                                    <span>EN</span>
-                                    <span>AZ</span>
+                                    <span onClick={()=>setLanguage('en')}>EN</span>
+                                    <span onClick={()=>setLanguage('az')}>AZ</span>
                                 </div>
                             </div>
                             <div onClick={toggleHamBtn} className={`hamburger-menu-container ${isHamActive ? 'active' : ''}`}>

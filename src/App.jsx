@@ -14,6 +14,7 @@ import Cart from './pages/Cart'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import { useEffect } from 'react'
+import './i18n.js'
 
 function App() {
   useEffect(() => {
