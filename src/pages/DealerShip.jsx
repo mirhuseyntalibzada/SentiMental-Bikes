@@ -4,6 +4,7 @@ import BecomePartnerComp from '../components/BecomePartnerComp';
 import icon from '../images/connection-btn-icon.svg'
 import supabase from '../config/connect';
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const DealerShip = () => {
 
@@ -59,10 +60,12 @@ const DealerShip = () => {
               <li><a onClick={() => { changeActive('slovakia') }} className={`${active == 'slovakia' ? 'active' : ''}`} href="#">Slovakia</a></li>
               <li><a onClick={() => { changeActive('czech republic') }} className={`${active == 'czech republic' ? 'active' : ''}`} href="#">Czech Republic</a></li>
             </ul>
+            <NavLink to={"/become-a-partner"}>
             <button>
               <img src={icon} alt="" />
               BECOME A PARTNER
             </button>
+            </NavLink>
           </div>
           <div className="box-container"></div>
         </div>
@@ -121,7 +124,15 @@ const DealerShip = () => {
           </div>
         </div>
       </section>
-      <BecomePartnerComp style={{ backgroundColor: "rgb(233, 233, 230)" }} />
+      <BecomePartnerComp data={{
+        h1: "Become a partner",
+        p: `Feeling the SentiMental vibe? Great! We are always looking for like-minded 
+      partners who share our values. Whether you're a bike shop, a cycling club, a company,
+       or an individual with a burning passion for e-bikes, there's a place for you in our 
+       #itsrideoclock community.`,
+        button: `BECOME A PARTNER`,
+        path: `/become-a-partner`
+      }} style={{ backgroundColor: "rgb(233, 233, 230)" }} />
     </>
   )
 }

@@ -8,5 +8,5 @@ i18n.use(initReactI18next).init({
         en: { ...enJSON },
         az: { ...ptJSON },
       }, 
-    lng: "en",
+    lng: localStorage.getItem('lng')||"en",
 });

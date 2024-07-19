@@ -1,6 +1,5 @@
 import React from 'react'
 import BecomePartnerComp from '../components/BecomePartnerComp';
-import AOS from 'aos'
 import 'aos/dist/aos.css';
 import Form from '../components/Form';
 

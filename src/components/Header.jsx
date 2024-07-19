@@ -9,49 +9,33 @@ const Header = () => {
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const toggleLangBtn = () => {
-        setIsLangActive(!isLangActive);
-    };
-
-    const toggleHamBtn = () => {
-        setIsHamActive(!isHamActive);
-    };
+    const toggleLangBtn = () => setIsLangActive(!isLangActive);
+    const toggleHamBtn = () => setIsHamActive(!isHamActive);
 
     const controlNavbar = () => {
         if (!isHamActive) {
             const scrollY = window.scrollY;
-            if (scrollY <= 0) {
-                setShow(true);
-            } else if (scrollY > lastScrollY) {
-                setShow(false);
-            } else {
-                setShow(true);
-            }
+            setShow(scrollY <= 0 || scrollY < lastScrollY);
             setLastScrollY(scrollY);
         }
     };
 
     useEffect(() => {
         window.addEventListener('scroll', controlNavbar);
-
-        return () => {
-            window.removeEventListener('scroll', controlNavbar);
-        };
+        return () => window.removeEventListener('scroll', controlNavbar);
     }, [lastScrollY, isHamActive]);
 
     useEffect(() => {
-        if (isHamActive) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
+        document.body.classList.toggle('no-scroll', isHamActive);
     }, [isHamActive]);
 
     const { t, i18n: { changeLanguage, language } } = useTranslation();
 
     const setLanguage = (newLanguage) => {
         changeLanguage(newLanguage);
-    }
+        localStorage.setItem('lng', newLanguage);
+    };
+
 
     return (
         <>
@@ -67,7 +51,7 @@ const Header = () => {
                                     <span>{t(`header.ourStory`)}</span>
                                     <span>{t(`header.ourStory`)}</span>
                                 </NavLink>
-                            </li>````
+                            </li>
                             <li>
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
@@ -134,7 +118,7 @@ const Header = () => {
                             window.scrollTo(0, 0);
                             isHamActive ? toggleHamBtn() : ''
                         }} to={"/home"} className="img-container">
-                            <img src={logo} alt="" />
+                            <img src={logo} alt="logo" />
                         </NavLink>
                         <div className='lang-ham-container'>
                             <div className="navigation">
@@ -177,8 +161,8 @@ const Header = () => {
                                     <i className="fa-solid fa-globe" />
                                 </div>
                                 <div onClick={e => { e.stopPropagation() }} className={`options-container ${isLangActive ? 'active' : ''}`}>
-                                    <span onClick={()=>setLanguage('en')}>EN</span>
-                                    <span onClick={()=>setLanguage('az')}>AZ</span>
+                                    <span onClick={() => { setLanguage('en'); toggleLangBtn() }}>EN</span>
+                                    <span onClick={() => { setLanguage('az'); toggleLangBtn() }}>AZ</span>
                                 </div>
                             </div>
                             <div onClick={toggleHamBtn} className={`hamburger-menu-container ${isHamActive ? 'active' : ''}`}>

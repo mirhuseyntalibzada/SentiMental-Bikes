@@ -45,11 +45,12 @@
 
                 img {
                     width: 100%;
-
+                    height: 100%;
                 }
             }
 
             .lang-ham-container {
+                cursor: pointer;
                 display: flex;
                 align-items: center;
                 gap: .8em;
@@ -443,6 +444,10 @@
 
                 .img-container {
                     width: 2.7em;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
                 }
 
                 .lang-ham-container {
@@ -520,6 +525,7 @@
                         }
 
                         .cart-icon {
+                            text-decoration: none;
                             overflow: hidden;
                             position: relative;
                             width: .55em;

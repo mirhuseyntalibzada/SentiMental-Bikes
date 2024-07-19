@@ -8,6 +8,64 @@
             "configureBike": "CONFIGURE A BIKE",
             "myAccount": "MY ACCOUNT",
             "cart": "CART"
+        },
+        "home": {
+            "header": {
+                "1": "Fresh Wheels in Town.",
+                "2": "Good looking.",
+                "3": "Thrill-seeking."
+            },
+            "span-1": "Discover the SentiMental Bikes lineup",
+            "span-2": {
+                "1": "Made-in",
+                "2": "EUROPEAN UNION"
+            },
+            "h1-1": "Key Features",
+            "p-1": "Packed with awesomeness!",
+            "h2-1": "Heart crafted",
+            "p-2": "Your inner vintage connoisseur will love our handcrafted e-bikes",
+            "h2-2": "Iconic performance",
+            "p-3": "Unparalleled power and efficiency with a touch of nostalgic flair",
+            "h2-3": "Worth it",
+            "p-4": "Exceptional e-bikes without breaking the bank",
+            "span-3":{
+                "1":"We're",
+                "2":"Sentimental",
+                "3":"And so are you."
+            },
+            "p-5":"Born from the spirit of expression and artistry, SentiMental bikes are well thought-out and meticulously crafted artisan bikes. Inspired by the most recognizable old-school bikes, SentiMental models will put you in the spotlight. And make your every single day – epic.",
+            "span-4":"Read the full story",
+            "span-5":{
+                "1":"Go ahead. Ride the wave.",
+                "2":"For SentiMental reasons."
+            },
+            "h1-2":{
+                "1":"Feeling Sentimental? We",
+                "2":"got you."
+            },
+            "p-6":"Falling in love is easy. Staying in love takes work. This is why we used exceptional materials and long-range batteries wrapped in timeless design. So that your love for SentiMental bikes lasts today, tomorrow, and beyond.",
+            "h6-1":"COLORS",
+            "span-6":{
+                "1":"Good looking.",
+                "2":"In every color."
+            },
+            "p-7":"Can you handle all eyes on you? We hope you do. Hand-applied by our artisans, our curated colors will fit your style.",           
+            "h6-2":"MAKE IT PERSONAL",
+            "h1-3":"A ride you'll never forget",
+            "p-8":"With the ability to choose from various colors, parts, and accessories, you're in control of designing a bike that truly reflects your personality and sets you apart from the crowd. So, why settle for a standard bike when you can make it personal and ride in style?",
+            "speed":"Speed",
+            "h6-3":"Swift 'n' Smooth",
+            "p-9":"Feel the wind in your hair as you reach up to 25 km/h, effortlessly gliding through urban landscapes with 3 levels of pedal assist and a Shimano 7-speed rear wheel cassette.",
+            "batteryLife":"Battery Life",
+            "h6-4":"Power of Endurance!",
+            "p-10":"Our e-bikes offer up to 8-hr charging time, ensuring lasting adventures. Take a break, fully recharge while we prepare for your next exhilarating journey. Get ready for an ultimate joyride that lasts.",
+            "motor":"Motor",
+            "h6-5":"Quiet & Powerful",
+            "p-11":"Our 250W geared rear hub motor delivers a smooth, unobtrusive boost to your pedaling, ensuring every ride feels like an exhilarating adventure, while hydraulic disc brakes with engine cut-off ensure safety and control.",
+            "h6-6":"WHAT IS IN THE BACKGROUND",
+            "h6-7":"Supercharged artisan city bikes",
+            "h1-4":"SentiMental in the Spotlight",
+            "news":"NEWS"
         }
     }
 }

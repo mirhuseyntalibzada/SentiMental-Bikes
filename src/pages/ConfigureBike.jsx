@@ -135,6 +135,7 @@ const ConfigureBike = () => {
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
         <div className='green-box'>

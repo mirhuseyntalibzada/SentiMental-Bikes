@@ -22,6 +22,7 @@ import supabase from '../config/connect'
 import { useEffect } from 'react'
 import ExperienceSentimental from '../components/ExperienceSentimental'
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Home = () => {
 
@@ -54,6 +55,8 @@ const Home = () => {
     setNews(data)
   }
 
+  const { t, i18n: { changeLanguage, language } } = useTranslation();
+
   return (
     <>
       <section id='home'>
@@ -61,17 +64,17 @@ const Home = () => {
           <div className="container">
             <div className="hero-container">
               <div className='hero-text'>
-                <div><span data-aos="fade-up" data-aos-delay="0">Fresh Wheels in Town.</span></div>
-                <div><span data-aos="fade-up" data-aos-delay="100">Good looking.</span></div>
-                <div><span data-aos="fade-up" data-aos-delay="200">Thrill-seeking.</span></div>
+                <div><span data-aos="fade-up" data-aos-delay="0">{t(`home.header.1`)}</span></div>
+                <div><span data-aos="fade-up" data-aos-delay="100">{t(`home.header.2`)}</span></div>
+                <div><span data-aos="fade-up" data-aos-delay="200">{t(`home.header.3`)}</span></div>
               </div>
               <div style={{ overflow: "hidden" }} className="small-text-container">
                 <div data-aos="fade-up" data-aos-delay="0" className='small-text'>
                   <i className="fa-solid fa-caret-right"></i>
                   <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/configure-a-bike'}>
                     <div className='span-container'>
-                      <span>Discover the SentiMental Bikes lineup</span>
-                      <span>Discover the SentiMental Bikes lineup</span>
+                      <span>{t(`home.span-1`)}</span>
+                      <span>{t(`home.span-1`)}</span>
                     </div>
                   </NavLink>
                 </div>
@@ -83,7 +86,7 @@ const Home = () => {
                 <img src={pralina} alt="" />
               </div>
               <div className="made-in-container">
-                <span className='text-made-in'><span className='made-in'>Made-in</span> <span className='european'>EUROPEAN UNION</span></span>
+                <span className='text-made-in'><span className='made-in'>{t(`home.span-2.1`)}</span> <span className='european'>{t(`home.span-2.2`)}</span></span>
               </div>
             </div>
           </div>
@@ -139,7 +142,7 @@ const Home = () => {
           <div className="container">
             <div className='content-container'>
               <div className="h6-container">
-                <h6 data-aos-delay="0" data-aos="fade-up">OUR STORY</h6>
+                <h6 data-aos-delay="0" data-aos="fade-up">{t('header.ourStory')}</h6>
               </div>
               <h1>
                 <div><span data-aos-delay="100" data-aos="fade-up">We're</span> <span data-aos-delay="200" data-aos="fade-up">Sentimental.</span></div>
@@ -254,7 +257,7 @@ const Home = () => {
               <div className="configure-button">
                 <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/configure-a-bike'} className="secondary-btn" data-text="Configure a bike">
                   <img src={configure_icon} alt="Logo Btn Icon" />
-                  <span>Configure a bike</span>
+                  <span>{t('header.configureBike')}</span>
                 </NavLink>
               </div>
             </div>
@@ -271,7 +274,7 @@ const Home = () => {
                 <div className="configure-button">
                   <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/configure-a-bike'} className="secondary-btn" data-text="Configure a bike">
                     <img src={configure_icon} alt="Logo Btn Icon" />
-                    <span>Configure a bike</span>
+                    <span>{t('header.configureBike')}</span>
                   </NavLink>
                 </div>
                 <div className="color-container">

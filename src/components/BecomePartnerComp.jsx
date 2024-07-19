@@ -5,7 +5,7 @@ import icon from '../images/connection-btn-icon.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { NavLink } from 'react-router-dom';
-const BecomePartnerComp = ({ style,data }) => {
+const BecomePartnerComp = ({ style, data: { h1, p, button, path } }) => {
 
     useEffect(() => {
         AOS.init({
@@ -25,17 +25,17 @@ const BecomePartnerComp = ({ style,data }) => {
             <div className="become-a-partner">
                 <div className="container">
                     <div>
-                        <h1>{data.h1}</h1>
+                        <h1>{h1}</h1>
                     </div>
                     <div className="img-container-desktop">
                         <img src={img1} alt="" />
                     </div>
                     <div>
-                        <p>{data.p}</p>
-                        <NavLink onClick={()=>{window.scrollTo(0,0)}} to={data.path}>
+                        <p>{p}</p>
+                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={path}>
                             <button>
                                 <img src={icon} alt="" />
-                                {data.button}
+                                {button}
                             </button>
                         </NavLink>
                     </div>
