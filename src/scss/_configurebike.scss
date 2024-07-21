@@ -1,7 +1,6 @@
 #configure {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
-    position: relative;
 
     .configure {
         padding: 1.8em 0;
@@ -62,7 +61,8 @@
                         height: 2.1em;
                         width: 2.1em;
                     }
-                    div:hover{
+
+                    div:hover {
                         cursor: pointer;
                     }
 
@@ -200,12 +200,159 @@
             }
         }
     }
+}
+
+#addons {
+    position: relative;
+    background-color: rgb(228, 228, 228);
+
+    .category-container {
+        position: relative;
+        border-top-left-radius: 1em;
+        border-top-right-radius: 1em;
+        background-color: rgb(208, 229, 159);
+
+        .box-container {
+            background-color: rgb(228, 228, 228);
+            width: 100%;
+            height: 1em;
+            border-top-left-radius: 1em;
+            border-top-right-radius: 1em;
+        }
+
+        .container {
+            padding: 0 .5em;
+            input {
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 1em;
+                border: none;
+                padding: 1em;
+                border-radius: 1.5em;
+            }
+            input:focus{
+                outline: none;
+            }
+
+            ul {
+                margin: 0;
+                list-style-type: none;
+                padding: 0;
+                display: flex;
+                gap: .5em;
+
+                li {
+                    padding: 1em 0;
+                    display: flex;
+                    flex-shrink: 0;
+
+                    a {
+                        font-weight: 700;
+                        font-size: .63em;
+                        text-decoration: none;
+                        color: black;
+                    }
+
+                    a.active {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            button {
+                display: none;
+            }
+        }
+    }
+
+    .container {
+        padding: 0 .5em;
+        padding-bottom: 3em;
+
+        .products-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            box-sizing: content-box;
+
+            .card-container {
+                position: relative;
+                padding: .2em;
+                box-sizing: border-box;
+                flex: 0 0 100%;
+                margin-bottom: 1em;
+
+                .content {
+                    position: relative;
+                    border: 1px solid #CECDC7;
+                    border-radius: 1em;
+                    overflow: hidden;
+                    padding: 1em;
+
+                    .fav {
+                        display: flex;
+                        position: absolute;
+                        top: 1.3em;
+                        right: 1.3em;
+
+                        i {
+                            color: red;
+                            font-size: 1.5em;
+                        }
+                    }
+
+                    .img-container {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .info-container {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom:  1em;
+
+                        h6 {
+                            height: 2.6em;
+                            margin: 0;
+                            font-size: 1em;
+                        }
+
+                        span {
+                            font-size: 1em;
+                        }
+                    }
+
+                    .button-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .5em;
+
+                            button {
+                                font-size: 1em;
+                                background-color: black;
+                                color: white;
+                                border: none;
+                                border-radius: 1.2em;
+                                padding: .6em;
+                                font-weight: 600;
+                            }
+                        
+                    }
+                }
+            }
+        }
+    }
 
     .green-box {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 2em;
+        height: 1.6em;
         background-color: rgb(208, 229, 159);
         border-top-left-radius: 1em;
         border-top-right-radius: 1em;
@@ -341,6 +488,158 @@
                                     color: black;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    #addons {
+        padding-bottom: 3em;
+
+        .category-container {
+
+            .box-container {
+                height: 1em;
+            }
+
+            .container {
+                padding: .1em 2em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                input{
+                    margin: 0;
+                    width: 50%;
+                    padding: .5em;
+                    font-size: .215em;
+                    font-weight: 700;
+                }
+                ul {
+
+                    li {
+                        padding: .2em 0;
+
+                        a {
+                            font-size: .23em;
+                        }
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+
+                    button {
+                        margin: 1.4em 0;
+                        width: 17em;
+                        padding: .5em;
+                        border: 0;
+                        display: flex;
+                        align-items: center;
+                        background-color: black;
+                        color: white;
+                        gap: .8em;
+                        border-radius: 2.5em;
+                        font-size: .15em;
+                        font-weight: 700;
+
+                        img {
+                            width: 3.5em;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+
+        .container {
+            padding: 0 2em;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+
+            .products-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                box-sizing: content-box;
+
+                .card-container {
+                    padding: .2em;
+                    box-sizing: border-box;
+                    flex: 0 0 25%;
+                    margin-bottom: 0;
+
+                    .content:hover {
+                        .fav {
+                            display: flex;
+                        }
+                    }
+
+                    .content {
+                        position: relative;
+                        border: 1px solid #CECDC7;
+                        border-radius: .1em;
+                        overflow: hidden;
+                        padding: .1em;
+
+                        .fav {
+                            display: none;
+                            position: absolute;
+                            top: .2em;
+                            right: .2em;
+
+                            i {
+                                color: red;
+                                font-size: .2em;
+                            }
+                        }
+
+                        .img-container {
+                            height: 2.6em;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .info-container {
+                            display: flex;
+                            flex-direction: column;
+                            margin-bottom: .1em;
+
+                            h6 {
+                                height: 2.6em;
+                                margin: 0;
+                                font-size: .17em;
+                            }
+
+                            span {
+                                font-size: .17em;
+                            }
+                        }
+
+                        .button-container {
+                            display: flex;
+                            flex-direction: row;
+                            gap: .1em;
+
+                                button {
+                                    font-size: .15em;
+                                    width: 50%;
+                                    background-color: black;
+                                    color: white;
+                                    border: none;
+                                    border-radius: 1.2em;
+                                    padding: .6em;
+                                    font-weight: 600;
+                                }
+                            
                         }
                     }
                 }

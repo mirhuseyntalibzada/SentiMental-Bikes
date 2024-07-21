@@ -4,11 +4,13 @@ import icon from '../images/logo-btn-icon.svg'
 import ExperienceSentimental from '../components/ExperienceSentimental'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, setCartToRedux } from '../toolkit/features/cartSlice'
+import { addToCart, setCartToRedux, setProductToRedux } from '../toolkit/features/cartSlice'
 import { bicycles } from '../data/bicycles'
 import { useCookies } from 'react-cookie'
 import supabase from '../config/connect'
 import { useEffect } from 'react'
+import { products } from '../data/products'
+import ProductCard from '../components/ProductCard'
 
 const ConfigureBike = () => {
   const [cookie] = useCookies(['cookie-user'])
@@ -19,6 +21,43 @@ const ConfigureBike = () => {
     bicycleColor: 'Alabaster Adventure',
     handleColor: 'Alabaster Adventure'
   });
+
+  // Wishlist----------------------------------------------------------------
+
+  const [category, setCategory] = useState([])
+  const [filteredProducts, setfilteredProducts] = useState([])
+
+  useEffect(() => {
+    const removeDuplicate = () => {
+      let uniqueCategory = []
+      products.forEach(product => {
+        if (!uniqueCategory.includes(product.category)) {
+          uniqueCategory.push(product.category)
+        }
+      })
+      setCategory(uniqueCategory);
+    }
+    removeDuplicate()
+  }, [])
+
+  const getFilteredProducts = (category) => {
+    const filtered = products.filter((product) => product.category === category)
+    setfilteredProducts(filtered)
+  }
+
+  // ----------------------------------------------------------------Wishlist
+
+  // Search------------------------------------------------------------------
+  const [searchedProducts, setSearchedProducts] = useState([])
+
+  const searchProd = (keyword) => {
+    const searchedItems = filteredProducts.length === 0 ?
+      products.filter(item => item.name.includes(keyword.toUpperCase())) :
+      filteredProducts.filter(item => item.name.includes(keyword.toUpperCase()))
+    keyword.length === 0 ? setSearchedProducts([]) : setSearchedProducts(searchedItems)
+  }
+
+  // ------------------------------------------------------------------Search
 
   const handleChange = (e) => {
     const newValue = parseInt(e.target.value, 10);
@@ -34,14 +73,14 @@ const ConfigureBike = () => {
     );
   });
 
-  //addtocart
-
+  //addtocart------------------------------------------------------------------
   useEffect(() => {
     const fetchCartData = async () => {
       const { data } = await supabase.from('users').select()
       const user = data.find(({ token }) => token === cookie['cookie-user'])
       if (user.cart) {
         dispatch(setCartToRedux(user.cart.cart))
+        dispatch(setProductToRedux(user.cart.product))
       }
     }
     fetchCartData()
@@ -64,10 +103,13 @@ const ConfigureBike = () => {
   }
 
   useEffect(() => {
-      if (cart.cart.length > 0) {
+    if (cart.cart && cart.product) {
+      if (cart.cart.length > 0 || cart.product.length > 0) {
         addCartToDB()
       }
+    }
   }, [cart])
+  //------------------------------------------------------------------addtocart
 
   return (
     <>
@@ -135,7 +177,43 @@ const ConfigureBike = () => {
                 </div>
               </div>
             </div>
-            
+          </div>
+        </div>
+      </section>
+      <section id="addons">
+        <div className='category-container'>
+          <div className="container">
+            <ul>
+              <li onClick={() => { setfilteredProducts(products) }}><a href="#!">ALL</a></li>
+              {category.map((item, i) => (
+                <li onClick={() => getFilteredProducts(item)} key={i}><a href="#!">{item.toUpperCase()}</a></li>
+              ))}
+            </ul>
+            <input onChange={(e) => searchProd(e.target.value)} placeholder='Search product' type="text" />
+          </div>
+          <div className="box-container"></div>
+        </div>
+        <div className="container">
+          <div className="products-container">
+            {filteredProducts.length === 0 ?
+              searchedProducts.length === 0 ?
+                products.map((product, i) => (
+                  <ProductCard key={i} productState={product} />
+                ))
+                :
+                searchedProducts.map((product, i) => (
+                  <ProductCard key={i} productState={product} />
+                ))
+              :
+              searchedProducts.length === 0 ?
+                filteredProducts.map((product, i) => (
+                  <ProductCard key={i} productState={product} />
+                ))
+                :
+                searchedProducts.map((product, i) => (
+                  <ProductCard key={i} productState={product} />
+                ))
+            }
           </div>
         </div>
         <div className='green-box'>

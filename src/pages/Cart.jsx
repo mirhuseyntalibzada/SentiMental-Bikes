@@ -4,81 +4,118 @@ import supabase from '../config/connect'
 import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import BillingAddress from '../components/BillingAddress'
-import { removeFromCart, setCartToRedux } from '../toolkit/features/cartSlice'
+import { removeFromCart, removeFromProduct, setCartToRedux, setProductToRedux } from '../toolkit/features/cartSlice'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
 const Cart = () => {
   const [cookie] = useCookies(['cookie-user'])
   const dispatch = useDispatch()
+
   const cart = useSelector((state) => state.cart.cart)
-  const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount)
-  const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity)
+  const product = useSelector((state) => state.cart.product)
+
+  const cartAmount = useSelector((state) => state.cart.cartAmount)
+  const cartQuantity = useSelector((state) => state.cart.cartQuantity)
+  const productAmount = useSelector((state) => state.cart.productAmount)
+  const productQuantity = useSelector((state) => state.cart.productQuantity)
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await supabase.from('users').select()
-      const user = data.find(({ token }) => token === cookie['cookie-user'])
+      const { data } = await supabase.from('users').select();
+      const user = data.find(({ token }) => token === cookie['cookie-user']);
       if (user) {
-        dispatch(setCartToRedux(user.cart.cart))
+        dispatch(setCartToRedux(user.cart.cart));
+        dispatch(setProductToRedux(user.cart.product));
       }
-    }
-    fetchData()
-  }, [cookie, dispatch])
+    };
+    fetchData();
+  }, [cookie, dispatch]);
 
-  const updateCartInSupabase = async (updatedCart) => {
-    const { data } = await supabase.from('users').select()
-    const user = data.find(({ token }) => token === cookie['cookie-user'])
+  const updateCartInSupabase = async (updatedCart, updatedProduct) => {
+    const { data } = await supabase.from('users').select();
+    const user = data.find(({ token }) => token === cookie['cookie-user']);
     if (user) {
       const updatedCartData = {
         cart: updatedCart,
-        cartTotalAmount: updatedCart.reduce((total, item) => total + item.price * item.quantity, 0),
-        cartTotalQuantity: updatedCart.reduce((total, item) => total + item.quantity, 0)
-      }
+        product: updatedProduct,
+        cartAmount: updatedCart.reduce((total, item) => total + item.price * item.quantity, 0),
+        cartQuantity: updatedCart.reduce((total, item) => total + item.quantity, 0),
+        productAmount: updatedProduct.reduce((total, item) => total + item.price * item.quantity, 0),
+        productQuantity: updatedProduct.reduce((total, item) => total + item.quantity, 0)
+      };
       const { error } = await supabase.from('users').update({
         cart: updatedCartData
-      }).eq('token', user.token)
+      }).eq('token', user.token);
       if (error) {
-        console.error('Error updating cart:', error)
+        console.error('Error updating cart:', error);
       }
     }
-  }
+  };
 
-  const handleRemoveItem = async (itemId) => {
-    const updatedCart = cart.filter(item => item.id !== itemId)
-    await updateCartInSupabase(updatedCart)
-    dispatch(removeFromCart(itemId))
-  }
+  const handleRemoveItem = async (itemId, type) => {
+    let updatedCart = [...cart];
+    let updatedProduct = [...product];
 
-  const handleQuantityChange = (index, newQuantity) => {
-    const updatedCart = cart.map((item, i) => {
-      if (i === index) {
-        return { ...item, quantity: newQuantity }
-      }
-      return item
-    })
-    updateCartInSupabase(updatedCart)
-    dispatch(setCartToRedux(updatedCart))
-  }
-
-  const handleIncrement = (index) => {
-    const newQuantity = cart[index].quantity + 1
-    handleQuantityChange(index, newQuantity)
-  }
-
-  const handleDecrement = (index) => {
-    if (cart[index].quantity > 1) {
-      const newQuantity = cart[index].quantity - 1
-      handleQuantityChange(index, newQuantity)
+    if (type === 'cart') {
+      updatedCart = updatedCart.filter(item => item.id !== itemId);
+      dispatch(removeFromCart(itemId));
+    } else if (type === 'product') {
+      updatedProduct = updatedProduct.filter(item => item.id !== itemId);
+      dispatch(removeFromProduct(itemId));
     }
-  }
 
-  const handleInputChange = (index, e) => {
-    const newQuantity = parseInt(e.target.value, 10)
+    await updateCartInSupabase(updatedCart, updatedProduct);
+  };
+
+  const handleQuantityChange = (index, newQuantity, type) => {
+    if (type === 'cart') {
+      const updatedCart = cart.map((item, i) => {
+        if (i === index) {
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      });
+      updateCartInSupabase(updatedCart, product);
+      dispatch(setCartToRedux(updatedCart));
+    } else if (type === 'product') {
+      const updatedProduct = product.map((item, i) => {
+        if (i === index) {
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      });
+      updateCartInSupabase(cart, updatedProduct);
+      dispatch(setProductToRedux(updatedProduct));
+    }
+  };
+
+  const handleIncrement = (index, type) => {
+    if (type === 'cart') {
+      const newQuantity = cart[index].quantity + 1;
+      handleQuantityChange(index, newQuantity, type);
+    } else if (type === 'product') {
+      const newQuantity = product[index].quantity + 1;
+      handleQuantityChange(index, newQuantity, type);
+    }
+  };
+
+  const handleDecrement = (index, type) => {
+    if (type === 'cart' && cart[index].quantity > 1) {
+      const newQuantity = cart[index].quantity - 1;
+      handleQuantityChange(index, newQuantity, type);
+    } else if (type === 'product' && product[index].quantity > 1) {
+      const newQuantity = product[index].quantity - 1;
+      handleQuantityChange(index, newQuantity, type);
+    }
+  };
+
+  const handleInputChange = (index, e, type) => {
+    const newQuantity = parseInt(e.target.value, 10);
     if (!isNaN(newQuantity) && newQuantity > 0) {
-      handleQuantityChange(index, newQuantity)
+      handleQuantityChange(index, newQuantity, type);
     }
-  }
+  };
 
 
   return (
@@ -86,7 +123,7 @@ const Cart = () => {
       <section id='cart'>
         <div className="container">
           <div className="text-container">
-            {cart.length === undefined ? <h1>Cart</h1> : <h1>Checkout</h1>}
+            {!cart ? <h1>Cart</h1> : <h1>Checkout</h1>}
           </div>
         </div>
       </section>
@@ -97,7 +134,7 @@ const Cart = () => {
         </div>
         <div className="container">
           <>
-            {cart.length === undefined || cart.length === 0 ?
+            {(!cart && !product) || (cart.length === 0 && product.length === 0) ?
               <div className='message-container'>
                 <div className="message">
                   <span>Your cart is currently empty.</span>
@@ -108,7 +145,7 @@ const Cart = () => {
                   </NavLink>
                 </button>
               </div>
-              : <div className='product-container'>{cart.length !== undefined || cart.length !== 0 ?
+              : <div className='product-container'>{cart || cart.length !== 0 ?
                 cart.map((item, i) => (
                   <div key={i} className='product-card' >
                     <div className='img-text-container'>
@@ -138,30 +175,68 @@ const Cart = () => {
                             <h5>€{item.price * item.quantity}.00</h5>
                           </div>
                           <div className='quantity'>
-                          <a href="#!" className='minus' onClick={() => handleDecrement(i)}>-</a>
-                          <input value={item.quantity} type="number" onChange={(e) => handleInputChange(i, e)} />
-                          <a href="#!" className='plus' onClick={() => handleIncrement(i)}>+</a>
+                            <a href="#!" className='minus' onClick={() => handleDecrement(i, 'cart')}>-</a>
+                            <input value={item.quantity} type="number" onChange={(e) => handleInputChange(i, e, 'cart')} />
+                            <a href="#!" className='plus' onClick={() => handleIncrement(i, 'cart')}>+</a>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="delete" onClick={() => handleRemoveItem(item.id)}>
+                    <div className="delete" onClick={() => handleRemoveItem(item.id, 'cart')}>
                       <i className="fa-solid fa-x"></i>
                     </div>
                   </div>
                 )) : ''}
+
+                {
+                  product || product.length !== 0 ?
+                    product.map((item, i) => (
+                      <div key={i} className='product-card' >
+                        <div className='img-text-container'>
+                          <div className='img-container'>
+                            <img src={`/src${item.img[0]}`} alt="" />
+                          </div>
+                          <div className='text-container'>
+                            <h5>{item.category === 'addon' ? 'Configure Addon' : 'Configure Part'}</h5>
+                            <div className='category-name'>
+                              <h6>Part Name:</h6>
+                              <p>{item.name}</p>
+                            </div>
+                            <div className='category-name'>
+                              <h6>Category:</h6>
+                              <p>{item.category}</p>
+                            </div>
+                            <div className='price-quantity-container'>
+                              <div>
+                                <h5>€{item.price * item.quantity}.00</h5>
+                              </div>
+                              <div className='quantity'>
+                                <a href="#!" className='minus' onClick={() => handleDecrement(i, 'product')}>-</a>
+                                <input value={item.quantity} type="number" onChange={(e) => handleInputChange(i, e, 'product')} />
+                                <a href="#!" className='plus' onClick={() => handleIncrement(i, 'product')}>+</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="delete" onClick={() => handleRemoveItem(item.id, 'product')}>
+                          <i className="fa-solid fa-x"></i>
+                        </div>
+                      </div>
+                    ))
+                    : ''
+                }
                 <div className="amount-container">
                   <div className='amount-info'>
                     <h1>Subtotal:</h1>
-                    <span>€{cartTotalAmount}.00</span>
+                    <span>€{cartAmount + productAmount}.00</span>
                   </div>
                   <div className='amount-info'>
                     <h1>Shipping:</h1>
-                    <span>€{50 * cartTotalQuantity}.00</span>
+                    <span>€{(50 * cartQuantity + (10 * productQuantity))}.00</span>
                   </div>
                   <div className='amount-info'>
                     <h1>Total:</h1>
-                    <span>€{cartTotalAmount + (50 * cartTotalQuantity)}.00</span>
+                    <span>€{productAmount + cartAmount + (50 * cartQuantity) + (10 * productQuantity)}.00</span>
                   </div>
                   <div className='coupon-container'>
                     <input placeholder='Coupon code' type="text" />
@@ -171,13 +246,13 @@ const Cart = () => {
               </div>
             }
           </>
-          {cart.length === undefined || cart.length === 0 ? '' :
+          {(!cart && !product) || (cart.length === 0 && product.length === 0) ? '' :
             <div className="billing-adress-desktop">
               <BillingAddress />
             </div>
           }
         </div>
-        {cart.length === undefined || cart.length === 0 ? '' :
+        {(!cart && !product) || (cart.length === 0 && product.length === 0) ? '' :
           <div className="billing-adress-mobile">
             <BillingAddress />
           </div>

@@ -15,6 +15,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 import { useEffect } from 'react'
 import './i18n.js'
+import Details from './pages/Details.jsx'
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
         <Route path='/configure-a-bike' element={<ConfigureBike />} />
         <Route path='/my-account' element={<MyAccount />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path="/details/:slug" element={<Details />} />
       </Routes>
       <Footer />
     </BrowserRouter>
