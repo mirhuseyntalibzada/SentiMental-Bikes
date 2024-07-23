@@ -459,6 +459,7 @@
             .message-container {
                 margin: 0 3em;
                 width: 100%;
+
                 .message {
                     background-color: rgb(205, 205, 199);
                     border-radius: .2em;
@@ -481,7 +482,7 @@
                     padding: .8em;
                     font-size: .15em;
 
-                    button{
+                    button {
                         a {
                             text-decoration: none;
                             color: white;

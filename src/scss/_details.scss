@@ -1,0 +1,349 @@
+#details {
+    background-color: rgb(205, 205, 199);
+    padding-top: 3.65em;
+
+    .details {
+        padding: 1.8em 0;
+        border-top-left-radius: 1.2em;
+        border-top-right-radius: 1.2em;
+        background-color: rgb(228, 228, 228);
+
+        .container {
+            padding: .5em 0.5em;
+
+            .heading {
+                h1 {
+                    margin-bottom: .5em;
+                    font-size: 1.4em;
+                    font-weight: 600;
+                }
+
+                h3 {
+                    margin: 0;
+                    font-weight: 600;
+                    font-size: 1em;
+                }
+            }
+
+            .img-container {
+                img {
+                    width: 100%;
+                    vertical-align: middle;
+                }
+            }
+
+            .options {
+                background-color: rgb(208, 229, 159);
+                text-align: center;
+                padding: 1em 0;
+
+                h6 {
+                    font-size: .55em;
+                    margin: 0;
+                    letter-spacing: .1em;
+                    font-weight: 700;
+                }
+            }
+
+            .about {
+                p {
+                    margin-top: 1em;
+                    font-size: 1em;
+                }
+            }
+
+            .bicycle-color,
+            .handle-color {
+                h6 {
+                    font-weight: 400;
+                    margin: 1em 0;
+                }
+
+                .color-container {
+                    margin-bottom: 1em;
+                    display: flex;
+                    justify-content: space-between;
+
+                    div {
+                        border-radius: 100%;
+                        height: 2.1em;
+                        width: 2.1em;
+                    }
+
+                    div:hover {
+                        cursor: pointer;
+                    }
+
+                    div:nth-child(1) {
+                        background-color: white;
+                    }
+
+                    div:nth-child(2) {
+                        background-color: rgb(9, 9, 9);
+                    }
+
+                    div:nth-child(3) {
+                        background-color: rgb(246, 169, 81);
+                    }
+
+                    div:nth-child(4) {
+                        background-color: rgb(158, 134, 146);
+                    }
+
+                    div:nth-child(5) {
+                        background-color: rgb(97, 147, 173);
+                    }
+
+                    div:nth-child(6) {
+                        background-color: rgb(122, 173, 173);
+                    }
+                }
+            }
+
+            .download-pdf {
+                margin-top: 1em;
+                padding: 1em 0;
+                border-top: 1px solid #CECDC7;
+                border-bottom: 1px solid #CECDC7;
+
+                button {
+                    width: 100%;
+                    border: none;
+                    padding: 1.3em 0;
+                    border-radius: 2em;
+                    background-color: rgb(13, 13, 13);
+                    color: white;
+                    font-size: .55em;
+                    font-weight: 700;
+                    transition: .5s;
+                    cursor: pointer;
+                }
+
+                button:hover {
+                    background-color: white;
+                    color: rgb(13, 13, 13);
+                }
+            }
+
+            .add-to-cart {
+                display: flex;
+                justify-content: space-between;
+                padding: 1em 0;
+                border-bottom: 1px solid #CECDC7;
+
+                .quantity {
+                    display: flex;
+                    align-items: center;
+
+                    a {
+                        box-sizing: border-box;
+                        border: 1px solid #CECDC7;
+                        text-decoration: none;
+                        color: black;
+                        width: 1.5em;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    input {
+                        border-top: 1px solid #CECDC7;
+                        border-bottom: 1px solid #CECDC7;
+                        border-right: none;
+                        border-left: none;
+                        width: 3.5em;
+                        height: 100%;
+                        box-sizing: border-box;
+                        text-align: center;
+                        background-color: transparent;
+                        -moz-appearance: textfield;
+                        appearance: textfield;
+                    }
+
+                    input::-webkit-outer-spin-button,
+                    input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    input:focus {
+                        outline: 0;
+                    }
+                }
+
+                button {
+                    cursor: pointer;
+                    margin: 0;
+                    padding: 2em 3em 2em 6em;
+                    position: relative;
+                    border: none;
+                    border-radius: 3em;
+                    background-color: rgb(13, 13, 13);
+                    color: white;
+                    font-weight: 600;
+                    font-size: .5em;
+
+                    img {
+                        width: 4em;
+                        left: .5em;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        position: absolute;
+                    }
+                }
+            }
+
+            .share {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .icons {
+                    display: flex;
+                    gap: .8em;
+
+                    a {
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:767px) and (orientation:landscape) {
+    #details {
+        padding-top: 1.1em;
+
+        .details {
+            padding-bottom: 2.5em;
+
+            .container {
+                padding: 0 2em;
+                max-width: 1600px;
+                margin: 0 auto;
+
+                .heading {
+                    display: flex;
+                    align-items: flex-end;
+
+                    h1 {
+                        width: 60%;
+                        font-size: .7em;
+                        margin: 0;
+                    }
+
+                    h3 {
+                        font-size: .33em;
+                    }
+                }
+
+                .img-content-container {
+                    display: flex;
+
+                    .img-container {
+                        width: 60%;
+                    }
+
+                    .features {
+                        width: 40%;
+
+                        .about {
+                            p {
+                                margin: 0;
+                                font-size: .2em;
+                            }
+                        }
+
+                        .options {
+                            margin: .5em 0;
+                            padding: .4em 0;
+
+                            h6 {
+                                font-size: .15em;
+                            }
+                        }
+
+                        .bicycle-color,
+                        .handle-color {
+                            h6 {
+                                font-size: .15em;
+                            }
+
+                            .color-container {
+                                margin: 0;
+
+                                div {
+                                    height: .65em;
+                                    width: .65em;
+                                }
+                            }
+                        }
+
+                        .download-pdf {
+                            margin-top: .5em;
+                            padding: .4em 0;
+                            display: flex;
+
+                            button {
+                                font-size: .15em;
+                            }
+                        }
+
+                        .add-to-cart {
+                            justify-content: flex-start;
+                            gap: .5em;
+                            padding: .4em 0;
+
+                            .quantity {
+
+                                a {
+                                    width: 2em;
+                                    font-size: .15em;
+                                    height: 80%;
+                                }
+
+                                input {
+                                    width: 3em;
+                                    font-size: .15em;
+                                    height: 80%;
+                                }
+                            }
+
+                            button {
+                                padding: 1.5em 2em 1.5em 5em;
+                                font-size: .15em;
+
+                                img {
+                                    width: 3em;
+                                }
+                            }
+                        }
+
+                        .share {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            h6 {
+                                font-size: .15em;
+                            }
+
+                            .icons {
+                                display: flex;
+                                gap: .35em;
+
+                                a {
+                                    font-size: .2em;
+                                    color: black;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

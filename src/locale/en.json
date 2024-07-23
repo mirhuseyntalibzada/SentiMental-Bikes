@@ -7,7 +7,9 @@
             "becomePartner": "BECOME A PARTNER",
             "configureBike": "CONFIGURE A BIKE",
             "myAccount": "MY ACCOUNT",
-            "cart": "CART"
+            "cart": "CART",
+            "wishlist": "WISHLIST",
+            "faq": "FAQ"
         },
         "home": {
             "header": {

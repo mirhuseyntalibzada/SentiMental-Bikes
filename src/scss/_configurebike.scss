@@ -99,6 +99,7 @@
                 border-bottom: 1px solid #CECDC7;
 
                 button {
+                    cursor: pointer;
                     width: 100%;
                     border: none;
                     padding: 1.3em 0;
@@ -164,6 +165,7 @@
                 }
 
                 button {
+                    cursor: pointer;
                     margin: 0;
                     padding: 2em 3em 2em 6em;
                     position: relative;
@@ -222,6 +224,7 @@
 
         .container {
             padding: 0 .5em;
+
             input {
                 width: 100%;
                 box-sizing: border-box;
@@ -230,7 +233,8 @@
                 padding: 1em;
                 border-radius: 1.5em;
             }
-            input:focus{
+
+            input:focus {
                 outline: none;
             }
 
@@ -314,7 +318,7 @@
                     .info-container {
                         display: flex;
                         flex-direction: column;
-                        margin-bottom:  1em;
+                        margin-bottom: 1em;
 
                         h6 {
                             height: 2.6em;
@@ -332,16 +336,34 @@
                         flex-direction: column;
                         gap: .5em;
 
-                            button {
-                                font-size: 1em;
-                                background-color: black;
+                        button {
+                            font-size: 1em;
+                            background-color: black;
+                            color: white;
+                            border: none;
+                            border-radius: 1.2em;
+                            padding: .6em;
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+
+                        .details {
+                            padding: 0;
+                            border-radius: 0;
+                            background-color: transparent;
+
+                            a {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                text-decoration: none;
                                 color: white;
-                                border: none;
+                                background-color: black;
+                                width: 100%;
                                 border-radius: 1.2em;
                                 padding: .6em;
-                                font-weight: 600;
                             }
-                        
+                        }
+
                     }
                 }
             }
@@ -510,13 +532,15 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                input{
+
+                input {
                     margin: 0;
                     width: 50%;
                     padding: .5em;
                     font-size: .215em;
                     font-weight: 700;
                 }
+
                 ul {
 
                     li {
@@ -586,6 +610,7 @@
                         padding: .1em;
 
                         .fav {
+                            cursor: pointer;
                             display: none;
                             position: absolute;
                             top: .2em;
@@ -629,17 +654,17 @@
                             flex-direction: row;
                             gap: .1em;
 
-                                button {
-                                    font-size: .15em;
-                                    width: 50%;
-                                    background-color: black;
-                                    color: white;
-                                    border: none;
-                                    border-radius: 1.2em;
-                                    padding: .6em;
-                                    font-weight: 600;
-                                }
-                            
+                            button {
+                                font-size: .15em;
+                                width: 50%;
+                                background-color: black;
+                                color: white;
+                                border: none;
+                                border-radius: 1.2em;
+                                padding: .6em;
+                                font-weight: 600;
+                            }
+
                         }
                     }
                 }

@@ -11,21 +11,12 @@ import supabase from '../config/connect'
 import { useEffect } from 'react'
 import { products } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import { setWishlistToRedux } from '../toolkit/features/wishlistSlice'
 
 const ConfigureBike = () => {
-  const [cookie] = useCookies(['cookie-user'])
-  const [value, setValue] = useState(1);
-  const cart = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
-  const [filters, setFilters] = useState({
-    bicycleColor: 'Alabaster Adventure',
-    handleColor: 'Alabaster Adventure'
-  });
-
   // Wishlist----------------------------------------------------------------
 
   const [category, setCategory] = useState([])
-  const [filteredProducts, setfilteredProducts] = useState([])
 
   useEffect(() => {
     const removeDuplicate = () => {
@@ -47,6 +38,7 @@ const ConfigureBike = () => {
 
   // ----------------------------------------------------------------Wishlist
 
+
   // Search------------------------------------------------------------------
   const [searchedProducts, setSearchedProducts] = useState([])
 
@@ -59,12 +51,26 @@ const ConfigureBike = () => {
 
   // ------------------------------------------------------------------Search
 
+
+  //input----------------------------------------------------------------------------------------------------------
+  const [value, setValue] = useState(1);
+
   const handleChange = (e) => {
     const newValue = parseInt(e.target.value, 10);
     if (!isNaN(newValue)) {
       setValue(newValue);
     }
   };
+  //----------------------------------------------------------------------------------------------------------input
+
+
+  //changin the color of image and filtering them------------------------------------------------------------------
+  const [filteredProducts, setfilteredProducts] = useState([])
+
+  const [filters, setFilters] = useState({
+    bicycleColor: 'Alabaster Adventure',
+    handleColor: 'Alabaster Adventure'
+  });
 
   const filteredBicycle = bicycles.filter(bicycle => {
     return (
@@ -72,8 +78,13 @@ const ConfigureBike = () => {
       (filters.handleColor === '' || bicycle.handle_color.split('-').join(' ') === filters.handleColor)
     );
   });
+  //------------------------------------------------------------------changin the color of image and filtering them
+
 
   //addtocart------------------------------------------------------------------
+  const [cookie] = useCookies(['cookie-user'])
+  const cart = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
   useEffect(() => {
     const fetchCartData = async () => {
       const { data } = await supabase.from('users').select()
@@ -81,6 +92,7 @@ const ConfigureBike = () => {
       if (user.cart) {
         dispatch(setCartToRedux(user.cart.cart))
         dispatch(setProductToRedux(user.cart.product))
+        dispatch(setWishlistToRedux(user.wishlist.wishlist))
       }
     }
     fetchCartData()
@@ -103,7 +115,7 @@ const ConfigureBike = () => {
   }
 
   useEffect(() => {
-    if (cart.cart && cart.product) {
+    if (cart.cart || cart.product) {
       if (cart.cart.length > 0 || cart.product.length > 0) {
         addCartToDB()
       }

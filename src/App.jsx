@@ -1,7 +1,7 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Home from './pages/Home'
-import './scss/style.scss'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import OurStory from './pages/OurStory'
@@ -11,11 +11,13 @@ import BecomePartner from './pages/BecomePartner'
 import ConfigureBike from './pages/ConfigureBike'
 import MyAccount from './pages/MyAccount'
 import Cart from './pages/Cart'
-import AOS from 'aos'
-import 'aos/dist/aos.css';
-import { useEffect } from 'react'
-import './i18n.js'
 import Details from './pages/Details.jsx'
+import Wishlist from './pages/Wishlist.jsx'
+import FAQ from './pages/FAQ.jsx'
+import AOS from 'aos'
+import './scss/style.scss'
+import 'aos/dist/aos.css';
+import './i18n.js'
 
 function App() {
   useEffect(() => {
@@ -38,7 +40,9 @@ function App() {
         <Route path='/configure-a-bike' element={<ConfigureBike />} />
         <Route path='/my-account' element={<MyAccount />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/wishlist' element={<Wishlist />} />
         <Route path="/details/:slug" element={<Details />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Footer />
     </BrowserRouter>

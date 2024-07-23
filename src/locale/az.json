@@ -7,7 +7,9 @@
             "becomePartner": "PARTNYORLUQ",
             "configureBike": "VELOSİPED SEÇİN",
             "myAccount": "HESABIM",
-            "cart": "SƏBƏT"
+            "cart": "SƏBƏT",
+            "wishlist": "İSTƏK",
+            "faq":"FAQ"
         },
         "home": {
             "header": {

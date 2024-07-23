@@ -1,32 +1,58 @@
 import React from 'react'
 import { useState } from 'react';
-import { addProductToCart } from '../toolkit/features/cartSlice';
+import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { addProductToCart } from '../toolkit/features/cartSlice';
+import { addToWishlist, removeFromWishlist, setWishlistToRedux } from '../toolkit/features/wishlistSlice';
 import slugify from 'slugify';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import supabase from '../config/connect';
 
 const ProductCard = ({ productState }) => {
-    const [heartedProducts, setHeartedProducts] = useState([]);
     const [cookie] = useCookies(['cookie-user'])
     const dispatch = useDispatch()
+    const wishlist = useSelector((state) => state.wishlist.wishlist)
+    const wishlistAll = useSelector((state) => state.wishlist)
 
-    const toggleHeart = (id) => {
-        if (heartedProducts.includes(id)) {
-            setHeartedProducts(heartedProducts.filter(productId => productId !== id));
+    const [wishlistModified, setWishlistModified] = useState(false);
+
+    const toggleHeart = async (product) => {
+        if (wishlist.some(item => item.id === product.id)) {
+            dispatch(removeFromWishlist(product.id));
         } else {
-            setHeartedProducts([...heartedProducts, id]);
+            dispatch(addToWishlist({ ...product, quantity: 1 }));
+        }
+        setWishlistModified(true); // Mark wishlist as modified
+    };
+
+    const checkUser = async (item, type) => {
+        if (cookie['cookie-user'] !== undefined) {
+            if (type === 'cart') {
+                dispatch(addProductToCart({ ...item, quantity: 1 }));
+            } else {
+                toggleHeart(item);
+            }
+        } else {
+            alert("You have to log in first");
         }
     };
 
-    const checkUser = async (item) => {
-        if (cookie['cookie-user'] !== undefined) {
-            dispatch(addProductToCart({ ...item }))
-        } else {
-            alert("you have to log in first")
-        }
+    const addWishlistToDB = async () => {
+        const { data } = await supabase.from('users').select()
+        const user = data.find(({ token }) => token === cookie['cookie-user'])
+        const { error } = await supabase.from('users').update({
+            wishlist: wishlistAll
+        }).eq('token', user.token)
     }
+
+    useEffect(() => {
+        if (wishlistModified || wishlist.length > 0) {
+            addWishlistToDB(wishlistAll);
+            setWishlistModified(false); // Reset the modified flag
+        }
+    }, [wishlistAll, wishlistModified]);
 
     return (
         <div key={productState.id} className="card-container">
@@ -39,11 +65,11 @@ const ProductCard = ({ productState }) => {
                     <span>€{productState.price}.00</span>
                 </div>
                 <div className="button-container">
-                    <button onClick={()=>{window.scrollTo(0, 0);}} className='details'><Link to={`/details/${slugify(productState.name.toLowerCase())}`}>DETAILS</Link></button>
-                    <button onClick={() => { checkUser(productState); }}>CART</button>
+                    <button onClick={() => { window.scrollTo(0, 0); }} className='details'><Link to={`/details/${slugify(productState.name.toLowerCase())}`}>DETAILS</Link></button>
+                    <button onClick={() => { checkUser(productState, 'cart'); }}>CART</button>
                 </div>
                 <div className='fav'>
-                    <i onClick={() => toggleHeart(productState.id)} className={`fa-${heartedProducts.includes(productState.id) ? 'solid' : "regular"} fa-heart`}></i>
+                    <i onClick={() => { checkUser(productState, 'wishlist'); console.log(wishlist); }} className={`fa-${wishlist.some(item => item.id === productState.id) ? 'solid' : "regular"} fa-heart`}></i>
                 </div>
             </div>
         </div>

@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import logo from '../images/logo-big.svg';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const [isLangActive, setIsLangActive] = useState(false);
     const [isHamActive, setIsHamActive] = useState(false);
     const [show, setShow] = useState(true);
+    const [cartIcon, setCartIcon] = useState(false)
     const [lastScrollY, setLastScrollY] = useState(0);
+    const cartQuantity = useSelector((state) => state.cart.cartQuantity)
+    const productQuantity = useSelector((state) => state.cart.productQuantity)
+    const wishlistQuantity = useSelector((state) => state.wishlist.wishlistTotalQuantity)
+    const cartTotalQuantity = cartQuantity + productQuantity
 
     const toggleLangBtn = () => setIsLangActive(!isLangActive);
     const toggleHamBtn = () => setIsHamActive(!isHamActive);
@@ -35,6 +41,10 @@ const Header = () => {
         changeLanguage(newLanguage);
         localStorage.setItem('lng', newLanguage);
     };
+
+    const toggleCart = () => {
+        setCartIcon(!cartIcon)
+    }
 
 
     return (
@@ -74,6 +84,15 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
+                                }} to={"/faq"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>{t(`header.faq`)}</span>
+                                    <span>{t(`header.faq`)}</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
                                 }} to={"/become-a-partner"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>{t(`header.becomePartner`)}</span>
                                     <span>{t(`header.becomePartner`)}</span>
@@ -104,6 +123,15 @@ const Header = () => {
                                 }} to={"/cart"} className={`${isHamActive ? 'active' : ''}`}>
                                     <span>{t(`header.cart`)}</span>
                                     <span>{t(`header.cart`)}</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    toggleHamBtn()
+                                }} to={"/wishlist"} className={`${isHamActive ? 'active' : ''}`}>
+                                    <span>{t(`header.wishlist`)}</span>
+                                    <span>{t(`header.wishlist`)}</span>
                                 </NavLink>
                             </li>
                         </ul>
@@ -148,6 +176,12 @@ const Header = () => {
                                         </NavLink>
                                     </li>
                                     <li>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/faq"}>
+                                            <span>{t(`header.faq`)}</span>
+                                            <span>{t(`header.faq`)}</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
                                         <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/configure-a-bike"}>
                                             <span>{t(`header.configureBike`)}</span>
                                             <span>{t(`header.configureBike`)}</span>
@@ -175,10 +209,42 @@ const Header = () => {
                                     <i className="fa-solid fa-user"></i>
                                     <i className="fa-solid fa-user"></i>
                                 </NavLink>
-                                <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/cart"} className="cart-icon">
-                                    <i className="fa-solid fa-cart-shopping"></i>
-                                    <i className="fa-solid fa-cart-shopping"></i>
-                                </NavLink>
+                                <div onClick={() => { toggleCart() }} className="cart-fav-container">
+                                    <div className='head-con'>
+                                        <div>
+                                            <i className="fa-solid fa-cart-shopping"></i>
+                                            <i className="fa-solid fa-heart"></i>
+                                        </div>
+                                        <div>
+                                            <i className="fa-solid fa-cart-shopping"></i>
+                                            <i className="fa-solid fa-heart"></i>
+                                        </div>
+                                    </div>
+                                    <div className={`body-con ${cartIcon ? 'active' : ''}`}>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/cart"} className="cart-icon">
+                                            <i className="fa-solid fa-cart-shopping"></i>
+                                            {cartTotalQuantity !== 0 ?
+                                                <div className="quantity">
+                                                    <span>{cartTotalQuantity}</span>
+                                                </div> :
+                                                ''}
+                                        </NavLink>
+                                        <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/wishlist"} className="cart-icon">
+                                            <i className="fa-solid fa-heart"></i>
+                                            {wishlistQuantity !== 0 ?
+                                                <div className="quantity">
+                                                    <span>{wishlistQuantity}</span>
+                                                </div> :
+                                                ''}
+
+                                        </NavLink>
+                                    </div>
+                                </div>
+                                {cartTotalQuantity !== 0 || wishlistQuantity !== 0 ?
+                                    <div className="quantity">
+                                        <span>{cartTotalQuantity + wishlistQuantity}</span>
+                                    </div> :
+                                    ''}
                             </div>
                         </div>
                     </nav>

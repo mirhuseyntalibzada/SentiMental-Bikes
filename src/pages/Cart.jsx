@@ -199,7 +199,7 @@ const Cart = () => {
                           <div className='text-container'>
                             <h5>{item.category === 'addon' ? 'Configure Addon' : 'Configure Part'}</h5>
                             <div className='category-name'>
-                              <h6>Part Name:</h6>
+                              <h6>{item.category==='addon'?'Addon':'Part'} Name:</h6>
                               <p>{item.name}</p>
                             </div>
                             <div className='category-name'>

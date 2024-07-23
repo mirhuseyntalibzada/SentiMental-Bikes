@@ -32,8 +32,8 @@ export const cartSlice = createSlice({
             } else {
                 state.product.push({ ...item, quantity: item.quantity })
             }
-            state.cartAmount += action.payload.price;
-            state.cartQuantity += 1;
+            state.cartAmount += item.price * item.quantity;
+            state.cartQuantity += item.quantity;
         },
         setCartToRedux: (state, action) => {
             const cart = action.payload;
