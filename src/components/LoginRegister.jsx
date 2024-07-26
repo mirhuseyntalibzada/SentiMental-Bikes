@@ -24,19 +24,23 @@ const LoginRegister = () => {
 
     const loginUser = async () => {
         const { data } = await supabase.from('users').select();
-        data.map(item => {
-            if ((item.username === (loginCredential.current.value).trim() || item.email === (loginCredential.current.value).trim()) && item.password === loginPassword.current.value) {
-                setErrorMessage('success');
-                setCookies('cookie-user', item.token)
-                window.location.reload()
+        const user = data.find(item =>
+            (item.username === (loginCredential.current.value) ||
+                item.email === (loginCredential.current.value)) &&
+            item.password === loginPassword.current.value
+        );
+        if (user) {
+            setErrorMessage('success');
+            setCookies('cookie-user', user.token)
+            window.location.reload()
+        } else {
+            if (loginCredential.current.value.includes("@")) {
+                setErrorMessage(`Error: The password you entered for the email ${loginCredential.current.value} is incorrect. Lost your password?`);
             } else {
-                if (loginCredential.current.value.slice(loginCredential.current.value.indexOf("@"), loginCredential.current.value.indexOf("@") + 1) === "@") {
-                    setErrorMessage(`Error: The password you entered for the email ${loginCredential.current.value} is incorrect. Lost your password?`);
-                } else {
-                    setErrorMessage(`Error: The password you entered for the username ${loginCredential.current.value} is incorrect. Lost your password?`);
-                }
+                setErrorMessage(`Error: The password you entered for the username ${loginCredential.current.value} is incorrect. Lost your password?`);
             }
-        })
+        }
+
     }
 
     const registerUser = async () => {
@@ -97,7 +101,7 @@ const LoginRegister = () => {
                                 <label className='input-label' htmlFor="">PASSWORD <span>*</span></label>
                                 <div className='password-container'>
                                     <input ref={loginPassword} type={`${visibilityLogin ? "text" : "password"}`} />
-                                    <div>
+                                    <div className='eye-btn-container'>
                                         <button className='eye-btn' onClick={(e) => {
                                             e.preventDefault()
                                             toggleVisibilityLogin()
@@ -140,7 +144,7 @@ const LoginRegister = () => {
                                 <label className='input-label' htmlFor="">PASSWORD <span>*</span></label>
                                 <div className='password-container'>
                                     <input className='password-input' ref={password} type={`${visibilityRegister ? "text" : "password"}`} />
-                                    <div>
+                                    <div className='eye-btn-container'>
                                         <button className='eye-btn' onClick={(e) => {
                                             e.preventDefault()
                                             toggleVisibilityRegister()

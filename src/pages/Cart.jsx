@@ -20,18 +20,6 @@ const Cart = () => {
   const productAmount = useSelector((state) => state.cart.productAmount)
   const productQuantity = useSelector((state) => state.cart.productQuantity)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await supabase.from('users').select();
-      const user = data.find(({ token }) => token === cookie['cookie-user']);
-      if (user) {
-        dispatch(setCartToRedux(user.cart.cart));
-        dispatch(setProductToRedux(user.cart.product));
-      }
-    };
-    fetchData();
-  }, [cookie, dispatch]);
-
   const updateCartInSupabase = async (updatedCart, updatedProduct) => {
     const { data } = await supabase.from('users').select();
     const user = data.find(({ token }) => token === cookie['cookie-user']);
@@ -123,7 +111,7 @@ const Cart = () => {
       <section id='cart'>
         <div className="container">
           <div className="text-container">
-            {!cart ? <h1>Cart</h1> : <h1>Checkout</h1>}
+            {(!cart && !product) || (cart.length === 0 && product.length === 0) ? <h1>Cart</h1> : <h1>Checkout</h1>}
           </div>
         </div>
       </section>

@@ -18,8 +18,32 @@ import AOS from 'aos'
 import './scss/style.scss'
 import 'aos/dist/aos.css';
 import './i18n.js'
+import { useDispatch } from 'react-redux'
+import { useCookies } from 'react-cookie'
+import supabase from './config/connect.js'
+import { setCartToRedux, setProductToRedux } from './toolkit/features/cartSlice.js'
+import { setWishlistToRedux } from './toolkit/features/wishlistSlice.js'
 
 function App() {
+  const [cookie] = useCookies(['cookie-user'])
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    const fetchCartData = async () => {
+      const { data } = await supabase.from('users').select()
+      const user = data.find(({ token }) => token === cookie['cookie-user'])
+      if (user.cart) {
+        dispatch(setCartToRedux(user.cart.cart))
+        dispatch(setProductToRedux(user.cart.product))
+      }
+      if (user.wishlist) {
+        dispatch(setWishlistToRedux(user.wishlist.wishlist))
+      }
+    }
+    fetchCartData()
+  }, [dispatch, cookie])
+
+
   useEffect(() => {
     AOS.init({
       duration: 700,

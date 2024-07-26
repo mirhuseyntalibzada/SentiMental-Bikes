@@ -57,7 +57,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/our-story"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/our-story"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.ourStory`)}</span>
                                     <span>{t(`header.ourStory`)}</span>
                                 </NavLink>
@@ -66,7 +66,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/dealership"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/dealership"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.dealerShip`)}</span>
                                     <span>{t(`header.dealerShip`)}</span>
                                 </NavLink>
@@ -75,7 +75,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/contact"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/contact"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.contact`)}</span>
                                     <span>{t(`header.contact`)}</span>
                                 </NavLink>
@@ -84,7 +84,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/faq"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/faq"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.faq`)}</span>
                                     <span>{t(`header.faq`)}</span>
                                 </NavLink>
@@ -93,7 +93,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/become-a-partner"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/become-a-partner"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.becomePartner`)}</span>
                                     <span>{t(`header.becomePartner`)}</span>
                                 </NavLink>
@@ -102,7 +102,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/configure-a-bike"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/configure-a-bike"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.configureBike`)}</span>
                                     <span>{t(`header.configureBike`)}</span>
                                 </NavLink>
@@ -111,7 +111,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/my-account"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/my-account"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.myAccount`)}</span>
                                     <span>{t(`header.myAccount`)}</span>
                                 </NavLink>
@@ -120,7 +120,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/cart"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/cart"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.cart`)}</span>
                                     <span>{t(`header.cart`)}</span>
                                 </NavLink>
@@ -129,7 +129,7 @@ const Header = () => {
                                 <NavLink onClick={() => {
                                     window.scrollTo(0, 0);
                                     toggleHamBtn()
-                                }} to={"/wishlist"} className={`${isHamActive ? 'active' : ''}`}>
+                                }} to={"/wishlist"} className={`${isHamActive ? 'open' : ''}`}>
                                     <span>{t(`header.wishlist`)}</span>
                                     <span>{t(`header.wishlist`)}</span>
                                 </NavLink>

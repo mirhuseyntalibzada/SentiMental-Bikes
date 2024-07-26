@@ -85,18 +85,6 @@ const ConfigureBike = () => {
   const [cookie] = useCookies(['cookie-user'])
   const cart = useSelector((state) => state.cart)
   const dispatch = useDispatch()
-  useEffect(() => {
-    const fetchCartData = async () => {
-      const { data } = await supabase.from('users').select()
-      const user = data.find(({ token }) => token === cookie['cookie-user'])
-      if (user.cart) {
-        dispatch(setCartToRedux(user.cart.cart))
-        dispatch(setProductToRedux(user.cart.product))
-        dispatch(setWishlistToRedux(user.wishlist.wishlist))
-      }
-    }
-    fetchCartData()
-  }, [dispatch, cookie])
 
   const checkUser = async () => {
     if (cookie['cookie-user'] !== undefined) {

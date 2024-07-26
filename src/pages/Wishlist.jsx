@@ -1,28 +1,95 @@
 import React from 'react'
 import supabase from '../config/connect'
+import icon from '../images/logo-btn-icon.svg'
 import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCartToRedux, setProductToRedux } from '../toolkit/features/cartSlice'
-import { setWishlistToRedux } from '../toolkit/features/wishlistSlice'
+import { addWishlistToProduct, setCartToRedux, setProductToRedux } from '../toolkit/features/cartSlice'
+import { addToWishlist, emptyWishlist, removeFromWishlist, setWishlistToRedux } from '../toolkit/features/wishlistSlice'
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 const Wishlist = () => {
   const wishlist = useSelector(state => state.wishlist.wishlist)
+  const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const [cookie] = useCookies(['cookie-user'])
 
-  useEffect(() => {
-    const fetchCartData = async () => {
-      const { data } = await supabase.from('users').select()
-      const user = data.find(({ token }) => token === cookie['cookie-user'])
-      if (user.cart) {
-        dispatch(setCartToRedux(user.cart.cart))
-        dispatch(setProductToRedux(user.cart.product))
-        dispatch(setWishlistToRedux(user.wishlist.wishlist))
+  const updateWishlistInSupabase = async (updatedWishlist) => {
+    const { data } = await supabase.from('users').select();
+    const user = data.find(({ token }) => token === cookie['cookie-user']);
+    if (user) {
+      const updatedWishlistData = {
+        wishlist: updatedWishlist,
+        wishlistTotalQuantity: updatedWishlist.reduce((total, item) => total + item.quantity, 0),
+        wishlistTotalAmount: updatedWishlist.reduce((total, item) => total + item.price * item.quantity, 0)
+      };
+      const { error } = await supabase.from('users').update({
+        wishlist: updatedWishlistData
+      }).eq('token', user.token);
+      if (error) {
+        console.error('Error updating wishlist:', error);
       }
     }
-    fetchCartData()
-  }, [dispatch, cookie])
+  };
+
+  const handleRemoveItem = async (itemId) => {
+    let updatedWishlist = [...wishlist];
+    updatedWishlist = updatedWishlist.filter(item => item.id !== itemId);
+    dispatch(removeFromWishlist(itemId));
+
+    await updateWishlistInSupabase(updatedWishlist);
+  };
+
+  const handleQuantityChange = (index, newQuantity) => {
+    const updatedWishlist = wishlist.map((item, i) => {
+      if (i === index) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    updateWishlistInSupabase(updatedWishlist);
+    dispatch(setWishlistToRedux(updatedWishlist));
+  };
+
+  const handleIncrement = (index) => {
+    const newQuantity = wishlist[index].quantity + 1;
+    handleQuantityChange(index, newQuantity);
+  };
+
+  const handleDecrement = (index) => {
+    const newQuantity = wishlist[index].quantity - 1;
+    handleQuantityChange(index, newQuantity);
+  };
+
+  const handleInputChange = (index, e) => {
+    const newQuantity = parseInt(e.target.value, 10);
+    if (!isNaN(newQuantity) && newQuantity > 0) {
+      handleQuantityChange(index, newQuantity);
+    }
+  };
+
+  const sendWishlistToCart = () => {
+    dispatch(addWishlistToProduct( wishlist ))
+    dispatch(emptyWishlist())
+  }
+
+  const addCartToDB = async () => {
+    const { data } = await supabase.from('users').select()
+    const user = data.find(({ token }) => token === cookie['cookie-user'])
+    const { error } = await supabase.from('users').update({
+      cart: cart
+    }).eq('token', user.token)
+  }
+
+  useEffect(() => {
+    if (cart.cart || cart.product) {
+      if (cart.cart.length > 0 || cart.product.length > 0) {
+        addCartToDB()
+      }
+    }
+  }, [cart])
+
   return (
     <>
       <section id='wishlist'>
@@ -42,7 +109,7 @@ const Wishlist = () => {
             {!wishlist || wishlist.length === 0 ?
               <div className='message-container'>
                 <div className="message">
-                  <span>Your cart is currently empty.</span>
+                  <span>Your wishlist is currently empty.</span>
                 </div>
                 <button className='return-to-shop'>
                   <NavLink to={"/configure-a-bike"} onClick={() => { window.scrollTo(0, 0) }}>
@@ -59,35 +126,20 @@ const Wishlist = () => {
                       </div>
                       <div className='text-container'>
                         <h5>Configure part</h5>
-                        <div className='category-name'>
-                          <h6>Frame Type</h6>
-                          <p>Noogat</p>
-                        </div>
-                        <div className='category-name'>
-                          <h6>Tyres</h6>
-                          <p>Standart</p>
-                        </div>
-                        <div className='category-name'>
-                          <h6>Bicycle color</h6>
-                          <p>{item.name}</p>
-                        </div>
-                        <div className='category-name'>
-                          <h6>Handle color</h6>
-                          <p>{item.name}</p>
-                        </div>
+
                         <div className='price-quantity-container'>
                           <div>
                             <h5>€{item.price * item.quantity}.00</h5>
                           </div>
                           <div className='quantity'>
-                            <a href="#!" className='minus' onClick={() => handleDecrement(i, 'cart')}>-</a>
+                            <a href="#!" className='minus' onClick={() => handleDecrement(i)}>-</a>
                             <input value={item.quantity} type="number" onChange={(e) => handleInputChange(i, e, 'cart')} />
-                            <a href="#!" className='plus' onClick={() => handleIncrement(i, 'cart')}>+</a>
+                            <a href="#!" className='plus' onClick={() => handleIncrement(i)}>+</a>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="delete" onClick={() => handleRemoveItem(item.id, 'cart')}>
+                    <div className="delete" onClick={() => handleRemoveItem(item.id)}>
                       <i className="fa-solid fa-x"></i>
                     </div>
                   </div>
@@ -95,6 +147,12 @@ const Wishlist = () => {
               </div>
             }
           </>
+          {!wishlist || wishlist.length === 0 ?
+          ''
+          :<button onClick={() => { sendWishlistToCart() }} className='add-to-cart'>
+          <img src={icon} alt="" />
+          <span>ADD TO CART</span>
+        </button>}
         </div>
       </section >
     </>

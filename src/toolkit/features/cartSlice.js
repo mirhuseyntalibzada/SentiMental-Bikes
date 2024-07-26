@@ -66,10 +66,23 @@ export const cartSlice = createSlice({
                 state.productQuantity -= item.quantity;
                 state.product.splice(itemIndex, 1);
             }
+        },
+        addWishlistToProduct: (state, action) => {
+            const wishlist = action.payload;
+            wishlist.forEach(item => {
+                const productItem = state.product.find(item => item.id === item.id);
+                if (productItem) {
+                    productItem.quantity += item.quantity;
+                } else {
+                    state.product.push({ ...item, quantity: item.quantity });
+                }
+                state.productAmount += item.price * item.quantity;
+                state.productQuantity += item.quantity;
+            });
         }
     }
 });
 
-export const { addToCart, setCartToRedux, removeFromCart, addProductToCart, setProductToRedux, removeFromProduct } = cartSlice.actions;
+export const { addToCart, setCartToRedux, removeFromCart, addProductToCart, setProductToRedux, removeFromProduct, addWishlistToProduct } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -36,10 +36,13 @@ export const wishlistSlice = createSlice({
                 state.wishlistTotalAmount -= item.quantity * item.price
                 state.wishlist.splice(itemIndex, 1)
             }
+        },
+        emptyWishlist: (state) => {
+            state.wishlist = []
         }
     }
 })
 
-export const { addToWishlist, setWishlistToRedux, removeFromWishlist } = wishlistSlice.actions;
+export const { addToWishlist, setWishlistToRedux, removeFromWishlist, emptyWishlist } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer

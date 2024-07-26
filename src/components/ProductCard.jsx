@@ -24,7 +24,7 @@ const ProductCard = ({ productState }) => {
         } else {
             dispatch(addToWishlist({ ...product, quantity: 1 }));
         }
-        setWishlistModified(true); // Mark wishlist as modified
+        setWishlistModified(true);
     };
 
     const checkUser = async (item, type) => {
@@ -50,7 +50,7 @@ const ProductCard = ({ productState }) => {
     useEffect(() => {
         if (wishlistModified || wishlist.length > 0) {
             addWishlistToDB(wishlistAll);
-            setWishlistModified(false); // Reset the modified flag
+            setWishlistModified(false); 
         }
     }, [wishlistAll, wishlistModified]);
 
