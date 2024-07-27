@@ -27,17 +27,19 @@ import { setWishlistToRedux } from './toolkit/features/wishlistSlice.js'
 function App() {
   const [cookie] = useCookies(['cookie-user'])
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     const fetchCartData = async () => {
-      const { data } = await supabase.from('users').select()
-      const user = data.find(({ token }) => token === cookie['cookie-user'])
-      if (user.cart) {
-        dispatch(setCartToRedux(user.cart.cart))
-        dispatch(setProductToRedux(user.cart.product))
-      }
-      if (user.wishlist) {
-        dispatch(setWishlistToRedux(user.wishlist.wishlist))
+      if (cookie['cookie-user']) {
+        const { data } = await supabase.from('users').select()
+        const user = data.find(({ token }) => token === cookie['cookie-user'])
+        if (user.cart) {
+          dispatch(setCartToRedux(user.cart.cart))
+          dispatch(setProductToRedux(user.cart.product))
+        }
+        if (user.wishlist) {
+          dispatch(setWishlistToRedux(user.wishlist.wishlist))
+        }
       }
     }
     fetchCartData()

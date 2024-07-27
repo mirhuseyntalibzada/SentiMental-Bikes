@@ -18,8 +18,87 @@
 
 #wishlist-section {
     .container {
-        h1 {
-            font-weight: 600;
+        .accordion-container {
+            .accordion {
+                border-bottom: 1px solid rgb(168, 168, 168);
+
+                .accordion-header {
+                    padding: 1em 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    h1 {
+                        font-size: 1.3em;
+                        font-weight: 600;
+                        margin: 0;
+                        width: 90%;
+                    }
+
+                    .angle-down {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        height: 1em;
+                        width: 1em;
+                        background-color: black;
+
+                        i {
+                            transition: .5s;
+                            color: white;
+                            font-size: .5em;
+                        }
+                    }
+                }
+
+                .accordion-header.active {
+                    .angle-down {
+                        i {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+
+                .accordion-body {
+                    overflow: hidden;
+                    padding-bottom: 0em;
+                    height: 0;
+                    transition: height 0.5s ease-in-out;
+
+                    p {
+                        font-size: .65em;
+                        margin: 0;
+                    }
+
+                    ul {
+                        list-style-type: disc;
+                        padding: 0 0 0 .8em;
+                        margin: 0;
+
+                        li {
+                            font-size: .65em;
+                            padding: 0;
+                        }
+
+                    }
+                }
+
+                .accordion-body.active {
+                    padding-bottom: 1em;
+                    height: 4em;
+
+                    ul {
+                        margin-top: .5em;
+                    }
+                }
+            }
+
+            .accordion:nth-child(7) {
+                .accordion-body.active {
+                    height: 5em;
+                }
+            }
         }
     }
 }
@@ -43,5 +122,71 @@
             padding: 0 2em;
         }
 
+    }
+
+    #wishlist-section {
+        .container {
+            .accordion-container {
+                .accordion {
+                    border-bottom: 1px solid rgb(168, 168, 168);
+
+                    .accordion-header {
+                        padding: .25em 0;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        h1 {
+                            font-size: .45em
+                        }
+
+                        .angle-down {
+                            height: .4em;
+                            width: .4em;
+
+                            i {
+                                font-size: .2em;
+                            }
+                        }
+                    }
+
+                    .accordion-body {
+                        p {
+                            font-size: .25em;
+                        }
+
+                        ul {
+                            padding:  0 0 0 .35em;
+                            li {
+                                font-size: .25em;
+                                padding-bottom: 1em;
+                            }
+
+                        }
+                    }
+
+                    .accordion-body.active {
+                        padding-bottom: .25em;
+                        height: 1em;
+
+                        ul {
+                            margin-top: .25em;
+                        }
+                    }
+                }
+
+                .accordion:nth-child(7) {
+                    .accordion-body.active {
+                        height: 3em;
+                    }
+                }
+
+                .accordion:nth-child(14) {
+                    .accordion-body.active {
+                        height: 2.5em;
+                    }
+                }
+            }
+        }
     }
 }
