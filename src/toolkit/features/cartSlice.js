@@ -69,15 +69,15 @@ export const cartSlice = createSlice({
         },
         addWishlistToProduct: (state, action) => {
             const wishlist = action.payload;
-            wishlist.forEach(item => {
-                const productItem = state.product.find(item => item.id === item.id);
+            wishlist.forEach(wishlistItem => {
+                const productItem = state.product.find(product => product.id === wishlistItem.id);
                 if (productItem) {
-                    productItem.quantity += item.quantity;
+                    productItem.quantity += wishlistItem.quantity;
                 } else {
-                    state.product.push({ ...item, quantity: item.quantity });
+                    state.product.push({ ...wishlistItem, quantity: wishlistItem.quantity });
                 }
-                state.productAmount += item.price * item.quantity;
-                state.productQuantity += item.quantity;
+                state.productAmount += wishlistItem.price * wishlistItem.quantity;
+                state.productQuantity += wishlistItem.quantity;
             });
         }
     }

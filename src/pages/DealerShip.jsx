@@ -5,12 +5,15 @@ import icon from '../images/connection-btn-icon.svg'
 import supabase from '../config/connect';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { ModeContext } from '../context/ModeContext';
 
 const DealerShip = () => {
 
   const [active, setActive] = useState('all')
   const [dealership, setDealership] = useState([])
   const [filteredData, setFilteredData] = useState(dealership)
+  const [mode] = useContext(ModeContext)
 
   useEffect(() => {
     fetchData()
@@ -32,7 +35,7 @@ const DealerShip = () => {
 
   return (
     <>
-      <section id='dealership-text-section'>
+      <section className={`dealership-text-section ${mode==='dark'?'dark':''}`} id='dealership-text-section'>
         <div className="container">
           <div className="text-container">
             <h1>
@@ -50,7 +53,7 @@ const DealerShip = () => {
           </div>
         </div>
       </section>
-      <section id='dealerships'>
+      <section className={`dealerships ${mode==='dark'?'dark':''}`} id='dealerships'>
         <div className="category-container">
           <div className="container">
             <ul>
@@ -132,7 +135,7 @@ const DealerShip = () => {
        #itsrideoclock community.`,
         button: `BECOME A PARTNER`,
         path: `/become-a-partner`
-      }} style={{ backgroundColor: "rgb(233, 233, 230)" }} />
+      }} style={mode==='dark'?{ backgroundColor: "rgb(22, 22, 25)" }:{ backgroundColor: "rgb(233, 233, 230)" }} />
     </>
   )
 }

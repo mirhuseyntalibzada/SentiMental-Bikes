@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addProductToCart } from '../toolkit/features/cartSlice';
-import { addToWishlist, removeFromWishlist, setWishlistToRedux } from '../toolkit/features/wishlistSlice';
+import { addToWishlist, removeFromWishlist } from '../toolkit/features/wishlistSlice';
 import slugify from 'slugify';
 import { useEffect } from 'react';
 import supabase from '../config/connect';
@@ -58,10 +58,10 @@ const ProductCard = ({ productState }) => {
         <div key={productState.id} className="card-container">
             <div className="content">
                 <div className="img-container">
-                    <img src={`src${productState.img[0]}`} alt="" />
+                    <img src={`${productState.img[0]}`} alt="" />
                 </div>
                 <div className="info-container">
-                    <h6>{productState.name}</h6>
+                    <h6>{productState.name.toUpperCase()}</h6>
                     <span>€{productState.price}.00</span>
                 </div>
                 <div className="button-container">

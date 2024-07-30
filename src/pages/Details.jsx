@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { products } from '../data/products'
 import slugify from 'slugify'
 import icon from '../images/logo-btn-icon.svg'
 import { useState } from 'react'
@@ -10,8 +9,26 @@ import { useCookies } from 'react-cookie'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import supabase from '../config/connect'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const Details = () => {
+    const [loading, setLoading] = useState(true);
+    const [imageLoading, setImageLoading] = useState(true);
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        async function fetchProducts() {
+            let { data, error } = await supabase
+                .from('products')
+                .select('*');
+            if (error) console.error('Error fetching products:', error);
+            else setProducts(data);
+            setLoading(false);
+        }
+        fetchProducts();
+    }, []);
+
 
     //Details----------------------------------------------------------------------------------------------
     const { slug } = useParams()
@@ -22,7 +39,10 @@ const Details = () => {
     //changeImage------------------------------------------------------------------------------------------
     const [colorIndex, setColorIndex] = useState(0)
     const changeColor = (id) => {
-        setColorIndex(id);
+        if (colorIndex !== id) {
+            setImageLoading(true);
+            setColorIndex(id);
+        }
     }
     //------------------------------------------------------------------------------------------changeImage
 
@@ -81,8 +101,14 @@ const Details = () => {
     }, [cart])
     //------------------------------------------------------------------------------------addProductsToCart
 
+    const [mode] = useContext(ModeContext)
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <section id='details'>
+        <section className={`details-section ${mode==='dark'?'dark':''}`} id='details'>
             <div className="details">
                 <div className="container">
                     <div className="heading">
@@ -91,10 +117,22 @@ const Details = () => {
                     </div>
                     <div className="img-content-container">
                         <div className="img-container">
+                            {imageLoading && <div className="loading">Loading Image...</div>}
                             {productDetail.type === 'customizable' ?
-                                <img src={`/src${productDetail.img[colorIndex]}`} alt="" />
+                                <img
+                                    src={`${productDetail.img[colorIndex]}`}
+                                    alt=""
+                                    onLoad={() => setImageLoading(false)} // Set image loading to false when image loads
+                                    style={{ display: imageLoading ? 'none' : 'block' }}
+                                />
                                 :
-                                <img src={`/src${productDetail.img[0]}`} alt="" />}
+                                <img
+                                    src={`${productDetail.img[0]}`}
+                                    alt=""
+                                    onLoad={() => setImageLoading(false)} // Set image loading to false when image loads
+                                    style={{ display: imageLoading ? 'none' : 'block' }}
+                                />
+                            }
                         </div>
                         <div className='features'>
                             {productDetail.type === 'customizable' ?

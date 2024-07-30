@@ -3,6 +3,8 @@ import logo from '../images/logo-big.svg';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useContext } from 'react';
+import { ModeContext } from '../context/ModeContext';
 
 const Header = () => {
     const [isLangActive, setIsLangActive] = useState(false);
@@ -46,6 +48,17 @@ const Header = () => {
         setCartIcon(!cartIcon)
     }
 
+    const [mode, setMode] = useContext(ModeContext)
+
+    const toggleMode = () => {
+        if (mode === 'light') {
+            setMode('dark')
+            localStorage.setItem('mode', 'dark')
+        } else {
+            setMode('light')
+            localStorage.setItem('mode', 'light')
+        }
+    }
 
     return (
         <>
@@ -138,7 +151,7 @@ const Header = () => {
                     </nav>
                 </div>
             </div>
-            <section className={`navbar ${show || 'hidden'}`} id='header'>
+            <section className={`navbar ${(show || 'hidden')} ${mode==='dark'?'dark':''}`} id='header'>
                 <div className={`background ${isHamActive ? 'active' : ''}`}></div>
                 <div className="container">
                     <nav>
@@ -191,12 +204,14 @@ const Header = () => {
                             </div>
                             <div onClick={toggleLangBtn} className="lang-icon-container">
                                 <div className="lang-icon">
-                                    <i className="fa-solid fa-globe" />
-                                    <i className="fa-solid fa-globe" />
+                                    <i className="fa-solid fa-gear"></i>
+                                    <i className="fa-solid fa-gear"></i>
                                 </div>
                                 <div onClick={e => { e.stopPropagation() }} className={`options-container ${isLangActive ? 'active' : ''}`}>
                                     <span onClick={() => { setLanguage('en'); toggleLangBtn() }}>EN</span>
                                     <span onClick={() => { setLanguage('az'); toggleLangBtn() }}>AZ</span>
+                                    {mode==="light"?<i onClick={()=>toggleMode()} style={{ fontSize: ".2em", padding: ".3em 0" }} className="fa-solid fa-moon"></i>:
+                                    <i onClick={()=>toggleMode()} style={{ fontSize: ".2em", padding: ".3em 0" }} className="fa-regular fa-sun"></i>}
                                 </div>
                             </div>
                             <div onClick={toggleHamBtn} className={`hamburger-menu-container ${isHamActive ? 'active' : ''}`}>

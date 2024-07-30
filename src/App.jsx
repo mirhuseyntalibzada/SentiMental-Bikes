@@ -23,6 +23,7 @@ import { useCookies } from 'react-cookie'
 import supabase from './config/connect.js'
 import { setCartToRedux, setProductToRedux } from './toolkit/features/cartSlice.js'
 import { setWishlistToRedux } from './toolkit/features/wishlistSlice.js'
+import { useSelector } from 'react-redux'
 
 function App() {
   const [cookie] = useCookies(['cookie-user'])

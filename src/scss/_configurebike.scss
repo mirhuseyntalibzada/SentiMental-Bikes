@@ -1,3 +1,17 @@
+.configure-section.dark {
+    background-color: rgb(22, 22, 25) !important;
+    .configure {
+        background-color: rgb(32,32,35) !important;
+        color: white !important;
+        input{
+            color: white !important;
+        }
+        a{
+            color: white !important;
+        }
+    }
+}
+
 #configure {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
@@ -201,6 +215,17 @@
                 }
             }
         }
+    }
+}
+
+.addons.dark {
+    background-color: rgb(32,32,35) !important;
+    color: white !important;
+    .box-container {
+        background-color: rgb(32, 32, 35) !important;
+    }
+    .box {
+        background-color: rgb(22, 22, 25) !important;
     }
 }
 

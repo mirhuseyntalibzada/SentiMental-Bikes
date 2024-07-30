@@ -5,7 +5,11 @@ import icon from '../images/connection-btn-icon.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { ModeContext } from '../context/ModeContext';
 const BecomePartnerComp = ({ style, data: { h1, p, button, path } }) => {
+
+    const [mode] = useContext(ModeContext)
 
     useEffect(() => {
         AOS.init({
@@ -17,7 +21,7 @@ const BecomePartnerComp = ({ style, data: { h1, p, button, path } }) => {
     }, [])
 
     return (
-        <section style={{ backgroundColor: style.backgroundColor }} id='become-a-partner-component'>
+        <section className={`become-a-partner-component ${mode==='dark'?'dark':''}`} style={{ backgroundColor: style.backgroundColor }} id='become-a-partner-component'>
             <div className="img-container">
                 <img src={img} alt="" />
                 <div className="box-container"></div>

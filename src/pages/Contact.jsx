@@ -2,8 +2,12 @@ import React from 'react'
 import BecomePartnerComp from '../components/BecomePartnerComp';
 import 'aos/dist/aos.css';
 import Form from '../components/Form';
+import { useContext } from 'react';
+import { ModeContext } from '../context/ModeContext';
 
 const Contact = () => {
+  const [mode] = useContext(ModeContext)
+
   return (
     <>
       <Form data={{
@@ -20,7 +24,7 @@ const Contact = () => {
        #itsrideoclock community.`,
         button: `BECOME A PARTNER`,
         path: `/become-a-partner`
-      }} style={{ backgroundColor: "rgb(205, 205, 199)" }} />
+      }} style={mode==='dark'?{ backgroundColor: "rgb(22,22,25)" }:{ backgroundColor: "rgb(205, 205, 199)" }} />
     </>
   )
 }

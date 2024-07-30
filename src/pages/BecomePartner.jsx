@@ -1,8 +1,11 @@
 import React from 'react'
 import Form from '../components/Form'
 import BecomePartnerComp from '../components/BecomePartnerComp'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const BecomePartner = () => {
+  const [mode] = useContext(ModeContext)
   return (
     <>
       <Form data={{
@@ -19,7 +22,7 @@ const BecomePartner = () => {
         Just drop us a line and we'll get back to you ASAP!`,
         button:`CONTACT US`,
         path: `/contact`
-      }} style={{ backgroundColor: "rgb(205, 205, 199)" }} />
+      }} style={mode==='dark'?{ backgroundColor: "rgb(22,22,25)" }:{ backgroundColor: "rgb(205, 205, 199)" }} />
     </>
   )
 }

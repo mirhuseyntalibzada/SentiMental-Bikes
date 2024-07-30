@@ -1,28 +1,17 @@
 import React from 'react'
-import { useEffect, useState, useRef } from 'react'
-import { useCookies } from 'react-cookie'
-import supabase from '../config/connect'
+import { useState } from 'react'
 import { countries } from '../data/countries'
+import { useSelector } from 'react-redux'
 
 const BillingAddress = () => {
-    const [items, setItems] = useState({})
-    const [amount, setAmount] = useState(0)
-    const [quantity, setQuantity] = useState(0)
-    const [cookie] = useCookies(['cookie-user'])
     const [activeBtn, setActiveBtn] = useState(false)
     const [activeCountry, setActiveCountry] = useState('Azerbaijan')
     const [filteredCountries, setFilteredCountries] = useState()
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await supabase.from('users').select()
-            const user = data.find(({ token }) => token === cookie['cookie-user'])
-            setItems(user.cart.cart);
-            setAmount(user.cart.cartTotalAmount);
-            setQuantity(user.cart.cartTotalQuantity);
-        }
-        fetchData()
-    }, [])
+    const cartAmount = useSelector((state) => state.cart.cartAmount)
+    const cartQuantity = useSelector((state) => state.cart.cartQuantity)
+    const productAmount = useSelector((state) => state.cart.productAmount)
+    const productQuantity = useSelector((state) => state.cart.productQuantity)
 
     const toggleBtn = () => {
         setActiveBtn(!activeBtn)
@@ -118,15 +107,15 @@ const BillingAddress = () => {
                 <div className="amount-container">
                     <div className='amount-info'>
                         <h1>Subtotal:</h1>
-                        <span>€{amount}.00</span>
+                        <span>€{cartAmount + productAmount}.00</span>
                     </div>
                     <div className='amount-info'>
                         <h1>Shipping:</h1>
-                        <span>€{50 * quantity}.00</span>
+                        <span>€{(50 * cartQuantity + (10 * productQuantity))}.00</span>
                     </div>
                     <div className='amount-info'>
                         <h1>Total:</h1>
-                        <span>€{amount + (50 * quantity)}.00</span>
+                        <span>€{productAmount + cartAmount + (50 * cartQuantity) + (10 * productQuantity)}.00</span>
                     </div>
                 </div>
                 <div className='payment'>

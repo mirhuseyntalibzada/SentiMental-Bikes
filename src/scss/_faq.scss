@@ -1,3 +1,8 @@
+.faq.dark {
+    background-color: rgb(22,22,25) !important;
+    color: white !important;
+}
+
 #faq {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
@@ -13,6 +18,18 @@
 
     .container {
         padding: 0 .5em;
+    }
+}
+
+.wishlist-section.dark {
+    background-color: rgb(22,22,25) !important;
+    color: white !important;
+
+    .box-container {
+        background-color: rgb(22,22,25) !important;
+        .white-box {
+            background-color: rgb(22,22,25) !important;
+        }
     }
 }
 

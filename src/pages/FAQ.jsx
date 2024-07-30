@@ -1,9 +1,12 @@
 import React from 'react'
 import accordionFAQ from '../data/accordionFAQ'
 import { useState } from 'react';
+import { useContext } from 'react';
+import { ModeContext } from '../context/ModeContext'
 
 const FAQ = () => {
   const [openSections, setOpenSections] = useState({});
+  const [mode] = useContext(ModeContext)
 
   const toggleAccordion = (section) => {
     setOpenSections((prev) => ({
@@ -12,18 +15,16 @@ const FAQ = () => {
     }));
   };
 
-  console.log(accordionFAQ);
-
   return (
     <>
-      <section id='faq'>
+      <section className={`faq ${mode==='dark'?'dark':''}`} id='faq'>
         <div className="container">
           <div className="text-container">
             <h1>FAQ</h1>
           </div>
         </div>
       </section>
-      <section id='wishlist-section'>
+      <section className={`wishlist-section ${mode==='dark'?'dark':''}`} id='wishlist-section'>
         <div className="box-container">
           <div className="green-box"></div>
           <div className="white-box"></div>
@@ -46,8 +47,8 @@ const FAQ = () => {
                     <>
                       <p>{item.answer}</p>
                       <ul>
-                        {item.list.map(liItem => (
-                          <li>{liItem}</li>
+                        {item.list.map((liItem, i) => (
+                          <li key={i}>{liItem}</li>
                         ))}
                       </ul>
                     </>

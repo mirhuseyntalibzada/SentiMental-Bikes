@@ -1,3 +1,8 @@
+.form-section.dark {
+    background-color: rgb(22, 22, 25) !important;
+    color: white !important;
+}
+
 #form-section {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
@@ -266,8 +271,9 @@
                         .icon-container {
                             column-gap: .2em;
 
-                            .icon{
+                            .icon {
                                 display: flex;
+
                                 i {
                                     font-size: .2em;
                                 }

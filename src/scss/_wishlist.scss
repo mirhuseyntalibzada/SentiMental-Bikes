@@ -1,3 +1,8 @@
+.wishlist.dark {
+    background-color: rgb(22,22,25) !important;
+    color: white !important;
+}
+
 #wishlist {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
@@ -13,6 +18,22 @@
 
     .container {
         padding: 0 .5em;
+    }
+}
+
+.wishlist-section.dark {
+    background-color: rgb(32,32,35) !important;
+    .box-container{
+        background-color: rgb(22,22,25) !important;
+        .white-box {
+            background-color: rgb(32,32,35) !important;
+        }
+    }
+    input{
+        color: white !important;
+    }
+    a{
+        color: white !important;
     }
 }
 
@@ -228,6 +249,32 @@
                 }
             }
         }
+        .add-to-cart {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1em 0;
+
+            button {
+                cursor: pointer;
+                margin: 0;
+                padding: 2em 3em 2em 6em;
+                position: relative;
+                border: none;
+                border-radius: 3em;
+                background-color: rgb(13, 13, 13);
+                color: white;
+                font-weight: 600;
+                font-size: .5em;
+
+                img {
+                    width: 4em;
+                    left: .5em;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    position: absolute;
+                }
+            }
+        }
     }
 }
 
@@ -381,6 +428,20 @@
                             font-size: .15em;
                             padding: .8em .7em;
                         }
+                    }
+                }
+            }
+
+            .add-to-cart {
+                gap: .5em;
+                padding: .4em 0;
+
+                button {
+                    padding: 1.5em 2em 1.5em 5em;
+                    font-size: .15em;
+
+                    img {
+                        width: 3em;
                     }
                 }
             }

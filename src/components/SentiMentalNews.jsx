@@ -2,9 +2,12 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import supabase from '../config/connect'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const SentiMentalNews = () => {
     const [news, setNews] = useState([])
+const [mode] = useContext(ModeContext)
 
     useEffect(() => {
         fetchData()
@@ -16,7 +19,7 @@ const SentiMentalNews = () => {
     }
     return (
         <>
-            <section id='sentimental-news-story'>
+            <section className={`sentimental-news-story ${mode==='dark'?'dark':''}`} id='sentimental-news-story'>
                 <div className="container">
                     <div className="h1-container">
                         <h1 data-aos="fade-up" className='hero-h1'>SentiMental in the Spotlight</h1>

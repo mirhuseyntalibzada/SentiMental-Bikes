@@ -1,3 +1,20 @@
+.details-section.dark {
+    background-color: rgb(22,22,25) !important;
+    .details {
+        background-color: rgb(32,32,35) !important;
+        color: white !important;
+    }
+    .options {
+        color: black !important;
+    }
+    input {
+        color: white !important;
+    }
+    a{
+        color: white !important;
+    }
+}
+
 #details {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;

@@ -1,8 +1,11 @@
 import React from 'react'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const Form = ({ data }) => {
+    const [mode] = useContext(ModeContext)
     return (
-        <section id='form-section'>
+        <section className={`form-section ${mode}`} id='form-section'>
             <div className="container">
                 <div className='hero-container'>
                     <h1>{data.h1}</h1>

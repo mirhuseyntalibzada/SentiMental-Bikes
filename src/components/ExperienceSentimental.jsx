@@ -1,10 +1,15 @@
 import React from 'react'
 import zagreb from "../images/zagreb-design-week-sentimental-bikes-1.webp"
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const ExperienceSentimental = () => {
+
+    const [mode] = useContext(ModeContext)
+
     return (
         <>
-            <section id='experience'>
+            <section className={`experience ${mode==='dark'?'dark':''}`} id='experience'>
                 <div className='container'>
                     <div className="text-container">
                         <h1><div><span data-aos="fade-up">Experience</span></div>

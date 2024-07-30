@@ -1,3 +1,19 @@
+.account-section.dark {
+    .box-container {
+        background-color: rgb(22, 22, 25) !important;
+        .white-box {
+            background-color: rgb(32,32,35) !important;
+        }
+    }
+    .container {
+        background-color: rgb(32,32,35) !important;
+        color: white !important;
+        a{
+            color: white !important;
+        }
+    }
+}
+
 #account-section {
     padding: 0;
 
@@ -78,9 +94,110 @@
                     margin-bottom: 2em;
                 }
             }
+
+            .details-text-container {
+                .input-container {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 1.2em;
+
+                    label {
+                        font-weight: 600;
+                        font-size: .6em;
+                        margin-bottom: .25em;
+                    }
+
+                    input {
+                        width: 100%;
+                        box-sizing: border-box;
+                        border: none;
+                        height: 3.3em;
+                        padding: 1em;
+                    }
+
+                    span {
+                        font-size: .55em;
+                        font-style: italic;
+                    }
+
+                    input:focus {
+                        outline: none;
+                    }
+
+                    .password-container {
+                        position: relative;
+
+                        .eye-btn-container {
+                            display: flex;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: .6em;
+
+                            button {
+                                background-color: transparent;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+
+                h1 {
+                    font-size: 1em;
+                }
+
+                .btn-container {
+                    margin-bottom: 2em;
+
+                    button {
+                        background-color: black;
+                        color: white;
+                        border: none;
+                        padding: 1em 1.5em;
+                        border-radius: 4em;
+                        font-size: .6em;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .vat-text-container {
+                flex-direction: column;
+                .input-container {
+                    margin-bottom: .5em;
+                    label {
+                        font-weight: 600;
+                        font-size: .6em;
+                    }
+
+                    input {
+                        margin-top: .5em;
+                        width: 100%;
+                        box-sizing: border-box;
+                        border: none;
+                        height: 3.3em;
+                        padding: 1em;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+
+                }
+                button {
+                    background-color: black;
+                    color: white;
+                    border: none;
+                    padding: 1em 1.5em;
+                    border-radius: 4em;
+                    font-size: .6em;
+                    font-weight: 600;
+                    margin-bottom: 2em;
+                }
+            }
         }
     }
 }
+
 
 @media screen and (min-width:767px) {
     #account-section {
@@ -168,10 +285,12 @@
                         .div-container {
                             display: flex;
                             gap: 1em;
-                            div{
+
+                            div {
                                 display: flex;
                                 flex-direction: column;
                             }
+
                             h1 {
                                 font-size: .4em;
                                 font-weight: 600;
@@ -187,6 +306,90 @@
 
                             div:nth-child(3) {
                                 margin-bottom: 0em;
+                            }
+                        }
+                    }
+
+                    .details-text-container {
+                        .input-container {
+                            display: flex;
+                            flex-direction: column;
+                            margin-bottom: .4em;
+
+                            label {
+                                font-weight: 600;
+                                font-size: .2em;
+                                margin-bottom: .25em;
+                            }
+
+                            input {
+                                height: 0em;
+                                padding: 1.8em 1em;
+                                font-size: .17em;
+                            }
+
+                            span {
+                                font-size: .2em;
+                            }
+
+                            .password-container {
+                                position: relative;
+                                display: flex;
+
+                                .eye-btn-container {
+                                    right: .3em;
+                                }
+                            }
+                        }
+
+                        h1 {
+                            font-size: .3em;
+                        }
+
+                        .btn-container {
+                            margin-bottom: 0em;
+                            display: flex;
+
+                            button {
+                                background-color: black;
+                                color: white;
+                                border: none;
+                                padding: 1em 1.5em;
+                                border-radius: 4em;
+                                font-size: .15em;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    .vat-text-container {
+                        .input-container{
+                            display: flex;
+                            flex-direction: column;
+                            label {
+                                font-weight: 600;
+                                font-size: .2em;
+                                margin-bottom: .25em;
+                            }
+
+                            input {
+                                height: 0em;
+                                padding: 1.8em 1em;
+                                font-size: .17em;
+                            }
+                        }
+
+                        .btn-container{
+                            display: flex;
+                            button {
+                                background-color: black;
+                                color: white;
+                                border: none;
+                                padding: 1em 1.5em;
+                                border-radius: 4em;
+                                font-size: .15em;
+                                font-weight: 600;
+                                margin: 0;
                             }
                         }
                     }

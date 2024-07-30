@@ -1,3 +1,14 @@
+.who-are-we.dark {
+    background-color: rgb(22,22,25) !important;
+    .our-story-container {
+        background-color: rgb(32, 32, 35) !important;
+        color: white;
+        .text-content {
+            color: black;
+        }
+    }
+}
+
 #who-are-we {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
@@ -76,6 +87,11 @@
             }
         }
     }
+}
+
+.our-story.dark {
+    background-color: rgb(22,22,25) !important;
+    color: white;
 }
 
 #our-story {
@@ -197,6 +213,13 @@
                 }
             }
         }
+    }
+}
+
+.box-container.dark {
+    background-color: rgb(22,22,25) !important;
+    .white-box {
+        background-color: rgb(22,22,25) !important;
     }
 }
 
@@ -324,9 +347,9 @@
     }
 }
 
-
-
-
+.feeling-sentimental-story.dark {
+    background-color: rgb(22,22,25) !important;
+}
 
 #feeling-sentimental-story {
     background-color: rgb(233, 233, 230);
@@ -408,6 +431,10 @@
         border-top-left-radius: 1em;
         border-top-right-radius: 1em;
     }
+}
+
+.ride-the-wave.dark {
+    background-color: rgb(22,22,25) !important;
 }
 
 #ride-the-wave {

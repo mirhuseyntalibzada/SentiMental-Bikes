@@ -39,6 +39,8 @@ export const wishlistSlice = createSlice({
         },
         emptyWishlist: (state) => {
             state.wishlist = []
+            state.wishlistTotalAmount = 0
+            state.wishlistTotalQuantity = 0
         }
     }
 })

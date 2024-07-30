@@ -7,6 +7,8 @@ import BillingAddress from '../components/BillingAddress'
 import { removeFromCart, removeFromProduct, setCartToRedux, setProductToRedux } from '../toolkit/features/cartSlice'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const Cart = () => {
   const [cookie] = useCookies(['cookie-user'])
@@ -106,16 +108,19 @@ const Cart = () => {
   };
 
 
+  const [mode] = useContext(ModeContext)
+
+
   return (
     <>
-      <section id='cart'>
+      <section className={`cart ${mode==='dark'?'dark':''}`} id='cart'>
         <div className="container">
           <div className="text-container">
             {(!cart && !product) || (cart.length === 0 && product.length === 0) ? <h1>Cart</h1> : <h1>Checkout</h1>}
           </div>
         </div>
       </section>
-      <section id='cart-section'>
+      <section className={`cart-section ${mode==='dark'?'dark':''}`} id='cart-section'>
         <div className="box-container">
           <div className="green-box"></div>
           <div className="white-box"></div>
@@ -182,7 +187,7 @@ const Cart = () => {
                       <div key={i} className='product-card' >
                         <div className='img-text-container'>
                           <div className='img-container'>
-                            <img src={`/src${item.img[0]}`} alt="" />
+                            <img src={`${item.img[0]}`} alt="" />
                           </div>
                           <div className='text-container'>
                             <h5>{item.category === 'addon' ? 'Configure Addon' : 'Configure Part'}</h5>

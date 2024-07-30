@@ -6,9 +6,14 @@ import Marquee from "react-fast-marquee";
 import payments from '../data/payments';
 import configure_icon from '../images/configure-btn-icon.svg';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { ModeContext } from '../context/ModeContext';
 const Footer = () => {
+
+    const [mode] = useContext(ModeContext)
+
     return (
-        <footer>
+        <footer className={`footer ${mode==="dark"?'dark':''}`}>
             <div className="footer-marquee">
                 <Marquee speed={125}>
                     <div className="footer-marquee-track-inner">

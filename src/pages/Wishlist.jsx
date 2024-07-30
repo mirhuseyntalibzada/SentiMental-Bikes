@@ -8,9 +8,12 @@ import { addWishlistToProduct, setCartToRedux, setProductToRedux } from '../tool
 import { addToWishlist, emptyWishlist, removeFromWishlist, setWishlistToRedux } from '../toolkit/features/wishlistSlice'
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const Wishlist = () => {
   const wishlist = useSelector(state => state.wishlist.wishlist)
+  const wishlistAll = useSelector(state => state.wishlist)
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const [cookie] = useCookies(['cookie-user'])
@@ -70,36 +73,39 @@ const Wishlist = () => {
   };
 
   const sendWishlistToCart = () => {
-    dispatch(addWishlistToProduct( wishlist ))
+    dispatch(addWishlistToProduct(wishlist))
     dispatch(emptyWishlist())
   }
 
-  const addCartToDB = async () => {
+  const addCartWishlistToDB = async () => {
     const { data } = await supabase.from('users').select()
     const user = data.find(({ token }) => token === cookie['cookie-user'])
     const { error } = await supabase.from('users').update({
-      cart: cart
+      cart: cart,
+      wishlist: wishlistAll
     }).eq('token', user.token)
   }
 
   useEffect(() => {
     if (cart.cart || cart.product) {
       if (cart.cart.length > 0 || cart.product.length > 0) {
-        addCartToDB()
+        addCartWishlistToDB()
       }
     }
   }, [cart])
 
+  const [mode] = useContext(ModeContext)
+
   return (
     <>
-      <section id='wishlist'>
+      <section className={`wishlist ${mode==='dark'?'dark':''}`} id='wishlist'>
         <div className="container">
           <div className="text-container">
             <h1>Wishlist</h1>
           </div>
         </div>
       </section>
-      <section id='wishlist-section'>
+      <section className={`wishlist-section ${mode==='dark'?'dark':''}`} id='wishlist-section'>
         <div className="box-container">
           <div className="green-box"></div>
           <div className="white-box"></div>
@@ -122,11 +128,13 @@ const Wishlist = () => {
                   <div key={i} className='product-card' >
                     <div className='img-text-container'>
                       <div className='img-container'>
-                        <img src={`src${item.img[0]}`} alt="" />
+                        <img src={`${item.img[0]}`} alt="" />
                       </div>
                       <div className='text-container'>
                         <h5>Configure part</h5>
-
+                        <div className='category-name'>
+                          <p>{item.name}</p>
+                        </div>
                         <div className='price-quantity-container'>
                           <div>
                             <h5>€{item.price * item.quantity}.00</h5>
@@ -148,11 +156,15 @@ const Wishlist = () => {
             }
           </>
           {!wishlist || wishlist.length === 0 ?
-          ''
-          :<button onClick={() => { sendWishlistToCart() }} className='add-to-cart'>
-          <img src={icon} alt="" />
-          <span>ADD TO CART</span>
-        </button>}
+            ''
+            :
+            <div className="add-to-cart">
+              <button onClick={() => { sendWishlistToCart() }} className='add-to-cart'>
+                <img src={icon} alt="" />
+                <span>ADD TO CART</span>
+              </button>
+            </div>
+          }
         </div>
       </section >
     </>

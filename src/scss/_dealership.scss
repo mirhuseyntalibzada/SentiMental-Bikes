@@ -1,3 +1,8 @@
+.dealership-text-section.dark {
+    background-color: rgb(22, 22, 25) !important;
+    color: white;
+}
+
 #dealership-text-section {
     background-color: rgb(205, 205, 199);
     padding-top: 3.65em;
@@ -40,6 +45,19 @@
         .made-in-container {
             display: none;
         }
+    }
+}
+
+.dealerships.dark {
+    background-color: rgb(22, 22, 25) !important;
+    .category-container {
+        .box-container{
+            background-color: rgb(22, 22, 25) !important;
+        }
+    }
+    .dealerships-container{
+        background-color: rgb(22, 22, 25) !important;
+        color: white !important;
     }
 }
 
@@ -87,7 +105,8 @@
                     }
                 }
             }
-            button{
+
+            button {
                 display: none;
             }
         }
@@ -240,8 +259,9 @@
                     }
                 }
 
-                a{
+                a {
                     text-decoration: none;
+
                     button {
                         margin: 1.4em 0;
                         width: 17em;
@@ -255,7 +275,7 @@
                         border-radius: 2.5em;
                         font-size: .15em;
                         font-weight: 700;
-    
+
                         img {
                             width: 3.5em;
                             vertical-align: middle;
@@ -293,7 +313,8 @@
                             display: inline-block;
                             left: 0;
                             top: 0;
-                            transform: rotate(270deg) translate(-100%, 50%);;
+                            transform: rotate(270deg) translate(-100%, 50%);
+                            ;
                             transform-origin: left;
                             font-size: .15em;
                             font-weight: 700;
@@ -331,7 +352,7 @@
                                 flex-shrink: 0;
 
                                 i {
-                                    font-size:.9em;
+                                    font-size: .9em;
                                 }
 
                                 .seperator {

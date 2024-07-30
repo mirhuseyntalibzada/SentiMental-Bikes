@@ -2,6 +2,8 @@ import React from 'react'
 import { useRef, useState } from 'react'
 import supabase from '../config/connect'
 import { useCookies } from 'react-cookie'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const LoginRegister = () => {
     const [visibilityLogin, setVisibilityLogin] = useState(false)
@@ -74,11 +76,12 @@ const LoginRegister = () => {
         } else {
             loginUser()
         }
-        console.log(data.filter(item => item.token === cookies['cookie-user']));
     }
 
+    const [mode] = useContext(ModeContext)
+
     return (
-        <section id='login-register-section'>
+        <section className={`login-register-section ${mode==='dark'?'dark':''}`} id='login-register-section'>
             <div className="box-container">
                 <div className="green-box"></div>
                 <div className="white-box"></div>
@@ -102,7 +105,7 @@ const LoginRegister = () => {
                                 <div className='password-container'>
                                     <input ref={loginPassword} type={`${visibilityLogin ? "text" : "password"}`} />
                                     <div className='eye-btn-container'>
-                                        <button className='eye-btn' onClick={(e) => {
+                                        <button type='button' className='eye-btn' onClick={(e) => {
                                             e.preventDefault()
                                             toggleVisibilityLogin()
                                         }}>
@@ -124,7 +127,7 @@ const LoginRegister = () => {
                                     </div>
                                 </div>
                                 <div className='button-container'>
-                                    <button type='submit'>LOG IN</button>
+                                    <button onClick={()=>{window.innerWidth>768?window.scrollTo(0, 430):window.scrollTo(0, 150)}} type='submit'>LOG IN</button>
                                 </div>
                             </form>
                         </div>
@@ -145,7 +148,7 @@ const LoginRegister = () => {
                                 <div className='password-container'>
                                     <input className='password-input' ref={password} type={`${visibilityRegister ? "text" : "password"}`} />
                                     <div className='eye-btn-container'>
-                                        <button className='eye-btn' onClick={(e) => {
+                                        <button type='button' className='eye-btn' onClick={(e) => {
                                             e.preventDefault()
                                             toggleVisibilityRegister()
                                         }}>
@@ -163,7 +166,7 @@ const LoginRegister = () => {
                                         described in our <a href="#">privacy policy.</a></p>
                                 </div>
                                 <div className='button-container'>
-                                    <button type='submit'>REGISTER</button>
+                                    <button onClick={()=>{window.innerWidth>768?window.scrollTo(0, 430):window.scrollTo(0, 150)}} type='submit'>REGISTER</button>
                                 </div>
                             </form>
                         </div>

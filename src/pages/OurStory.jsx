@@ -4,12 +4,17 @@ import img2 from '../images/Image-3-700x590.webp'
 import img3 from '../images/Image-12-scaled-600x400.webp'
 import logo from '../images/logo-small.svg';
 import SentiMentalNews from '../components/SentiMentalNews';
+import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
+import { ModeContext } from '../context/ModeContext';
 
 const OurStory = () => {
 
+  const { t, i18n: { changeLanguage, language } } = useTranslation();
+  const [mode, setMode] = useContext(ModeContext)
   return (
     <>
-      <section id='who-are-we'>
+      <section className={`who-are-we ${mode === 'dark' ? 'dark' : ''}`} id='who-are-we'>
         <div className='our-story-container'>
           <div className="container">
             <div className="text-container">
@@ -67,7 +72,7 @@ const OurStory = () => {
           </div>
         </div>
       </section>
-      <section id="our-story">
+      <section className={`our-story ${mode === 'dark' ? 'dark' : ''}`} id="our-story">
         <div className="container">
           <div className="text-img-content">
             <div className="text-container">
@@ -125,12 +130,12 @@ const OurStory = () => {
           </div>
         </div>
       </section>
-      <div className="box-container">
+      <div className={`box-container ${mode === 'dark' ? 'dark' : ''}`}>
         <div className='white-box'></div>
         <div className='green-box'></div>
       </div>
       <SentiMentalNews />
-      <section id='feeling-sentimental-story'>
+      <section className={`feeling-sentimental-story ${mode === 'dark' ? 'dark' : ''}`} id='feeling-sentimental-story'>
         <div className="container">
           <h1>
             <div className="mobile">
@@ -158,7 +163,7 @@ const OurStory = () => {
           </div>
         </div>
       </section>
-      <section id='ride-the-wave'>
+      <section className={`ride-the-wave ${mode === 'dark' ? 'dark' : ''}`} id='ride-the-wave'>
         <div className="container">
           <div className="text-container">
             <h1>

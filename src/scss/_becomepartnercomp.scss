@@ -1,3 +1,22 @@
+.become-a-partner-component {
+    .box-container {
+        background-color: rgb(50,50,50) !important;
+    }
+
+    .become-a-partner {
+        background-color: rgb(50,50,50) !important;
+        color: white !important;
+
+        .img-container-desktop,
+        .img-container-mobile {
+            img {
+                -webkit-filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 white);
+                filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 white);
+            }
+        }
+    }
+}
+
 #become-a-partner-component {
     .img-container {
         position: relative;
@@ -44,9 +63,10 @@
                 line-height: 1.5em;
             }
 
-            a{
+            a {
                 text-decoration: none;
                 color: black;
+
                 button {
                     margin: 2em 0;
                     padding: .5em 2em .5em .5em;
@@ -57,8 +77,8 @@
                     color: white;
                     gap: .8em;
                     border-radius: 2.5em;
-                    font-weight: 700;   
-    
+                    font-weight: 700;
+
                     img {
                         width: 3.7em;
                         vertical-align: middle;
@@ -166,7 +186,7 @@
                     }
                 }
             }
-            
+
             .container>div {
                 flex-basis: 33%;
             }

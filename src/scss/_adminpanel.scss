@@ -1,0 +1,289 @@
+#account-section {
+    .content-container {
+        .admin-text-container {
+            h1 {
+                font-size: 1.4em;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: .75em;
+            }
+
+            h2{
+                font-weight: 600 ;
+            }
+
+            form {
+                .input-container {
+                    label {
+                        font-weight: 600;
+                        font-size: .6em;
+                    }
+
+                    input {
+                        width: 100%;
+                        box-sizing: border-box;
+                        border: none;
+                        height: 3.3em;
+                        padding: 1em;
+                    }
+
+                    input:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .btn-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                button {
+                    cursor: pointer;
+                    background-color: black;
+                    color: white;
+                    border: none;
+                    border-radius: 2em;
+                    padding: 1em 2em;
+                    font-size: .55em;
+                    font-weight: 600;
+                }
+            }
+
+            .product-card {
+                position: relative;
+                border-bottom: 1px solid #A4A4A1;
+                padding-top: .5em;
+
+                .img-text-container {
+                    display: flex;
+                    column-gap: .5em;
+                    align-items: flex-start;
+
+                    .img-container {
+                        height: 3.4em;
+                        width: 3.4em;
+                        border-radius: .5em;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgb(228, 228, 228);
+
+                        img {
+                            width: 70%;
+                        }
+                    }
+
+                    .text-container {
+                        width: calc(100% - 3.4em);
+
+                        h5 {
+                            margin: 0 0 .5em 0;
+                            font-weight: 600;
+                        }
+
+                        .category-name {
+                            display: flex;
+                            align-items: center;
+                            column-gap: .3em;
+                            margin: .1em 0;
+
+                            h6,
+                            p {
+                                margin: 0;
+                                font-size: .6em;
+                            }
+                        }
+
+                        .price-quantity-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin: .5em 0;
+
+                            h5 {
+                                margin: 0;
+                            }
+
+                            .quantity {
+                                display: flex;
+                                align-items: center;
+                                height: 2em;
+
+                                a {
+                                    box-sizing: border-box;
+                                    border: 1px solid #CECDC7;
+                                    text-decoration: none;
+                                    color: black;
+                                    width: 1.5em;
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-size: .65em;
+                                }
+
+                                input {
+                                    border-top: 1px solid #CECDC7;
+                                    border-bottom: 1px solid #CECDC7;
+                                    border-right: none;
+                                    border-left: none;
+                                    width: 3.5em;
+                                    height: 100%;
+                                    box-sizing: border-box;
+                                    text-align: center;
+                                    background-color: transparent;
+                                    -moz-appearance: textfield;
+                                    appearance: textfield;
+                                    font-size: .55em;
+                                }
+
+                                input::-webkit-outer-spin-button,
+                                input::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
+                                input:focus {
+                                    outline: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .delete {
+                    cursor: pointer;
+                    display: flex;
+                    position: absolute;
+                    top: 0.5em;
+                    right: 0;
+                    justify-content: center;
+                    align-items: center;
+                    width: .8em;
+                    height: .8em;
+                    border-radius: 100%;
+                    background-color: black;
+
+                    i {
+                        font-size: .35em;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:767px) {
+    #account-section {
+        .content-container {
+            .admin-text-container {
+                h1 {
+                    font-size: .6em;
+                    margin: 0;
+                }
+
+                p {
+                    font-size: .2em;
+                }
+
+                h2 {
+                    font-size: .5em;
+                    margin-bottom: 0;
+                }
+
+                form{
+                    margin-top: .5em;
+                    .input-container{
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: .3em;
+                        label {
+                            font-weight: 600;
+                            font-size: .2em;
+                            margin-bottom: .25em;
+                        }
+    
+                        input {
+                            height: 0em;
+                            padding: 1.8em 1em;
+                            font-size: .17em;
+                        }
+                    }
+                }
+
+                .btn-container {
+                    align-items: flex-end;
+
+                    button {
+                        padding: .7em .8em;
+                        font-size: .2em;
+                    }
+                }
+
+                .product-card {
+                    .img-text-container {
+                        column-gap: .2em;
+
+                        .img-container {
+                            height: 1.1em;
+                            width: 1.1em;
+                            border-radius: .1em;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .text-container {
+                            width: calc(100% - 1.1em);
+
+                            h5 {
+                                font-size: .25em;
+                            }
+
+                            .category-name {
+                                column-gap: .05em;
+
+                                h6,
+                                p {
+                                    font-size: .17em;
+                                }
+                            }
+
+                            .price-quantity-container {
+                                margin: .25em 0;
+
+                                .quantity {
+                                    height: .55em;
+
+                                    a {
+                                        font-size: .2em;
+                                    }
+
+                                    input {
+                                        width: 3em;
+                                        font-size: .15em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .delete {
+                        width: .2em;
+                        height: .2em;
+
+                        i {
+                            font-size: .1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

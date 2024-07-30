@@ -3,6 +3,7 @@ import noogat from '../images/SentiMental-Bikes-Noogat.webp'
 import pralina from '../images/SentiMental-Bikes-Pralina-600x840.webp'
 import team from '../images/Image-1-700x590.webp'
 import background from '../images/Image-12-2-2048x1181.webp'
+import background_dark from '../images/image-12-2-dark.jpg'
 import logo from '../images/logo-small.svg';
 import configure_icon from '../images/configure-btn-icon.svg';
 import bike_1 from "../images/1.Noogat-SentiMental-Bikes.webp"
@@ -23,9 +24,11 @@ import { useEffect } from 'react'
 import ExperienceSentimental from '../components/ExperienceSentimental'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const Home = () => {
-
+  const [mode, setMode] = useContext(ModeContext)
   const [activeButton, setActiveButton] = useState('noogat');
   const [bike, setBike] = useState("bike_1")
   const [openSections, setOpenSections] = useState({});
@@ -60,7 +63,7 @@ const Home = () => {
   return (
     <>
       <section id='home'>
-        <section className='hero-section'>
+        <section className={`hero-section ${mode==='dark'?'dark':''}`}>
           <div className="container">
             <div className="hero-container">
               <div className='hero-text'>
@@ -80,10 +83,10 @@ const Home = () => {
                 </div>
               </div>
               <div className={`img-container noogat ${activeButton === 'noogat' ? 'active' : ''}`}>
-                <img src={noogat} alt="" />
+                <img src={noogat} alt="bike-noogat" />
               </div>
               <div className={`img-container pralina ${activeButton === 'pralina' ? 'active' : ''}`}>
-                <img src={pralina} alt="" />
+                <img src={pralina} alt="bike-pralina" />
               </div>
               <div className="made-in-container">
                 <span className='text-made-in'><span className='made-in'>{t(`home.span-2.1`)}</span> <span className='european'>{t(`home.span-2.2`)}</span></span>
@@ -91,7 +94,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section id="btn-container">
+        <section className={`btn-container ${mode==='dark'?'dark':''}`} id="btn-container">
           <div className="buttons">
             <div onClick={() => handleClick('noogat')} className={`noogat ${activeButton === 'noogat' ? 'active' : ''}`}><span>NOOGAT 2024</span></div>
             <div onClick={() => handleClick('pralina')} className={`pralina ${activeButton === 'pralina' ? 'active' : ''}`}><span>PRALINA 2024</span></div>
@@ -99,14 +102,14 @@ const Home = () => {
           <div className='bottom-part-btn'></div>
         </section>
         <section id="features">
-          <div className="features-container">
+          <div className={`features-container ${mode==='dark'?'dark':''}`}>
             <div className='container'>
               <div>
                 <div className="h1-container">
-                  <h1 data-aos-delay="0" data-aos="fade-up">Key Features</h1>
+                  <h1 data-aos-delay="0" data-aos="fade-up">{t(`home.h1-1`)}</h1>
                 </div>
                 <div className="p-container">
-                  <p data-aos-delay="50" data-aos="fade-up">Packed with awesomeness!</p>
+                  <p data-aos-delay="50" data-aos="fade-up">{t(`home.p-1`)}</p>
                 </div>
               </div>
               <div className='icon-container'>
@@ -114,86 +117,79 @@ const Home = () => {
                   <div className="icon">
                     <i className="fa-solid fa-gear"></i>
                   </div>
-                  <h2>Heart crafted</h2>
-                  <p>Your inner vintage connoisseur will love our handcrafted e-bikes</p>
+                  <h2>{t(`home.h2-1`)}</h2>
+                  <p>{t(`home.p-2`)}</p>
                 </div>
 
                 <div data-aos-delay="200" data-aos="fade-right" className='icon-card'>
                   <div className="icon">
                     <i className="fa-regular fa-clock"></i>
                   </div>
-                  <h2>Iconic performance</h2>
-                  <p>Unparalleled power and efficiency with a touch of nostalgic flair</p>
+                  <h2>{t(`home.h2-2`)}</h2>
+                  <p>{t(`home.p-3`)}</p>
                 </div>
 
                 <div data-aos-delay="300" data-aos="fade-right" className='icon-card'>
                   <div className="icon">
                     <i className="fa-solid fa-money-bill"></i>
                   </div>
-                  <h2>Worth it</h2>
-                  <p>Exceptional e-bikes without breaking the bank</p>
+                  <h2>{t(`home.h2-3`)}</h2>
+                  <p>{t(`home.p-4`)}</p>
                 </div>
               </div>
               <div className='line'></div>
             </div>
           </div>
         </section>
-        <section id="story">
+        <section className={`story ${mode==='dark'?'dark':''}`} id="story">
           <div className="container">
             <div className='content-container'>
               <div className="h6-container">
                 <h6 data-aos-delay="0" data-aos="fade-up">{t('header.ourStory')}</h6>
               </div>
               <h1>
-                <div><span data-aos-delay="100" data-aos="fade-up">We're</span> <span data-aos-delay="200" data-aos="fade-up">Sentimental.</span></div>
-                <div><span data-aos-delay="300" data-aos="fade-up">And so are you.</span></div>
+                <div><span data-aos-delay="100" data-aos="fade-up">{t(`home.span-3.1`)}</span> <span data-aos-delay="200" data-aos="fade-up">{t(`home.span-3.2`)}</span></div>
+                <div><span data-aos-delay="300" data-aos="fade-up">{t(`home.span-3.3`)}</span></div>
               </h1>
               <div className="p-container">
-                <p data-aos-delay="350" data-aos="fade-up">Born from the spirit of expression and artistry,
-                  SentiMental bikes are well thought-out and meticulously
-                  crafted artisan bikes. Inspired by the most recognizable
-                  old-school bikes, SentiMental models will put you in the spotlight.
-                  And make your every single day – epic.</p>
+                <p data-aos-delay="350" data-aos="fade-up">{t(`home.p-5`)}</p>
               </div>
               <div style={{ overflow: "hidden" }}>
                 <div data-aos-delay="400" data-aos="fade-up" className='read-full-story'>
                   <i className="fa-solid fa-caret-right"></i>
-                  <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/our-story'}><span>Read the full story</span></NavLink>
+                  <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/our-story'}><span>{t(`home.span-4`)}</span></NavLink>
                 </div>
               </div>
             </div>
             <div className="img-container">
-              <img data-aos="zoom-out" src={team} alt="" />
+              <img data-aos="zoom-out" src={team} alt="team" />
             </div>
           </div>
         </section>
         <section id="sentimental-background">
-          <div className="container">
+          <div className={`container ${mode==='dark'?'dark':''}`}>
             <h1>
               <div>
-                <span data-aos-delay="0" data-aos="fade-up">Go ahead. Ride the wave.</span>
+                <span data-aos-delay="0" data-aos="fade-up">{t(`home.span-5.1`)}</span>
               </div>
               <div>
-                <span data-aos-delay="100" data-aos="fade-up">For SentiMental reasons.</span>
+                <span data-aos-delay="100" data-aos="fade-up">{t(`home.span-5.2`)}</span>
               </div>
             </h1>
           </div>
-          <img src={background} alt="" />
+          <img src={mode==='dark'?background_dark:background} alt="background" />
         </section>
-        <section id='feeling-sentimental'>
+        <section className={`feeling-sentimental ${mode==='dark'?'dark':''}`} id='feeling-sentimental'>
           <div className="container">
             <div className="h1-container">
-              <h1 data-aos-delay="0" data-aos="fade-up"><div>Feeling Sentimental? We</div> got you.</h1>
+              <h1 data-aos-delay="0" data-aos="fade-up"><div>{t(`home.h1-2.1`)}</div> {t(`home.h1-2.2`)}</h1>
             </div>
             <div className="p-container">
-              <p data-aos-delay="100" data-aos="fade-up">Falling in love is easy. Staying in love takes work.
-                This is why we used exceptional materials and long-range
-                batteries wrapped in timeless design. So that your love for
-                SentiMental bikes lasts today, tomorrow, and beyond.</p>
+              <p data-aos-delay="100" data-aos="fade-up">{t(`home.p-6`)}</p>
             </div>
             <div className="logo-container">
               <div data-aos-delay="200" data-aos="fade-up" className='logo-name'>
-                <img src={logo} alt="" />
+                <img src={logo} alt="logo" />
                 <span>Dule</span>
               </div>
             </div>
@@ -205,34 +201,33 @@ const Home = () => {
             <div className="text-content">
               <div>
                 <div className="h6-container">
-                  <h6 data-aos="fade-up">COLORS</h6>
+                  <h6 data-aos="fade-up">{t(`home.h6-1`)}</h6>
                 </div>
                 <h1>
                   <div>
                     <span data-aos="fade-up">
-                      Good looking.
+                      {t(`home.span-6.1`)}
                     </span>
                   </div>
                   <div>
                     <span data-aos-delay="100" data-aos="fade-up">
-                      In every color.
+                      {t(`home.span-6.2`)}
                     </span>
                   </div>
                 </h1>
               </div>
               <div className='p-container' style={{ overflow: "hidden" }}>
-                <p data-aos-delay="200" data-aos="fade-up">Can you handle all eyes on you? We hope you do.
-                  Hand-applied by our artisans, our curated colors will fit your style.</p>
+                <p data-aos-delay="200" data-aos="fade-up">{t(`home.p-7`)}</p>
               </div>
             </div>
             <div className="mobile-content">
               <div className="img-container">
-                <img className={`${bike === "bike_1" ? "active" : ""}`} src={bike_1} alt="" />
-                <img className={`${bike === "bike_2" ? "active" : ""}`} src={bike_2} alt="" />
-                <img className={`${bike === "bike_3" ? "active" : ""}`} src={bike_3} alt="" />
-                <img className={`${bike === "bike_4" ? "active" : ""}`} src={bike_4} alt="" />
-                <img className={`${bike === "bike_5" ? "active" : ""}`} src={bike_5} alt="" />
-                <img className={`${bike === "bike_6" ? "active" : ""}`} src={bike_6} alt="" />
+                <img className={`${bike === "bike_1" ? "active" : ""}`} src={bike_1} alt="bike-1" />
+                <img className={`${bike === "bike_2" ? "active" : ""}`} src={bike_2} alt="bike-2" />
+                <img className={`${bike === "bike_3" ? "active" : ""}`} src={bike_3} alt="bike-3" />
+                <img className={`${bike === "bike_4" ? "active" : ""}`} src={bike_4} alt="bike-4" />
+                <img className={`${bike === "bike_5" ? "active" : ""}`} src={bike_5} alt="bike-5" />
+                <img className={`${bike === "bike_6" ? "active" : ""}`} src={bike_6} alt="bike-6" />
               </div>
               <div className="color-container">
                 <div onClick={() => handleBike("bike_1")} className={`dot ${bike === "bike_1" ? "active" : ""}`}>
@@ -264,12 +259,12 @@ const Home = () => {
             <div className="desktop-content">
               <div className="sticky-container">
                 <div className="img-container">
-                  <img className={`${bike === "bike_1" ? "active" : ""}`} src={bike_1} alt="" />
-                  <img className={`${bike === "bike_2" ? "active" : ""}`} src={bike_2} alt="" />
-                  <img className={`${bike === "bike_3" ? "active" : ""}`} src={bike_3} alt="" />
-                  <img className={`${bike === "bike_4" ? "active" : ""}`} src={bike_4} alt="" />
-                  <img className={`${bike === "bike_5" ? "active" : ""}`} src={bike_5} alt="" />
-                  <img className={`${bike === "bike_6" ? "active" : ""}`} src={bike_6} alt="" />
+                  <img className={`${bike === "bike_1" ? "active" : ""}`} src={bike_1} alt="bike-1" />
+                  <img className={`${bike === "bike_2" ? "active" : ""}`} src={bike_2} alt="bike-2" />
+                  <img className={`${bike === "bike_3" ? "active" : ""}`} src={bike_3} alt="bike-3" />
+                  <img className={`${bike === "bike_4" ? "active" : ""}`} src={bike_4} alt="bike-4" />
+                  <img className={`${bike === "bike_5" ? "active" : ""}`} src={bike_5} alt="bike-5" />
+                  <img className={`${bike === "bike_6" ? "active" : ""}`} src={bike_6} alt="bike-6" />
                 </div>
                 <div className="configure-button">
                   <NavLink onClick={() => { window.scrollTo(0, 0) }} to={'/configure-a-bike'} className="secondary-btn" data-text="Configure a bike">
@@ -303,72 +298,60 @@ const Home = () => {
           <div className="box"></div>
         </section>
         <section id='information'>
-          <div className="information">
+          <div className={`information ${mode==='dark'?'dark':''}`}>
             <div className="container">
               <div className='text-img-container'>
                 <div className="text-container">
                   <div className="h6-container">
-                    <h6 data-aos="fade-up">MAKE IT PERSONAL</h6>
+                    <h6 data-aos="fade-up">{t(`home.h6-2`)}</h6>
                   </div>
                   <div className="h1-container">
-                    <h1 data-aos-delay="200" data-aos="fade-up">A ride you'll never forget</h1>
+                    <h1 data-aos-delay="200" data-aos="fade-up">{t(`home.h1-3`)}</h1>
                   </div>
                   <div className="p-container">
-                    <p data-aos-delay="300" data-aos="fade-up">With the ability to choose from various
-                      colors, parts, and accessories, you're in control of designing a bike
-                      that truly reflects your personality and sets you apart from the crowd.
-                      So, why settle for a standard bike when you can make it personal and ride
-                      in style?</p>
+                    <p data-aos-delay="300" data-aos="fade-up">{t(`home.p-8`)}</p>
                   </div>
                 </div>
                 <div className="img-container">
-                  <img src={sideView} alt="" />
+                  <img src={sideView} alt="sideView" />
                 </div>
               </div>
               <div className="card-container">
                 <div data-aos-delay="400" data-aos="fade-right" className='card'>
                   <div className="svg-container">
-                    <img src={speed} alt="" />
+                    <img src={speed} alt="speed" />
                   </div>
-                  <h3>Speed</h3>
-                  <h6>Swift 'n' Smooth</h6>
-                  <p>Feel the wind in your hair as you reach up to 25 km/h,
-                    effortlessly gliding through urban landscapes with 3 levels
-                    of pedal assist and a Shimano 7-speed rear wheel cassette.</p>
+                  <h3>{t(`home.speed`)}</h3>
+                  <h6>{t(`home.h6-3`)}</h6>
+                  <p>{t(`home.p-9`)}</p>
                 </div>
                 <div data-aos-delay="500" data-aos="fade-right" className='card'>
                   <div className="svg-container">
-                    <img src={battery} alt="" />
+                    <img src={battery} alt="battery" />
                   </div>
-                  <h3>Battery Life</h3>
-                  <h6>Power of Endurance!</h6>
-                  <p>Our e-bikes offer up to 8-hr charging time,
-                    ensuring lasting adventures. Take a break, fully recharge
-                    while we prepare for your next exhilarating journey. Get ready
-                    for an ultimate joyride that lasts.</p>
+                  <h3>{t(`home.batteryLife`)}</h3>
+                  <h6>{t(`home.h6-4`)}</h6>
+                  <p>{t(`home.p-10`)}</p>
                 </div>
                 <div data-aos-delay="600" data-aos="fade-right" className='card'>
                   <div className="svg-container">
-                    <img src={motor} alt="" />
+                    <img src={motor} alt="motor" />
                   </div>
-                  <h3>Motor</h3>
-                  <h6>Quiet & Powerful</h6>
-                  <p>Our 250W geared rear hub motor delivers a smooth,
-                    unobtrusive boost to your pedaling, ensuring every ride feels
-                    like an exhilarating adventure, while hydraulic disc brakes with
-                    engine cut-off ensure safety and control.</p>
+                  <h3>{t(`home.motor`)}</h3>
+                  <h6>{t(`home.h6-5`)}</h6>
+                  <p>{t(`home.p-11`)}</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg">
+          <div className={`bg ${mode==="dark"?'dark':''}`}>
             <div className="light-green"></div>
           </div>
         </section>
-        <section id='accordion-info'>
+        <section className={`accordion-info ${mode==="dark"?'dark':''}`} id='accordion-info'>
           <div className="container">
             <div className="h6-container">
-              <h6 data-aos="fade-up">WHAT IS IN THE BACKGROUND</h6>
+              <h6 data-aos="fade-up">{t(`home.h6-6`)}</h6>
             </div>
             <div className="accordion-container">
               {accordionData.map((item, index) => (
@@ -377,16 +360,23 @@ const Home = () => {
                     onClick={() => toggleAccordion(item.title)}
                     className={`accordion-header ${openSections[item.title] ? 'active' : ''}`}
                   >
-                    <h1>{item.title}</h1>
+                    <h1>{language === "en" ? item.en_title : item.az_title}</h1>
                     <div className="angle-down">
                       <i className="fa-solid fa-angle-down"></i>
                     </div>
                   </div>
                   <div className={`accordion-body ${openSections[item.title] ? 'active' : ''}`}>
                     <ul>
-                      {item.content.map((contentItem, i) => (
-                        <li key={i}>{contentItem}</li>
-                      ))}
+                      {language === "en"
+                        ?
+                        item.en_content.map((contentItem, i) => (
+                          <li key={i}>{contentItem}</li>
+                        ))
+                        :
+                        item.az_content.map((contentItem, i) => (
+                          <li key={i}>{contentItem}</li>
+                        ))
+                      }
                     </ul>
                   </div>
 
@@ -396,32 +386,32 @@ const Home = () => {
           </div>
           <div className="box"></div>
         </section>
-        <section id='image-section'>
+        <section className={`image-section ${mode==="dark"?'dark':''}`} id='image-section'>
           <div className="img-container">
-            <img data-aos="zoom-out" src={bike_bg} alt="" />
+            <img data-aos="zoom-out" src={bike_bg} alt="bike_bg" />
           </div>
           <div className="text-container">
-            <h6 data-aos="fade-up">Supercharged artisan city bikes</h6>
+            <h6 data-aos="fade-up">{t(`home.h6-7`)}</h6>
           </div>
           <div className="box-container-green">
             <div className="box-container-light-brown"></div>
           </div>
         </section>
         <ExperienceSentimental />
-        <section id='sentimental-news'>
+        <section className={`sentimental-news ${mode==='dark'?'dark':''}`} id='sentimental-news'>
           <div className="container">
             <div className="h1-container">
-              <h1 data-aos="fade-up" className='hero-h1'>SentiMental in the Spotlight</h1>
+              <h1 data-aos="fade-up" className='hero-h1'>{t(`home.h1-4`)}</h1>
             </div>
             <div style={{ overflow: "hidden" }}>
               {news.map(item => (
                 <div data-aos-delay={`${(item.id - 1) * 100}`} data-aos="fade-up" key={item.id} className="card-container">
                   <div className='first-container'>
-                    <span className='desktop-news'>NEWS</span>
+                    <span className='desktop-news'>{t(`home.news`)}</span>
                     <div className="img-container">
-                      <img src={`/src/images/${item.img}`} alt="" />
+                      <img src={`/src/images/${item.img}`} alt="news" />
                     </div>
-                    <span className='mobile-news'>NEWS</span>
+                    <span className='mobile-news'>{t(`home.news`)}</span>
                   </div>
                   <div className="second-container">
                     <h1>{item.title}</h1>

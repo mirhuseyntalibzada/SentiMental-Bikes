@@ -4,20 +4,34 @@ import icon from '../images/logo-btn-icon.svg'
 import ExperienceSentimental from '../components/ExperienceSentimental'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, setCartToRedux, setProductToRedux } from '../toolkit/features/cartSlice'
+import { addToCart } from '../toolkit/features/cartSlice'
 import { bicycles } from '../data/bicycles'
 import { useCookies } from 'react-cookie'
 import supabase from '../config/connect'
 import { useEffect } from 'react'
-import { products } from '../data/products'
 import ProductCard from '../components/ProductCard'
-import { setWishlistToRedux } from '../toolkit/features/wishlistSlice'
+import { useContext } from 'react'
+import { ModeContext } from '../context/ModeContext'
 
 const ConfigureBike = () => {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    async function fetchProducts() {
+      let { data, error } = await supabase
+        .from('products')
+        .select('*');
+      if (error) console.error('Error fetching products:', error);
+      else setProducts(data);
+      setLoading(false);
+    }
+    fetchProducts();
+  }, []);
+
   // Wishlist----------------------------------------------------------------
 
   const [category, setCategory] = useState([])
-
   useEffect(() => {
     const removeDuplicate = () => {
       let uniqueCategory = []
@@ -29,7 +43,7 @@ const ConfigureBike = () => {
       setCategory(uniqueCategory);
     }
     removeDuplicate()
-  }, [])
+  }, [products])
 
   const getFilteredProducts = (category) => {
     const filtered = products.filter((product) => product.category === category)
@@ -44,10 +58,11 @@ const ConfigureBike = () => {
 
   const searchProd = (keyword) => {
     const searchedItems = filteredProducts.length === 0 ?
-      products.filter(item => item.name.includes(keyword.toUpperCase())) :
-      filteredProducts.filter(item => item.name.includes(keyword.toUpperCase()))
+      products.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase())) :
+      filteredProducts.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase()))
     keyword.length === 0 ? setSearchedProducts([]) : setSearchedProducts(searchedItems)
   }
+  console.log(searchedProducts);
 
   // ------------------------------------------------------------------Search
 
@@ -111,9 +126,15 @@ const ConfigureBike = () => {
   }, [cart])
   //------------------------------------------------------------------addtocart
 
+const [mode] = useContext(ModeContext)
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
-      <section id='configure'>
+      <section className={`configure-section ${mode==='dark'?'dark':''}`} id='configure'>
         <div className="configure">
           <div className="container">
             <div className="heading">
@@ -180,7 +201,7 @@ const ConfigureBike = () => {
           </div>
         </div>
       </section>
-      <section id="addons">
+      <section className={`addons ${mode==='dark'?'dark':''}`} id="addons">
         <div className='category-container'>
           <div className="container">
             <ul>
