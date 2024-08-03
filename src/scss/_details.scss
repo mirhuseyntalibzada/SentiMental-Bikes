@@ -1,16 +1,58 @@
+.loader-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(228, 228, 228);
+
+    .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 8px solid;
+        border-color: #000 #0000;
+        animation: l1 1s infinite;
+    }
+
+    @keyframes l1 {
+        to {
+            transform: rotate(.5turn)
+        }
+    }
+}
+
+.loader-container.dark {
+    background-color: rgb(22, 22, 25) !important;
+
+    .loader {
+        border-color: white rgb(22, 22, 25)
+    }
+}
+
 .details-section.dark {
-    background-color: rgb(22,22,25) !important;
+    background-color: rgb(22, 22, 25) !important;
+
+
+    .img-container {
+        .loader {
+            border-color: white rgb(32, 32, 35) !important
+        }
+    }
+
     .details {
-        background-color: rgb(32,32,35) !important;
+        background-color: rgb(32, 32, 35) !important;
         color: white !important;
     }
+
     .options {
         color: black !important;
     }
+
     input {
         color: white !important;
     }
-    a{
+
+    a {
         color: white !important;
     }
 }
@@ -46,6 +88,28 @@
                 img {
                     width: 100%;
                     vertical-align: middle;
+                }
+
+                .mini-loader {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 15em;
+
+                    .loader {
+                        width: 25px;
+                        aspect-ratio: 1;
+                        border-radius: 50%;
+                        border: 8px solid;
+                        border-color: #000 #0000;
+                        animation: l1 1s infinite;
+                    }
+
+                    @keyframes l1 {
+                        to {
+                            transform: rotate(.5turn)
+                        }
+                    }
                 }
             }
 
@@ -261,6 +325,10 @@
 
                     .img-container {
                         width: 60%;
+
+                        .mini-loader {
+                            height: 7.1em;
+                        }
                     }
 
                     .features {

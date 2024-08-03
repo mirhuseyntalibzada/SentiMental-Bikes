@@ -1,12 +1,36 @@
-.account-section.dark {
-    .box-container {
-        background-color: rgb(22, 22, 25) !important;
+.loader-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(228, 228, 228);
+    .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 8px solid;
+        border-color: #000 #0000;
+        animation: l1 1s infinite;
+      }
+      @keyframes l1 {to{transform: rotate(.5turn)}}
+}
+
+.loader-container.dark {
+    background-color: rgb(22, 22, 25) !important;
+    .loader {
+        border-color: white rgb(22,22,25)
+    }
+}
+
+.account-section.dark{
+    .box-container{
+        background-color: rgb(22, 22, 25);
         .white-box {
-            background-color: rgb(32,32,35) !important;
+            background-color: rgb(22, 22, 25) !important;
         }
     }
-    .container {
-        background-color: rgb(32,32,35) !important;
+    .container{
+        background-color: rgb(22, 22, 25) !important;
         color: white !important;
         a{
             color: white !important;

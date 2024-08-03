@@ -1,0 +1,208 @@
+#not-found {
+    padding-top: 3em;
+    background-color: rgb(205, 205, 199);
+    box-sizing: border-box;
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    flex-direction: column;
+
+    .container {
+        padding: 0 .5em;
+
+        .text-container {
+            h1 {
+                font-size: 1.4em;
+                font-weight: 600;
+                margin-bottom: 0;
+            }
+
+            h2 {
+                font-weight: 600;
+                font-size: 1em;
+                margin: .7em 0;
+            }
+
+            .small-text {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: .3em;
+
+                i {
+                    font-size: .6em;
+                }
+
+                span {
+                    font-size: .6em;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: black;
+
+                    .span-container {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+
+                        span {
+                            display: inline-block;
+                            transition: transform 0.5s cubic-bezier(.51, .01, .2, 1);
+                        }
+
+                        span:nth-child(1) {
+                            transform: translateY(0em);
+                        }
+
+                        span:nth-child(2) {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            transform: translateY(1.5em);
+                        }
+                    }
+                }
+            }
+            .small-text:hover {
+                .span-container {
+                    span:nth-child(1) {
+                        transform: translateY(-1.5em);
+                    }
+    
+                    span:nth-child(2) {
+                        transform: translateY(0em);
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    .img-container {
+        margin-top: 1em;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+
+}
+
+.footer-marquee {
+    background-color: rgb(208, 229, 159);
+    padding: 1em 0;
+
+    .footer-marquee-track-inner {
+        display: flex;
+
+        .footer-marquee-track-piece {
+            display: flex;
+            align-items: center;
+
+            .title-xl {
+                padding-left: 2em;
+                font-size: 1.5em;
+                font-weight: 600;
+            }
+
+            .track-image {
+                width: 1.5em;
+                padding: 0 2em;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .track-divider {
+                height: 2px;
+                width: 3em;
+                background-color: black;
+            }
+        }
+    }
+}
+
+
+
+@media screen and (min-width:767px) {
+    #not-found {
+        height: auto;
+        padding-top: 1em;
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 0.3em;
+
+            .text-container {
+                padding-left: 1.2em;
+                width: 60%;
+
+                h1 {
+                    font-size: .7em;
+                }
+
+                h2 {
+                    font-size: .6em;
+                }
+
+                .small-text {
+                    padding-left: 0;
+
+                    i {
+                        font-size: .25em;
+                    }
+
+                    span {
+                        font-size: .25em;
+                    }
+                }
+            }
+        }
+
+        .img-container {
+            margin: 2.5em 0 ;
+        }
+    }
+
+    .footer-marquee {
+        background-color: rgb(208, 229, 159);
+        padding: .1em 0;
+
+        .footer-marquee-track-inner {
+            display: flex;
+
+            .footer-marquee-track-piece {
+                display: flex;
+                align-items: center;
+
+                .title-xl {
+                    padding-left: 1em;
+                    font-size: .6em;
+                    font-weight: 600;
+                }
+
+                .track-image {
+                    width: .5em;
+                    padding: 0 1em;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .track-divider {
+                    height: 2px;
+                    width: 2em;
+                    background-color: black;
+                }
+            }
+        }
+    }
+}

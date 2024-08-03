@@ -28,12 +28,12 @@ import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
 
 const Home = () => {
-  const [mode, setMode] = useContext(ModeContext)
   const [activeButton, setActiveButton] = useState('noogat');
   const [bike, setBike] = useState("bike_1")
   const [openSections, setOpenSections] = useState({});
   const [news, setNews] = useState([])
-
+  const [mode, setMode] = useContext(ModeContext)
+  
   const toggleAccordion = (section) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -357,15 +357,15 @@ const Home = () => {
               {accordionData.map((item, index) => (
                 <div data-aos-delay={`${index * 100}`} data-aos="fade-up" className="accordion" key={index}>
                   <div
-                    onClick={() => toggleAccordion(item.title)}
-                    className={`accordion-header ${openSections[item.title] ? 'active' : ''}`}
+                    onClick={() => toggleAccordion(item.en_title)}
+                    className={`accordion-header ${openSections[item.en_title] ? 'active' : ''}`}
                   >
                     <h1>{language === "en" ? item.en_title : item.az_title}</h1>
                     <div className="angle-down">
                       <i className="fa-solid fa-angle-down"></i>
                     </div>
                   </div>
-                  <div className={`accordion-body ${openSections[item.title] ? 'active' : ''}`}>
+                  <div className={`accordion-body ${openSections[item.en_title] ? 'active' : ''}`}>
                     <ul>
                       {language === "en"
                         ?

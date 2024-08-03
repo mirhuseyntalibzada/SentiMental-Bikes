@@ -210,8 +210,8 @@ const Header = () => {
                                 <div onClick={e => { e.stopPropagation() }} className={`options-container ${isLangActive ? 'active' : ''}`}>
                                     <span onClick={() => { setLanguage('en'); toggleLangBtn() }}>EN</span>
                                     <span onClick={() => { setLanguage('az'); toggleLangBtn() }}>AZ</span>
-                                    {mode==="light"?<i onClick={()=>toggleMode()} style={{ fontSize: ".2em", padding: ".3em 0" }} className="fa-solid fa-moon"></i>:
-                                    <i onClick={()=>toggleMode()} style={{ fontSize: ".2em", padding: ".3em 0" }} className="fa-regular fa-sun"></i>}
+                                    {mode==="light"?<i onClick={()=>toggleMode()} className="fa-solid fa-moon"></i>:
+                                    <i onClick={()=>toggleMode()} className="fa-regular fa-sun"></i>}
                                 </div>
                             </div>
                             <div onClick={toggleHamBtn} className={`hamburger-menu-container ${isHamActive ? 'active' : ''}`}>

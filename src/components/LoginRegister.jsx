@@ -56,6 +56,9 @@ const LoginRegister = () => {
             setErrorMessage('error');
         } else {
             setErrorMessage("success");
+            userName.current.value = ''
+            userEmail.current.value = ''
+            password.current.value = ''
         }
     }
 
@@ -81,7 +84,7 @@ const LoginRegister = () => {
     const [mode] = useContext(ModeContext)
 
     return (
-        <section className={`login-register-section ${mode==='dark'?'dark':''}`} id='login-register-section'>
+        <section className={`login-register-section ${mode === 'dark' ? 'dark' : ''}`} id='login-register-section'>
             <div className="box-container">
                 <div className="green-box"></div>
                 <div className="white-box"></div>
@@ -127,7 +130,9 @@ const LoginRegister = () => {
                                     </div>
                                 </div>
                                 <div className='button-container'>
-                                    <button onClick={()=>{window.innerWidth>768?window.scrollTo(0, 430):window.scrollTo(0, 150)}} type='submit'>LOG IN</button>
+                                    <button onClick={() => {
+                                        window.innerWidth > 768 ? window.scrollTo(0, 430) : window.scrollTo(0, 150)
+                                    }} type='submit'>LOG IN</button>
                                 </div>
                             </form>
                         </div>
@@ -166,7 +171,7 @@ const LoginRegister = () => {
                                         described in our <a href="#">privacy policy.</a></p>
                                 </div>
                                 <div className='button-container'>
-                                    <button onClick={()=>{window.innerWidth>768?window.scrollTo(0, 430):window.scrollTo(0, 150)}} type='submit'>REGISTER</button>
+                                    <button onClick={() => { window.innerWidth > 768 ? window.scrollTo(0, 430) : window.scrollTo(0, 150) }} type='submit'>REGISTER</button>
                                 </div>
                             </form>
                         </div>

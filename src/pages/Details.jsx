@@ -104,8 +104,14 @@ const Details = () => {
     const [mode] = useContext(ModeContext)
 
     if (loading) {
-        return <div>Loading...</div>;
-    }
+        return (
+          <>
+            <div className={`loader-container ${mode==='dark'?'dark':''}`}>
+              <div className='loader'></div>
+            </div>
+          </>
+        );
+      }
 
     return (
         <section className={`details-section ${mode==='dark'?'dark':''}`} id='details'>
@@ -117,19 +123,19 @@ const Details = () => {
                     </div>
                     <div className="img-content-container">
                         <div className="img-container">
-                            {imageLoading && <div className="loading">Loading Image...</div>}
+                            {imageLoading && <div className="mini-loader"><div className='loader'></div></div>}
                             {productDetail.type === 'customizable' ?
                                 <img
                                     src={`${productDetail.img[colorIndex]}`}
                                     alt=""
-                                    onLoad={() => setImageLoading(false)} // Set image loading to false when image loads
+                                    onLoad={() => setImageLoading(false)} 
                                     style={{ display: imageLoading ? 'none' : 'block' }}
                                 />
                                 :
                                 <img
                                     src={`${productDetail.img[0]}`}
                                     alt=""
-                                    onLoad={() => setImageLoading(false)} // Set image loading to false when image loads
+                                    onLoad={() => setImageLoading(false)} 
                                     style={{ display: imageLoading ? 'none' : 'block' }}
                                 />
                             }

@@ -9,6 +9,7 @@ import { addToWishlist, removeFromWishlist } from '../toolkit/features/wishlistS
 import slugify from 'slugify';
 import { useEffect } from 'react';
 import supabase from '../config/connect';
+import { Bounce, toast } from 'react-toastify'
 
 const ProductCard = ({ productState }) => {
     const [cookie] = useCookies(['cookie-user'])
@@ -35,7 +36,7 @@ const ProductCard = ({ productState }) => {
                 toggleHeart(item);
             }
         } else {
-            alert("You have to log in first");
+            alertMessage(`You have to log in first`)
         }
     };
 
@@ -50,29 +51,45 @@ const ProductCard = ({ productState }) => {
     useEffect(() => {
         if (wishlistModified || wishlist.length > 0) {
             addWishlistToDB(wishlistAll);
-            setWishlistModified(false); 
+            setWishlistModified(false);
         }
     }, [wishlistAll, wishlistModified]);
 
+    const alertMessage = (message, duration) => {
+        toast(message, {
+            position: "top-right",
+            autoClose: duration,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        });
+    }
+
     return (
-        <div key={productState.id} className="card-container">
-            <div className="content">
-                <div className="img-container">
-                    <img src={`${productState.img[0]}`} alt="" />
-                </div>
-                <div className="info-container">
-                    <h6>{productState.name.toUpperCase()}</h6>
-                    <span>€{productState.price}.00</span>
-                </div>
-                <div className="button-container">
-                    <button onClick={() => { window.scrollTo(0, 0); }} className='details'><Link to={`/details/${slugify(productState.name.toLowerCase())}`}>DETAILS</Link></button>
-                    <button onClick={() => { checkUser(productState, 'cart'); }}>CART</button>
-                </div>
-                <div className='fav'>
-                    <i onClick={() => { checkUser(productState, 'wishlist'); console.log(wishlist); }} className={`fa-${wishlist.some(item => item.id === productState.id) ? 'solid' : "regular"} fa-heart`}></i>
+        <>
+            <div key={productState.id} className="card-container">
+                <div className="content">
+                    <div className="img-container">
+                        <img src={`${productState.img[0]}`} alt="" />
+                    </div>
+                    <div className="info-container">
+                        <h6>{productState.name.toUpperCase()}</h6>
+                        <span>€{productState.price}.00</span>
+                    </div>
+                    <div className="button-container">
+                        <button onClick={() => { window.scrollTo(0, 0); }} className='details'><Link to={`/details/${slugify(productState.name.toLowerCase())}`}>DETAILS</Link></button>
+                        <button onClick={() => { checkUser(productState, 'cart'); alertMessage("Added to cart", 1000) }}>CART</button>
+                    </div>
+                    <div className='fav'>
+                        <i onClick={() => { checkUser(productState, 'wishlist'); alertMessage("Added to wishlist", 1000) }} className={`fa-${wishlist.some(item => item.id === productState.id) ? 'solid' : "regular"} fa-heart`}></i>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

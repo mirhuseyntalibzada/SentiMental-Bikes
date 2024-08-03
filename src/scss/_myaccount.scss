@@ -31,6 +31,14 @@
     .container {
         background-color: rgb(22,22,25) !important;
     }
+
+    .error-message-container {
+        background-color: rgb(22,22,25) !important;
+    }
+
+    .login-register{
+        background-color: rgb(22, 22, 25) !important;
+    }
 }
 
 #login-register-section {
@@ -53,6 +61,7 @@
     }
 
     .login-register {
+        background-color: rgb(233, 233, 230);
         padding: 1em 0;
 
         .login {

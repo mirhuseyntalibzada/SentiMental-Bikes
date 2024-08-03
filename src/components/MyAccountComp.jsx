@@ -9,7 +9,7 @@ import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
 
 const MyAccountComp = () => {
-    
+
     const [cookie, setCookies, deleteCookie] = useCookies(['cookie-user'])
     const adminToken = "7c1a32ca-24c4-495e-bb5d-114ba449fb20"
     const [isAdmin, setAdmin] = useState(false)
@@ -39,7 +39,12 @@ const MyAccountComp = () => {
     }, []);
 
 
-    const [active, setActive] = useState('dashboard')
+    const [active, setActive] = useState('')
+
+    useEffect(() => {
+        setActive(isAdmin ? 'adminPanel' : 'dashboard');
+    }, [isAdmin]);
+
     const [user, setUser] = useState('null')
     const [fName, setFName] = useState('')
     const [lName, setLName] = useState('')
@@ -102,11 +107,17 @@ const MyAccountComp = () => {
     }
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <>
+                <div className={`loader-container ${mode === 'dark' ? 'dark' : ''}`}>
+                    <div className='loader'></div>
+                </div>
+            </>
+        );
     }
 
     return (
-        <section className={`account-section ${mode==='dark'?'dark':''}`} id='account-section'>
+        <section className={`account-section ${mode === 'dark' ? 'dark' : ''}`} id='account-section'>
             <div className="box-container">
                 <div className="green-box"></div>
                 <div className="white-box"></div>

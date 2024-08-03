@@ -141,6 +141,11 @@
                         font-size: .6em;
                         font-weight: 700;
                     }
+
+                    i{
+                        font-size: .9em;
+                        padding: .25em 0;
+                    }
                 }
 
                 .options-container.active {
@@ -505,6 +510,10 @@
                                 padding: .5em;
                                 font-size: .16em;
                             }
+                             i{
+                                font-size: .2em;
+                                padding: .3em 0;
+                             }
                         }
                     }
 

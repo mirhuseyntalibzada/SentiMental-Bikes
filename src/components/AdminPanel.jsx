@@ -18,7 +18,6 @@ const AdminPanel = ({ active, products }) => {
 
         const filePath = `parts/${file.name}`;
 
-        // Check if file already exists
         const { data: listData, error: listError } = await supabase.storage.from('images').list('parts');
         if (listError) {
             console.error('Error listing files:', listError.message);
@@ -28,7 +27,7 @@ const AdminPanel = ({ active, products }) => {
         const fileExists = listData.some(item => item.name === file.name);
 
         if (fileExists) {
-            // File exists, get its URL
+            
             const { data: urlData, error: urlError } = supabase.storage.from('images').getPublicUrl(filePath);
             if (urlError) {
                 console.error('Error getting public URL:', urlError.message);
@@ -38,7 +37,7 @@ const AdminPanel = ({ active, products }) => {
                 return publicURL;
             }
         } else {
-            // File does not exist, upload it
+
             const { data: uploadData, error: uploadError } = await supabase.storage.from('images').upload(filePath, file);
             if (uploadError) {
                 console.error('Error uploading file:', uploadError.message);
@@ -57,7 +56,8 @@ const AdminPanel = ({ active, products }) => {
     }
 
 
-    const handleAddProduct = async () => {
+    const handleAddProduct = async (e) => {
+        e.preventDefault()
         const imgURL = await sendImgToStorage()
         if (imgURL) {
             const { error } = await supabase.from('products').insert({
@@ -68,8 +68,8 @@ const AdminPanel = ({ active, products }) => {
                 about: productDesc,
                 img: [imgURL]
             })
+            window.location.reload()
         }
-        window.location.reload()
     }
 
     const handleRemoveItem = async (_id) => {
@@ -100,7 +100,7 @@ const AdminPanel = ({ active, products }) => {
                     <input type="number" id="productPrice" value={productPrice} onChange={(e) => setProductPrice(e.target.value)} />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="productPrice">Product Price</label>
+                    <label htmlFor="productPrice">Product Description</label>
                     <textarea value={productDesc} onChange={(e) => setProductDesc(e.target.value)} name="" id=""></textarea>
                 </div>
                 <div
@@ -122,9 +122,6 @@ const AdminPanel = ({ active, products }) => {
                         ref={imageRef}
                         style={{ display: 'none' }}
                     />
-                    {/* <div>
-                        {message && <p>{message}</p>}
-                    </div> */}
                 </div>
 
                 <input ref={imageRef} type="file" name="" id="" />

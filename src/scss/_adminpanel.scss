@@ -10,12 +10,16 @@
                 font-size: .75em;
             }
 
-            h2{
-                font-weight: 600 ;
+            h2 {
+                font-weight: 600;
             }
 
             form {
                 .input-container {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 1em;
+
                     label {
                         font-weight: 600;
                         font-size: .6em;
@@ -29,8 +33,17 @@
                         padding: 1em;
                     }
 
-                    input:focus {
+                    input:focus,
+                    textarea:focus {
                         outline: none;
+                    }
+
+                    textarea {
+                        height: 8em;
+                        width: 100%;
+                        box-sizing: border-box;
+                        border: none;
+                        padding: 1em;
                     }
                 }
             }
@@ -196,22 +209,31 @@
                     margin-bottom: 0;
                 }
 
-                form{
+                form {
                     margin-top: .5em;
-                    .input-container{
+
+                    .input-container {
                         display: flex;
                         flex-direction: column;
                         margin-bottom: .3em;
+
                         label {
                             font-weight: 600;
                             font-size: .2em;
                             margin-bottom: .25em;
                         }
-    
+
                         input {
                             height: 0em;
                             padding: 1.8em 1em;
                             font-size: .17em;
+                        }
+
+                        textarea {
+                            height: 8em;
+                            border: none;
+                            font-size: .17em;
+                            padding: 1.8em 1em;
                         }
                     }
                 }

@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 import ProductCard from '../components/ProductCard'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
+import { Bounce, toast } from 'react-toastify'
 
 const ConfigureBike = () => {
   const [loading, setLoading] = useState(true);
@@ -62,7 +63,6 @@ const ConfigureBike = () => {
       filteredProducts.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase()))
     keyword.length === 0 ? setSearchedProducts([]) : setSearchedProducts(searchedItems)
   }
-  console.log(searchedProducts);
 
   // ------------------------------------------------------------------Search
 
@@ -105,8 +105,22 @@ const ConfigureBike = () => {
     if (cookie['cookie-user'] !== undefined) {
       dispatch(addToCart({ ...filteredBicycle[0], quantity: value }))
     } else {
-      alert("you have to log in first")
+      alertMessage("You have to log in first", 5000)
     }
+  }
+
+  const alertMessage = (message, duration) => {
+    toast(message, {
+      position: "top-right",
+      autoClose: duration,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
   }
 
   const addCartToDB = async () => {
@@ -126,15 +140,21 @@ const ConfigureBike = () => {
   }, [cart])
   //------------------------------------------------------------------addtocart
 
-const [mode] = useContext(ModeContext)
+  const [mode] = useContext(ModeContext)
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <div className={`loader-container ${mode === 'dark' ? 'dark' : ''}`}>
+          <div className='loader'></div>
+        </div>
+      </>
+    );
   }
 
   return (
     <>
-      <section className={`configure-section ${mode==='dark'?'dark':''}`} id='configure'>
+      <section className={`configure-section ${mode === 'dark' ? 'dark' : ''}`} id='configure'>
         <div className="configure">
           <div className="container">
             <div className="heading">
@@ -182,7 +202,7 @@ const [mode] = useContext(ModeContext)
                     <input value={value} type="number" onChange={handleChange} />
                     <a onClick={() => { setValue(value + 1) }} href="#!" className='plus'>+</a>
                   </div>
-                  <button onClick={() => { checkUser() }} className='add-to-cart'>
+                  <button onClick={() => { checkUser(); alertMessage("Added to cart", 1000) }} className='add-to-cart'>
                     <img src={icon} alt="" />
                     <span>ADD TO CART</span>
                   </button>
@@ -201,7 +221,7 @@ const [mode] = useContext(ModeContext)
           </div>
         </div>
       </section>
-      <section className={`addons ${mode==='dark'?'dark':''}`} id="addons">
+      <section className={`addons ${mode === 'dark' ? 'dark' : ''}`} id="addons">
         <div className='category-container'>
           <div className="container">
             <ul>
