@@ -357,7 +357,7 @@
                         .country-container {
                             display: flex;
                             flex-direction: column;
-                            overflow: scroll;
+                            overflow-y: scroll;
                             max-height: 10.8em;
 
                             .country {
@@ -725,7 +725,7 @@
                             .country-container {
                                 display: flex;
                                 flex-direction: column;
-                                overflow: scroll;
+                                overflow-y: scroll;
                                 max-height: 4.1em;
 
                                 .country {

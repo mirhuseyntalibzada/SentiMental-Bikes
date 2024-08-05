@@ -20,7 +20,7 @@ import './i18n.js';
 import { useDispatch } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import supabase from './config/connect.js';
-import { setCartToRedux, setProductToRedux } from './toolkit/features/cartSlice.js';
+import { setCartToRedux, setOrdersToRedux, setProductToRedux } from './toolkit/features/cartSlice.js';
 import { setWishlistToRedux } from './toolkit/features/wishlistSlice.js';
 import NotFound from './pages/NotFound.jsx';
 
@@ -37,6 +37,7 @@ function App() {
           if (user.cart) {
             dispatch(setCartToRedux(user.cart.cart));
             dispatch(setProductToRedux(user.cart.product));
+            dispatch(setOrdersToRedux(user.cart.orders))
           }
           if (user.wishlist) {
             dispatch(setWishlistToRedux(user.wishlist.wishlist));

@@ -4,10 +4,9 @@ import icon from '../images/logo-btn-icon.svg'
 import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useDispatch, useSelector } from 'react-redux'
-import { addWishlistToProduct, setCartToRedux, setProductToRedux } from '../toolkit/features/cartSlice'
-import { addToWishlist, emptyWishlist, removeFromWishlist, setWishlistToRedux } from '../toolkit/features/wishlistSlice'
+import { addWishlistItemToCart, addWishlistToProduct } from '../toolkit/features/cartSlice'
+import { emptyWishlist, removeFromWishlist, setWishlistToRedux } from '../toolkit/features/wishlistSlice'
 import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
 
@@ -77,6 +76,11 @@ const Wishlist = () => {
     dispatch(emptyWishlist())
   }
 
+  const sendItemToCart = (item) =>{
+    dispatch(addWishlistItemToCart({...item, quantity:item.quantity}))
+    handleRemoveItem(item.id)
+  }
+
   const addCartWishlistToDB = async () => {
     const { data } = await supabase.from('users').select()
     const user = data.find(({ token }) => token === cookie['cookie-user'])
@@ -98,14 +102,14 @@ const Wishlist = () => {
 
   return (
     <>
-      <section className={`wishlist ${mode==='dark'?'dark':''}`} id='wishlist'>
+      <section className={`wishlist ${mode === 'dark' ? 'dark' : ''}`} id='wishlist'>
         <div className="container">
           <div className="text-container">
             <h1>Wishlist</h1>
           </div>
         </div>
       </section>
-      <section className={`wishlist-section ${mode==='dark'?'dark':''}`} id='wishlist-section'>
+      <section className={`wishlist-section ${mode === 'dark' ? 'dark' : ''}`} id='wishlist-section'>
         <div className="box-container">
           <div className="green-box"></div>
           <div className="white-box"></div>
@@ -145,6 +149,12 @@ const Wishlist = () => {
                             <a href="#!" className='plus' onClick={() => handleIncrement(i)}>+</a>
                           </div>
                         </div>
+                        <div className="add-to-cart">
+                          <button onClick={() => { sendItemToCart(item) }} className='add-to-cart'>
+                            <img src={icon} alt="" />
+                            <span>ADD TO CART</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div className="delete" onClick={() => handleRemoveItem(item.id)}>
@@ -158,12 +168,14 @@ const Wishlist = () => {
           {!wishlist || wishlist.length === 0 ?
             ''
             :
-            <div className="add-to-cart">
-              <button onClick={() => { sendWishlistToCart() }} className='add-to-cart'>
-                <img src={icon} alt="" />
-                <span>ADD TO CART</span>
-              </button>
-            </div>
+            wishlist.length === 1 ?
+            ''
+            : <div className="add-to-cart">
+            <button onClick={() => { sendWishlistToCart() }} className='add-to-cart'>
+              <img src={icon} alt="" />
+              <span>ADD ALL TO CART</span>
+            </button>
+          </div>
           }
         </div>
       </section >

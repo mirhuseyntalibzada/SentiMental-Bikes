@@ -1,9 +1,10 @@
-.loader-container{
+.loader-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(228, 228, 228);
+
     .loader {
         width: 50px;
         aspect-ratio: 1;
@@ -11,28 +12,38 @@
         border: 8px solid;
         border-color: #000 #0000;
         animation: l1 1s infinite;
-      }
-      @keyframes l1 {to{transform: rotate(.5turn)}}
+    }
+
+    @keyframes l1 {
+        to {
+            transform: rotate(.5turn)
+        }
+    }
 }
 
 .loader-container.dark {
     background-color: rgb(22, 22, 25) !important;
+
     .loader {
-        border-color: white rgb(22,22,25)
+        border-color: white rgb(22, 22, 25)
     }
 }
 
-.account-section.dark{
-    .box-container{
+.account-section.dark {
+    background-color: rgb(22, 22, 25) !important;
+    .box-container {
         background-color: rgb(22, 22, 25);
+
         .white-box {
             background-color: rgb(22, 22, 25) !important;
         }
     }
-    .container{
+
+    .container {
         background-color: rgb(22, 22, 25) !important;
         color: white !important;
-        a{
+
+        a {
             color: white !important;
         }
     }
@@ -40,6 +51,7 @@
 
 #account-section {
     padding: 0;
+    background-color: rgb(233, 233, 230);
 
     .container {
         padding: .5em 0.5em;
@@ -97,25 +109,27 @@
             }
 
             .addresses-text-container {
-                h1 {
-                    font-size: 1.2em;
-                    font-weight: 600;
-                }
+                .div-container {
+                    h1 {
+                        font-size: 1.2em;
+                        font-weight: 600;
+                    }
 
-                p {
-                    margin: .3em 0;
-                    font-size: .65em;
-                }
+                    p {
+                        margin: .3em 0;
+                        font-size: .65em;
+                    }
 
-                a {
-                    margin: 0;
-                    font-size: .65em;
-                    color: black;
-                    font-weight: 600;
-                }
+                    a {
+                        margin: 0;
+                        font-size: .65em;
+                        color: black;
+                        font-weight: 600;
+                    }
 
-                div:nth-child(3) {
-                    margin-bottom: 2em;
+                    div:nth-child(3) {
+                        margin-bottom: 2em;
+                    }
                 }
             }
 
@@ -187,8 +201,10 @@
 
             .vat-text-container {
                 flex-direction: column;
+
                 .input-container {
                     margin-bottom: .5em;
+
                     label {
                         font-weight: 600;
                         font-size: .6em;
@@ -202,11 +218,13 @@
                         height: 3.3em;
                         padding: 1em;
                     }
-                    input:focus{
+
+                    input:focus {
                         outline: none;
                     }
 
                 }
+
                 button {
                     background-color: black;
                     color: white;
@@ -349,7 +367,7 @@
                             input {
                                 height: 0em;
                                 padding: 1.8em 1em;
-                                font-size: .17em;
+                                font-size: .2em;
                             }
 
                             span {
@@ -387,9 +405,10 @@
                     }
 
                     .vat-text-container {
-                        .input-container{
+                        .input-container {
                             display: flex;
                             flex-direction: column;
+
                             label {
                                 font-weight: 600;
                                 font-size: .2em;
@@ -403,8 +422,9 @@
                             }
                         }
 
-                        .btn-container{
+                        .btn-container {
                             display: flex;
+
                             button {
                                 background-color: black;
                                 color: white;

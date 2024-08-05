@@ -14,8 +14,30 @@ const Cart = () => {
   const [cookie] = useCookies(['cookie-user'])
   const dispatch = useDispatch()
 
+  const cartAll = useSelector((state) => state.cart)
   const cart = useSelector((state) => state.cart.cart)
   const product = useSelector((state) => state.cart.product)
+  const orders = useSelector((state) => state.cart.orders)
+
+
+  const addOrderToDB = async () => {
+    const { data } = await supabase.from('users').select();
+    const user = data.find(({ token }) => token === cookie['cookie-user']);
+    const { error } = await supabase.from('users').update({
+      cart: cartAll
+    }).eq('token', user.token);
+    if (error) {
+      console.error("Error updating cart:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (orders) {
+      if (orders.length > 0) {
+        addOrderToDB();
+      }
+    }
+  }, [cart]);
 
   const cartAmount = useSelector((state) => state.cart.cartAmount)
   const cartQuantity = useSelector((state) => state.cart.cartQuantity)
@@ -29,6 +51,7 @@ const Cart = () => {
       const updatedCartData = {
         cart: updatedCart,
         product: updatedProduct,
+        orders: orders,
         cartAmount: updatedCart.reduce((total, item) => total + item.price * item.quantity, 0),
         cartQuantity: updatedCart.reduce((total, item) => total + item.quantity, 0),
         productAmount: updatedProduct.reduce((total, item) => total + item.price * item.quantity, 0),
@@ -113,14 +136,14 @@ const Cart = () => {
 
   return (
     <>
-      <section className={`cart ${mode==='dark'?'dark':''}`} id='cart'>
+      <section className={`cart ${mode === 'dark' ? 'dark' : ''}`} id='cart'>
         <div className="container">
           <div className="text-container">
             {(!cart && !product) || (cart.length === 0 && product.length === 0) ? <h1>Cart</h1> : <h1>Checkout</h1>}
           </div>
         </div>
       </section>
-      <section className={`cart-section ${mode==='dark'?'dark':''}`} id='cart-section'>
+      <section className={`cart-section ${mode === 'dark' ? 'dark' : ''}`} id='cart-section'>
         <div className="box-container">
           <div className="green-box"></div>
           <div className="white-box"></div>
@@ -192,7 +215,7 @@ const Cart = () => {
                           <div className='text-container'>
                             <h5>{item.category === 'addon' ? 'Configure Addon' : 'Configure Part'}</h5>
                             <div className='category-name'>
-                              <h6>{item.category==='addon'?'Addon':'Part'} Name:</h6>
+                              <h6>{item.category === 'addon' ? 'Addon' : 'Part'} Name:</h6>
                               <p>{item.name}</p>
                             </div>
                             <div className='category-name'>

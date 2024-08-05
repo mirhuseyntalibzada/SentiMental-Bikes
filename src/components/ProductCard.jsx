@@ -32,6 +32,7 @@ const ProductCard = ({ productState }) => {
         if (cookie['cookie-user'] !== undefined) {
             if (type === 'cart') {
                 dispatch(addProductToCart({ ...item, quantity: 1 }));
+                alertMessage("Added to cart", 1000)
             } else {
                 toggleHeart(item);
             }
@@ -82,10 +83,10 @@ const ProductCard = ({ productState }) => {
                     </div>
                     <div className="button-container">
                         <button onClick={() => { window.scrollTo(0, 0); }} className='details'><Link to={`/details/${slugify(productState.name.toLowerCase())}`}>DETAILS</Link></button>
-                        <button onClick={() => { checkUser(productState, 'cart'); alertMessage("Added to cart", 1000) }}>CART</button>
+                        <button onClick={() => { checkUser(productState, 'cart') }} >CART</button>
                     </div>
                     <div className='fav'>
-                        <i onClick={() => { checkUser(productState, 'wishlist'); alertMessage("Added to wishlist", 1000) }} className={`fa-${wishlist.some(item => item.id === productState.id) ? 'solid' : "regular"} fa-heart`}></i>
+                        <i onClick={() => { checkUser(productState, 'wishlist') }} className={`fa-${wishlist.some(item => item.id === productState.id) ? 'solid' : "regular"} fa-heart`}></i>
                     </div>
                 </div>
             </div>

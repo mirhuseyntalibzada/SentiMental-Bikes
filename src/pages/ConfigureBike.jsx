@@ -104,6 +104,7 @@ const ConfigureBike = () => {
   const checkUser = async () => {
     if (cookie['cookie-user'] !== undefined) {
       dispatch(addToCart({ ...filteredBicycle[0], quantity: value }))
+      alertMessage("Added to cart", 1000)
     } else {
       alertMessage("You have to log in first", 5000)
     }
@@ -202,7 +203,7 @@ const ConfigureBike = () => {
                     <input value={value} type="number" onChange={handleChange} />
                     <a onClick={() => { setValue(value + 1) }} href="#!" className='plus'>+</a>
                   </div>
-                  <button onClick={() => { checkUser(); alertMessage("Added to cart", 1000) }} className='add-to-cart'>
+                  <button onClick={() => { checkUser() }} className='add-to-cart'>
                     <img src={icon} alt="" />
                     <span>ADD TO CART</span>
                   </button>
