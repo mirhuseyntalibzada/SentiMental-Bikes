@@ -39,15 +39,24 @@
             .accordion {
                 border-bottom: 1px solid rgb(168, 168, 168);
 
+                .accordion-type{
+                    margin-top: 3em;
+                    h2{
+                        margin: .5em 0 0;
+                        font-weight: 700;
+                    }
+                }
+
                 .accordion-header {
                     padding: 1em 0;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    cursor: pointer;
 
                     h1 {
                         font-size: 1.3em;
-                        font-weight: 600;
+                        font-weight: 500;
                         margin: 0;
                         width: 90%;
                     }
@@ -147,6 +156,13 @@
                 .accordion {
                     border-bottom: 1px solid rgb(168, 168, 168);
 
+                    .accordion-type{
+                        margin-top: 1em;
+                        h2{
+                            font-size: .5em;
+                        }
+                    }
+
                     .accordion-header {
                         padding: .25em 0;
                         display: flex;
@@ -154,7 +170,7 @@
                         align-items: center;
 
                         h1 {
-                            font-size: .45em
+                            font-size: .4em
                         }
 
                         .angle-down {

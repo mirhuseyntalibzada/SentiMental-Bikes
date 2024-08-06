@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import supabase from '../config/connect';
 import { Bounce, toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 const AdminPanel = ({ active, products }) => {
     const [productName, setProductName] = useState('');
@@ -135,30 +136,33 @@ const AdminPanel = ({ active, products }) => {
         });
     }
 
+
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
+
     return (
         <div style={active === 'adminPanel' ? { display: 'block' } : { display: 'none' }} className="admin-text-container">
-            <h1>Welcome to the Admin Panel</h1>
-            <p>This is the main content area where you can manage different aspects of your application.</p>
-            <h2>Add New Product</h2>
+            <h1>{t('adminPanel.h1')}</h1>
+            <p>{t('adminPanel.p.1')}</p>
+            <h2>{t('adminPanel.h2')}</h2>
             <form onSubmit={handleAddProduct}>
                 <div className="input-container">
-                    <label htmlFor="productName">Product Name</label>
+                    <label htmlFor="productName">{t('adminPanel.label.1')}</label>
                     <input type="text" id="productName" value={productName} onChange={(e) => setProductName(e.target.value)} />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="productCategory">Product Category</label>
+                    <label htmlFor="productCategory">{t('adminPanel.label.2')}</label>
                     <input type="text" id="productCategory" value={productCategory} onChange={(e) => setProductCategory(e.target.value)} />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="productType">Product Type</label>
+                    <label htmlFor="productType">{t('adminPanel.label.3')}</label>
                     <input type="text" id="productType" value={productType} onChange={(e) => setProductType(e.target.value)} />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="productPrice">Product Price</label>
+                    <label htmlFor="productPrice">{t('adminPanel.label.4')}</label>
                     <input type="number" id="productPrice" value={productPrice} onChange={(e) => setProductPrice(e.target.value)} />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="productDesc">Product Description</label>
+                    <label htmlFor="productDesc">{t('adminPanel.label.5')}</label>
                     <textarea value={productDesc} onChange={(e) => setProductDesc(e.target.value)} id="productDesc" />
                 </div>
                 <div
@@ -177,10 +181,10 @@ const AdminPanel = ({ active, products }) => {
                     onDrop={handleDrop}
                     onClick={handleFileClick}
                 >
-                    <p>Drag & Drop your file here</p>
-                    <p>or</p>
-                    <p>Click to select a file</p>
-                    {fileName && <p>Selected file: {fileName}</p>}
+                    <p>{t('adminPanel.p.1')}</p>
+                    <p>{t('adminPanel.p.2')}</p>
+                    <p>{t('adminPanel.p.3')}</p>
+                    {fileName && <p>{t('adminPanel.p.4')} {fileName}</p>}
                 </div>
                 <input
                     type="file"
@@ -188,8 +192,8 @@ const AdminPanel = ({ active, products }) => {
                     style={{ display: 'none' }}
                     onChange={handleFileChange}
                 />
-                <div onClick={()=>{alertMessage("Please wait, do not reload the page", 5000)}} className="btn-container">
-                    <button type="submit">ADD PRODUCT</button>
+                <div onClick={() => { alertMessage("Please wait, do not reload the page", 5000) }} className="btn-container">
+                    <button type="submit">{t('adminPanel.button.1')}</button>
                 </div>
             </form>
             <h2>Products</h2>
@@ -201,15 +205,15 @@ const AdminPanel = ({ active, products }) => {
                         </div>
                         <div className="text-container">
                             <div className="category-name">
-                                <h6>Product Name:</h6>
+                                <h6>{t('adminPanel.label.1')}:</h6>
                                 <p>{item.name.toUpperCase()}</p>
                             </div>
                             <div className="category-name">
-                                <h6>Product Category:</h6>
+                                <h6>{t('adminPanel.label.2')}:</h6>
                                 <p>{item.category}</p>
                             </div>
                             <div className="category-name">
-                                <h6>Product Type:</h6>
+                                <h6>{t('adminPanel.label.3')}:</h6>
                                 <p>{item.type}</p>
                             </div>
                             <div className="price-quantity-container">
@@ -219,7 +223,7 @@ const AdminPanel = ({ active, products }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="delete" onClick={() => {handleRemoveItem(item.id);alertMessage("Please wait, do not reload the page", 5000)}}>
+                    <div className="delete" onClick={() => { handleRemoveItem(item.id); alertMessage("Please wait, do not reload the page", 5000) }}>
                         <i className="fa-solid fa-x"></i>
                     </div>
                 </div>

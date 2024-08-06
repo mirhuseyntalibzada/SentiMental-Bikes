@@ -97,37 +97,290 @@
                 "4": "başladı."
             },
             "p-2": {
-                "1": "Frustrated with the monotonous options available in the market, I dared to dream up an e-bike that transformed from a humble idea into an extraordinary reality.",
-                "2": "Each SentiMental bike is meticulously handcrafted, ensuring that our passion for detail and dedication to quality shines through. With a subtle nod to the golden era of biking, our timeless designs pay homage to the past while embracing the future.",
-                "3": "Our e-bikes are more than just a mode of transportation; they’re an invitation to experience the world in a whole new way."
+                "1": "Bazarda təklif olunan variantların monotonluğundan əsəbiləşərək, təvazökar bir fikirdən fövqəladə bir reallığa çevrilən bir e-velosiped haqqında xəyal qurmağa cəsarət etdim.",
+                "2": "Hər bir sentimental velosiped, detallara olan həvəsimizi və keyfiyyətə sadiqliyimizi nümayiş etdirməsini təmin edərək çox diqqətlə əl işidir. Keçmişə hörmət edən və gələcəyə yönəlmiş zamansız modellərimiz velosiped idmanının qızıl dövrünə incə bir işarədir.",
+                "3": "E-velosipedlərimiz yalnız nəqliyyat vasitəsi deyil, dünyanı tamamilə yeni bir şəkildə tanımaq üçün bir dəvətdir."
             },
             "span-5": {
-                "1": "So, hop on, and let",
-                "2": "SentiMental bikes take you",
-                "3": "on a journey of rediscovery,",
-                "4": "where the joy of e-biking is",
-                "5": "limited only by your",
-                "6": "imagination."
+                "1": "Beləliklə, velosipedinizə minin və",
+                "2": "sentimental velosipedlərin sizi",
+                "3": "e-velosiped sürməyin sevincinin",
+                "4": "yalnız təsəvvürünüzlə məhdudlaşdığı",
+                "5": "yeni kəşflər səyahətinə aparmasına",
+                "6": "icazə verin."
             },
             "span-6": {
-                "1": "So, hop on, and let SentiMental bikes take you on a",
-                "2": "journey of rediscovery, where the joy of e-biking is",
-                "3": "limited only by your imagination."
+                "1": "Beləliklə, velosipedinizə minin və sentimental velosipedlərin sizi",
+                "2": "e-velosiped sürməyin sevincinin yalnız təsəvvürünüzlə məhdudlaşdığı",
+                "3": "yeni kəşflər səyahətinə aparmasına icazə verin."
             },
-            "span-7": "Together, we’ll create memories that will last a lifetime.",
+            "span-7": "Birlikdə ömür boyu davam edəcək xatirələr yaradacağıq.",
             "h1-1": {
-                "1": "Feeling Sentimental? We ",
-                "2": "got you.",
-                "3": "Feeling Sentimental? We got you."
+                "1": "Sən də SentiMental olmaq istəyirsən?",
+                "2": "O zaman bizə qoşul.",
+                "3": "Sən də SentiMental olmaq istəyirsən? O zaman bizə qoşul."
             },
-            "p-3": "Falling in love is easy. Staying in love takes work. This is why we used exceptional materials and long-range batteries wrapped in timeless design. So that your love for SentiMental bikes lasts today, tomorrow, and beyond.",
-            "span-8": "Sentimental Bikes",
+            "p-3": "Bizim modellərimizə aşiq olmaq çox asandır. Çünki biz unikal dizaynda hazırlanmış xüsusi materiallardan və uzunmüddətli batareyalardan istifadə etdik. Sentimental velosipedlərə olan sevginiz bu gün, sabah və gələcəkdə davam etməsi üçün.",
+            "span-8": "Sentimental Velosipedləri",
             "h1-2": {
-                "1": "Go ahead. Ride the",
-                "2": "wave. For SentiMental",
-                "3": "reasons.",
-                "4": "Go ahead. Ride the wave.",
-                "5": "For SentiMental reasons."
+                "1": "SentiMental olmaq istəyirsənsə",
+                "2": "Sən də bizə",
+                "3": " qoşul.",
+                "4": "SentiMental olmaq istəyirsənsə",
+                "5": "Sən də bizə qoşul."
+            }
+        },
+        "dealerShip": {
+            "span-1": {
+                "1": "Dünyadakı Velosiped",
+                "2": "Mağazaları"
+            },
+            "a": {
+                "1": "Hamısı",
+                "2": "Xorvatiya",
+                "3": "Almaniya",
+                "4": "Slovakiya",
+                "5": "Çexiya"
+            },
+            "button": "PARTNYORUMUZ OL"
+        },
+        "form": {
+            "label-1": "AD",
+            "label-2": "E-MAIL",
+            "label-3": "TELEFON",
+            "label-4": "SUBYEKT",
+            "label-5": "MESAJ",
+            "label-6": "RAZILAŞMA",
+            "label-7": {
+                "1": "Sentimental Bikes-in məxfilik siyasətində göstərilən bütün məqsədlər üçün yuxarıdakı e-poçt ünvanı və ya telefon nömrəsi ilə mənimlə əlaqə qura biləcəyinə razıyam:",
+                "2": "məxfilik siyasəti"
+            },
+            "button": "GÖNDƏR",
+            "h1": "SentiMental Velosipedləri",
+            "p-1": "Qurucu, Yaradıcı Direktor",
+            "p-2": "Qurucu, CEO",
+            "h2": "Sosial Media"
+        },
+        "faq": {
+            "h1": "Tez-Tez Soruşulan Suallar"
+        },
+        "configureBike": {
+            "h1": "Velosiped Seçin",
+            "h6-1": "RAM SEÇİMİ",
+            "h6-2": "Velosipedin rəngi",
+            "h6-3": "Tutacaq rəngi",
+            "button": "PDF YÜKLƏYİN",
+            "span": "SƏBƏTƏ ƏLAVƏ EDİN",
+            "h6-4": "BU MÖHTƏŞƏM VELOSİPEDİ PAYLAŞIN"
+        },
+        "myAccount": {
+            "h1": "Hesabım"
+        },
+        "loginRegister": {
+            "label-1": "ISTIFADƏÇİ ADI",
+            "label-2": "EMAIL ADRESİ",
+            "label-3": "ŞİFRƏ",
+            "label-4": "Məni yadda saxla",
+            "a": "Şifrənizi xatırlaya bilmirsiniz?",
+            "button-1": "DAXİL OLUN",
+            "p": {
+                "1": "Şəxsi məlumatlarınız bu veb saytdakı işinizi dəstəkləmək, hesabınıza girişi idarə etmək və Məxfilik siyasətimizdə təsvir olunan digər məqsədlər üçün istifadə ediləcəkdir",
+                "2": "məxfilik siyasəti"
+            },
+            "button": "QEYDİYYATDAN KEÇİN"
+        },
+        "myAccountComp": {
+            "a": {
+                "1": "İdarəetmə paneli",
+                "2": "Sifarişlər",
+                "3": "Adreslər",
+                "4": "Hesab Təfərrüatları",
+                "5": "ƏDV nömrəsi",
+                "6": "Çıxış"
+            },
+            "h6-1": "Məhsul Adı:",
+            "p-1": "e-Velosiped",
+            "h6-2": "Məhsul Kateqoriyası:",
+            "h6-3": "Tutacaq Rəngi:",
+            "h6-4": "Velosiped Rəngi:",
+            "h6-5": "Say:",
+            "h5": "Ümumi:",
+            "p-2": "Varsayılan olaraq, ödəmə səhifəsində aşağıdakı ünvanlar istifadə ediləcəkdir.",
+            "h1-1": "Ödəmə Ünvanı",
+            "p-3": "Bu tip ünvanı hələ konfiqurasiya etməmisiniz",
+            "h1-2": "Çatdırılma Ünvanı",
+            "label-1": "ADINIZ",
+            "label-2": "SOYADINIZ",
+            "label-3": "İSTİFADƏÇİ ADI",
+            "span-1": "Bu adınız hesabınızda və rəylərdə görünəcək",
+            "label-4": "EMAIL ADRESİ",
+            "h1-3": "Şifrəni dəyiş",
+            "label-5": "İndiki şifrə (Keçmiş şifrə)",
+            "label-6": "Yeni şifrə",
+            "label-7": "Yeni şifrəni təsdiqləyin",
+            "button-1": "YADDA SAXLA",
+            "label-8": "ƏDV NÖMRƏSİ",
+            "button-2": "YADDA SAXLA"
+        },
+        "adminPanel": {
+            "h1": "Admin Panelə Xoş Gəldiniz",
+            "p": {
+                "1": "Bu, tətbiqinizin müxtəlif aspektlərini idarə edə biləcəyiniz əsas məzmun sahəsidir.",
+                "2": "Faylınızı buraya sürükləyin",
+                "3": "ya da",
+                "4": "Fayl seçmək üçün bura klik edin",
+                "5": "Seçilmiş fayl: "
+            },
+            "h2": "Yeni məhsul əlavə edin",
+            "label": {
+                "1": "Məhsul Adı",
+                "2": "Məhsul Kateqoriyası",
+                "3": "Məhsul Tipi",
+                "4": "Məhsulun Qiyməti",
+                "5": "Məhsul Təsviri"
+            },
+            "button": {
+                "1": "MƏHSULU ƏLAVƏ EDİN"
+            }
+        },
+        "cart": {
+            "span": {
+                "1": "Səbətiniz hal-hazırda boşdur"
+            },
+            "a": {
+                "1": "MAĞAZAYA GERİ DÖNÜN"
+            },
+            "h1": {
+                "1": "Məhsulların Dəyəri:",
+                "2": "Çatdırılma:",
+                "3": "Ümumi:",
+                "4": "Səbət",
+                "5": "Yoxlama"
+            },
+            "h5": {
+                "1": "Velosipedinizi Konfiqurasiya Edin"
+            },
+            "h6": {
+                "1": "Ram Növü",
+                "2": "Təkərlər",
+                "3": "Velosiped Rəngi",
+                "4": "Tutacaq Rəngi",
+                "5": "Adı:",
+                "6": "Kateqoriyası:"
+            },
+            "button": "KUPON ƏLAVƏ EDİN"
+        },
+        "billingAddress": {
+            "h1": {
+                "1": "Ödəniş detalları",
+                "2": "Məhsulların Dəyəri:",
+                "3": "Çatdırılma:",
+                "4": "Ümumi:"
+            },
+            "h6": {
+                "1": "ADINIZ",
+                "2": "SOYADINIZ",
+                "3": "ŞİRKƏT ADI (İSTƏYƏ BAĞLI)",
+                "4": "ÖLKƏ / REGİON",
+                "5": "KÜÇƏ ADRESİ",
+                "6": "QƏSƏBƏ / ŞƏHƏR",
+                "7": "ŞTAT / RAYON",
+                "8": "POÇT KODU / ZİP",
+                "9": "TELEFON",
+                "10": "EMAIL ADRESİ",
+                "11": "ƏDV NÖMRƏSİ (İSTƏYƏ BAĞLI)",
+                "12": "SİFARİŞ NOTLARI (İSTƏYƏ BAĞLI)",
+                "13": "ÖDƏNİŞ METODUNU SEÇİN",
+                "14": "BİRBAŞA BANK KÖÇÜRMƏSİ",
+                "15": "KREDİT KARTI VƏ YA CRYPTO VALYUTA İLƏ ÖDƏNİŞ"
+            },
+            "span": {
+                "1": "Axtarılan tapılmadı"
+            },
+            "p": {
+                "1": "Ödənişi birbaşa bank hesabımıza edin. Zəhmət olmasa sifariş ID-nizi ödəniş linki kimi istifadə edin. Vəsait Hesabımıza çatana qədər sifarişiniz göndərilməyəcək.",
+                "2": "Tercih etdiyiniz kredit / debet kartı və ya kriptovalyutadan istifadə edərək alış-veriş edə biləcəyiniz ödəniş sistemimizin səhifəsinə etibarlı şəkildə yönləndiriləcəksiniz.",
+                "3": {
+                    "1": "Şəxsi məlumatlarınız sifarişinizi emal etmək, bu veb saytdakı işinizi dəstəkləmək və Məxfilik siyasətimizdə təsvir olunan digər məqsədlər üçün istifadə ediləcəkdir",
+                    "2": "məxfilik siyasəti"
+                }
+            },
+            "button": "SİFARİŞİ TƏSDİQLƏYİN"
+        },
+        "wishlist": {
+            "h1": {
+                "1": "İstək Səbəti"
+            },
+            "span": {
+                "1": "İstək səbətiniz hal hazırda boşdur."
+            },
+            "button": {
+                "1": "MAĞAZAYA GERİ DÖNÜN",
+                "2": "HAMISINI ƏLAVƏ ET",
+                "3": "SƏBƏTƏ ƏLAVƏ ET"
+            },
+            "h5": {
+                "1": "MƏHSULU KONFİQURASİYA EDİN"
+            }
+        },
+        "footer": {
+            "div": "SentiMental Velosipedləri",
+            "h3": "Əhvalınızı Yüksək Tutun!",
+            "p": {
+                "1": "SentiMental ilə əlaqəli bütün inkişaflardan xəbərdar olun. Bülletenimizə abunə olun və e-velosiped dünyasında heç bir hadisəni qaçırmadığınızdan əmin olun. Axı #ıtsrideoclock bir yerdədir!",
+                "2": "© SentiMental Bikes 2024. Bütün hüquqlar qorunur.",
+                "3": "POD d.o.o., Dežanovac 234, 43500 Daruvar, Xorvatiya Respublikası, ƏDV NÖMRƏSİ: HR03398907795 010008500 şirkətinin qeydiyyat nömrəsi altında Belovar kommersiya Məhkəməsinin məhkəmə Reyestrinə daxil edilmiş,nizamnamə kapitalı 793.820,00 EURO tam ödənilmişdir. Bank hesabı: Hrvatska poštanska banka d.d., Jurišićeva ulica 4, 10000 Zagreb, Hrvatska. IBAN: HR2125030071111002039, SWIFT: HPBZGHR2X"
+            },
+            "button": "ABUNƏ OLUN",
+            "a": {
+                "1": "Hekayəmiz",
+                "2": "Məxfilik siyasəti",
+                "3": "Əlaqə",
+                "4": "Şərtlər və qaydalar",
+                "5": "İstifadəçinin Məxfilik Bildirişi",
+                "6": "Monri WSpay istifadə bəyanatı",
+                "7": "Dəyişmə bəyənatı",
+                "8": "VELOSİPED KONFİQURASİYA EDİN"
+            },
+            "h5": {
+                "1": "Bizi sosial mediada izləyin",
+                "2": "Təhlükəsiz Ödəniş"
+            }
+        },
+        "notFound":{
+            "h2":"Bu veb-sayt bir velosiped olsaydı, indi təkəri boş olardı.",
+            "span":"Yuxarıdakı menyudan istifadə edərək təkəri doldurun"
+        },
+        "experienceSentimental": {
+            "h1": {
+                "1": "SentiMentalı",
+                "2": "Təcrübə edin"
+            },
+            "p": {
+                "1": "Praktik təcrübə üçün bizi ziyarət edin. Sənətkarlığı hiss edin, ehtirasımızı anlayın və ən əsası sentimental velosipedlərimizi özünüz sınayın.",
+                "2":"Sentimental velosipedlərin Zaqrebdə dizaynın 10-cu həftəsinin bir hissəsi olacağını bildirməkdən məmnunuq! Biz təkcə sərgidə iştirak etmirik, həm də tədbirin qürurlu tərəfdaşlarıyıq. Velosipedlərimiz Dizayn Həftəsi iştirakçıları tərəfindən istifadə ediləcək və bütün ziyarətçilər tədbir zamanı onları sınamaq şansına sahib olacaqlar. Bu səfərdə bizimlə olan hər kəsə təşəkkür edirik. Sentyabrın 26-dan oktyabrın 1-dək Zaqrebdəki yarmarkada görüşənə qədər!"
+            },
+            "div": {
+                "1":"Sen",
+                "2":"10-cu Zagreb Dizayn Həftəsi"
+            }
+        },
+        "news":{
+            "h1":"Diqqət mərkəzindəki Sentimental",
+            "button":"BÜTÜN MEDIA",
+            "span":"XƏBƏRLƏR"
+        },
+        "addressComp":{
+            "button":"YADDA SAXLA"
+        },
+        "details":{
+            "h6":{
+                "1":"TƏNZİMLƏMƏLƏR",
+                "2":"Rəng seçin",
+                "3":"HAQQINDA",
+                "4":"PDF YÜKLƏYİN",
+                "5":"SƏBƏTƏ ƏLAVƏ ET",
+                "6":"BU MÖHTƏŞƏM VELOSİPEDİ PAYLAŞIN"
             }
         }
     }

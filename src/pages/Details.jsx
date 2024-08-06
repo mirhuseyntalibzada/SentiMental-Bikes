@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import supabase from '../config/connect'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
+import { useTranslation } from 'react-i18next'
 
 const Details = () => {
     const [loading, setLoading] = useState(true);
@@ -102,6 +103,7 @@ const Details = () => {
     //------------------------------------------------------------------------------------addProductsToCart
 
     const [mode] = useContext(ModeContext)
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
 
     if (loading) {
         return (
@@ -144,10 +146,10 @@ const Details = () => {
                             {productDetail.type === 'customizable' ?
                                 <>
                                     <div className="options">
-                                        <h6>OPTIONS</h6>
+                                        <h6>{t('details.h6.1')}</h6>
                                     </div>
                                     <div className="bicycle-color">
-                                        <h6>Choose color</h6>
+                                        <h6>{t('details.h6.2')}</h6>
                                         <div className="color-container">
                                             <div onClick={() => changeColor(0)}></div>
                                             <div onClick={() => changeColor(1)}></div>
@@ -160,13 +162,13 @@ const Details = () => {
                                 </>
                                 : ''}
                             <div className="options">
-                                <h6>ABOUT</h6>
+                                <h6>{t('details.h6.3')}</h6>
                             </div>
                             <div className="about">
                                 <p>{productDetail.about}</p>
                             </div>
                             <div className="download-pdf">
-                                <button>DOWNLOAD PDF</button>
+                                <button>{t('details.h6.4')}</button>
                             </div>
                             <div className="add-to-cart">
                                 <div className='quantity'>
@@ -178,11 +180,11 @@ const Details = () => {
                                 </div>
                                 <button onClick={() => checkUser(productDetail)} className='add-to-cart'>
                                     <img src={icon} alt="" />
-                                    <span>ADD TO CART</span>
+                                    <span>{t('details.h6.5')}</span>
                                 </button>
                             </div>
                             <div className="share">
-                                <h6>SHARE THIS AWESOME BIKE</h6>
+                                <h6>{t('details.h6.6')}</h6>
                                 <div className="icons">
                                     <a href="#!"><i className="fa-brands fa-facebook-f"></i></a>
                                     <a href="#!"><i className="fa-brands fa-x-twitter"></i></a>

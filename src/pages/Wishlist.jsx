@@ -9,6 +9,7 @@ import { emptyWishlist, removeFromWishlist, setWishlistToRedux } from '../toolki
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
+import { useTranslation } from 'react-i18next'
 
 const Wishlist = () => {
   const wishlist = useSelector(state => state.wishlist.wishlist)
@@ -99,13 +100,14 @@ const Wishlist = () => {
   }, [cart])
 
   const [mode] = useContext(ModeContext)
+  const { t, i18n: { changeLanguage, language } } = useTranslation();
 
   return (
     <>
       <section className={`wishlist ${mode === 'dark' ? 'dark' : ''}`} id='wishlist'>
         <div className="container">
           <div className="text-container">
-            <h1>Wishlist</h1>
+            <h1>{t('wishlist.h1.1')}</h1>
           </div>
         </div>
       </section>
@@ -119,11 +121,11 @@ const Wishlist = () => {
             {!wishlist || wishlist.length === 0 ?
               <div className='message-container'>
                 <div className="message">
-                  <span>Your wishlist is currently empty.</span>
+                  <span>{t('wishlist.span.1')}</span>
                 </div>
                 <button className='return-to-shop'>
                   <NavLink to={"/configure-a-bike"} onClick={() => { window.scrollTo(0, 0) }}>
-                    RETURN TO SHOP
+                  {t('wishlist.button.1')}
                   </NavLink>
                 </button>
               </div>
@@ -135,7 +137,7 @@ const Wishlist = () => {
                         <img src={`${item.img[0]}`} alt="" />
                       </div>
                       <div className='text-container'>
-                        <h5>Configure part</h5>
+                        <h5>{t('wishlist.h5.1')}</h5>
                         <div className='category-name'>
                           <p>{item.name}</p>
                         </div>
@@ -152,7 +154,7 @@ const Wishlist = () => {
                         <div className="add-to-cart">
                           <button onClick={() => { sendItemToCart(item) }} className='add-to-cart'>
                             <img src={icon} alt="" />
-                            <span>ADD TO CART</span>
+                            <span>{t('wishlist.button.3')}</span>
                           </button>
                         </div>
                       </div>
@@ -173,7 +175,7 @@ const Wishlist = () => {
             : <div className="add-to-cart">
             <button onClick={() => { sendWishlistToCart() }} className='add-to-cart'>
               <img src={icon} alt="" />
-              <span>ADD ALL TO CART</span>
+              <span>{t('wishlist.button.2')}</span>
             </button>
           </div>
           }

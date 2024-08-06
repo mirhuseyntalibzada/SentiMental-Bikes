@@ -4,6 +4,7 @@ import supabase from '../config/connect'
 import { useCookies } from 'react-cookie'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
+import { useTranslation } from 'react-i18next'
 
 const LoginRegister = () => {
     const [visibilityLogin, setVisibilityLogin] = useState(false)
@@ -82,6 +83,7 @@ const LoginRegister = () => {
     }
 
     const [mode] = useContext(ModeContext)
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
 
     return (
         <section className={`login-register-section ${mode === 'dark' ? 'dark' : ''}`} id='login-register-section'>
@@ -100,11 +102,11 @@ const LoginRegister = () => {
                         <div className="login-container">
                             <h2>Login</h2>
                             <form onSubmit={loginSubmitted} action="">
-                                <label className='input-label' htmlFor="">USERNAME OR EMAIL ADDRESS <span>*</span></label>
+                                <label className='input-label' htmlFor="">{t('loginRegister.label-1')} {language==="en"?'OR':'YA DA'} {t('loginRegister.label-2')} <span>*</span></label>
                                 <div>
                                     <input ref={loginCredential} type="text" />
                                 </div>
-                                <label className='input-label' htmlFor="">PASSWORD <span>*</span></label>
+                                <label className='input-label' htmlFor="">{t('loginRegister.label-3')} <span>*</span></label>
                                 <div className='password-container'>
                                     <input ref={loginPassword} type={`${visibilityLogin ? "text" : "password"}`} />
                                     <div className='eye-btn-container'>
@@ -123,16 +125,16 @@ const LoginRegister = () => {
                                 <div className='remember-password-container'>
                                     <div className='remember-me'>
                                         <input type="checkbox" name="" id="" />
-                                        <label htmlFor="">Remember me</label>
+                                        <label htmlFor="">{t('loginRegister.label-4')}</label>
                                     </div>
                                     <div className='lost-password'>
-                                        <a href="#">Lost your password?</a>
+                                        <a href="#">{t('loginRegister.a')}</a>
                                     </div>
                                 </div>
                                 <div className='button-container'>
                                     <button onClick={() => {
                                         window.innerWidth > 768 ? window.scrollTo(0, 430) : window.scrollTo(0, 150)
-                                    }} type='submit'>LOG IN</button>
+                                    }} type='submit'>{t('loginRegister.button-1')}</button>
                                 </div>
                             </form>
                         </div>
@@ -141,15 +143,15 @@ const LoginRegister = () => {
                         <div className="register-container">
                             <h2>Register</h2>
                             <form onSubmit={registerSubmitted} action="">
-                                <label className='input-label' htmlFor="">USERNAME<span>*</span></label>
+                                <label className='input-label' htmlFor="">{t('loginRegister.label-1')}<span>*</span></label>
                                 <div>
                                     <input ref={userName} type="text" />
                                 </div>
-                                <label className='input-label' htmlFor="">EMAIL ADDRESS <span>*</span></label>
+                                <label className='input-label' htmlFor="">{t('loginRegister.label-2')} <span>*</span></label>
                                 <div>
                                     <input ref={userEmail} type="email" />
                                 </div>
-                                <label className='input-label' htmlFor="">PASSWORD <span>*</span></label>
+                                <label className='input-label' htmlFor="">{t('loginRegister.label-3')} <span>*</span></label>
                                 <div className='password-container'>
                                     <input className='password-input' ref={password} type={`${visibilityRegister ? "text" : "password"}`} />
                                     <div className='eye-btn-container'>
@@ -166,12 +168,10 @@ const LoginRegister = () => {
                                     </div>
                                 </div>
                                 <div className='privacy-policy'>
-                                    <p>Your personal data will be used to support your experience throughout
-                                        this website, to manage access to your account, and for other purposes
-                                        described in our <a href="#">privacy policy.</a></p>
+                                    <p>{t('loginRegister.p.1')} <a href="#">{t('loginRegister.p.2')}</a></p>
                                 </div>
                                 <div className='button-container'>
-                                    <button onClick={() => { window.innerWidth > 768 ? window.scrollTo(0, 430) : window.scrollTo(0, 150) }} type='submit'>REGISTER</button>
+                                    <button onClick={() => { window.innerWidth > 768 ? window.scrollTo(0, 430) : window.scrollTo(0, 150) }} type='submit'>{t('loginRegister.button')}</button>
                                 </div>
                             </form>
                         </div>

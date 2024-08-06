@@ -86,48 +86,307 @@
                 "5": "simple: to make you fall in love with e-biking all",
                 "6": "over again."
             },
-            "span-3":{
-                "1":"My journey began in a tiny workshop, where imagination",
-                "2":"knew no bounds, and inspiration struck at every corner."
+            "span-3": {
+                "1": "My journey began in a tiny workshop, where imagination",
+                "2": "knew no bounds, and inspiration struck at every corner."
             },
-            "span-4":{
-                "1":"My journey began in a tiny",
-                "2":"workshop, where imagination knew",
-                "3":"no bounds, and inspiration struck at",
-                "4":"every corner."
+            "span-4": {
+                "1": "My journey began in a tiny",
+                "2": "workshop, where imagination knew",
+                "3": "no bounds, and inspiration struck at",
+                "4": "every corner."
             },
-            "p-2":{
-                "1":"Frustrated with the monotonous options available in the market, I dared to dream up an e-bike that transformed from a humble idea into an extraordinary reality.",
-                "2":"Each SentiMental bike is meticulously handcrafted, ensuring that our passion for detail and dedication to quality shines through. With a subtle nod to the golden era of biking, our timeless designs pay homage to the past while embracing the future.",
-                "3":"Our e-bikes are more than just a mode of transportation; they’re an invitation to experience the world in a whole new way."
+            "p-2": {
+                "1": "Frustrated with the monotonous options available in the market, I dared to dream up an e-bike that transformed from a humble idea into an extraordinary reality.",
+                "2": "Each SentiMental bike is meticulously handcrafted, ensuring that our passion for detail and dedication to quality shines through. With a subtle nod to the golden era of biking, our timeless designs pay homage to the past while embracing the future.",
+                "3": "Our e-bikes are more than just a mode of transportation; they’re an invitation to experience the world in a whole new way."
             },
-            "span-5":{
-                "1":"So, hop on, and let",                
-                "2":"SentiMental bikes take you",                
-                "3":"on a journey of rediscovery,",                
-                "4":"where the joy of e-biking is",                
-                "5":"limited only by your",                
-                "6":"imagination."                
+            "span-5": {
+                "1": "So, hop on, and let",
+                "2": "SentiMental bikes take you",
+                "3": "on a journey of rediscovery,",
+                "4": "where the joy of e-biking is",
+                "5": "limited only by your",
+                "6": "imagination."
             },
-            "span-6":{
-                "1":"So, hop on, and let SentiMental bikes take you on a",
-                "2":"journey of rediscovery, where the joy of e-biking is",
-                "3":"limited only by your imagination."
+            "span-6": {
+                "1": "So, hop on, and let SentiMental bikes take you on a",
+                "2": "journey of rediscovery, where the joy of e-biking is",
+                "3": "limited only by your imagination."
             },
-            "span-7":"Together, we’ll create memories that will last a lifetime.",
-            "h1-1":{
-                "1":"Feeling Sentimental? We ",
-                "2":"got you.",
-                "3":"Feeling Sentimental? We got you."
+            "span-7": "Together, we’ll create memories that will last a lifetime.",
+            "h1-1": {
+                "1": "Feeling Sentimental? We ",
+                "2": "got you.",
+                "3": "Feeling Sentimental? We got you."
             },
-            "p-3":"Falling in love is easy. Staying in love takes work. This is why we used exceptional materials and long-range batteries wrapped in timeless design. So that your love for SentiMental bikes lasts today, tomorrow, and beyond.",
-            "span-8":"Sentimental Bikes",
-            "h1-2":{
-                "1":"Go ahead. Ride the",
-                "2":"wave. For SentiMental",
-                "3":"reasons.",
-                "4":"Go ahead. Ride the wave.",
-                "5":"For SentiMental reasons."
+            "p-3": "Falling in love is easy. Staying in love takes work. This is why we used exceptional materials and long-range batteries wrapped in timeless design. So that your love for SentiMental bikes lasts today, tomorrow, and beyond.",
+            "span-8": "Sentimental Bikes",
+            "h1-2": {
+                "1": "Go ahead. Ride the",
+                "2": "wave. For SentiMental",
+                "3": "reasons.",
+                "4": "Go ahead. Ride the wave.",
+                "5": "For SentiMental reasons."
+            }
+        },
+        "dealerShip": {
+            "span-1": {
+                "1": "Bike dealerships World",
+                "2": "Wide"
+            },
+            "a": {
+                "1": "All",
+                "2": "Croatia",
+                "3": "Germany",
+                "4": "Slovakia",
+                "5": "Czech Republic"
+            },
+            "button": "BECOME A PARTNER"
+        },
+        "form": {
+            "label-1": "NAME",
+            "label-2": "E-MAIL",
+            "label-3": "PHONE",
+            "label-4": "SUBJECT",
+            "label-5": "MESSAGE",
+            "label-6": "CONSENT",
+            "label-7": {
+                "1": "I agree that SentiMental Bikes can contact me at the above-mentioned email address or phone number for all purposes highlighted in the",
+                "2": "privacy policy."
+            },
+            "button": "SUBMIT",
+            "h1": "SentiMental Bikes",
+            "p-1": "Founder, Creative Director",
+            "p-2": "Founder, CEO",
+            "h2": "Social Media"
+        },
+        "faq": {
+            "h1": "FAQ"
+        },
+        "configureBike": {
+            "h1": "Configure a bike",
+            "h6-1": "FRAME OPTIONS",
+            "h6-2": "Bicycle color",
+            "h6-3": "Handle color",
+            "button": "DOWNLOAD PDF",
+            "span": "ADD TO CART",
+            "h6-4": "SHARE THIS AWESOME BIKE"
+        },
+        "myAccount": {
+            "h1": "My account"
+        },
+        "loginRegister": {
+            "label-1": "USERNAME",
+            "label-2": "EMAIL ADDRESS",
+            "label-3": "PASSWORD",
+            "label-4": "Remember me",
+            "a": "Lost your password?",
+            "button-1": "LOG IN",
+            "p": {
+                "1": "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
+                "2": "privacy policy"
+            },
+            "button": "REGISTER"
+        },
+        "myAccountComp": {
+            "a": {
+                "1": "Dashboard",
+                "2": "Orders",
+                "3": "Addresses",
+                "4": "Account details",
+                "5": "VAT number",
+                "6": "Log out"
+            },
+            "h6-1": "Product Name:",
+            "p-1": "e-Bike",
+            "h6-2": "Product Category:",
+            "h6-3": "Handle Color:",
+            "h6-4": "Bicycle Color:",
+            "h6-5": "Quantity:",
+            "h5": "Total",
+            "p-2": "The following addresses will be used on the checkout page by default.",
+            "h1-1": "Billing address",
+            "p-3": "You have not set up this type of address yet",
+            "label-1": "FIRST NAME",
+            "label-2": "LAST NAME",
+            "label-3": "DISPLAY NAME",
+            "span-1": "This will be how your name will be displayed in the account section and in reviews",
+            "label-4": "EMAIL ADDRESS",
+            "h1-2": "Password change",
+            "label-5": "Current password (Old password)",
+            "label-6": "New password",
+            "label-7": "Confirm new password",
+            "button-1": "SAVE CHANGES",
+            "label-8": "VAT NUMBER",
+            "button-2": "SAVE"
+        },
+        "adminPanel": {
+            "h1": "Welcome to the Admin Panel",
+            "p": {
+                "1": "This is the main content area where you can manage different aspects of your application.",
+                "2": "Drag & Drop your file here",
+                "3": "or",
+                "4": "Click to select a file",
+                "5": "Selected file: "
+            },
+            "h2": {
+                "1": "Add New Product"
+            },
+            "label": {
+                "1": "Product Name",
+                "2": "Product Category",
+                "3": "Product Type",
+                "4": "Product Price",
+                "5": "Product Description"
+            },
+            "button": {
+                "1": "ADD PRODUCT"
+            }
+        },
+        "cart": {
+            "span": {
+                "1": "Your cart is currently empty."
+            },
+            "a": {
+                "1": "RETURN TO SHOP"
+            },
+            "h1": {
+                "1": "Subtotal:",
+                "2": "Shipping:",
+                "3": "Total",
+                "4": "Cart",
+                "5": "Checkout"
+            },
+            "h5": {
+                "1": "Configure a bike"
+            },
+            "h6": {
+                "1": "Frame Type",
+                "2": "Tyres",
+                "3": "Bicycle color",
+                "4": "Handle Color",
+                "5": "Name:",
+                "6": "Category"
+            },
+            "p": {
+                "1": "Noogat",
+                "2": "Standart"
+            },
+            "button": "APPLY COUPON"
+        },
+        "billingAddress": {
+            "h1": {
+                "1": "Billing details",
+                "2": "Subtotal:",
+                "3": "Shipping:",
+                "4": "Total"
+            },
+            "h6": {
+                "1": "FIRST NAME",
+                "2": "LAST NAME",
+                "3": "COMPANY NAME (OPTIONAL)",
+                "4": "COUNTRY / REGION",
+                "5": "STREET ADDRESS",
+                "6": "TOWN / CITY",
+                "7": "STATE / COUNTY",
+                "8": "POSTCODE / ZIP",
+                "9": "PHONE",
+                "10": "EMAIL ADDRESS",
+                "11": "VAT NUMBER(OPTIONAL)",
+                "12": "ORDER NOTES (OPTIONAL)",
+                "13": "CHOOSE A PAYMENT METHOD",
+                "14": "DIRECT BANK TRANSFER",
+                "15": "CREDIT CARD OR CRYPTO PAYMENT"
+            },
+            "span": {
+                "1": "No matches found"
+            },
+            "p": {
+                "1": "Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.",
+                "2": "You will be securely redirected to our payment processor’s page, where you can choose to complete your purchase using your preferred credit/debit card or cryptocurrency.",
+                "3": {
+                    "1": "Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our",
+                    "2": "privacy policy"
+                }
+            },
+            "button": "PLACE ORDER"
+        },
+        "wishlist": {
+            "h1": {
+                "1": "Wishlist"
+            },
+            "span": {
+                "1": "Your wishlist is currently empty."
+            },
+            "button": {
+                "1": "RETURN TO SHOP",
+                "2": "ADD ALL TO CART",
+                "3": "ADD TO CART"
+            },
+            "h5": {
+                "1": "Configure part"
+            }
+        },
+        "footer": {
+            "div": "SentiMental Bikes",
+            "h3": "Keep The Vibes Rolling!",
+            "p": {
+                "1": "Stay up-to-date with all things SentiMental. Subscribe to our newsletter and make sure never miss a beat in the e-bike world. After all, #itsrideoclock somewhere!",
+                "2": "© SentiMental Bikes 2024. All rights reserved.",
+                "3": "POD d.o.o., Dežanovac 234, 43500 Daruvar, Republic of Croatia, VAT NUMBER: HR03398907795 Entered in the court register of the Bjelovar Commercial Court under company registration number 010008500 with the share capital of EUR 793.820,00 EUR, paid in full. Bank account: Hrvatska poštanska banka d.d., Jurišićeva ulica 4, 10000 Zagreb, Hrvatska. IBAN: HR2125030071111002039, SWIFT: HPBZGHR2X"
+            },
+            "button": "SUBSCRIBE",
+            "a": {
+                "1": "Our Story",
+                "2": "Privacy policy",
+                "3": "Contact",
+                "4": "Privacy policy",
+                "5": "Terms and Conditions",
+                "6": "User Privacy Notice",
+                "7": "Monri WSPay Usage Statement",
+                "8": "Statement of conversion",
+                "9": "CONFIGURE A BIKE"
+            },
+            "h5": {
+                "1": "Follow us on social media",
+                "2": "Secure Payment"
+            }
+        },
+        "notFound": {
+            "h2": "If this website were a bicycle it would have a flat tire right now.",
+            "span": "Inflate the tire by using the menu above"
+        },
+        "experienceSentimental": {
+            "h1": {
+                "1": "Experience",
+                "2": "Sentimental"
+            },
+            "p": {
+                "1": "Visit us to get a hands-on experience. Feel the craftsmanship, understand our passion, and most importantly, try our SentiMental bikes for yourself.",
+                "2":"We are excited to announce that SentiMental Bikes will be a part of the 10th Zagreb Design Week! Not only are we exhibiting, but we are also proud partners of the event. Our bikes will be used by the Design Week crew, and all visitors will have the opportunity to try them out during the event. We thank everyone who has been with us on this journey. See you at the Zagreb Fair from September 26th to October 1st!"
+            },
+            "div": {
+                "1":"Sep",
+                "2":"10. Zagreb Design Week"
+            }
+        },
+        "news":{
+            "h1":"SentiMental in the Spotlight",
+            "button":"ALL MEDIA",
+            "span":"NEWS"
+        },
+        "addressComp":{
+            "button":"SAVE ADDRESS"
+        },
+        "details":{
+            "h6":{
+                "1":"OPTOINS",
+                "2":"Choose color",
+                "3":"ABOUT",
+                "4":"DOWNLOAD PDF",
+                "5":"ADD TO CART",
+                "6":"SHARE THIS AWESOME BIKE"
             }
         }
     }

@@ -3,6 +3,7 @@ import { countries } from '../data/countries';
 import supabase from '../config/connect';
 import { useCookies } from 'react-cookie';
 import { Bounce, toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 const AddressComp = ({ h1, type }) => {
     const [activeBtn, setActiveBtn] = useState(false);
@@ -109,24 +110,26 @@ const AddressComp = ({ h1, type }) => {
         window.location.reload();
     };
 
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
+
     return (
         <>
             <h1>{h1}</h1>
             <form id='address' action="">
                 <div className="input-container">
-                    <label htmlFor="fName">FIRST NAME*</label>
+                    <label htmlFor="fName">{t('billingAddress.h6.1')}*</label>
                     <input name="fName" value={userInfo.fName} onChange={handleChange} type="text" />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="lName">LAST NAME*</label>
+                    <label htmlFor="lName">{t('billingAddress.h6.2')}*</label>
                     <input name="lName" value={userInfo.lName} onChange={handleChange} type="text" />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="company_name">COMPANY NAME(OPTIONAL)</label>
+                    <label htmlFor="company_name">{t('billingAddress.h6.3')}</label>
                     <input name="company_name" value={userInfo.company_name} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <label>COUNTRY / REGION</label>
+                    <label>{t('billingAddress.h6.4')}</label>
                     <div className='country-region-container'>
                         <div onClick={toggleBtn} className="header">
                             <input readOnly value={activeCountry} type="text" />
@@ -156,36 +159,36 @@ const AddressComp = ({ h1, type }) => {
                     </div>
                 </div>
                 <div className="input-container">
-                    <label htmlFor="street_house">STREET ADDRESS*</label>
+                    <label htmlFor="street_house">{t('billingAddress.h6.5')}*</label>
                     <input name="street_house" value={userInfo.street_house} onChange={handleChange} className='house-input' placeholder='House number and street name' type="text" />
                     <input name="street_apartment" value={userInfo.street_apartment} onChange={handleChange} placeholder='Apartment, suite, unit, etc. (optional)' type="text" />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="town_city">TOWN / CITY*</label>
+                    <label htmlFor="town_city">{t('billingAddress.h6.6')}*</label>
                     <input name="town_city" value={userInfo.town_city} onChange={handleChange} type="text" />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="state_county">STATE COUNTY*</label>
+                    <label htmlFor="state_county">{t('billingAddress.h6.7')}*</label>
                     <input name="state_county" value={userInfo.state_county} onChange={handleChange} type="text" />
                 </div>
                 <div className="input-container">
-                    <label htmlFor="postcode_zip">POSTCODE / ZIP*</label>
+                    <label htmlFor="postcode_zip">{t('billingAddress.h6.8')}*</label>
                     <input name="postcode_zip" value={userInfo.postcode_zip} onChange={handleChange} type="text" />
                 </div>
                 {type === 'billing' &&
                     <>
                         <div className="input-container">
-                            <label htmlFor="phone">PHONE*</label>
+                            <label htmlFor="phone">{t('billingAddress.h6.9')}*</label>
                             <input name="phone" value={userInfo.phone} onChange={handleChange} type="text" />
                         </div>
                         <div className="input-container">
-                            <label htmlFor="email">EMAIL ADDRESS*</label>
+                            <label htmlFor="email">{t('billingAddress.h6.10')}*</label>
                             <input name="email" value={userInfo.email} onChange={handleChange} type="text" />
                         </div>
                     </>
                 }
                 <div className="btn-container">
-                    <button onClick={handleClick}>SAVE ADDRESS</button>
+                    <button onClick={handleClick}>{t('addressComp.button')}</button>
                 </div>
             </form>
         </>

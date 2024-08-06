@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
+import { useTranslation } from 'react-i18next'
 
 const Cart = () => {
   const [cookie] = useCookies(['cookie-user'])
@@ -132,6 +133,7 @@ const Cart = () => {
 
 
   const [mode] = useContext(ModeContext)
+  const { t, i18n: { changeLanguage, language } } = useTranslation();
 
 
   return (
@@ -139,7 +141,7 @@ const Cart = () => {
       <section className={`cart ${mode === 'dark' ? 'dark' : ''}`} id='cart'>
         <div className="container">
           <div className="text-container">
-            {(!cart && !product) || (cart.length === 0 && product.length === 0) ? <h1>Cart</h1> : <h1>Checkout</h1>}
+            {(!cart && !product) || (cart.length === 0 && product.length === 0) ? <h1>{t('cart.h1.4')}</h1> : <h1>{t('cart.h1.5')}</h1>}
           </div>
         </div>
       </section>
@@ -153,11 +155,11 @@ const Cart = () => {
             {(!cart && !product) || (cart.length === 0 && product.length === 0) ?
               <div className='message-container'>
                 <div className="message">
-                  <span>Your cart is currently empty.</span>
+                  <span>{t('cart.span.1')}</span>
                 </div>
                 <button className='return-to-shop'>
                   <NavLink to={"/configure-a-bike"} onClick={() => { window.scrollTo(0, 0) }}>
-                    RETURN TO SHOP
+                  {t('cart.a.1')}
                   </NavLink>
                 </button>
               </div>
@@ -169,21 +171,21 @@ const Cart = () => {
                         <img src={`/src/images/bicycles/handlebars/${item.handle_color.split(' ').join('-')}/bicycle-color/${item.bicycle_color.split(' ').join('-')}.png`} alt="" />
                       </div>
                       <div className='text-container'>
-                        <h5>Configure a bike</h5>
+                        <h5>{t('cart.h5.1')}</h5>
                         <div className='category-name'>
-                          <h6>Frame Type</h6>
+                          <h6>{t('cart.h6.1')}</h6>
                           <p>Noogat</p>
                         </div>
                         <div className='category-name'>
-                          <h6>Tyres</h6>
+                          <h6>{t('cart.h6.2')}</h6>
                           <p>Standart</p>
                         </div>
                         <div className='category-name'>
-                          <h6>Bicycle color</h6>
+                          <h6>{t('cart.h6.3')}</h6>
                           <p>{item.bicycle_color}</p>
                         </div>
                         <div className='category-name'>
-                          <h6>Handle color</h6>
+                          <h6>{t('cart.h6.4')}</h6>
                           <p>{item.handle_color}</p>
                         </div>
                         <div className='price-quantity-container'>
@@ -215,11 +217,11 @@ const Cart = () => {
                           <div className='text-container'>
                             <h5>{item.category === 'addon' ? 'Configure Addon' : 'Configure Part'}</h5>
                             <div className='category-name'>
-                              <h6>{item.category === 'addon' ? 'Addon' : 'Part'} Name:</h6>
+                              <h6>{item.category === 'addon' ? 'Addon' : 'Part'} {t('cart.h6.5')}</h6>
                               <p>{item.name}</p>
                             </div>
                             <div className='category-name'>
-                              <h6>Category:</h6>
+                              <h6>{t('cart.h6.6')}</h6>
                               <p>{item.category}</p>
                             </div>
                             <div className='price-quantity-container'>
@@ -243,20 +245,20 @@ const Cart = () => {
                 }
                 <div className="amount-container">
                   <div className='amount-info'>
-                    <h1>Subtotal:</h1>
+                    <h1>{t('cart.h1.1')}</h1>
                     <span>€{cartAmount + productAmount}.00</span>
                   </div>
                   <div className='amount-info'>
-                    <h1>Shipping:</h1>
+                    <h1>{t('cart.h1.2')}</h1>
                     <span>€{(50 * cartQuantity + (10 * productQuantity))}.00</span>
                   </div>
                   <div className='amount-info'>
-                    <h1>Total:</h1>
+                    <h1>{t('cart.h1.3')}</h1>
                     <span>€{productAmount + cartAmount + (50 * cartQuantity) + (10 * productQuantity)}.00</span>
                   </div>
                   <div className='coupon-container'>
                     <input placeholder='Coupon code' type="text" />
-                    <button>APPLY COUPON</button>
+                    <button>{t('cart.button')}</button>
                   </div>
                 </div>
               </div>

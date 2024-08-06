@@ -8,9 +8,11 @@ import configure_icon from '../images/configure-btn-icon.svg';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { ModeContext } from '../context/ModeContext';
+import { useTranslation } from 'react-i18next';
 const Footer = () => {
 
     const [mode] = useContext(ModeContext)
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
 
     return (
         <footer className={`footer ${mode==="dark"?'dark':''}`}>
@@ -18,27 +20,27 @@ const Footer = () => {
                 <Marquee speed={125}>
                     <div className="footer-marquee-track-inner">
                         <div className="footer-marquee-track-piece">
-                            <div className="title-xl">SentiMental Bikes</div>
+                            <div className="title-xl">{t('footer.div')}</div>
                             <div className="track-image">
                                 <img src={marquee_bike_1} />
                             </div>
                             <div className="track-divider" />
                         </div>
                         <div className="footer-marquee-track-piece">
-                            <div className="title-xl">SentiMental Bikes</div>
+                            <div className="title-xl">{t('footer.div')}</div>
                             <div className="track-image">
                                 <img src={marquee_bike_2} />
                             </div>
                             <div className="track-divider" />
                         </div>
                         <div className="footer-marquee-track-piece">
-                            <div className="title-xl">SentiMental Bikes</div>
+                            <div className="title-xl">{t('footer.div')}</div>
                             <div className="track-image">
                                 <img src={marquee_bike_3} />
                             </div>
                             <div className="track-divider" /></div>
                         <div className="footer-marquee-track-piece">
-                            <div className="title-xl">SentiMental Bikes</div>
+                            <div className="title-xl">{t('footer.div')}</div>
                             <div className="track-image">
                                 <img src={marquee_bike_2} />
                             </div>
@@ -50,34 +52,32 @@ const Footer = () => {
                 <div className='text-nav-container'>
                     <div className='text-content'>
                         <div className="text-container">
-                            <h3>Keep The Vibes Rolling!</h3>
-                            <p>Stay up-to-date with all things SentiMental.
-                                Subscribe to our newsletter and make sure never
-                                miss a beat in the e-bike world. After all, #itsrideoclock somewhere!</p>
+                            <h3>{t('footer.h3')}</h3>
+                            <p>{t('footer.p.1')}</p>
                             <form className="email">
                                 <input placeholder='name@gmail.com' type="text" />
-                                <button>SUBSCRIBE</button>
+                                <button>{t('footer.button')}</button>
                             </form>
                         </div>
                     </div>
                     <div className="links">
                         <div className="nav">
-                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/our-story"}>Our Story</NavLink>
-                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/become-a-partner"}>Become a partner</NavLink>
-                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/contact"}>Contact</NavLink>
+                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/our-story"}>{t('footer.a.1')}</NavLink>
+                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/become-a-partner"}>{t('footer.a.2')}</NavLink>
+                            <NavLink onClick={() => { window.scrollTo(0, 0) }} to={"/contact"}>{t('footer.a.3')}</NavLink>
                         </div>
                         <div className="other-links">
-                            <a href="!#">Privacy policy</a>
-                            <a href="!#">Terms and Conditions</a>
-                            <a href="!#">User Privacy Notice</a>
-                            <a href="!#">Monri WSPay Usage Statement</a>
-                            <a href="!#">Statement of conversion</a>
+                            <a href="!#">{t('footer.a.4')}</a>
+                            <a href="!#">{t('footer.a.5')}</a>
+                            <a href="!#">{t('footer.a.6')}</a>
+                            <a href="!#">{t('footer.a.7')}</a>
+                            <a href="!#">{t('footer.a.8')}</a>
                         </div>
                     </div>
                 </div>
                 <div className='social-media-payments'>
                     <div className="social-media">
-                        <h5>Follow us on social media</h5>
+                        <h5>{t('footer.h5.1')}</h5>
                         <div className="icons">
                             <div className="icon">
                                 <i className="fa-brands fa-facebook-f" />
@@ -94,7 +94,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="payments">
-                        <h5>Secure Payment</h5>
+                        <h5>{t('footer.h5.2')}</h5>
                         <div className="payment-img">
                             {payments.map(item => (
                                 <div key={item.id} className="img-container">
@@ -111,10 +111,8 @@ const Footer = () => {
                     </NavLink>
                 </div>
                 <div className="text-container">
-                    <p><span>© SentiMental Bikes 2024. All rights reserved.</span>
-                        POD d.o.o., Dežanovac 234, 43500 Daruvar, Republic of Croatia, VAT NUMBER: HR03398907795
-                        Entered in the court register of the Bjelovar Commercial Court under company registration number 010008500 with the share capital of EUR 793.820,00 EUR, paid in full.
-                        Bank account: Hrvatska poštanska banka d.d., Jurišićeva ulica 4, 10000 Zagreb, Hrvatska. IBAN: HR2125030071111002039, SWIFT: HPBZGHR2X</p>
+                    <p><span>{t('footer.p.2')}</span>
+                    {t('footer.p.3')}</p>
                 </div>
             </div>
         </footer >

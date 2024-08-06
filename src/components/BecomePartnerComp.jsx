@@ -7,7 +7,8 @@ import 'aos/dist/aos.css';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { ModeContext } from '../context/ModeContext';
-const BecomePartnerComp = ({ style, data: { h1, p, button, path } }) => {
+import { useTranslation } from 'react-i18next';
+const BecomePartnerComp = ({ style, data: { h1, h1_az, p, p_az, button, button_az, path } }) => {
 
     const [mode] = useContext(ModeContext)
 
@@ -20,8 +21,10 @@ const BecomePartnerComp = ({ style, data: { h1, p, button, path } }) => {
         })
     }, [])
 
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
+
     return (
-        <section className={`become-a-partner-component ${mode==='dark'?'dark':''}`} style={{ backgroundColor: style.backgroundColor }} id='become-a-partner-component'>
+        <section className={`become-a-partner-component ${mode === 'dark' ? 'dark' : ''}`} style={{ backgroundColor: style.backgroundColor }} id='become-a-partner-component'>
             <div className="img-container">
                 <img src={img} alt="" />
                 <div className="box-container"></div>
@@ -29,17 +32,17 @@ const BecomePartnerComp = ({ style, data: { h1, p, button, path } }) => {
             <div className="become-a-partner">
                 <div className="container">
                     <div>
-                        <h1>{h1}</h1>
+                        <h1>{language==='en'?h1:h1_az}</h1>
                     </div>
                     <div className="img-container-desktop">
                         <img src={img1} alt="" />
                     </div>
                     <div>
-                        <p>{p}</p>
+                        <p>{language==='en'?p:p_az}</p>
                         <NavLink onClick={() => { window.scrollTo(0, 0) }} to={path}>
                             <button>
                                 <img src={icon} alt="" />
-                                {button}
+                                {language==='en'?button:button_az}
                             </button>
                         </NavLink>
                     </div>

@@ -19,12 +19,12 @@ const OurStory = () => {
           <div className="container">
             <div className="text-container">
               <h1>
-                <div><span data-aos="fade-up">We're SentiMental.</span></div>
-                <div><span data-aos-delay="100" data-aos="fade-up">And so are you.</span></div>
+                <div><span data-aos="fade-up">{t(`ourStory.span-1.1`)}</span></div>
+                <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.span-1.2`)}</span></div>
               </h1>
               <p>
-                <div><span data-aos="fade-up">Hi, my name is Duško (Dule), and I'm the Creative Director</span></div>
-                <div><span data-aos-delay="100" data-aos="fade-up">behind SentiMental Bikes.</span></div>
+                <div><span data-aos="fade-up">{t(`ourStory.span-2.1`)}</span></div>
+                <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.span-2.2`)}</span></div>
               </p>
             </div>
           </div>
@@ -36,32 +36,32 @@ const OurStory = () => {
               <div className="text-content">
                 <div className='p-container'>
                   <p data-aos="fade-up">
-                    At SentiMental, we believe that life is too short for
+                   {t(`ourStory.p-1.1`)}
                   </p>
                 </div>
                 <div className='p-container'>
                   <p data-aos-delay="100" data-aos="fade-up">
-                    ordinary e-bikes. That's why we pour our hearts
+                  {t(`ourStory.p-1.2`)}
                   </p>
                 </div>
                 <div className='p-container'>
                   <p data-aos-delay="200" data-aos="fade-up">
-                    and souls into crafting extraordinary e-bikes that
+                  {t(`ourStory.p-1.3`)}
                   </p>
                 </div>
                 <div className='p-container'>
                   <p data-aos-delay="300" data-aos="fade-up">
-                    exude personality, wit, and charm. Our mission is
+                  {t(`ourStory.p-1.4`)}
                   </p>
                 </div>
                 <div className='p-container'>
                   <p data-aos-delay="400" data-aos="fade-up">
-                    simple: to make you fall in love with e-biking all
+                  {t(`ourStory.p-1.5`)}
                   </p>
                 </div>
                 <div className='p-container'>
                   <p data-aos-delay="500" data-aos="fade-up">
-                    over again.
+                  {t(`ourStory.p-1.6`)}
                   </p>
                 </div>
                 <div className="comma-container">
@@ -78,28 +78,22 @@ const OurStory = () => {
             <div className="text-container">
               <h5>
                 <div className="mobile">
-                  <div><span data-aos="fade-up">My journey began in a tiny workshop, where imagination</span></div>
-                  <div><span data-aos-delay="100" data-aos="fade-up">knew no bounds, and inspiration struck at every corner.</span></div>
+                  <div><span data-aos="fade-up">{t(`ourStory.span-3.1`)}</span></div>
+                  <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.span-3.2`)}</span></div>
                 </div>
                 <div className="desktop">
-                  <div><span data-aos="fade-up">My journey began in a tiny</span></div>
-                  <div><span data-aos-delay="100" data-aos="fade-up">workshop, where imagination knew</span></div>
-                  <div><span data-aos-delay="200" data-aos="fade-up">no bounds, and inspiration struck at</span></div>
-                  <div><span data-aos-delay="300" data-aos="fade-up">every corner.</span></div>
+                  <div><span data-aos="fade-up">{t(`ourStory.span-4.1`)}</span></div>
+                  <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.span-4.2`)}</span></div>
+                  <div><span data-aos-delay="200" data-aos="fade-up">{t(`ourStory.span-4.3`)}</span></div>
+                  <div><span data-aos-delay="300" data-aos="fade-up">{t(`ourStory.span-4.4`)}</span></div>
                 </div>
               </h5>
               <p>
-                <span data-aos="fade-up">Frustrated with the monotonous options available in the market,
-                  I dared to dream up an e-bike that transformed from a humble idea into
-                  an extraordinary reality.</span>
+                <span data-aos="fade-up">{t(`ourStory.p-2.1`)}</span>
 
-                <span data-aos="fade-up">Each SentiMental bike is meticulously handcrafted, ensuring that our
-                  passion for detail and dedication to quality shines through. With a subtle
-                  nod to the golden era of biking, our timeless designs pay homage to the
-                  past while embracing the future.</span>
+                <span data-aos="fade-up">{t(`ourStory.p-2.2`)}</span>
 
-                <span data-aos="fade-up">Our e-bikes are more than just a mode of transportation; they’re an
-                  invitation to experience the world in a whole new way.</span>
+                <span data-aos="fade-up">{t(`ourStory.p-2.3`)}</span>
               </p>
             </div>
             <div className="img-container">
@@ -110,21 +104,21 @@ const OurStory = () => {
             <div className="result-container">
               <h1>
                 <div className="mobile">
-                  <div><span data-aos="fade-up">So, hop on, and let</span></div>
-                  <div><span data-aos-delay="100" data-aos="fade-up">SentiMental bikes take you</span></div>
-                  <div><span data-aos-delay="200" data-aos="fade-up">on a journey of rediscovery,</span></div>
-                  <div><span data-aos-delay="300" data-aos="fade-up">where the joy of e-biking is</span></div>
-                  <div><span data-aos-delay="400" data-aos="fade-up">limited only by your</span></div>
-                  <div><span data-aos-delay="500" data-aos="fade-up">imagination.</span></div>
+                  <div><span data-aos="fade-up">{t(`ourStory.span-5.1`)}</span></div>
+                  <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.span-5.2`)}</span></div>
+                  <div><span data-aos-delay="200" data-aos="fade-up">{t(`ourStory.span-5.3`)}</span></div>
+                  <div><span data-aos-delay="300" data-aos="fade-up">{t(`ourStory.span-5.4`)}</span></div>
+                  <div><span data-aos-delay="400" data-aos="fade-up">{t(`ourStory.span-5.5`)}</span></div>
+                  <div><span data-aos-delay="500" data-aos="fade-up">{t(`ourStory.span-5.6`)}</span></div>
                 </div>
                 <div className="desktop">
-                  <div><span data-aos="fade-up">So, hop on, and let SentiMental bikes take you on a</span></div>
-                  <div><span data-aos-delay="100" data-aos="fade-up">journey of rediscovery, where the joy of e-biking is</span></div>
-                  <div><span data-aos-delay="200" data-aos="fade-up">limited only by your imagination.</span></div>
+                  <div><span data-aos="fade-up">{t(`ourStory.span-6.1`)}</span></div>
+                  <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.span-6.2`)}</span></div>
+                  <div><span data-aos-delay="200" data-aos="fade-up">{t(`ourStory.span-6.3`)}</span></div>
                 </div>
               </h1>
               <p>
-                <span data-aos-delay="300" data-aos="fade-up">Together, we’ll create memories that will last a lifetime.</span>
+                <span data-aos-delay="300" data-aos="fade-up">{t(`ourStory.span-7`)}</span>
               </p>
             </div>
           </div>
@@ -139,25 +133,22 @@ const OurStory = () => {
         <div className="container">
           <h1>
             <div className="mobile">
-              <div><span data-aos="fade-up">Feeling Sentimental? We </span></div>
-              <div><span data-aos-delay="100" data-aos="fade-up">got you.</span></div>
+              <div><span data-aos="fade-up">{t(`ourStory.h1-1.1`)}</span></div>
+              <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.h1-1.2`)}</span></div>
             </div>
             <div className="desktop">
-              <div><span data-aos="fade-up">Feeling Sentimental? We got you.</span></div>
+              <div><span data-aos="fade-up">{t(`ourStory.h1-1.2`)}</span></div>
             </div>
           </h1>
           <div className="p-container">
-            <p data-aos-delay="100" data-aos="fade-up">Falling in love is easy. Staying in love takes work.
-              This is why we used exceptional materials and long-range
-              batteries wrapped in timeless design. So that your love for
-              SentiMental bikes lasts today, tomorrow, and beyond.</p>
+            <p data-aos-delay="100" data-aos="fade-up">{t(`ourStory.p-3`)}</p>
           </div>
           <div className="logo-container">
             <div data-aos-delay="200" data-aos="fade-up" className='logo-name'>
               <img src={logo} alt="" />
               <div>
                 <span>Dule</span>
-                <span>Sentimental Bikes</span>
+                <span>{t(`ourStory.span-8`)}</span>
               </div>
             </div>
           </div>
@@ -169,21 +160,21 @@ const OurStory = () => {
             <h1>
               <div className="mobile">
                 <div>
-                  <span data-aos-delay="0" data-aos="fade-up">Go ahead. Ride the</span>
+                  <span data-aos-delay="0" data-aos="fade-up">{t(`ourStory.h1-2.1`)}</span>
                 </div>
                 <div>
-                  <span data-aos-delay="100" data-aos="fade-up">wave. For SentiMental</span>
+                  <span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.h1-2.2`)}</span>
                 </div>
                 <div>
-                  <span data-aos-delay="200" data-aos="fade-up">reasons.</span>
+                  <span data-aos-delay="200" data-aos="fade-up">{t(`ourStory.h1-2.3`)}</span>
                 </div>
               </div>
               <div className="desktop">
                 <div>
-                  <span data-aos-delay="0" data-aos="fade-up">Go ahead. Ride the wave.</span>
+                  <span data-aos-delay="0" data-aos="fade-up">{t(`ourStory.h1-2.4`)}</span>
                 </div>
                 <div>
-                  <span data-aos-delay="100" data-aos="fade-up">For SentiMental reasons.</span>
+                  <span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.h1-2.5`)}</span>
                 </div>
               </div>
             </h1>

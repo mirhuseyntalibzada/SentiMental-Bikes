@@ -13,6 +13,7 @@ import ProductCard from '../components/ProductCard'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
 import { Bounce, toast } from 'react-toastify'
+import { useTranslation } from 'react-i18next'
 
 const ConfigureBike = () => {
   const [loading, setLoading] = useState(true);
@@ -142,6 +143,7 @@ const ConfigureBike = () => {
   //------------------------------------------------------------------addtocart
 
   const [mode] = useContext(ModeContext)
+  const { t, i18n: { changeLanguage, language } } = useTranslation();
 
   if (loading) {
     return (
@@ -159,7 +161,7 @@ const ConfigureBike = () => {
         <div className="configure">
           <div className="container">
             <div className="heading">
-              <h1>Configure a bike</h1>
+              <h1>{t('configureBike.h1')}</h1>
               <h3>€1,899.00</h3>
             </div>
             <div className='img-content-container'>
@@ -168,10 +170,10 @@ const ConfigureBike = () => {
               </div>
               <div className='features'>
                 <div className="options">
-                  <h6>FRAME OPTIONS</h6>
+                  <h6>{t('configureBike.h6-1')}</h6>
                 </div>
                 <div className="bicycle-color">
-                  <h6>Bicycle color</h6>
+                  <h6>{t('configureBike.h6-2')}</h6>
                   <div className="color-container">
                     <div onClick={() => setFilters({ ...filters, bicycleColor: "Alabaster Adventure" })}></div>
                     <div onClick={() => setFilters({ ...filters, bicycleColor: "Midnight Reverie" })}></div>
@@ -182,7 +184,7 @@ const ConfigureBike = () => {
                   </div>
                 </div>
                 <div className="handle-color">
-                  <h6>Handle color</h6>
+                  <h6>{t('configureBike.h6-3')}</h6>
                   <div className="color-container">
                     <div onClick={() => setFilters({ ...filters, handleColor: "Alabaster Adventure" })}></div>
                     <div onClick={() => setFilters({ ...filters, handleColor: "Midnight Reverie" })}></div>
@@ -193,7 +195,7 @@ const ConfigureBike = () => {
                   </div>
                 </div>
                 <div className="download-pdf">
-                  <button>DOWNLOAD PDF</button>
+                  <button>{t('configureBike.button')}</button>
                 </div>
                 <div className="add-to-cart">
                   <div className='quantity'>
@@ -205,11 +207,11 @@ const ConfigureBike = () => {
                   </div>
                   <button onClick={() => { checkUser() }} className='add-to-cart'>
                     <img src={icon} alt="" />
-                    <span>ADD TO CART</span>
+                    <span>{t('configureBike.span')}</span>
                   </button>
                 </div>
                 <div className="share">
-                  <h6>SHARE THIS AWESOME BIKE</h6>
+                  <h6>{t('configureBike.h6-4')}</h6>
                   <div className="icons">
                     <a href="#!"><i className="fa-brands fa-facebook-f"></i></a>
                     <a href="#!"><i className="fa-brands fa-x-twitter"></i></a>

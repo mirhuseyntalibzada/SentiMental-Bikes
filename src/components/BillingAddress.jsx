@@ -6,6 +6,7 @@ import supabase from '../config/connect'
 import { useCookies } from 'react-cookie'
 import { useDispatch } from 'react-redux'
 import { addToOrder, emptyCart } from '../toolkit/features/cartSlice'
+import { useTranslation } from 'react-i18next'
 
 const BillingAddress = () => {
     const [activeBtn, setActiveBtn] = useState(false)
@@ -23,7 +24,7 @@ const BillingAddress = () => {
 
     const sendToOrder = () => {
         dispatch(addToOrder([...cart.cart, ...cart.product]))
-        dispatch(emptyCart())        
+        dispatch(emptyCart())
     }
 
     const toggleBtn = () => {
@@ -44,6 +45,10 @@ const BillingAddress = () => {
             [e.target.name]: e.target.value
         });
     };
+
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
+
+
 
     const [userInfo, setUserInfo] = useState({
         fName: "",
@@ -83,21 +88,21 @@ const BillingAddress = () => {
     return (
         <>
             <div className='container'>
-                <h1>Billing details</h1>
+                <h1>{t('billingAddress.h1.1')}</h1>
                 <div className='input-container'>
-                    <h6>FIRST NAME*</h6>
+                    <h6>{t('billingAddress.h6.1')}*</h6>
                     <input name='fName' value={userInfo.fName} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>LAST NAME *</h6>
+                    <h6>{t('billingAddress.h6.2')} *</h6>
                     <input name='lName' value={userInfo.lName} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>COMPANY NAME (OPTIONAL)</h6>
+                    <h6>{t('billingAddress.h6.3')}</h6>
                     <input name='company_name' value={userInfo.company_name} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>COUNTRY / REGION</h6>
+                    <h6>{t('billingAddress.h6.4')}</h6>
                     <div className='country-region-container'>
                         <div onClick={toggleBtn} className="header">
                             <input readOnly value={activeCountry} type="text" />
@@ -116,7 +121,7 @@ const BillingAddress = () => {
                                         ))
                                         :
                                         filteredCountries.length === 0 ?
-                                            <span className='country'>No matches found</span>
+                                            <span className='country'>{t('billingAddress.span.1')}</span>
                                             :
                                             filteredCountries.map((country, id) => (
                                                 <span className={`country ${activeCountry === country.countryName ? 'active' : ''}`} key={id} onClick={() => { setCountry(country.countryName); toggleBtn() }}>{country.countryName}</span>
@@ -127,95 +132,92 @@ const BillingAddress = () => {
                     </div>
                 </div>
                 <div className='input-container'>
-                    <h6>STREET ADDRESS *</h6>
+                    <h6>{t('billingAddress.h6.5')} *</h6>
                     <input name='street_house' value={userInfo.street_house} onChange={handleChange} style={{ marginBottom: "1.5em" }} placeholder='House numbers and street name' type="text" />
                     <input name='street_apartment' value={userInfo.street_apartment} onChange={handleChange} placeholder='Apartment, suite, unit, etc.(optional)' type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>TOWN / CITY *</h6>
+                    <h6>{t('billingAddress.h6.6')} *</h6>
                     <input name='town_city' value={userInfo.town_city} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>STATE / COUNTY *</h6>
+                    <h6>{t('billingAddress.h6.7')} *</h6>
                     <input name='state_county' value={userInfo.state_county} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>POSTCODE / ZIP *</h6>
+                    <h6>{t('billingAddress.h6.8')} *</h6>
                     <input name='postcode_zip' value={userInfo.postcode_zip} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>PHONE *</h6>
+                    <h6>{t('billingAddress.h6.9')} *</h6>
                     <input name='phone' value={userInfo.phone} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>EMAIL ADDRESS *</h6>
+                    <h6>{t('billingAddress.h6.10')} *</h6>
                     <input name='email' value={userInfo.email} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>VAT NUMBER(OPTIONAL)</h6>
+                    <h6>{t('billingAddress.h6.11')}</h6>
                     <input name='vat_number' value={userInfo.vat_number} onChange={handleChange} type="text" />
                 </div>
                 <div className='input-container'>
-                    <h6>ORDER NOTES (OPTIONAL)</h6>
+                    <h6>{t('billingAddress.h6.12')}</h6>
                     <textarea name='order_notes' value={userInfo.order_notes} onChange={handleChange} placeholder='Notes about your order, e.g. special notes for delivery.' />
                 </div>
                 <div className="amount-container">
                     <div className='amount-info'>
-                        <h1>Subtotal:</h1>
+                        <h1>{t('billingAddress.h1.2')}</h1>
                         <span>€{cartAmount + productAmount}.00</span>
                     </div>
                     <div className='amount-info'>
-                        <h1>Shipping:</h1>
+                        <h1>{t('billingAddress.h1.3')}</h1>
                         <span>€{(50 * cartQuantity + (10 * productQuantity))}.00</span>
                     </div>
                     <div className='amount-info'>
-                        <h1>Total:</h1>
+                        <h1>{t('billingAddress.h1.4')}</h1>
                         <span>€{productAmount + cartAmount + (50 * cartQuantity) + (10 * productQuantity)}.00</span>
                     </div>
                 </div>
                 <div className='payment'>
-                    <h6>CHOOSE A PAYMENT METHOD</h6>
+                    <h6>{t('billingAddress.h6.13')}</h6>
                     <div className='payment-container'>
                         <div className='payment-card'>
                             <div className='payment-header'>
                                 <input defaultChecked name='payment' type="radio" />
-                                <h6>DIRECT BANK TRANSFER</h6>
+                                <h6>{t('billingAddress.h6.14')}</h6>
                             </div>
                             <div className="payment-body">
                                 <p>
-                                    Make your payment directly into our bank account.
-                                    Please use your Order ID as the payment reference.
-                                    Your order will not be shipped until the funds have
-                                    cleared in our account.
+                                {t('billingAddress.p.1')}
                                 </p>
                             </div>
                         </div>
                         <div className='payment-card'>
                             <div className='payment-header'>
                                 <input name='payment' type="radio" />
-                                <h6>CREDIT CARD OR CRYPTO PAYMENT</h6>
+                                <h6>{t('billingAddress.h6.14')}</h6>
                             </div>
                             <div className="payment-body">
-                                <p>You will be securely redirected to our payment
-                                    processor’s page, where you can choose to complete
-                                    your purchase using your preferred credit/debit card
-                                    or cryptocurrency.
+                                <p>{t('billingAddress.p.2')}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='privacy-policy'>
-                    <p>Your personal data will be used to process your order,
-                        support your experience throughout this website, and
-                        for other purposes described in our <a href="#!">privacy policy</a>.</p>
+                    <p>{t('billingAddress.p.3.1')} <a href="#!">{t('billingAddress.p.3.2')}</a>.</p>
                 </div>
                 <div className='terms-conditions'>
                     <input id='terms' type="checkbox" />
-                    <label htmlFor="terms"> I have read and agree to the website <a href="#!">terms and conditions</a> *</label>
+                    {language === "en"
+                        ?
+                        <label htmlFor="terms"> I have read and agree to the website <a href="#!">terms and conditions</a> *</label>
+                        :
+                        <label htmlFor="terms">Veb saytın <a href="#!">istifadə şərtləri</a> ilə tanış oldum və onlarla razıyam *</label>
+                    }
                 </div>
                 <div onClick={() => { sendToOrder() }} className='btn-container'>
-                    <button>PLACE ORDER</button>
+                    <button>{t('billingAddress.button')}</button>
                 </div>
             </div>
         </>
