@@ -14,6 +14,7 @@ import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
 import { Bounce, toast } from 'react-toastify'
 import { useTranslation } from 'react-i18next'
+import { useRef } from 'react'
 
 const ConfigureBike = () => {
   const [loading, setLoading] = useState(true);
@@ -145,6 +146,34 @@ const ConfigureBike = () => {
   const [mode] = useContext(ModeContext)
   const { t, i18n: { changeLanguage, language } } = useTranslation();
 
+  const scrollRef = useRef(null); // Reference for the ul element
+  const [isDragging, setIsDragging] = useState(false); // Track dragging state
+  const [startX, setStartX] = useState(0); // Store the starting X position
+  const [scrollLeft, setScrollLeft] = useState(0); // Store the initial scroll position
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true); // Set dragging state to true
+    setStartX(e.pageX - scrollRef.current.offsetLeft); // Calculate initial X position
+    setScrollLeft(scrollRef.current.scrollLeft); // Store the current scroll position
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false); // Stop dragging if the mouse leaves the container
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false); // Stop dragging on mouse up
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return; // Only move if dragging is active
+    e.preventDefault(); // Prevent default behavior to avoid text selection
+    const x = e.pageX - scrollRef.current.offsetLeft; // Calculate the new X position
+    const walk = (x - startX) * 1; // Calculate the distance to scroll (multiplier controls speed)
+    scrollRef.current.scrollLeft = scrollLeft - walk; // Update scroll position
+  };
+
+
   if (loading) {
     return (
       <>
@@ -227,10 +256,23 @@ const ConfigureBike = () => {
       <section className={`addons ${mode === 'dark' ? 'dark' : ''}`} id="addons">
         <div className='category-container'>
           <div className="container">
-            <ul>
-              <li onClick={() => { setfilteredProducts(products) }}><a href="#!">ALL</a></li>
+            <span className='scroll-more-msg'>scroll to see more category</span>
+            <ul
+              ref={scrollRef}
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave} 
+              onMouseUp={handleMouseUp} 
+              onMouseMove={handleMouseMove} 
+              style={{
+                display: 'flex',
+                whiteSpace: 'nowrap',
+                cursor: isDragging ? 'grabbing' : 'grab',
+                userSelect: 'none',
+              }}
+            >
+              <li onClick={() => setfilteredProducts(products)}><span>ALL</span></li>
               {category.map((item, i) => (
-                <li onClick={() => getFilteredProducts(item)} key={i}><a href="#!">{item.toUpperCase()}</a></li>
+                <li onClick={() => getFilteredProducts(item)} key={i}><span>{item.toUpperCase()}</span></li>
               ))}
             </ul>
             <input onChange={(e) => searchProd(e.target.value)} placeholder='Search product' type="text" />

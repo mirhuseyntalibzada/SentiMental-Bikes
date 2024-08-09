@@ -12,6 +12,8 @@ import supabase from '../config/connect'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
 import { useTranslation } from 'react-i18next'
+import { addComment, deleteComment, setDBToComments, updateComment } from '../toolkit/features/commentSlice'
+import { Bounce, toast } from 'react-toastify'
 
 const Details = () => {
     const [loading, setLoading] = useState(true);
@@ -34,6 +36,7 @@ const Details = () => {
     //Details----------------------------------------------------------------------------------------------
     const { slug } = useParams()
     const productDetail = products.find((product) => slugify(product.name.toLowerCase()) === slug)
+
     //----------------------------------------------------------------------------------------------Details
 
 
@@ -77,11 +80,26 @@ const Details = () => {
         fetchCartData()
     }, [dispatch, cookie])
 
+    const alertMessage = (message, duration) => {
+        toast(message, {
+            position: "top-right",
+            autoClose: duration,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        });
+    }
+
     const checkUser = async (item) => {
         if (cookie['cookie-user'] !== undefined) {
             dispatch(addProductToCart({ ...item, quantity: value }))
+            alertMessage("Added to cart", 3000)
         } else {
-            alert("you have to log in first")
+            alertMessage("You have to log in first", 3000)
         }
     }
 
@@ -105,18 +123,101 @@ const Details = () => {
     const [mode] = useContext(ModeContext)
     const { t, i18n: { changeLanguage, language } } = useTranslation();
 
+    //review------------------------------------------------------------------------------------
+
+    const adminToken = import.meta.env.VITE_ADMIN_TOKEN
+    const [isBtnActive, setIsBtnActive] = useState(null)
+    const [isEditActive, setIsEditActive] = useState(null)
+    const [comment, setComment] = useState('')
+    const [editComment, setEditComment] = useState('');
+    const commentsAll = useSelector((state) => state.comment.comments)
+
+    const checkUserComment = async (item, e) => {
+        e.preventDefault();
+        const today = new Date();
+        const day = today.getDate();
+        const month = today.getMonth() + 1;
+        const year = today.getFullYear();
+        const { data } = await supabase.from('users').select()
+        const user = data.find(({ token }) => token === cookie['cookie-user'])
+        if (cookie['cookie-user'] !== undefined) {
+            dispatch(addComment({ id: crypto.randomUUID(), payload: item, user: user.username, userToken: user.token, product: slug, date: `${day}.${month}.${year}` }));
+        } else {
+            alertMessage("you have to log in first", 3000);
+        }
+        setComment('')
+    }
+
+    const toggleBtn = (id) => {
+        setIsBtnActive((prevState) => (prevState === id ? null : id));
+    };
+
+    const toggleEdit = (id) => {
+        setIsEditActive((prevState) => (prevState === id ? null : id));
+    }
+
+    const handleEditSave = (id, e) => {
+        e.preventDefault();
+        dispatch(updateComment({ id, payload: editComment }));
+        setIsEditActive(null);
+        setIsBtnActive(null)
+    };
+
+    const handleRemoveItem = async (id) => {
+        let removedComments = [...commentsAll]
+        removedComments = removedComments.filter(item => item.id !== id);
+        dispatch(deleteComment(id))
+        await removeLastCommentInSupabase(removedComments)
+    }
+
+    const removeLastCommentInSupabase = async (removedComments) => {
+        const { error } = await supabase.from('products').update({
+            comments: removedComments
+        }).eq('name', slug.split('-').join(' '));
+        if (error) {
+            console.error("Error updating cart:", error.message);
+        }
+    }
+
+    const addCommentsToDB = async () => {
+        const { error } = await supabase.from('products').update({
+            comments: commentsAll
+        }).eq('name', slug.split('-').join(' '));
+        if (error) {
+            console.error("Error updating cart:", error.message);
+        }
+    };
+
+    useEffect(() => {
+        if (commentsAll) {
+            if (commentsAll.length > 0) {
+                addCommentsToDB();
+            }
+        }
+    }, [commentsAll]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data } = await supabase.from('products').select('comments').eq('name', slug.split('-').join(' '))
+            dispatch(setDBToComments(data[0].comments))
+        }
+        fetchData()
+    }, [])
+
+    //------------------------------------------------------------------------------------review
+
     if (loading) {
         return (
-          <>
-            <div className={`loader-container ${mode==='dark'?'dark':''}`}>
-              <div className='loader'></div>
-            </div>
-          </>
+            <>
+                <div className={`loader-container ${mode === 'dark' ? 'dark' : ''}`}>
+                    <div className='loader'></div>
+                </div>
+            </>
         );
-      }
+    }
 
     return (
-        <section className={`details-section ${mode==='dark'?'dark':''}`} id='details'>
+        <section className={`details-section ${mode === 'dark' ? 'dark' : ''}`} id='details'>
             <div className="details">
                 <div className="container">
                     <div className="heading">
@@ -130,14 +231,14 @@ const Details = () => {
                                 <img
                                     src={`${productDetail.img[colorIndex]}`}
                                     alt=""
-                                    onLoad={() => setImageLoading(false)} 
+                                    onLoad={() => setImageLoading(false)}
                                     style={{ display: imageLoading ? 'none' : 'block' }}
                                 />
                                 :
                                 <img
                                     src={`${productDetail.img[0]}`}
                                     alt=""
-                                    onLoad={() => setImageLoading(false)} 
+                                    onLoad={() => setImageLoading(false)}
                                     style={{ display: imageLoading ? 'none' : 'block' }}
                                 />
                             }
@@ -194,9 +295,83 @@ const Details = () => {
                             </div>
                         </div>
                     </div>
+                    <div className='comments-header'>
+                        <h1>{commentsAll ? commentsAll.filter(item => item.product === slug).length : '0'} Comments</h1>
+                    </div>
+                    <form action="" onSubmit={(e) => e.preventDefault()}>
+                        <input value={comment} onChange={e => setComment(e.target.value)} type="text" />
+                        <button onClick={(e) => checkUserComment(comment, e)} className='mobile'>
+                            <i className="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div className="comments-section">
+                        {commentsAll?.map((item) => (
+                            item.product === slug ? (
+                                <div key={item.id} className="comment-container">
+                                    <div className='comment-cont-head'>
+                                        <h5>{item.user}</h5>
+                                        {isEditActive === item.id ? (
+                                            ''
+                                        ) : (
+                                            <>
+                                                <div className='three-dots' onClick={() => toggleBtn(item.id)}>
+                                                    <i className="fa-solid fa-ellipsis-vertical"></i>
+                                                </div>
+                                                <div className={`three-dots-container ${isBtnActive === item.id ? 'active' : ''}`}>
+                                                    {item.userToken === cookie['cookie-user'] || cookie['cookie-user'] === adminToken ?
+                                                        <>
+                                                            <div onClick={() => toggleEdit(item.id)} className="edit">
+                                                                <i className="fa-solid fa-pen-to-square"></i>
+                                                                <span>EDIT</span>
+                                                            </div>
+                                                            <div onClick={() => handleRemoveItem(item.id)} className="delete">
+                                                                <i className="fa-solid fa-trash"></i>
+                                                                <span>DELETE</span>
+                                                            </div>
+                                                        </>
+                                                        :
+                                                        <>
+                                                            <div className="delete">
+                                                                <i className="fa-solid fa-flag"></i>
+                                                                <span>REPORT</span>
+                                                            </div>
+                                                        </>
+                                                    }
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                    <div className='rating-date'>
+                                        {/* <div>
+                                            <i className="fa-solid fa-star" style={{ color: "rgb(181, 105, 14)" }}></i>
+                                            <i className="fa-regular fa-star" style={{ color: "rgb(181, 105, 14)" }}></i>
+                                            <i className="fa-regular fa-star" style={{ color: "rgb(181, 105, 14)" }}></i>
+                                            <i className="fa-regular fa-star" style={{ color: "rgb(181, 105, 14)" }}></i>
+                                            <i className="fa-regular fa-star" style={{ color: "rgb(181, 105, 14)" }}></i>
+                                        </div> */}
+                                        <span>{item.date}</span>
+                                    </div>
+                                    {isEditActive === item.id ? (
+                                        <form className='edit-form' onSubmit={(e) => handleEditSave(item.id, e)}>
+                                            <input
+                                                type="text"
+                                                value={editComment}
+                                                onChange={(e) => setEditComment(e.target.value)}
+                                            />
+                                            <button type='submit' className='mobile'>
+                                                SAVE
+                                            </button>
+                                        </form>
+                                    ) : (
+                                        <p>{item.payload}</p>
+                                    )}
+                                </div>
+                            ) : null
+                        ))}
+                    </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 

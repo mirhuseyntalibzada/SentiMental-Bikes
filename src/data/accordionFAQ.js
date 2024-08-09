@@ -111,9 +111,9 @@ const accordionFAQ = [
         type: "Purchase and Warranty Questions",
         type_az: "Satınalma və Zəmanət Sualları",
         question: 'Do you offer financing options?',
-        question_az: 'Do you offer financing options?',
+        question_az: 'Maliyyələşdirmə təklif edirsiniz?',
         answer: 'Yes, we offer flexible financing options to make owning an e-bike more affordable. Please visit our financing page for more information.',
-        answer_az: 'Yes, we offer flexible financing options to make owning an e-bike more affordable. Please visit our financing page for more information.'
+        answer_az: 'Bəli, E-velosiped alışını daha sərfəli etmək üçün çevik maliyyələşdirmə variantları təklif edirik. Daha çox məlumat üçün maliyyələşdirmə səhifəmizi ziyarət edin.'
         ,
     },
     {

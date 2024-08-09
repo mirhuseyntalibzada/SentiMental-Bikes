@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux'
 import { useContext } from 'react'
 import { ModeContext } from '../context/ModeContext'
 import { useTranslation } from 'react-i18next'
+import ThankYou from '../components/ThankYou'
+import { useState } from 'react'
 
 const Cart = () => {
   const [cookie] = useCookies(['cookie-user'])
@@ -135,6 +137,15 @@ const Cart = () => {
   const [mode] = useContext(ModeContext)
   const { t, i18n: { changeLanguage, language } } = useTranslation();
 
+  const [thank, setThank] = useState(false)
+
+  if (thank) {
+    return (
+      <>
+        <ThankYou />
+      </>
+    )
+  }
 
   return (
     <>
@@ -159,7 +170,7 @@ const Cart = () => {
                 </div>
                 <button className='return-to-shop'>
                   <NavLink to={"/configure-a-bike"} onClick={() => { window.scrollTo(0, 0) }}>
-                  {t('cart.a.1')}
+                    {t('cart.a.1')}
                   </NavLink>
                 </button>
               </div>
@@ -266,13 +277,13 @@ const Cart = () => {
           </>
           {(!cart && !product) || (cart.length === 0 && product.length === 0) ? '' :
             <div className="billing-adress-desktop">
-              <BillingAddress />
+              <BillingAddress func={setThank} />
             </div>
           }
         </div>
         {(!cart && !product) || (cart.length === 0 && product.length === 0) ? '' :
           <div className="billing-adress-mobile">
-            <BillingAddress />
+            <BillingAddress func={setThank} />
           </div>
         }
       </section >

@@ -27,7 +27,7 @@ const ExperienceSentimental = () => {
                         <div className="content-container">
                             <div className="header-container">
                                 <div className='date'>
-                                    <span>{t('experienceSentimental.div.2')}</span>
+                                    <span>{t('experienceSentimental.div.1')}</span>
                                     <h3>26</h3>
                                 </div>
                                 <div className='header'>

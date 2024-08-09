@@ -213,7 +213,8 @@
             "label-3": "DISPLAY NAME",
             "span-1": "This will be how your name will be displayed in the account section and in reviews",
             "label-4": "EMAIL ADDRESS",
-            "h1-2": "Password change",
+            "h1-2": "Shipping address",
+            "h1-3":"Password Change",
             "label-5": "Current password (Old password)",
             "label-6": "New password",
             "label-7": "Confirm new password",
@@ -230,9 +231,7 @@
                 "4": "Click to select a file",
                 "5": "Selected file: "
             },
-            "h2": {
-                "1": "Add New Product"
-            },
+            "h2": "Add New Product",
             "label": {
                 "1": "Product Name",
                 "2": "Product Category",

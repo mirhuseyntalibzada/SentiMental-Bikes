@@ -11,11 +11,12 @@ import { NavLink } from 'react-router-dom'
 import AddressComp from './AddressComp'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import { Bounce, toast } from 'react-toastify'
 
 const MyAccountComp = () => {
 
     const [cookie, setCookies, deleteCookie] = useCookies(['cookie-user'])
-    const adminToken = "7c1a32ca-24c4-495e-bb5d-114ba449fb20"
+    const adminToken = import.meta.env.VITE_ADMIN_TOKEN
     const [isAdmin, setAdmin] = useState(false)
     const [mode] = useContext(ModeContext)
     const orders = useSelector((state) => state.cart.orders)
@@ -75,6 +76,20 @@ const MyAccountComp = () => {
         fetchData()
     }, [cookie])
 
+    const alertMessage = (message, duration) => {
+        toast(message, {
+            position: "top-right",
+            autoClose: duration,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        });
+    }
+
     const updateData = async () => {
         const { data } = await supabase.from('users').select()
         const currentUser = data.find(item => item.token === cookie['cookie-user'])
@@ -94,13 +109,13 @@ const MyAccountComp = () => {
                     window.location.reload()
                     deleteCookie(['cookie-user']);
                 } else {
-                    alert('The new passwords you entered do not match. Please try again.')
+                    alertMessage('The new passwords you entered do not match. Please try again.', 3000)
                 }
             } else {
-                alert('The current password you entered is incorrect. Please try again.')
+                alertMessage('The current password you entered is incorrect. Please try again.', 3000)
             }
         } else {
-            alert('no')
+            alertMessage('Please fill in the all inputs', 3000)
         }
 
     }
@@ -156,31 +171,31 @@ const MyAccountComp = () => {
         const fetchData = async () => {
             const { data } = await supabase.from('users').select();
             const user = data.find(({ token }) => token === cookie['cookie-user']);
-            const shippingAddressLocation = user['shipping_address'].shipping[0]
-            const billingAddressLocation = user['billing_address'].shipping[0]
+            const shippingAddressLocation = user['shipping_address']?.shipping[0]
+            const billingAddressLocation = user['billing_address']?.shipping[0]
             setEdit({
                 billing: !!user?.billing_address,
                 shipping: !!user?.shipping_address
             });
 
             setUserShippingAddress({
-                country: shippingAddressLocation.country,
-                town_city: shippingAddressLocation.town_city,
-                company_name: shippingAddressLocation.company_name,
-                postcode_zip: shippingAddressLocation.postcode_zip,
-                state_county: shippingAddressLocation.state_county,
-                street_house: shippingAddressLocation.street_house,
-                street_apartment: shippingAddressLocation.street_apartment
+                country: shippingAddressLocation?.country,
+                town_city: shippingAddressLocation?.town_city,
+                company_name: shippingAddressLocation?.company_name,
+                postcode_zip: shippingAddressLocation?.postcode_zip,
+                state_county: shippingAddressLocation?.state_county,
+                street_house: shippingAddressLocation?.street_house,
+                street_apartment: shippingAddressLocation?.street_apartment
             })
 
             setUserBillingAddress({
-                country: billingAddressLocation.country,
-                town_city: billingAddressLocation.town_city,
-                company_name: billingAddressLocation.company_name,
-                postcode_zip: billingAddressLocation.postcode_zip,
-                state_county: billingAddressLocation.state_county,
-                street_house: billingAddressLocation.street_house,
-                street_apartment: billingAddressLocation.street_apartment
+                country: billingAddressLocation?.country,
+                town_city: billingAddressLocation?.town_city,
+                company_name: billingAddressLocation?.company_name,
+                postcode_zip: billingAddressLocation?.postcode_zip,
+                state_county: billingAddressLocation?.state_county,
+                street_house: billingAddressLocation?.street_house,
+                street_apartment: billingAddressLocation?.street_apartment
             })
 
             setUserCredentials({
@@ -264,7 +279,7 @@ const MyAccountComp = () => {
                             }
                         </div>
                         <div style={active === 'orders' ? { display: "block" } : { display: "none" }} className="orders-text-container">
-                            {orders ?
+                            {orders?.length > 0 ?
                                 orders.map((item, i) => (
                                     <div key={i} className="product-card">
                                         <div className="img-text-container">
@@ -358,7 +373,7 @@ const MyAccountComp = () => {
                                         <div>
                                             <h1>{t('myAccountComp.h1-2')}</h1>
                                             <a onClick={() => { handleAddClick('shipping') }} href="#!">{edit.shipping ? "Edit" : "Add"}</a>
-                                            {edit.billing
+                                            {edit.shipping
                                                 ?
                                                 <>
                                                     <p>{userShippingAddress.company_name}</p>
@@ -459,7 +474,7 @@ const MyAccountComp = () => {
                         </div>
                         <div style={active === 'vat' ? { display: "flex" } : { display: "none" }} className="vat-text-container">
                             <div className='input-container'>
-                                <label htmlFor="">{t('myAccountComp.label-8')}R</label>
+                                <label htmlFor="">{t('myAccountComp.label-8')}</label>
                                 <input type="text" />
                             </div>
                             <div className='btn-container'>

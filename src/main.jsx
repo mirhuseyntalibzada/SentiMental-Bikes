@@ -27,5 +27,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           />
         </ModeProvider>
     </Provider>
-  </React.StrictMode >,
+  </React.StrictMode >
 )

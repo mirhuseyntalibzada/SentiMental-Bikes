@@ -209,6 +209,7 @@
             "h1-1": "Ödəmə Ünvanı",
             "p-3": "Bu tip ünvanı hələ konfiqurasiya etməmisiniz",
             "h1-2": "Çatdırılma Ünvanı",
+            "h1-3":"Şifrənin dəyişdirilməsi",
             "label-1": "ADINIZ",
             "label-2": "SOYADINIZ",
             "label-3": "İSTİFADƏÇİ ADI",
@@ -320,7 +321,7 @@
                 "3": "SƏBƏTƏ ƏLAVƏ ET"
             },
             "h5": {
-                "1": "MƏHSULU KONFİQURASİYA EDİN"
+                "1": "Məhsulu konfiqurasiya edin"
             }
         },
         "footer": {

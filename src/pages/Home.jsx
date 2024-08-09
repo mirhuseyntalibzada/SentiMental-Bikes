@@ -1,6 +1,6 @@
 import React from 'react'
-import noogat from '../images/SentiMental-Bikes-Noogat.webp'
-import pralina from '../images/SentiMental-Bikes-Pralina-600x840.webp'
+import noogat from '../images/SentiMental-Bikes-Noogat.png'
+import pralina from '../images/SentiMental-Bikes-Pralina-600x840.png'
 import team from '../images/Image-1-700x590.webp'
 import background from '../images/Image-12-2-2048x1181.webp'
 import background_dark from '../images/image-12-2-dark.jpg'
@@ -33,7 +33,7 @@ const Home = () => {
   const [openSections, setOpenSections] = useState({});
   const [news, setNews] = useState([])
   const [mode, setMode] = useContext(ModeContext)
-  
+
   const toggleAccordion = (section) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -63,7 +63,7 @@ const Home = () => {
   return (
     <>
       <section id='home'>
-        <section className={`hero-section ${mode==='dark'?'dark':''}`}>
+        <section className={`hero-section ${mode === 'dark' ? 'dark' : ''}`}>
           <div className="container">
             <div className="hero-container">
               <div className='hero-text'>
@@ -94,7 +94,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className={`btn-container ${mode==='dark'?'dark':''}`} id="btn-container">
+        <section className={`btn-container ${mode === 'dark' ? 'dark' : ''}`} id="btn-container">
           <div className="buttons">
             <div onClick={() => handleClick('noogat')} className={`noogat ${activeButton === 'noogat' ? 'active' : ''}`}><span>NOOGAT 2024</span></div>
             <div onClick={() => handleClick('pralina')} className={`pralina ${activeButton === 'pralina' ? 'active' : ''}`}><span>PRALINA 2024</span></div>
@@ -102,7 +102,7 @@ const Home = () => {
           <div className='bottom-part-btn'></div>
         </section>
         <section id="features">
-          <div className={`features-container ${mode==='dark'?'dark':''}`}>
+          <div className={`features-container ${mode === 'dark' ? 'dark' : ''}`}>
             <div className='container'>
               <div>
                 <div className="h1-container">
@@ -141,7 +141,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className={`story ${mode==='dark'?'dark':''}`} id="story">
+        <section className={`story ${mode === 'dark' ? 'dark' : ''}`} id="story">
           <div className="container">
             <div className='content-container'>
               <div className="h6-container">
@@ -167,7 +167,7 @@ const Home = () => {
           </div>
         </section>
         <section id="sentimental-background">
-          <div className={`container ${mode==='dark'?'dark':''}`}>
+          <div className={`container ${mode === 'dark' ? 'dark' : ''}`}>
             <h1>
               <div>
                 <span data-aos-delay="0" data-aos="fade-up">{t(`home.span-5.1`)}</span>
@@ -177,9 +177,9 @@ const Home = () => {
               </div>
             </h1>
           </div>
-          <img src={mode==='dark'?background_dark:background} alt="background" />
+          <img src={mode === 'dark' ? background_dark : background} alt="background" />
         </section>
-        <section className={`feeling-sentimental ${mode==='dark'?'dark':''}`} id='feeling-sentimental'>
+        <section className={`feeling-sentimental ${mode === 'dark' ? 'dark' : ''}`} id='feeling-sentimental'>
           <div className="container">
             <div className="h1-container">
               <h1 data-aos-delay="0" data-aos="fade-up"><div>{t(`home.h1-2.1`)}</div> {t(`home.h1-2.2`)}</h1>
@@ -298,7 +298,7 @@ const Home = () => {
           <div className="box"></div>
         </section>
         <section id='information'>
-          <div className={`information ${mode==='dark'?'dark':''}`}>
+          <div className={`information ${mode === 'dark' ? 'dark' : ''}`}>
             <div className="container">
               <div className='text-img-container'>
                 <div className="text-container">
@@ -344,11 +344,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className={`bg ${mode==="dark"?'dark':''}`}>
+          <div className={`bg ${mode === "dark" ? 'dark' : ''}`}>
             <div className="light-green"></div>
           </div>
         </section>
-        <section className={`accordion-info ${mode==="dark"?'dark':''}`} id='accordion-info'>
+        <section className={`accordion-info ${mode === "dark" ? 'dark' : ''}`} id='accordion-info'>
           <div className="container">
             <div className="h6-container">
               <h6 data-aos="fade-up">{t(`home.h6-6`)}</h6>
@@ -386,7 +386,7 @@ const Home = () => {
           </div>
           <div className="box"></div>
         </section>
-        <section className={`image-section ${mode==="dark"?'dark':''}`} id='image-section'>
+        <section className={`image-section ${mode === "dark" ? 'dark' : ''}`} id='image-section'>
           <div className="img-container">
             <img data-aos="zoom-out" src={bike_bg} alt="bike_bg" />
           </div>
@@ -398,7 +398,7 @@ const Home = () => {
           </div>
         </section>
         <ExperienceSentimental />
-        <section className={`sentimental-news ${mode==='dark'?'dark':''}`} id='sentimental-news'>
+        <section className={`sentimental-news ${mode === 'dark' ? 'dark' : ''}`} id='sentimental-news'>
           <div className="container">
             <div className="h1-container">
               <h1 data-aos="fade-up" className='hero-h1'>{t(`home.h1-4`)}</h1>

@@ -1,5 +1,5 @@
 .cart.dark {
-    background-color: rgb(22,22,25) !important;
+    background-color: rgb(22, 22, 25) !important;
     color: white !important;
 }
 
@@ -22,28 +22,40 @@
 }
 
 .cart-section.dark {
-    background-color: rgb(32,32,35) !important;
+    background-color: rgb(32, 32, 35) !important;
     color: white !important;
+
     .billing-adress-desktop,
-    .billing-adress-mobile{
+    .billing-adress-mobile {
         color: black !important;
+        a{
+            color: black !important;
+        }
     }
-    input{
+
+    input {
         color: white !important;
     }
+
     .input-container {
         input {
             color: black !important;
         }
     }
-    a{
+
+    a {
         color: white !important;
     }
-    .box-container{
-        background-color: rgb(22,22,25) !important;
+
+    .box-container {
+        background-color: rgb(22, 22, 25) !important;
+
         .white-box {
-            background-color: rgb(32,32,35) !important;
+            background-color: rgb(32, 32, 35) !important;
         }
+    }
+    .message{
+        color: black !important;
     }
 }
 
@@ -53,6 +65,102 @@
 
     .container {
         padding: 1.5em .5em 0;
+
+        .products-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            box-sizing: content-box;
+
+            .card-container {
+                position: relative;
+                padding: .2em;
+                box-sizing: border-box;
+                flex: 0 0 100%;
+                margin-bottom: 1em;
+
+                .content {
+                    position: relative;
+                    border: 1px solid #CECDC7;
+                    border-radius: 1em;
+                    overflow: hidden;
+                    padding: 1em;
+
+                    .fav {
+                        display: flex;
+                        position: absolute;
+                        top: 1.3em;
+                        right: 1.3em;
+
+                        i {
+                            color: red;
+                            font-size: 1.5em;
+                        }
+                    }
+
+                    .img-container {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .info-container {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 1em;
+
+                        h6 {
+                            height: 2.6em;
+                            margin: 0;
+                            font-size: 1em;
+                        }
+
+                        span {
+                            font-size: 1em;
+                        }
+                    }
+
+                    .button-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .5em;
+
+                        button {
+                            font-size: 1em;
+                            background-color: black;
+                            color: white;
+                            border: none;
+                            border-radius: 1.2em;
+                            padding: .6em;
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+
+                        .details {
+                            padding: 0;
+                            border-radius: 0;
+                            background-color: transparent;
+
+                            a {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                text-decoration: none;
+                                color: white;
+                                background-color: black;
+                                width: 100%;
+                                border-radius: 1.2em;
+                                padding: .6em;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
 
         .message {
             background-color: rgb(205, 205, 199);
@@ -486,6 +594,96 @@
             margin: 0 auto;
             display: flex;
             gap: .4em;
+            .thanks{
+                font-size: .3em;
+            }
+
+            .products-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                box-sizing: content-box;
+
+
+                .card-container {
+                    padding: .2em;
+                    box-sizing: border-box;
+                    flex: 0 0 25%;
+                    margin-bottom: 0;
+
+                    .content:hover {
+                        .fav {
+                            display: flex;
+                        }
+                    }
+
+                    .content {
+                        position: relative;
+                        border: 1px solid #CECDC7;
+                        border-radius: .1em;
+                        overflow: hidden;
+                        padding: .1em;
+
+                        .fav {
+                            cursor: pointer;
+                            display: none;
+                            position: absolute;
+                            top: .2em;
+                            right: .2em;
+
+                            i {
+                                color: red;
+                                font-size: .2em;
+                            }
+                        }
+
+                        .img-container {
+                            height: 2.6em;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .info-container {
+                            display: flex;
+                            flex-direction: column;
+                            margin-bottom: .1em;
+
+                            h6 {
+                                height: 2.6em;
+                                margin: 0;
+                                font-size: .17em;
+                            }
+
+                            span {
+                                font-size: .17em;
+                            }
+                        }
+
+                        .button-container {
+                            display: flex;
+                            flex-direction: row;
+                            gap: .1em;
+
+                            button {
+                                font-size: .15em;
+                                width: 50%;
+                                background-color: black;
+                                color: white;
+                                border: none;
+                                border-radius: 1.2em;
+                                padding: .6em;
+                                font-weight: 600;
+                            }
+
+                        }
+                    }
+                }
+            }
 
             .message-container {
                 margin: 0 3em;

@@ -37,18 +37,20 @@ export const cartSlice = createSlice({
             state.cartQuantity += item.quantity;
         },
         addToOrder: (state, action) => {
-            const orders = action.payload;            
+            if (!state.orders) {
+                state.orders = [];
+            }
+            
+            const orders = action.payload;
             orders.forEach(orderItem => {
-                console.log(orderItem.quantity);
-                
                 const productItem = state.orders.find(product => product.id === orderItem.id);
                 if (productItem) {
                     productItem.quantity += orderItem.quantity;
-                }else {
+                } else {
                     state.orders.push({ ...orderItem, quantityItem: orderItem.quantity });
                 }
             });
-        },
+        },        
         setOrdersToRedux: (state, action) => {
             state.orders = action.payload;
         },

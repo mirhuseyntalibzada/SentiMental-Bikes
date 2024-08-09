@@ -251,6 +251,9 @@
     .box {
         background-color: rgb(22, 22, 25) !important;
     }
+    .scroll-more-msg{
+        color: black !important;
+    }
 }
 
 #addons {
@@ -272,9 +275,18 @@
         }
 
         .container {
-            padding: 0 .5em;
+            padding: .5em;
+            position: relative;
+
+            .scroll-more-msg {
+                position: absolute;
+                font-size: .5em;
+                top: 5em;
+                font-style: italic;
+            }
 
             input {
+                margin-top: .5em;
                 width: 100%;
                 box-sizing: border-box;
                 margin-bottom: 1em;
@@ -293,20 +305,21 @@
                 padding: 0;
                 display: flex;
                 gap: .5em;
+                overflow: scroll;
 
                 li {
                     padding: 1em 0;
                     display: flex;
                     flex-shrink: 0;
 
-                    a {
+                    span {
+                        user-select: 'none';
                         font-weight: 700;
                         font-size: .63em;
-                        text-decoration: none;
                         color: black;
                     }
 
-                    a.active {
+                    span.active {
                         text-decoration: underline;
                     }
                 }
@@ -472,10 +485,12 @@
 
                     .img-container {
                         width: 60%;
+                        padding-right: .3em;
                     }
 
                     .features {
                         width: 40%;
+                        flex-shrink: 0;
 
                         .options {
                             margin: .5em 0;
@@ -581,8 +596,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                gap: .5em;
 
                 input {
+                    flex-shrink: 0;
                     margin: 0;
                     width: 50%;
                     padding: .5em;
@@ -590,12 +607,17 @@
                     font-weight: 700;
                 }
 
-                ul {
+                .scroll-more-msg{
+                    top: 5.5em;
+                    font-size: .12em;
+                }
 
+                ul {
+                    overflow: hidden;
                     li {
                         padding: .2em 0;
 
-                        a {
+                        span {
                             font-size: .23em;
                         }
                     }

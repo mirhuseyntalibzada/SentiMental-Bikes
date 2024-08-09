@@ -137,7 +137,7 @@ const OurStory = () => {
               <div><span data-aos-delay="100" data-aos="fade-up">{t(`ourStory.h1-1.2`)}</span></div>
             </div>
             <div className="desktop">
-              <div><span data-aos="fade-up">{t(`ourStory.h1-1.2`)}</span></div>
+              <div><span data-aos="fade-up">{t(`ourStory.h1-1.3`)}</span></div>
             </div>
           </h1>
           <div className="p-container">

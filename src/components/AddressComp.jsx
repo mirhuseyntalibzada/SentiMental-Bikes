@@ -61,27 +61,40 @@ const AddressComp = ({ h1, type }) => {
         const fetchData = async () => {
             const { data } = await supabase.from('users').select();
             const user = data.find(({ token }) => token === cookie['cookie-user']);
-            const addressLocation = user[type + '_address'].shipping[0];
+            const addressLocation = user[type + '_address']?.shipping[0];
             setUserInfo({
-                fName: user.first_name,
-                lName: user.last_name,
-                town_city: addressLocation.town_city,
-                company_name: addressLocation.company_name,
-                postcode_zip: addressLocation.postcode_zip,
-                state_county: addressLocation.state_county,
-                street_house: addressLocation.street_house,
-                street_apartment: addressLocation.street_apartment,
-                phone: type === 'billing' ? user.phone : "",
-                email: type === 'billing' ? user.email : ""
+                fName: user?.first_name,
+                lName: user?.last_name,
+                town_city: addressLocation?.town_city,
+                company_name: addressLocation?.company_name,
+                postcode_zip: addressLocation?.postcode_zip,
+                state_county: addressLocation?.state_county,
+                street_house: addressLocation?.street_house,
+                street_apartment: addressLocation?.street_apartment,
+                phone: type === 'billing' ? user?.phone : "",
+                email: type === 'billing' ? user?.email : ""
             });
-            setActiveCountry(addressLocation.country);
+            setActiveCountry(addressLocation?.country);
         };
         fetchData();
     }, [type, cookie]);
 
     const handleClick = async (e) => {
-        alertMessage('Please wait, do not reload the page');
         e.preventDefault();
+        
+        const requiredFields = ['fName', 'lName', 'street_house', 'town_city', 'state_county', 'postcode_zip'];
+        if (type === 'billing') {
+            requiredFields.push('phone', 'email');
+        }
+        for (const field of requiredFields) {
+            if (!userInfo[field]) {
+                alertMessage("Please fill in all required fields.", 3000);
+                return;
+            }
+        }
+
+        alertMessage('Please wait, do not reload the page', 3000);
+
         const { data } = await supabase.from('users').select();
         const user = data.find(({ token }) => token === cookie['cookie-user']);
         const addressLocation = type + "_address";

@@ -55,6 +55,16 @@
     a {
         color: white !important;
     }
+
+    form{
+        input{
+            color: black !important;
+        }
+    }
+
+    .three-dots-container {
+            color: black !important;
+    }
 }
 
 #details {
@@ -289,6 +299,146 @@
                     }
                 }
             }
+
+            .comments-header {
+                border-bottom: 1px solid #CECDC7;
+
+                h1 {
+                    margin: .7em 0;
+                    font-size: 1.4em;
+                }
+            }
+
+            form {
+                margin-top: 1em;
+                position: relative;
+
+                input {
+                    border: 0;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 1em;
+                    padding-right: 3.8em;
+                }
+
+                input:focus {
+                    outline: 0;
+                }
+
+                .mobile {
+                    position: absolute;
+                    right: 1em;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: transparent;
+                    border: 0;
+
+                    i {
+                        font-size: 1.2em;
+                    }
+                }
+            }
+
+            .comments-section {
+
+                .comment-container {
+                    border-bottom: 1px solid #CECDC7;
+                    padding: .5em 0;
+
+                    .edit-form{
+                        button{
+                            padding: .7em;
+                            border-radius: 1.5em;
+                        }
+                    }
+
+                    form {
+                        margin: 0;
+
+                        button {
+                            background-color: black;
+                            font-size: .5em;
+                            color: white;
+                        }
+                    }
+
+                    .comment-cont-head {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        h5 {
+                            margin: 0;
+                        }
+
+                        .three-dots {
+                            flex-shrink: 0;
+                            height: 1.5em;
+                            flex-basis: 1.5em;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                        }
+
+                        .three-dots-container {
+                            display: none;
+                            flex-direction: column;
+                            background-color: rgb(241, 241, 241);
+                            position: absolute;
+                            top: 2.6em;
+                            right: 0;
+                            font-size: .6em;
+                            padding: .7em .8em;
+                            border-radius: 1em;
+                            gap: .5em;
+                            font-weight: 500;
+                            cursor: pointer;
+
+                            .edit {
+                                display: flex;
+                                align-items: center;
+                                gap: .5em;
+                            }
+
+                            .delete {
+                                display: flex;
+                                align-items: center;
+                                gap: .5em;
+                            }
+                        }
+
+                        .three-dots-container.active {
+                            display: flex;
+                        }
+                    }
+
+                    .rating-date {
+                        display: flex;
+                        margin: .6em 0;
+                        gap: .5em;
+
+                        div {
+                            display: flex;
+
+                            i {
+                                font-size: .8em;
+                            }
+                        }
+
+                        span {
+                            font-size: .7em;
+                        }
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: .8em;
+                    }
+                }
+
+            }
         }
     }
 }
@@ -426,6 +576,103 @@
                             }
                         }
                     }
+                }
+
+                .comments-header {
+                    border-bottom: 1px solid #CECDC7;
+
+                    h1 {
+                        margin: .7em 0;
+                        font-size: .4em;
+                    }
+                }
+
+                form {
+                    margin-top: .5em;
+                    display: flex;
+
+                    input {
+                        font-size: .2em;
+                    }
+
+                    .mobile {
+                        right: 1.5em;
+                        cursor: pointer;
+
+                        i {
+                            font-size: 1em;
+                        }
+                    }
+                }
+
+                .comments-section {
+                    
+                    .comment-container {
+                        padding: .5em 0;
+
+                        .edit-form{
+                            button{
+                                right: 2.5em;
+                                padding: .5em .7em;
+                                border-radius: 1.5em;
+                                font-size: .15em;
+                            }
+                        }
+
+                        form {
+                            margin: 0;
+                        }
+
+                        .comment-cont-head {
+
+                            h5 {
+                                margin: 0;
+                                font-size: .25em;
+                            }
+
+                            .three-dots {
+                                height: 1.5em;
+                                width: 1.5em;
+                                font-size: .2em;
+                            }
+
+                            .three-dots-container {
+                                top: 2.2em;
+                                right: 0;
+                                font-size: .15em;
+                                gap: .2em;
+
+                                .edit {
+                                    gap: .5em;
+                                }
+
+                                .delete {
+                                    gap: .5em;
+                                }
+                            }
+                        }
+
+                        .rating-date {
+                            margin: .15em 0;
+                            gap: .1em;
+
+                            div {
+                                i {
+                                    font-size: .2em;
+                                }
+                            }
+
+                            span {
+                                font-size: .2em;
+                            }
+                        }
+
+                        p {
+                            margin: 0;
+                            font-size: .2em;
+                        }
+                    }
+
                 }
             }
         }

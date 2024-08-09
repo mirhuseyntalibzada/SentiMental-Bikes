@@ -47,6 +47,13 @@
         a {
             color: white !important;
         }
+
+        li.active {
+            a{
+                color: black !important;
+            }
+            color: black !important;
+        }
     }
 }
 

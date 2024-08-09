@@ -11,6 +11,11 @@ const AdminPanel = ({ active, products }) => {
     const [productDesc, setProductDesc] = useState('');
     const [dragOver, setDragOver] = useState(false);
     const [fileName, setFileName] = useState('');
+    const [editProduct, setEditProduct] = useState(null);
+    const [editProductName, setEditProductName] = useState('');
+    const [editProductCategory, setEditProductCategory] = useState('');
+    const [editProductType, setEditProductType] = useState('');
+    const [editProductPrice, setEditProductPrice] = useState('');
     const fileRef = useRef(null);
     const inputRef = useRef(null);
 
@@ -91,6 +96,36 @@ const AdminPanel = ({ active, products }) => {
         }
     };
 
+    const handleUpdateProduct = async (product) => {
+        const { error } = await supabase.from('products').update({
+            name: editProductName,
+            category: editProductCategory,
+            type: editProductType,
+            price: editProductPrice
+        }).eq('id', product.id);
+        if (error) {
+            console.error('Error updating product:', error.message);
+        } else {
+            window.location.reload();
+        }
+    };
+
+    const handleEditClick = (product) => {
+        setEditProduct(product.id);
+        setEditProductName(product.name);
+        setEditProductCategory(product.category);
+        setEditProductType(product.type);
+        setEditProductPrice(product.price);
+    };
+
+    const handleCancelEdit = () => {
+        setEditProduct(null);
+        setEditProductName('');
+        setEditProductCategory('');
+        setEditProductType('');
+        setEditProductPrice('');
+    };
+
     const handleDragOver = (e) => {
         e.preventDefault();
         setDragOver(true);
@@ -136,7 +171,6 @@ const AdminPanel = ({ active, products }) => {
         });
     }
 
-
     const { t, i18n: { changeLanguage, language } } = useTranslation();
 
     return (
@@ -181,10 +215,10 @@ const AdminPanel = ({ active, products }) => {
                     onDrop={handleDrop}
                     onClick={handleFileClick}
                 >
-                    <p>{t('adminPanel.p.1')}</p>
                     <p>{t('adminPanel.p.2')}</p>
                     <p>{t('adminPanel.p.3')}</p>
-                    {fileName && <p>{t('adminPanel.p.4')} {fileName}</p>}
+                    <p>{t('adminPanel.p.4')}</p>
+                    {fileName && <p>{t('adminPanel.p.5')} {fileName}</p>}
                 </div>
                 <input
                     type="file"
@@ -204,24 +238,55 @@ const AdminPanel = ({ active, products }) => {
                             <img src={`${item.img[0]}`} alt="" />
                         </div>
                         <div className="text-container">
-                            <div className="category-name">
-                                <h6>{t('adminPanel.label.1')}:</h6>
-                                <p>{item.name.toUpperCase()}</p>
-                            </div>
-                            <div className="category-name">
-                                <h6>{t('adminPanel.label.2')}:</h6>
-                                <p>{item.category}</p>
-                            </div>
-                            <div className="category-name">
-                                <h6>{t('adminPanel.label.3')}:</h6>
-                                <p>{item.type}</p>
-                            </div>
-                            <div className="price-quantity-container">
-                                <div>
-                                    <h5>€{item.price}.00</h5>
-                                </div>
-                            </div>
+                            {editProduct === item.id ? (
+                                <>
+                                    <div className="category-name">
+                                        <h6>{t('adminPanel.label.1')}:</h6>
+                                        <input type="text" value={editProductName} onChange={(e) => setEditProductName(e.target.value)} />
+                                    </div>
+                                    <div className="category-name">
+                                        <h6>{t('adminPanel.label.2')}:</h6>
+                                        <input type="text" value={editProductCategory} onChange={(e) => setEditProductCategory(e.target.value)} />
+                                    </div>
+                                    <div className="category-name">
+                                        <h6>{t('adminPanel.label.3')}:</h6>
+                                        <input type="text" value={editProductType} onChange={(e) => setEditProductType(e.target.value)} />
+                                    </div>
+                                    <div className="price-quantity-container">
+                                        <div>
+                                            <h5>€<input type="number" value={editProductPrice} onChange={(e) => setEditProductPrice(e.target.value)} /></h5>
+                                        </div>
+                                    </div>
+                                    <div className="btn-container">
+                                        <button onClick={handleCancelEdit}>CANCEL</button>
+                                        <button onClick={() => { handleUpdateProduct(item); alertMessage("Please wait, do not reload the page", 5000) }}>SAVE</button>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="category-name">
+                                        <h6>{t('adminPanel.label.1')}:</h6>
+                                        <p>{item.name.toUpperCase()}</p>
+                                    </div>
+                                    <div className="category-name">
+                                        <h6>{t('adminPanel.label.2')}:</h6>
+                                        <p>{item.category}</p>
+                                    </div>
+                                    <div className="category-name">
+                                        <h6>{t('adminPanel.label.3')}:</h6>
+                                        <p>{item.type}</p>
+                                    </div>
+                                    <div className="price-quantity-container">
+                                        <div>
+                                            <h5>€{item.price}.00</h5>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
+                    </div>
+                    <div className="edit" onClick={() => handleEditClick(item)}>
+                        <i className="fa-solid fa-pen-to-square"></i>
                     </div>
                     <div className="delete" onClick={() => { handleRemoveItem(item.id); alertMessage("Please wait, do not reload the page", 5000) }}>
                         <i className="fa-solid fa-x"></i>
