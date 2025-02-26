@@ -271,7 +271,7 @@ const ConfigureBike = () => {
               }}
             >
               <li onClick={() => setfilteredProducts(products)}><span>ALL</span></li>
-              {category.map((item, i) => (
+              {category?.map((item, i) => (
                 <li onClick={() => getFilteredProducts(item)} key={i}><span>{item.toUpperCase()}</span></li>
               ))}
             </ul>
@@ -283,20 +283,20 @@ const ConfigureBike = () => {
           <div className="products-container">
             {filteredProducts.length === 0 ?
               searchedProducts.length === 0 ?
-                products.map((product, i) => (
+                products?.map((product, i) => (
                   <ProductCard key={i} productState={product} />
                 ))
                 :
-                searchedProducts.map((product, i) => (
+                searchedProducts?.map((product, i) => (
                   <ProductCard key={i} productState={product} />
                 ))
               :
               searchedProducts.length === 0 ?
-                filteredProducts.map((product, i) => (
+                filteredProducts?.map((product, i) => (
                   <ProductCard key={i} productState={product} />
                 ))
                 :
-                searchedProducts.map((product, i) => (
+                searchedProducts?.map((product, i) => (
                   <ProductCard key={i} productState={product} />
                 ))
             }

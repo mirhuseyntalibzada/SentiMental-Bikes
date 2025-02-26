@@ -134,12 +134,12 @@ const BillingAddress = ({func}) => {
                         <div className="country-container">
                             {
                                 filteredCountries === undefined
-                                    ? countries.map((country, id) => (
+                                    ? countries?.map((country, id) => (
                                         <span className={`country ${activeCountry === country.countryName ? 'active' : ''}`} key={id} onClick={() => { setCountry(country.countryName); toggleBtn() }}>{country.countryName}</span>
                                     ))
                                     : filteredCountries.length === 0
                                         ? <span className='country'>{t('billingAddress.span.1')}</span>
-                                        : filteredCountries.map((country, id) => (
+                                        : filteredCountries?.map((country, id) => (
                                             <span className={`country ${activeCountry === country.countryName ? 'active' : ''}`} key={id} onClick={() => { setCountry(country.countryName); toggleBtn() }}>{country.countryName}</span>
                                         ))
                             }

@@ -156,14 +156,14 @@ const AddressComp = ({ h1, type }) => {
                                 {
                                     filteredCountries === undefined
                                         ?
-                                        countries.map((country, id) => (
+                                        countries?.map((country, id) => (
                                             <span className={`country ${activeCountry === country.countryName ? 'active' : ''}`} key={id} onClick={() => { setCountry(country.countryName); toggleBtn() }}>{country.countryName}</span>
                                         ))
                                         :
                                         filteredCountries.length === 0 ?
                                             <span className='country'>No matches found</span>
                                             :
-                                            filteredCountries.map((country, id) => (
+                                            filteredCountries?.map((country, id) => (
                                                 <span className={`country ${activeCountry === country.countryName ? 'active' : ''}`} key={id} onClick={() => { setCountry(country.countryName); toggleBtn() }}>{country.countryName}</span>
                                             ))
                                 }

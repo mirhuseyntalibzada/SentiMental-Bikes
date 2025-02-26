@@ -33,7 +33,7 @@ const FAQ = () => {
         </div>
         <div className="container">
           <div className="accordion-container">
-            {accordionFAQ.map((item, index) => {
+            {accordionFAQ?.map((item, index) => {
               const typeNotDisplayed = !displayedTypes.has(item.type);
               if (typeNotDisplayed) {
                 displayedTypes.add(item.type);
@@ -61,11 +61,11 @@ const FAQ = () => {
                         <ul>
                           {language === "en"
                             ?
-                            item.list.map((liItem, i) => (
+                            item.list?.map((liItem, i) => (
                               <li key={i}>{liItem}</li>
                             ))
                             :
-                            item.list_az.map((liItem, i) => (
+                            item.list_az?.map((liItem, i) => (
                               <li key={i}>{liItem}</li>
                             ))
                           }

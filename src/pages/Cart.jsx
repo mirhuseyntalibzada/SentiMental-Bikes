@@ -86,7 +86,7 @@ const Cart = () => {
 
   const handleQuantityChange = (index, newQuantity, type) => {
     if (type === 'cart') {
-      const updatedCart = cart.map((item, i) => {
+      const updatedCart = cart?.map((item, i) => {
         if (i === index) {
           return { ...item, quantity: newQuantity };
         }
@@ -95,7 +95,7 @@ const Cart = () => {
       updateCartInSupabase(updatedCart, product);
       dispatch(setCartToRedux(updatedCart));
     } else if (type === 'product') {
-      const updatedProduct = product.map((item, i) => {
+      const updatedProduct = product?.map((item, i) => {
         if (i === index) {
           return { ...item, quantity: newQuantity };
         }
@@ -175,7 +175,7 @@ const Cart = () => {
                 </button>
               </div>
               : <div className='product-container'>{cart || cart.length !== 0 ?
-                cart.map((item, i) => (
+                cart?.map((item, i) => (
                   <div key={i} className='product-card' >
                     <div className='img-text-container'>
                       <div className='img-container'>
@@ -219,7 +219,7 @@ const Cart = () => {
 
                 {
                   product || product.length !== 0 ?
-                    product.map((item, i) => (
+                    product?.map((item, i) => (
                       <div key={i} className='product-card' >
                         <div className='img-text-container'>
                           <div className='img-container'>

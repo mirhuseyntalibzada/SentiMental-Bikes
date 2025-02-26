@@ -63,7 +63,7 @@ const ThankYou = () => {
                         {
                             product
                                 ?
-                                product.map((item, i) => (
+                                product?.map((item, i) => (
                                     <ProductCard key={i} productState={item} />
                                 ))
                                 :

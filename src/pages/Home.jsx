@@ -354,7 +354,7 @@ const Home = () => {
               <h6 data-aos="fade-up">{t(`home.h6-6`)}</h6>
             </div>
             <div className="accordion-container">
-              {accordionData.map((item, index) => (
+              {accordionData?.map((item, index) => (
                 <div data-aos-delay={`${index * 100}`} data-aos="fade-up" className="accordion" key={index}>
                   <div
                     onClick={() => toggleAccordion(item.en_title)}
@@ -369,11 +369,11 @@ const Home = () => {
                     <ul>
                       {language === "en"
                         ?
-                        item.en_content.map((contentItem, i) => (
+                        item.en_content?.map((contentItem, i) => (
                           <li key={i}>{contentItem}</li>
                         ))
                         :
-                        item.az_content.map((contentItem, i) => (
+                        item.az_content?.map((contentItem, i) => (
                           <li key={i}>{contentItem}</li>
                         ))
                       }
@@ -404,7 +404,7 @@ const Home = () => {
               <h1 data-aos="fade-up" className='hero-h1'>{t(`home.h1-4`)}</h1>
             </div>
             <div style={{ overflow: "hidden" }}>
-              {news.map(item => (
+              {news?.map(item => (
                 <div data-aos-delay={`${(item.id - 1) * 100}`} data-aos="fade-up" key={item.id} className="card-container">
                   <div className='first-container'>
                     <span className='desktop-news'>{t(`home.news`)}</span>

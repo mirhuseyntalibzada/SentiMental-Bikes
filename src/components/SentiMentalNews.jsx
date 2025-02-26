@@ -31,7 +31,7 @@ const SentiMentalNews = () => {
                         </div>
                     </div>
                     <div style={{ overflow: "hidden" }}>
-                        {news.map(item => (
+                        {news?.map(item => (
                             <div data-aos-delay={`${(item.id - 1) * 100}`} data-aos="fade-up" key={item.id} className="card-container">
                                 <div className='first-container'>
                                     <span className='desktop-news'>{t(`news.button`)}</span>

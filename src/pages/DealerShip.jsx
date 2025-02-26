@@ -77,7 +77,7 @@ const DealerShip = () => {
         </div>
         <div className="dealerships-container">
           <div className="container">
-            {filteredData.length === 0 ? dealership.map((item, i) => (
+            {filteredData.length === 0 ? dealership?.map((item, i) => (
               <div data-aos-delay={`${i * 100}`} data-aos="fade-up" key={i} className="card-container">
                 <div className='first-container'>
                   <div className='desktop-country'>
@@ -102,7 +102,7 @@ const DealerShip = () => {
                   </div>
                 </div>
               </div>
-            )) : filteredData.map((item, i) => (
+            )) : filteredData?.map((item, i) => (
               <div data-aos-delay={`${i * 100}`} data-aos="fade-up" key={i} className="card-container">
                 <div className='first-container'>
                   <div className='desktop-country'>

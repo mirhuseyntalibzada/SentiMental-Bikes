@@ -122,7 +122,7 @@ const MyAccountComp = () => {
 
     const toggleVisibilityInput = (index) => {
         setVisibilityInputs(prevVisibilityInputs =>
-            prevVisibilityInputs.map((visible, i) => (i === index ? !visible : visible))
+            prevVisibilityInputs?.map((visible, i) => (i === index ? !visible : visible))
         );
     }
 
@@ -280,7 +280,7 @@ const MyAccountComp = () => {
                         </div>
                         <div style={active === 'orders' ? { display: "block" } : { display: "none" }} className="orders-text-container">
                             {orders?.length > 0 ?
-                                orders.map((item, i) => (
+                                orders?.map((item, i) => (
                                     <div key={i} className="product-card">
                                         <div className="img-text-container">
                                             <div className="img-container">

@@ -231,7 +231,7 @@ const AdminPanel = ({ active, products }) => {
                 </div>
             </form>
             <h2>Products</h2>
-            {products.map((item, i) => (
+            {products?.map((item, i) => (
                 <div key={i} className="product-card">
                     <div className="img-text-container">
                         <div className="img-container">

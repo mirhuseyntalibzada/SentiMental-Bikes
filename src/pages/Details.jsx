@@ -305,7 +305,7 @@ const Details = () => {
                         </button>
                     </form>
                     <div className="comments-section">
-                        {commentsAll?.map((item) => (
+                        {commentsAll??.map((item) => (
                             item.product === slug ? (
                                 <div key={item.id} className="comment-container">
                                     <div className='comment-cont-head'>

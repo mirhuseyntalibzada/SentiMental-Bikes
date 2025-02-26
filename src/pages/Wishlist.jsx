@@ -45,7 +45,7 @@ const Wishlist = () => {
   };
 
   const handleQuantityChange = (index, newQuantity) => {
-    const updatedWishlist = wishlist.map((item, i) => {
+    const updatedWishlist = wishlist?.map((item, i) => {
       if (i === index) {
         return { ...item, quantity: newQuantity };
       }
@@ -130,7 +130,7 @@ const Wishlist = () => {
                 </button>
               </div>
               : <div className='product-container'>{wishlist || wishlist.length !== 0 ?
-                wishlist.map((item, i) => (
+                wishlist?.map((item, i) => (
                   <div key={i} className='product-card' >
                     <div className='img-text-container'>
                       <div className='img-container'>

@@ -96,7 +96,7 @@ const Footer = () => {
                     <div className="payments">
                         <h5>{t('footer.h5.2')}</h5>
                         <div className="payment-img">
-                            {payments.map(item => (
+                            {payments?.map(item => (
                                 <div key={item.id} className="img-container">
                                     <img src={`src/images/${item.image}`} alt="" />
                                 </div>
